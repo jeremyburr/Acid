@@ -17,28 +17,21 @@
       renderer.setSize( window.innerWidth, window.innerHeight );
       document.body.appendChild( renderer.domElement );
 
-      /*const geometry = new THREE.BoxGeometry();
-      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-      const cube = new THREE.Mesh( geometry, material );
-      scene.add( cube );*/
-
-
       const heartShape = new THREE.Shape();
 
-      heartShape.moveTo(5,5);
-      heartShape.bezierCurveTo(5,5,4,0,0,0);
-      heartShape.bezierCurveTo(-6,0,-6,7,-6,7);
-      heartShape.bezierCurveTo(-6,11,-3,15.4,5,19);
-      heartShape.bezierCurveTo(12,15.4,16,11,16,7);
-      heartShape.bezierCurveTo(16,7,16,0,10,0);
-      heartShape.bezierCurveTo(7,0,5,5,5,5);
+      heartShape.moveTo(0,2);
+      heartShape.lineTo(-Math.sqrt(3),1)
+      heartShape.lineTo(-Math.sqrt(3),-1)
+      heartShape.lineTo(0,-2)
+      heartShape.lineTo(Math.sqrt(3),-1)
+      heartShape.lineTo(Math.sqrt(3),1)
 
       const geometry = new THREE.ShapeGeometry( heartShape );
-      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      const material = new THREE.MeshBasicMaterial( { color: 'transparent' } );
       const mesh = new THREE.Mesh( geometry, material ) ;
       scene.add( mesh );
 
-      camera.position.z = 50;
+      camera.position.z = 10;
 
       function animate() {
         requestAnimationFrame( animate );
@@ -47,9 +40,6 @@
         renderer.render( scene, camera );
       }
       animate();
-
-
-      
 
 
 		</script>
