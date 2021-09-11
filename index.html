@@ -22,17 +22,16 @@
       const cube = new THREE.Mesh( geometry, material );
       scene.add( cube );*/
 
-      const x = 0, y = 0;
 
       const heartShape = new THREE.Shape();
 
-      heartShape.moveTo( x + 5, y + 5 );
-      heartShape.bezierCurveTo( x + 5, y + 5, x + 4, y, x, y );
-      heartShape.bezierCurveTo( x - 6, y, x - 6, y + 7,x - 6, y + 7 );
-      heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
-      heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
-      heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
-      heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
+      heartShape.moveTo(5,5);
+      heartShape.bezierCurveTo(5,5,4,0,0,0);
+      heartShape.bezierCurveTo(-6,0,-6,7,-6,7);
+      heartShape.bezierCurveTo(-6,11,-3,15.4,5,19);
+      heartShape.bezierCurveTo(12,15.4,16,11,16,7);
+      heartShape.bezierCurveTo(16,7,16,0,10,0);
+      heartShape.bezierCurveTo(7,0,5,5,5,5);
 
       const geometry = new THREE.ShapeGeometry( heartShape );
       const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
