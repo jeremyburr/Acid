@@ -34,7 +34,11 @@
       heartShape.lineTo(Math.sqrt(3),1)
 
       const geometry = new THREE.ShapeGeometry( heartShape );
-      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      const material = new THREE.MeshBasicMaterial({ 
+          color: 0x00ff00,
+          /*transparent: true,
+          opacity: .1*/
+      });
       material.side = THREE.DoubleSide;
       const mesh = new THREE.Mesh( geometry, material ) ;
       scene.add( mesh );
