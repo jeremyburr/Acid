@@ -10,14 +10,22 @@ import {
   Line,
 } from './three.module.js';
 
-      const heartShape = new Shape();
-      heartShape.moveTo(0,2);
-      heartShape.lineTo(-Math.sqrt(3),1)
-      heartShape.lineTo(-Math.sqrt(3),-1)
-      heartShape.lineTo(0,-2)
-      heartShape.lineTo(Math.sqrt(3),-1)
-      heartShape.lineTo(Math.sqrt(3),1)
-      const geometry = new ShapeGeometry( heartShape );
+      const hex0 = new Shape();
+      /*hex0.moveTo(0,2);
+      hex0.lineTo(-Math.sqrt(3),1)
+      hex0.lineTo(-Math.sqrt(3),-1)
+      hex0.lineTo(0,-2)
+      hex0.lineTo(Math.sqrt(3),-1)
+      hex0.lineTo(Math.sqrt(3),1)*/
+
+      hex0.moveTo(0,4);
+      hex0.lineTo(-Math.sqrt(3),3)
+      hex0.lineTo(-Math.sqrt(3),1)
+      hex0.lineTo(0,0)
+      hex0.lineTo(Math.sqrt(3),1)
+      hex0.lineTo(Math.sqrt(3),3)
+
+      const geometry = new ShapeGeometry( hex0 );
       const material = new MeshBasicMaterial({ 
           color: 0x00ff00,
           /*transparent: true,
