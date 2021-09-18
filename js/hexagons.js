@@ -6,7 +6,6 @@ import {
 	DoubleSide,
 } from './three.module.js';
 
-
       // Hexagons
 
       const hex0 = new Shape();
