@@ -8,12 +8,12 @@ import {
 
       const shapeHex0 = new Shape();
 
-      shapeHex0.moveTo(0,4);
-      shapeHex0.lineTo(-Math.sqrt(3),3)
+      shapeHex0.moveTo(0,0);
       shapeHex0.lineTo(-Math.sqrt(3),1)
-      shapeHex0.lineTo(0,0)
-      shapeHex0.lineTo(Math.sqrt(3),1)
+      shapeHex0.lineTo(-Math.sqrt(3),3)
+      shapeHex0.lineTo(0,4)
       shapeHex0.lineTo(Math.sqrt(3),3)
+      shapeHex0.lineTo(Math.sqrt(3),1)
 
       const shapeHex1 = new Shape();
 
