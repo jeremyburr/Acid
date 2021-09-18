@@ -17,12 +17,12 @@ import {
 
       const shapeHex1 = new Shape();
 
-      shapeHex1.moveTo(0,4);
-      shapeHex1.lineTo(-Math.sqrt(3),3)
-      shapeHex1.lineTo(-Math.sqrt(3),1)
-      shapeHex1.lineTo(0,0)
-      shapeHex1.lineTo(Math.sqrt(3),1)
-      shapeHex1.lineTo(Math.sqrt(3),3)
+      shapeHex1.moveTo(0,0);
+      shapeHex1.lineTo(Math.sqrt(3),-1)
+      shapeHex1.lineTo(Math.sqrt(3),-3)
+      shapeHex1.lineTo(0,-4)
+      shapeHex1.lineTo(-Math.sqrt(3),-3)
+      shapeHex1.lineTo(-Math.sqrt(3),-1)
 
       const geometryHex0 = new ShapeGeometry( shapeHex0 );
       const geometryHex1 = new ShapeGeometry( shapeHex1 );
