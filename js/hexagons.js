@@ -6,28 +6,26 @@ import {
 	DoubleSide,
 } from './three.module.js';
 
-      // Hexagons
+      const shapeHex0 = new Shape();
 
-      const hex0 = new Shape();
+      shapeHex0.moveTo(0,4);
+      shapeHex0.lineTo(-Math.sqrt(3),3)
+      shapeHex0.lineTo(-Math.sqrt(3),1)
+      shapeHex0.lineTo(0,0)
+      shapeHex0.lineTo(Math.sqrt(3),1)
+      shapeHex0.lineTo(Math.sqrt(3),3)
 
-      hex0.moveTo(0,4);
-      hex0.lineTo(-Math.sqrt(3),3)
-      hex0.lineTo(-Math.sqrt(3),1)
-      hex0.lineTo(0,0)
-      hex0.lineTo(Math.sqrt(3),1)
-      hex0.lineTo(Math.sqrt(3),3)
+      const shapeHex1 = new Shape();
 
-      const hex1 = new Shape();
+      shapeHex1.moveTo(0,4);
+      shapeHex1.lineTo(-Math.sqrt(3),3)
+      shapeHex1.lineTo(-Math.sqrt(3),1)
+      shapeHex1.lineTo(0,0)
+      shapeHex1.lineTo(Math.sqrt(3),1)
+      shapeHex1.lineTo(Math.sqrt(3),3)
 
-      hex1.moveTo(0,4);
-      hex1.lineTo(-Math.sqrt(3),3)
-      hex1.lineTo(-Math.sqrt(3),1)
-      hex1.lineTo(0,0)
-      hex1.lineTo(Math.sqrt(3),1)
-      hex1.lineTo(Math.sqrt(3),3)
-
-      const hex0Geometry = new ShapeGeometry( hex0 );
-      const hex1Geometry = new ShapeGeometry( hex1 );
+      const geometryHex0 = new ShapeGeometry( shapeHex0 );
+      const geometryHex1 = new ShapeGeometry( shapeHex1 );
 
       const material = new MeshBasicMaterial({ 
           color: 0x00ff00,
@@ -36,7 +34,7 @@ import {
       });
       material.side = DoubleSide;
 
-      const hex0Mesh = new Mesh( hex0Geometry, material ) ;
-      const hex1Mesh = new Mesh( hex1Geometry, material ) ;
+      const hex0 = new Mesh( geometryHex0, material ) ;
+      const hex1 = new Mesh( geometryHex1, material ) ;
 
-      export { hex0Mesh, hex1Mesh, }
+      export {hex0, hex1}
