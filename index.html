@@ -2,14 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>My first three.js app</title>
+		<title>X-Gen</title>
 		<style>
 			body { margin: 0; }
 		</style>
     <script type="module">
       import * as THREE from './js/three.module.js';
       import { OrbitControls } from './js/OrbitControls.js';
-      import * as Shapes from './js/shapes.js';
+      import * as Axis from './js/axis.js';
+      import * as Hexagons from './js/hexagons.js';
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -22,10 +23,10 @@
       const controls = new OrbitControls( camera, renderer.domElement );
       document.body.appendChild( renderer.domElement );
 
-      scene.add( Shapes.mesh );
-      scene.add( Shapes.blueLine );
-      scene.add( Shapes.redLine );
-      scene.add( Shapes.greenLine );
+      scene.add( Hexagons.hex0Mesh );
+      scene.add( Axis.x );
+      scene.add( Axis.y );
+      scene.add( Axis.z );
 
       function animate() {
         requestAnimationFrame( animate );
