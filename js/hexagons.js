@@ -6,35 +6,54 @@ import {
 	DoubleSide,
 } from './three.module.js';
 
-      const shapeHex0 = new Shape();
+    // Inner
 
-      shapeHex0.moveTo(0,0);
-      shapeHex0.lineTo(-Math.sqrt(3),1)
-      shapeHex0.lineTo(-Math.sqrt(3),3)
-      shapeHex0.lineTo(0,4)
-      shapeHex0.lineTo(Math.sqrt(3),3)
-      shapeHex0.lineTo(Math.sqrt(3),1)
+    const shapeHex0 = new Shape();
+    shapeHex0.moveTo(0,0);
+    shapeHex0.lineTo(-Math.sqrt(3),1)
+    shapeHex0.lineTo(-Math.sqrt(3),3)
+    shapeHex0.lineTo(0,4)
+    shapeHex0.lineTo(Math.sqrt(3),3)
+    shapeHex0.lineTo(Math.sqrt(3),1)
+    const geometryHex0 = new ShapeGeometry( shapeHex0 );
 
-      const shapeHex1 = new Shape();
+    const shapeHex1 = new Shape();
+    shapeHex1.moveTo(0,0);
+    shapeHex1.lineTo(Math.sqrt(3),-1)
+    shapeHex1.lineTo(Math.sqrt(3),-3)
+    shapeHex1.lineTo(0,-4)
+    shapeHex1.lineTo(-Math.sqrt(3),-3)
+    shapeHex1.lineTo(-Math.sqrt(3),-1)
+    const geometryHex1 = new ShapeGeometry( shapeHex1 );
 
-      shapeHex1.moveTo(0,0);
-      shapeHex1.lineTo(Math.sqrt(3),-1)
-      shapeHex1.lineTo(Math.sqrt(3),-3)
-      shapeHex1.lineTo(0,-4)
-      shapeHex1.lineTo(-Math.sqrt(3),-3)
-      shapeHex1.lineTo(-Math.sqrt(3),-1)
+    const greenMaterial = new MeshBasicMaterial({ 
+        color: 0x00ff00,
+        /*transparent: true, opacity: .1*/
+    });
+    greenMaterial.side = DoubleSide;
 
-      const geometryHex0 = new ShapeGeometry( shapeHex0 );
-      const geometryHex1 = new ShapeGeometry( shapeHex1 );
+    const _0 = new Mesh( geometryHex0, greenMaterial ) ;
+    const _1 = new Mesh( geometryHex1, greenMaterial ) ;
 
-      const material = new MeshBasicMaterial({ 
-          color: 0x00ff00,
-          /*transparent: true,
-          opacity: .1*/
-      });
-      material.side = DoubleSide;
+    // Outer
 
-      const hex0 = new Mesh( geometryHex0, material ) ;
-      const hex1 = new Mesh( geometryHex1, material ) ;
+    const shapeHexTop = new Shape();
+    /*shapeHexTop.moveTo(0,0);
+    shapeHexTop.lineTo(-Math.sqrt(3),1)
+    shapeHexTop.lineTo(-Math.sqrt(3),3)
+    shapeHexTop.lineTo(0,4)
+    shapeHexTop.lineTo(Math.sqrt(3),3)
+    shapeHexTop.lineTo(Math.sqrt(3),1)*/
+    const geometryHexTop = new ShapeGeometry( shapeHexTop );
 
-      export {hex0, hex1}
+    const blueMaterial = new MeshBasicMaterial({ 
+        color: 0x0000FF,
+        /*transparent: true, opacity: .1*/
+    });
+
+    blueMaterial.side = DoubleSide;
+
+    const _Top = new Mesh( geometryHexTop, blueMaterial ) ;
+
+
+    export {_0, _1, _Top}
