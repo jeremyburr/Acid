@@ -1,2 +1,2 @@
 # X-Gen
-Experimental Graphics Framework
+Experimental Graphics Framework (in initial prototyping / development)
