@@ -4,7 +4,7 @@ import {
 	MeshBasicMaterial,
 	Mesh,
 	DoubleSide,
-} from './three.module.js';
+} from '../three.module.js';
 
     // Inner
 

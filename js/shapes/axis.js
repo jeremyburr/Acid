@@ -3,7 +3,7 @@ import {
   Vector3,
   BufferGeometry,
   Line,
-} from './three.module.js';
+} from '../three.module.js';
 
       const blueLineMaterial = new LineBasicMaterial( { color: 0x0000ff } );
       const bluePoints = [];
