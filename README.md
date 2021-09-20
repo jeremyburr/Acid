@@ -1,2 +1,2 @@
-# X-Gen
+# Acid
 Experimental Graphics Framework
