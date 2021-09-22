@@ -95,7 +95,9 @@
 
 				}
 
-        //vertices = [-10, 10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0];
+        //vertices = [-10,10,0,10,10,0,-10,-10,0,10,-10,0];
+        // normals = [0,0,1,0,0,1,0,0,1,0,0,1]
+
 
 
         console.log('vertices: ',vertices);
@@ -120,6 +122,8 @@
 					}
 
 				}
+
+        console.log('normals: ',normals);
 
 				geometry.setIndex( indices );
 				geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
