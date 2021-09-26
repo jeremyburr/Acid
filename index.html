@@ -79,19 +79,27 @@
           0,0,0,
           0,2,0,
           -Math.sqrt(3),1,0
+
+
+
+
+
           ];
 
         //const normals = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1];
         //const indices = [1, 0, 3, 0, 2, 3];
         //const indices = [1, 0, 3, 0, 2, 3, 4,5,6];
         //const colors = [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1];
-        const colors = [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1,
-        0,0,1,
-        1,0,1,
-        0,1,1
-      ];
+        const colors = [
+          0, 0, 1, 
+          1, 0, 1, 
+          0, 1, 1, 
+          1, 1, 1,
+          0, 0, 1,
+          1, 0, 1,
+        ];
 
-				///geometry.setIndex( indices );
+          ///geometry.setIndex( indices );
 				geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
 				//geometry.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
 				geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
