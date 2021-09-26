@@ -51,7 +51,7 @@
 			function init() {
 
 				camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
-				camera.position.z = 64;
+				camera.position.z = 30;
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0x050505 );
@@ -71,18 +71,18 @@
         ]*/
 
         const vertices = [
-          -10,10,0, 
-           10,10,0, 
-          -10,-10,0, 
-           10,-10,0, 
 
-           -20,-30,-20, 
-           -20,-15,-20, 
-           -25,-15,-30 
+          0,0,0,
+          0,2,0, 
+          Math.sqrt(3),1,0,
+          
+          0,0,0,
+          0,2,0,
+          -Math.sqrt(3),1,0
           ];
 
         //const normals = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1];
-        const indices = [1, 0, 3, 0, 2, 3];
+        //const indices = [1, 0, 3, 0, 2, 3];
         //const indices = [1, 0, 3, 0, 2, 3, 4,5,6];
         //const colors = [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1];
         const colors = [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1,
@@ -137,10 +137,10 @@
 
 			function render() {
 
-				const time = Date.now() * 0.001;
+				//const time = Date.now() * 0.001;
 
-				mesh.rotation.x = time * 0.25;
-				mesh.rotation.y = time * 0.5;
+				//mesh.rotation.x = time * 0.25;
+				//mesh.rotation.y = time * 0.5;
 
 				renderer.render( scene, camera );
 
