@@ -1,2 +1,2 @@
 # Acid
-Experimental Graphics Framework
+Experimental Graphics Framework - In prototyping / under construction
