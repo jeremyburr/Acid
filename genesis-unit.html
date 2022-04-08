@@ -29,17 +29,9 @@
     document.body.appendChild(renderer.domElement);
     const controls = new TrackballControls(camera, renderer.domElement);
 
-    /*
-      controls.rotateSpeed = 1.0;
-      controls.zoomSpeed = 1.2;
-      controls.panSpeed = 0.8;
-      controls.keys = [ 'KeyA', 'KeyS', 'KeyD' ];
-    */
-
-
-    scene.add(Hexagons._0);
-    scene.add(Hexagons._1);
-    scene.add(Hexagons._Top);
+    scene.add(Hexagons.Top);
+    scene.add(Hexagons.Bottom);
+    //scene.add(Hexagons._Top);
     //scene.add( Hexagons.hex1 );
     scene.add(Axis.x);
     scene.add(Axis.y);

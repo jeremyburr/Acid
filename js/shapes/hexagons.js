@@ -8,23 +8,23 @@ import {
 
     // Inner
 
-    const shapeHex0 = new Shape();
-    shapeHex0.moveTo(0,0);
-    shapeHex0.lineTo(-Math.sqrt(3),1)
-    shapeHex0.lineTo(-Math.sqrt(3),3)
-    shapeHex0.lineTo(0,4)
-    shapeHex0.lineTo(Math.sqrt(3),3)
-    shapeHex0.lineTo(Math.sqrt(3),1)
-    const geometryHex0 = new ShapeGeometry( shapeHex0 );
+    const shapeHexTop = new Shape();
+    shapeHexTop.moveTo(0,0);
+    shapeHexTop.lineTo(-Math.sqrt(3),1)
+    shapeHexTop.lineTo(-Math.sqrt(3),3)
+    shapeHexTop.lineTo(0,4)
+    shapeHexTop.lineTo(Math.sqrt(3),3)
+    shapeHexTop.lineTo(Math.sqrt(3),1)
+    const geometryHexTop = new ShapeGeometry( shapeHexTop );
 
-    const shapeHex1 = new Shape();
-    shapeHex1.moveTo(0,0);
-    shapeHex1.lineTo(Math.sqrt(3),-1)
-    shapeHex1.lineTo(Math.sqrt(3),-3)
-    shapeHex1.lineTo(0,-4)
-    shapeHex1.lineTo(-Math.sqrt(3),-3)
-    shapeHex1.lineTo(-Math.sqrt(3),-1)
-    const geometryHex1 = new ShapeGeometry( shapeHex1 );
+    const shapeHexBottom = new Shape();
+    shapeHexBottom.moveTo(0,0);
+    shapeHexBottom.lineTo(Math.sqrt(3),-1)
+    shapeHexBottom.lineTo(Math.sqrt(3),-3)
+    shapeHexBottom.lineTo(0,-4)
+    shapeHexBottom.lineTo(-Math.sqrt(3),-3)
+    shapeHexBottom.lineTo(-Math.sqrt(3),-1)
+    const geometryHexBottom = new ShapeGeometry( shapeHexBottom );
 
     const greenMaterial = new MeshBasicMaterial({ 
         color: 0x00ff00,
@@ -32,19 +32,19 @@ import {
     });
     greenMaterial.side = DoubleSide;
 
-    const _0 = new Mesh( geometryHex0, greenMaterial ) ;
-    const _1 = new Mesh( geometryHex1, greenMaterial ) ;
+    const Top = new Mesh( geometryHexTop, greenMaterial ) ;
+    const Bottom = new Mesh( geometryHexBottom, greenMaterial ) ;
 
     // Outer
 
-    const shapeHexTop = new Shape();
-    /*shapeHexTop.moveTo(0,0);
-    shapeHexTop.lineTo(-Math.sqrt(3),1)
-    shapeHexTop.lineTo(-Math.sqrt(3),3)
-    shapeHexTop.lineTo(0,4)
-    shapeHexTop.lineTo(Math.sqrt(3),3)
-    shapeHexTop.lineTo(Math.sqrt(3),1)*/
-    const geometryHexTop = new ShapeGeometry( shapeHexTop );
+    const shapeHexBack = new Shape();
+    /*shapeHexBack.moveTo(0,0);
+    shapeHexBack.lineTo(-Math.sqrt(3),1)
+    shapeHexBack.lineTo(-Math.sqrt(3),3)
+    shapeHexBack.lineTo(0,4)
+    shapeHexBack.lineTo(Math.sqrt(3),3)
+    shapeHexBack.lineTo(Math.sqrt(3),1)*/
+    const geometryHexBack = new ShapeGeometry( shapeHexBack );
 
     const blueMaterial = new MeshBasicMaterial({ 
         color: 0x0000FF,
@@ -53,7 +53,7 @@ import {
 
     blueMaterial.side = DoubleSide;
 
-    const _Top = new Mesh( geometryHexTop, blueMaterial ) ;
+    const Back = new Mesh( geometryHexBack, blueMaterial ) ;
 
 
-    export {_0, _1, _Top}
+    export {Top, Bottom, Back}
