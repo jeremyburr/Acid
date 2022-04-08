@@ -14,6 +14,7 @@
 
     import * as THREE from './js/three.module.js';
     import { OrbitControls } from './js/OrbitControls.js';
+    import { TrackballControls } from './js/TrackballControls.js';
     import * as Axis from './js/shapes/axis.js';
     import * as Hexagons from './js/shapes/hexagons.js';
 
@@ -25,7 +26,16 @@
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    const controls = new OrbitControls(camera, renderer.domElement);
+    //const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new TrackballControls(camera, renderer.domElement);
+
+    /*
+      controls.rotateSpeed = 1.0;
+      controls.zoomSpeed = 1.2;
+      controls.panSpeed = 0.8;
+      controls.keys = [ 'KeyA', 'KeyS', 'KeyD' ];
+    */
+
     document.body.appendChild(renderer.domElement);
 
     scene.add(Hexagons._0);
@@ -38,6 +48,7 @@
 
     function animate() {
       requestAnimationFrame(animate);
+      controls.update();
       renderer.render(scene, camera);
     }
     animate();

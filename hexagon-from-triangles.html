@@ -118,6 +118,7 @@
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
       const controls = new OrbitControls(camera, renderer.domElement);
+      controls.autoRotate = true; 
       document.body.appendChild(renderer.domElement);
 
 
