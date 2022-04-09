@@ -19,6 +19,7 @@
     import * as Axis from './js/shapes/axis.js';
     import * as Hexagons from './js/shapes/hexagons.js';
 
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(83, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.x = 6;
@@ -32,8 +33,7 @@
 
     scene.add(Hexagons.Top);
     scene.add(Hexagons.Bottom);
-    //scene.add(Hexagons._Top);
-    //scene.add( Hexagons.hex1 );
+
     scene.add(Axis.x);
     scene.add(Axis.y);
     scene.add(Axis.z);

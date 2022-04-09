@@ -19,10 +19,12 @@
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.z = 30;
       scene = new THREE.Scene();
+      const axesHelper = new THREE.AxesHelper( 5 );
+      scene.add( axesHelper );
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
       scene.add(light);
-      const geometry = new THREE.BufferGeometry();
+      const hex0 = new THREE.BufferGeometry();
 
       /*const vertices = [
         0,0,0,
@@ -35,29 +37,29 @@
 
       const vertices = [
 
-        0, 0, 0,
         0, 2, 0,
+        0, 4, 0,
+        Math.sqrt(3), 3, 0,
+
+        0, 2, 0,
+        Math.sqrt(3), 3, 0,
         Math.sqrt(3), 1, 0,
 
+        0, 2, 0,
         0, 0, 0,
         Math.sqrt(3), 1, 0,
-        Math.sqrt(3), -1, 0,
 
-        0, 0, 0,
-        0, -2, 0,
-        Math.sqrt(3), -1, 0,
-
-        0, 0, 0,
-        0, -2, 0,
-        -Math.sqrt(3), -1, 0,
-
-        0, 0, 0,
-        -Math.sqrt(3), 1, 0,
-        -Math.sqrt(3), -1, 0,
-
-        0, 0, 0,
         0, 2, 0,
+        0, 0, 0,
         -Math.sqrt(3), 1, 0,
+
+        0, 2, 0,
+        -Math.sqrt(3), 3, 0,
+        -Math.sqrt(3), 1, 0,
+
+        0, 2, 0,
+        0, 4, 0,
+        -Math.sqrt(3), 3, 0,
 
       ];
 
@@ -94,16 +96,16 @@
       ];
 
       ///geometry.setIndex( indices );
-      geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+      hex0.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
       //geometry.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
-      geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      hex0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true
       });
 
-      mesh = new THREE.Mesh(geometry, material);
+      mesh = new THREE.Mesh(hex0, material);
       scene.add(mesh);
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
