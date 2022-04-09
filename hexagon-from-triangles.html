@@ -18,6 +18,9 @@
 
     function init() {
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
+      //camera.position.z = 30;
+      camera.position.x = 14;
+      camera.position.y = 10;
       camera.position.z = 30;
       scene = new THREE.Scene();
       //const axesHelper = new THREE.AxesHelper( 5 );
