@@ -31,8 +31,10 @@
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
       scene.add(light);
+
       const hex0 = new THREE.BufferGeometry();
       const hex1 = new THREE.BufferGeometry();
+      const hex2 = new THREE.BufferGeometry();
 
       
       const verticesHex0 = [
@@ -86,6 +88,32 @@
         0, 0, 0,
         -Math.sqrt(3), -1, 0,
       ]
+      
+      const verticesHex2 = [
+        0, 0, -2,
+        0, 0, 0,
+        Math.sqrt(3), 0, -1,
+        
+        0, 0, -2,
+        0, 0, 0,
+        -Math.sqrt(3), 0, -1,
+
+        /*0, -2, 0,
+        0, -4, 0,
+        Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        0, -4, 0,
+        -Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        -Math.sqrt(3), -1, 0,
+        -Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        0, 0, 0,
+        -Math.sqrt(3), -1, 0,*/
+      ]
 
       const colors = [
         0, 0, 1,
@@ -123,6 +151,9 @@
       hex1.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex1, 3));
       hex1.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
+      hex2.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex2, 3));
+      hex2.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
       const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true
@@ -133,6 +164,10 @@
 
       mesh = new THREE.Mesh(hex1, material);
       scene.add(mesh);
+
+      mesh = new THREE.Mesh(hex2, material);
+      scene.add(mesh);
+
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
