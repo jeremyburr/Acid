@@ -10,6 +10,7 @@
   <script type="module">
     import * as THREE from './js/three.module.js';
     import { OrbitControls } from './js/OrbitControls.js';
+    import * as Axis from './js/shapes/axis.js';
     let camera, scene, renderer;
     let mesh;
     init();
@@ -19,24 +20,19 @@
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.z = 30;
       scene = new THREE.Scene();
-      const axesHelper = new THREE.AxesHelper( 5 );
-      scene.add( axesHelper );
+      //const axesHelper = new THREE.AxesHelper( 5 );
+      //scene.add( axesHelper );
+      scene.add(Axis.x);
+      scene.add(Axis.y);
+      scene.add(Axis.z);
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
       scene.add(light);
       const hex0 = new THREE.BufferGeometry();
+      const hex1 = new THREE.BufferGeometry();
 
-      /*const vertices = [
-        0,0,0,
-        -Math.sqrt(3),1,0,
-        -Math.sqrt(3),3,0,
-        0,4,0,
-        Math.sqrt(3),3, 0,
-        Math.sqrt(3),1,0
-      ]*/
-
-      const vertices = [
-
+      
+      const verticesHex0 = [
         0, 2, 0,
         0, 4, 0,
         Math.sqrt(3), 3, 0,
@@ -60,13 +56,33 @@
         0, 2, 0,
         0, 4, 0,
         -Math.sqrt(3), 3, 0,
-
       ];
 
-      //const normals = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1];
-      //const indices = [1, 0, 3, 0, 2, 3];
-      //const indices = [1, 0, 3, 0, 2, 3, 4,5,6];
-      //const colors = [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1];
+      const verticesHex1 = [
+        0, -2, 0,
+        0, 0, 0,
+        Math.sqrt(3), -1, 0,
+
+        0, -2, 0,
+        Math.sqrt(3), -1, 0,
+        Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        0, -4, 0,
+        Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        0, -4, 0,
+        -Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        -Math.sqrt(3), -1, 0,
+        -Math.sqrt(3), -3, 0,
+
+        0, -2, 0,
+        0, 0, 0,
+        -Math.sqrt(3), -1, 0,
+      ]
 
       const colors = [
         0, 0, 1,
@@ -96,9 +112,13 @@
       ];
 
       ///geometry.setIndex( indices );
-      hex0.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
       //geometry.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
+
+      hex0.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex0, 3));
       hex0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+      hex1.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex1, 3));
+      hex1.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
@@ -106,6 +126,9 @@
       });
 
       mesh = new THREE.Mesh(hex0, material);
+      scene.add(mesh);
+
+      mesh = new THREE.Mesh(hex1, material);
       scene.add(mesh);
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
