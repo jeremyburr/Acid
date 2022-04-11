@@ -15,7 +15,7 @@
     import { TrackballControls } from './js/TrackballControls.js';
     import * as Axis from './js/shapes/axis.js';
     let camera, scene, renderer, controls;
-    let mesh;
+    let mesh0, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7;
     init();
     animate();
 
@@ -39,9 +39,9 @@
       
       window.addEventListener('resize', onWindowResize);
 
-      scene.add(Axis.x);
+      /*scene.add(Axis.x);
       scene.add(Axis.y);
-      scene.add(Axis.z);
+      scene.add(Axis.z);*/
 
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
@@ -342,29 +342,29 @@
         vertexColors: true
       });
 
-      mesh = new THREE.Mesh(hex0, material);
-      scene.add(mesh);
+      mesh0 = new THREE.Mesh(hex0, material);
+      scene.add(mesh0);
 
-      mesh = new THREE.Mesh(hex1, material);
-      scene.add(mesh);
+      mesh1 = new THREE.Mesh(hex1, material);
+      scene.add(mesh1);
 
-      mesh = new THREE.Mesh(hex2, material);
-      scene.add(mesh);
+      mesh2 = new THREE.Mesh(hex2, material);
+      scene.add(mesh2);
 
-      mesh = new THREE.Mesh(hex3, material);
-      scene.add(mesh);
+      mesh3 = new THREE.Mesh(hex3, material);
+      scene.add(mesh3);
 
-      mesh = new THREE.Mesh(hex4, material);
-      scene.add(mesh);
+      mesh4 = new THREE.Mesh(hex4, material);
+      scene.add(mesh4);
 
-      mesh = new THREE.Mesh(hex5, material);
-      scene.add(mesh);
+      mesh5 = new THREE.Mesh(hex5, material);
+      scene.add(mesh5);
 
-      mesh = new THREE.Mesh(hex6, material);
-      scene.add(mesh);
+      mesh6 = new THREE.Mesh(hex6, material);
+      scene.add(mesh6);
 
-      mesh = new THREE.Mesh(hex7, material);
-      scene.add(mesh);
+      mesh7 = new THREE.Mesh(hex7, material);
+      scene.add(mesh7);
 
 
     }
@@ -383,10 +383,41 @@
     }
 
     function render() {
-      //const time = Date.now() * 0.001;
-      //mesh.rotation.x = time * 0.5;
-      //mesh.rotation.y = time * 0.5;
-      //mesh.rotation.z = time * 0.5;
+
+      const time = Date.now() * 0.002;
+
+      mesh0.rotation.x = time * 0.5;
+      mesh0.rotation.y = time * 0.5;
+      mesh0.rotation.z = time * 0.5;
+
+      mesh1.rotation.x = time * 0.5;
+      mesh1.rotation.y = time * 0.5;
+      mesh1.rotation.z = time * 0.5;
+
+      mesh2.rotation.x = time * 0.5;
+      mesh2.rotation.y = time * 0.5;
+      mesh2.rotation.z = time * 0.5;
+
+      mesh3.rotation.x = time * 0.5;
+      mesh3.rotation.y = time * 0.5;
+      mesh3.rotation.z = time * 0.5;
+
+      mesh4.rotation.x = time * 0.5;
+      mesh4.rotation.y = time * 0.5;
+      mesh4.rotation.z = time * 0.5;
+
+      mesh5.rotation.x = time * 0.5;
+      mesh5.rotation.y = time * 0.5;
+      mesh5.rotation.z = time * 0.5;
+
+      mesh6.rotation.x = time * 0.5;
+      mesh6.rotation.y = time * 0.5;
+      mesh6.rotation.z = time * 0.5;
+
+      mesh7.rotation.x = time * 0.5;
+      mesh7.rotation.y = time * 0.5;
+      mesh7.rotation.z = time * 0.5;
+
       renderer.render(scene, camera);
     }
 
