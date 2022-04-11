@@ -59,6 +59,8 @@
 
       const hex4 = new THREE.BufferGeometry();
 
+      const hex5 = new THREE.BufferGeometry();
+
       const verticesHex0 = [
 
         0, 2, 0,
@@ -193,26 +195,36 @@
         0, Math.sqrt(2), -Math.sqrt(2),
         -Math.sqrt(3), 2, -2,
         0, Math.sqrt(2)*2, -Math.sqrt(2)*2,
-
-
-        /*0, 0, 2,
-        -Math.sqrt(3), 0, 1,
-        -Math.sqrt(3), 0, 3,
-
-        0, 0, 2,
-        Math.sqrt(3), 0, 1,
-        Math.sqrt(3), 0, 3,
-
-        0, 0, 2,
-        0, 0, 4,
-        Math.sqrt(3), 0, 3,
-
-        0, 0, 2,
-        0, 0, 4,
-        -Math.sqrt(3), 0, 3,*/
+        
       ]
+      
+      const verticesHex5 = [
 
+        0, 0, 0,
+        0, Math.sqrt(2), Math.sqrt(2),
+        -Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
 
+        0, 0, 0,
+        0, Math.sqrt(2), Math.sqrt(2),
+        Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
+
+        0, Math.sqrt(2), Math.sqrt(2),
+        -Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
+        -Math.sqrt(3), 2, 2,
+
+        0, Math.sqrt(2), Math.sqrt(2),
+        Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
+        Math.sqrt(3), 2, 2,
+
+        0, Math.sqrt(2), Math.sqrt(2),
+        Math.sqrt(3), 2, 2,
+        0, Math.sqrt(2)*2, Math.sqrt(2)*2,
+
+        0, Math.sqrt(2), Math.sqrt(2),
+        -Math.sqrt(3), 2, 2,
+        0, Math.sqrt(2)*2, Math.sqrt(2)*2,
+        
+      ]
 
       const colors = [
         0, 0, 1,
@@ -241,10 +253,7 @@
 
       ];
 
-      ///geometry.setIndex( indices );
-      //geometry.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
-
-      /*hex0.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex0, 3));
+      hex0.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex0, 3));
       hex0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       hex1.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex1, 3));
@@ -254,10 +263,13 @@
       hex2.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       hex3.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex3, 3));
-      hex3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));*/
+      hex3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       hex4.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex4, 3));
       hex4.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+      hex5.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex5, 3));
+      hex5.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
@@ -279,6 +291,8 @@
       mesh = new THREE.Mesh(hex4, material);
       scene.add(mesh);
 
+      mesh = new THREE.Mesh(hex5, material);
+      scene.add(mesh);
 
 
     }
