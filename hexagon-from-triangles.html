@@ -58,8 +58,12 @@
       // top/back + top/front
 
       const hex4 = new THREE.BufferGeometry();
-
       const hex5 = new THREE.BufferGeometry();
+
+      // bottom/back + bottom/front
+
+      const hex6 = new THREE.BufferGeometry();
+      const hex7 = new THREE.BufferGeometry();
 
       const verticesHex0 = [
 
@@ -225,6 +229,34 @@
         0, Math.sqrt(2)*2, Math.sqrt(2)*2,
         
       ]
+      
+      const verticesHex6 = [
+
+        0, 0, 0,
+        0, -Math.sqrt(2), Math.sqrt(2),
+        -Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
+
+        0, 0, 0,
+        0, -Math.sqrt(2), Math.sqrt(2),
+        Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
+
+        0, -Math.sqrt(2), Math.sqrt(2),
+        -Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
+        -Math.sqrt(3), -2, 2,
+
+        0, -Math.sqrt(2), Math.sqrt(2),
+        Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
+        Math.sqrt(3), -2, 2,
+
+        0, -Math.sqrt(2), Math.sqrt(2),
+        Math.sqrt(3), -2, 2,
+        0, -Math.sqrt(2)*2, Math.sqrt(2)*2,
+
+        0, -Math.sqrt(2), Math.sqrt(2),
+        -Math.sqrt(3), -2, 2,
+        0, -Math.sqrt(2)*2, Math.sqrt(2)*2,
+        
+      ]
 
       const colors = [
         0, 0, 1,
@@ -271,6 +303,9 @@
       hex5.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex5, 3));
       hex5.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
+      hex6.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex6, 3));
+      hex6.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
       const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true
@@ -292,6 +327,9 @@
       scene.add(mesh);
 
       mesh = new THREE.Mesh(hex5, material);
+      scene.add(mesh);
+
+      mesh = new THREE.Mesh(hex6, material);
       scene.add(mesh);
 
 
