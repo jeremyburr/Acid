@@ -1,1 +1,2 @@
 add window.resize handlers
+look into vertix labeling stat module

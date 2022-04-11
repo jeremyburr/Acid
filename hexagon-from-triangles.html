@@ -171,12 +171,12 @@
       const verticesHex4 = [
 
         0, 0, 0,
-        0, 1, -1,
-        -Math.sqrt(3), 1, -1,
+        0, Math.sqrt(2), -Math.sqrt(2),
+        -Math.sqrt(3), Math.sqrt(2)/2, -Math.sqrt(2)/2,
 
         0, 0, 0,
-        0, 1, -1,
-        Math.sqrt(3), 1, -1,
+        0, Math.sqrt(2), -Math.sqrt(2),
+        Math.sqrt(3), Math.sqrt(2)/2, -Math.sqrt(2)/2,
 
         /*0, 0, 2,
         0, 0, 0,
@@ -231,7 +231,7 @@
       ///geometry.setIndex( indices );
       //geometry.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
 
-      hex0.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex0, 3));
+      /*hex0.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex0, 3));
       hex0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       hex1.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex1, 3));
@@ -241,7 +241,7 @@
       hex2.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       hex3.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex3, 3));
-      hex3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      hex3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));*/
 
       hex4.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex4, 3));
       hex4.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
