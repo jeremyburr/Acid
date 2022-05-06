@@ -6,7 +6,7 @@
   <title>Acid</title>
   <link rel="shortcut icon" href="#">
   <style>
-     body {
+    body {
       margin: 0;
     }
   </style>
@@ -15,13 +15,8 @@
     import { TrackballControls } from './js/TrackballControls.js';
     import * as Axis from './js/shapes/axis.js';
     let camera, scene, renderer, controls;
-    let mesh0, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7;
     init();
     animate();
-
-    /*import { OrbitControls } from './js/OrbitControls.js';
-    controls.autoRotate = true; 
-    const controls = new OrbitControls(camera, renderer.domElement);*/
 
     function init() {
       scene = new THREE.Scene();
@@ -36,335 +31,44 @@
 
       document.body.appendChild(renderer.domElement);
       controls = new TrackballControls(camera, renderer.domElement);
-      
+
       window.addEventListener('resize', onWindowResize);
 
-      /*scene.add(Axis.x);
+      scene.add(Axis.x);
       scene.add(Axis.y);
-      scene.add(Axis.z);*/
+      scene.add(Axis.z);
 
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
       scene.add(light);
 
-      // top/bottom
-      const hex0 = new THREE.BufferGeometry();
-      const hex1 = new THREE.BufferGeometry();
 
-      // front/back
-      const hex2 = new THREE.BufferGeometry();
-      const hex3 = new THREE.BufferGeometry();
+      //Create a closed wavey loop
+      const curve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(-10, 0, 10),
+        new THREE.Vector3(-5, 5, 5),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(5, -5, 5),
+        new THREE.Vector3(10, 0, 10)
+      ]);
 
-      // top/back + top/front
 
-      const hex4 = new THREE.BufferGeometry();
-      const hex5 = new THREE.BufferGeometry();
+      const points = curve.getPoints(50);
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-      // bottom/back + bottom/front
+      const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
 
-      const hex6 = new THREE.BufferGeometry();
-      const hex7 = new THREE.BufferGeometry();
 
-      const verticesHex0 = [
+      // Create the final object to add to the scene
+      const curveObject = new THREE.Line(geometry, material);
 
-        0, 2, 0,
-        0, 4, 0,
-        Math.sqrt(3), 3, 0,
+      scene.add(curveObject);
 
-        0, 2, 0,
-        Math.sqrt(3), 3, 0,
-        Math.sqrt(3), 1, 0,
 
-        0, 2, 0,
-        0, 0, 0,
-        Math.sqrt(3), 1, 0,
-
-        0, 2, 0,
-        0, 0, 0,
-        -Math.sqrt(3), 1, 0,
-
-        0, 2, 0,
-        -Math.sqrt(3), 3, 0,
-        -Math.sqrt(3), 1, 0,
-
-        0, 2, 0,
-        0, 4, 0,
-        -Math.sqrt(3), 3, 0,
-      ];
-
-      const verticesHex1 = [
-
-        0, -2, 0,
-        0, 0, 0,
-        Math.sqrt(3), -1, 0,
-
-        0, -2, 0,
-        Math.sqrt(3), -1, 0,
-        Math.sqrt(3), -3, 0,
-
-        0, -2, 0,
-        0, -4, 0,
-        Math.sqrt(3), -3, 0,
-
-        0, -2, 0,
-        0, -4, 0,
-        -Math.sqrt(3), -3, 0,
-
-        0, -2, 0,
-        -Math.sqrt(3), -1, 0,
-        -Math.sqrt(3), -3, 0,
-
-        0, -2, 0,
-        0, 0, 0,
-        -Math.sqrt(3), -1, 0,
-      ]
-
-      const verticesHex2 = [
-        0, 0, -2,
-
-        0, 0, 0,
-        Math.sqrt(3), 0, -1,
-
-        0, 0, -2,
-        0, 0, 0,
-        -Math.sqrt(3), 0, -1,
-
-        0, 0, -2,
-        -Math.sqrt(3), 0, -1,
-        -Math.sqrt(3), 0, -3,
-
-        0, 0, -2,
-        Math.sqrt(3), 0, -1,
-        Math.sqrt(3), 0, -3,
-
-        0, 0, -2,
-        0, 0, -4,
-        Math.sqrt(3), 0, -3,
-
-        0, 0, -2,
-        0, 0, -4,
-        -Math.sqrt(3), 0, -3,
-      ]
-
-      const verticesHex3 = [
-
-        0, 0, 2,
-        0, 0, 0,
-        Math.sqrt(3), 0, 1,
-
-        0, 0, 2,
-        0, 0, 0,
-        -Math.sqrt(3), 0, 1,
-
-        0, 0, 2,
-        -Math.sqrt(3), 0, 1,
-        -Math.sqrt(3), 0, 3,
-
-        0, 0, 2,
-        Math.sqrt(3), 0, 1,
-        Math.sqrt(3), 0, 3,
-
-        0, 0, 2,
-        0, 0, 4,
-        Math.sqrt(3), 0, 3,
-
-        0, 0, 2,
-        0, 0, 4,
-        -Math.sqrt(3), 0, 3,
-      ]
-
-
-      const verticesHex4 = [
-
-        0, 0, 0,
-        0, Math.sqrt(2), -Math.sqrt(2),
-        -Math.sqrt(3), Math.sqrt(2)/2, -Math.sqrt(2)/2,
-
-        0, 0, 0,
-        0, Math.sqrt(2), -Math.sqrt(2),
-        Math.sqrt(3), Math.sqrt(2)/2, -Math.sqrt(2)/2,
-
-        0, Math.sqrt(2), -Math.sqrt(2),
-        -Math.sqrt(3), Math.sqrt(2)/2, -Math.sqrt(2)/2,
-        -Math.sqrt(3), 2, -2,
-
-        0, Math.sqrt(2), -Math.sqrt(2),
-        Math.sqrt(3), Math.sqrt(2)/2, -Math.sqrt(2)/2,
-        Math.sqrt(3), 2, -2,
-
-        0, Math.sqrt(2), -Math.sqrt(2),
-        Math.sqrt(3), 2, -2,
-        0, Math.sqrt(2)*2, -Math.sqrt(2)*2,
-
-        0, Math.sqrt(2), -Math.sqrt(2),
-        -Math.sqrt(3), 2, -2,
-        0, Math.sqrt(2)*2, -Math.sqrt(2)*2,
-        
-      ]
-      
-      const verticesHex5 = [
-
-        0, 0, 0,
-        0, Math.sqrt(2), Math.sqrt(2),
-        -Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
-
-        0, 0, 0,
-        0, Math.sqrt(2), Math.sqrt(2),
-        Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
-
-        0, Math.sqrt(2), Math.sqrt(2),
-        -Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
-        -Math.sqrt(3), 2, 2,
-
-        0, Math.sqrt(2), Math.sqrt(2),
-        Math.sqrt(3), Math.sqrt(2)/2, Math.sqrt(2)/2,
-        Math.sqrt(3), 2, 2,
-
-        0, Math.sqrt(2), Math.sqrt(2),
-        Math.sqrt(3), 2, 2,
-        0, Math.sqrt(2)*2, Math.sqrt(2)*2,
-
-        0, Math.sqrt(2), Math.sqrt(2),
-        -Math.sqrt(3), 2, 2,
-        0, Math.sqrt(2)*2, Math.sqrt(2)*2,
-        
-      ]
-      
-      const verticesHex6 = [
-
-        0, 0, 0,
-        0, -Math.sqrt(2), Math.sqrt(2),
-        -Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
-
-        0, 0, 0,
-        0, -Math.sqrt(2), Math.sqrt(2),
-        Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
-
-        0, -Math.sqrt(2), Math.sqrt(2),
-        -Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
-        -Math.sqrt(3), -2, 2,
-
-        0, -Math.sqrt(2), Math.sqrt(2),
-        Math.sqrt(3), -Math.sqrt(2)/2, Math.sqrt(2)/2,
-        Math.sqrt(3), -2, 2,
-
-        0, -Math.sqrt(2), Math.sqrt(2),
-        Math.sqrt(3), -2, 2,
-        0, -Math.sqrt(2)*2, Math.sqrt(2)*2,
-
-        0, -Math.sqrt(2), Math.sqrt(2),
-        -Math.sqrt(3), -2, 2,
-        0, -Math.sqrt(2)*2, Math.sqrt(2)*2,
-        
-      ]
-      
-      const verticesHex7 = [
-
-        0, 0, 0,
-        0, -Math.sqrt(2), -Math.sqrt(2),
-        -Math.sqrt(3), -Math.sqrt(2)/2, -Math.sqrt(2)/2,
-
-        0, 0, 0,
-        0, -Math.sqrt(2), -Math.sqrt(2),
-        Math.sqrt(3), -Math.sqrt(2)/2, -Math.sqrt(2)/2,
-
-        0, -Math.sqrt(2), -Math.sqrt(2),
-        -Math.sqrt(3), -Math.sqrt(2)/2, -Math.sqrt(2)/2,
-        -Math.sqrt(3), -2, -2,
-
-        0, -Math.sqrt(2), -Math.sqrt(2),
-        Math.sqrt(3), -Math.sqrt(2)/2, -Math.sqrt(2)/2,
-        Math.sqrt(3), -2, -2,
-
-        0, -Math.sqrt(2), -Math.sqrt(2),
-        Math.sqrt(3), -2, -2,
-        0, -Math.sqrt(2)*2, -Math.sqrt(2)*2,
-
-        0, -Math.sqrt(2), -Math.sqrt(2),
-        -Math.sqrt(3), -2, -2,
-        0, -Math.sqrt(2)*2, -Math.sqrt(2)*2,
-        
-      ]
-
-      const colors = [
-        0, 0, 1,
-        1, 0, 1,
-        0, 1, 1,
-
-        1, 0, 1,
-        0, 1, 1,
-        0, 0, 1,
-
-        0, 1, 1,
-        0, 0, 1,
-        1, 0, 1,
-
-        1, 0, 1,
-        0, 1, 1,
-        0, 0, 1,
-
-        0, 0, 1,
-        1, 0, 1,
-        0, 1, 1,
-
-        1, 0, 1,
-        0, 1, 1,
-        0, 0, 1,
-
-      ];
-
-      hex0.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex0, 3));
-      hex0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex1.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex1, 3));
-      hex1.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex2.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex2, 3));
-      hex2.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex3.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex3, 3));
-      hex3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex4.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex4, 3));
-      hex4.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex5.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex5, 3));
-      hex5.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex6.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex6, 3));
-      hex6.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      hex7.setAttribute('position', new THREE.Float32BufferAttribute(verticesHex7, 3));
-      hex7.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-      const material = new THREE.MeshPhongMaterial({
+      /*const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true
-      });
-
-      mesh0 = new THREE.Mesh(hex0, material);
-      scene.add(mesh0);
-
-      mesh1 = new THREE.Mesh(hex1, material);
-      scene.add(mesh1);
-
-      mesh2 = new THREE.Mesh(hex2, material);
-      scene.add(mesh2);
-
-      mesh3 = new THREE.Mesh(hex3, material);
-      scene.add(mesh3);
-
-      mesh4 = new THREE.Mesh(hex4, material);
-      scene.add(mesh4);
-
-      mesh5 = new THREE.Mesh(hex5, material);
-      scene.add(mesh5);
-
-      mesh6 = new THREE.Mesh(hex6, material);
-      scene.add(mesh6);
-
-      mesh7 = new THREE.Mesh(hex7, material);
-      scene.add(mesh7);
+      });*/
 
 
     }
@@ -388,35 +92,7 @@
 
       /*mesh0.rotation.x = time * 0.5;
       mesh0.rotation.y = time * 0.5;
-      mesh0.rotation.z = time * 0.5;
-
-      mesh1.rotation.x = time * 0.5;
-      mesh1.rotation.y = time * 0.5;
-      mesh1.rotation.z = time * 0.5;
-
-      mesh2.rotation.x = time * 0.5;
-      mesh2.rotation.y = time * 0.5;
-      mesh2.rotation.z = time * 0.5;
-
-      mesh3.rotation.x = time * 0.5;
-      mesh3.rotation.y = time * 0.5;
-      mesh3.rotation.z = time * 0.5;
-
-      mesh4.rotation.x = time * 0.5;
-      mesh4.rotation.y = time * 0.5;
-      mesh4.rotation.z = time * 0.5;
-
-      mesh5.rotation.x = time * 0.5;
-      mesh5.rotation.y = time * 0.5;
-      mesh5.rotation.z = time * 0.5;
-
-      mesh6.rotation.x = time * 0.5;
-      mesh6.rotation.y = time * 0.5;
-      mesh6.rotation.z = time * 0.5;
-
-      mesh7.rotation.x = time * 0.5;
-      mesh7.rotation.y = time * 0.5;
-      mesh7.rotation.z = time * 0.5;*/
+      mesh0.rotation.z = time * 0.5; */
 
       renderer.render(scene, camera);
     }
