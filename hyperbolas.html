@@ -44,7 +44,7 @@
 
 
       //Create a closed wavey loop
-      const curve = new THREE.CatmullRomCurve3([
+      const rightCurve = new THREE.CatmullRomCurve3([
 
         // upper right
 
@@ -110,17 +110,54 @@
         
       ]);
 
+      const leftCurve = new THREE.CatmullRomCurve3([
 
-      const points = curve.getPoints(50);
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        // upper left
 
-      const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+        new THREE.Vector3(-20, 15.49, 0),
+        new THREE.Vector3(-19, 14.66, 0),
+        new THREE.Vector3(-18, 13.83, 0),
+        new THREE.Vector3(-17, 12.99, 0),
+        new THREE.Vector3(-16, 12.15, 0),
+        new THREE.Vector3(-15, 11.31, 0),
+        new THREE.Vector3(-14, 10.46, 0),
+        new THREE.Vector3(-13, 9.6, 0),
+        new THREE.Vector3(-12, 8.72, 0),
+        new THREE.Vector3(-11, 7.83, 0),
+        new THREE.Vector3(-10, 6.92, 0),
+        new THREE.Vector3(-9.5, 6.46, 0),
+        new THREE.Vector3(-9, 5.98, 0),
+        new THREE.Vector3(-8.5, 5.49, 0),
+        new THREE.Vector3(-8.24, 5.24, 0),
+        new THREE.Vector3(-8, 4.99, 0),
+        new THREE.Vector3(-7.76, 4.74, 0),
+        new THREE.Vector3(-7.5, 4.47, 0),
+        new THREE.Vector3(-7.26, 4.21, 0),
+        new THREE.Vector3(-7, 3.91, 0),
+        new THREE.Vector3(-6.76, 3.64, 0),
+        new THREE.Vector3(-6.5, 3.32, 0),
+        new THREE.Vector3(-6.24, 2.98, 0),
+        new THREE.Vector3(-6, 2.65, 0),
+        new THREE.Vector3(-5.75, 2.27, 0),
+        new THREE.Vector3(-5.5, 1.83, 0),
+        new THREE.Vector3(-5.24, 1.25, 0),
+        new THREE.Vector3(-5, 0, 0),
 
+    ]);
 
-      // Create the final object to add to the scene
-      const curveObject = new THREE.Line(geometry, material);
+      const rightPoints = rightCurve.getPoints(500);
+      const rightGeometry = new THREE.BufferGeometry().setFromPoints(rightPoints);
+      const rightMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+      const rightCurveObject = new THREE.Line(rightGeometry, rightMaterial);
 
-      scene.add(curveObject);
+      scene.add(rightCurveObject);
+
+      const leftPoints = leftCurve.getPoints(500);
+      const leftGeometry = new THREE.BufferGeometry().setFromPoints(leftPoints);
+      const leftMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+      const leftCurveObject = new THREE.Line(leftGeometry, leftMaterial);
+
+      scene.add(leftCurveObject);
 
 
       /*const material = new THREE.MeshPhongMaterial({
