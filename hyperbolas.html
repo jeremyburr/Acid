@@ -57,10 +57,21 @@
       //const x = nerdamer('solve(y=m*x+c, x)');
       //console.log(x.toString());
 
-      const x = 6;
+      let rightCurveVectors = [];
 
-      const y = nerdamer(`solve( ${x}^2/25 - y^2/16 = 1 , y)`);
-      console.log(y.toString());
+      for (let i = 5; i < 21; i++) {
+        //console.log(i);
+        const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
+        console.log(y.toString());
+        console.log(y.evaluate().toString());
+        //console.log(parseInt(y.evaluate().toString()));
+        //rightCurveVectors.push([i,y.toNu])
+      }
+
+      //const x = 6;
+
+      //const y = nerdamer(`solve( ${x}^2/25 - y^2/16 = 1 , y)`);
+      //console.log(y.toString());
 
 
 
