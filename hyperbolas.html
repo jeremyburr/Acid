@@ -52,6 +52,19 @@
       const light = new THREE.HemisphereLight();
       scene.add(light);
 
+      console.log(nerdamer);
+
+      //const x = nerdamer('solve(y=m*x+c, x)');
+      //console.log(x.toString());
+
+      const x = 6;
+
+      const y = nerdamer(`solve( ${x}^2/25 - y^2/16 = 1 , y)`);
+      console.log(y.toString());
+
+
+
+
 
       //Create a closed wavey loop
       const rightCurve = new THREE.CatmullRomCurve3([
