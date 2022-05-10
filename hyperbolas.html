@@ -62,8 +62,9 @@
       for (let i = 5; i < 21; i++) {
         //console.log(i);
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
-        console.log(y.toString());
-        console.log(y.evaluate().toString());
+         //console.log(y.toString());
++        //console.log(y.evaluate());
++        console.log(y.evaluate().text());
         //console.log(parseInt(y.evaluate().toString()));
         //rightCurveVectors.push([i,y.toNu])
       }
