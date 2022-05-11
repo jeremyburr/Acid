@@ -54,38 +54,15 @@
 
       console.log(nerdamer);
 
-      //const x = nerdamer('solve(y=m*x+c, x)');
-      //console.log(x.toString());
-
       let rightCurveVectors = [];
 
       for (let i = 5; i < 21; i++) {
-        //console.log(i);
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
-         //console.log(y.toString());
-+        //console.log(y.evaluate());
-+        console.log(y.evaluate().text());
          var evaluated = y.evaluate().text();
-
          var newArr = JSON.parse(evaluated);
-
-         //var newArr = Array.from(evaluated);
-
          console.log(newArr);
          
-         //console.log(parseInt(evaluated));
-
-        //console.log(parseInt(y.evaluate().toString()));
-        //rightCurveVectors.push([i,y.toNu])
       }
-
-      //const x = 6;
-
-      //const y = nerdamer(`solve( ${x}^2/25 - y^2/16 = 1 , y)`);
-      //console.log(y.toString());
-
-
-
 
 
       //Create a closed wavey loop
