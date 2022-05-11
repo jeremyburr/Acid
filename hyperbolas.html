@@ -65,6 +65,16 @@
          //console.log(y.toString());
 +        //console.log(y.evaluate());
 +        console.log(y.evaluate().text());
+         var evaluated = y.evaluate().text();
+
+         var newArr = JSON.parse(evaluated);
+
+         //var newArr = Array.from(evaluated);
+
+         console.log(newArr);
+         
+         //console.log(parseInt(evaluated));
+
         //console.log(parseInt(y.evaluate().toString()));
         //rightCurveVectors.push([i,y.toNu])
       }
@@ -213,14 +223,14 @@
 
       const rightPoints = rightCurve.getPoints(500);
       const rightGeometry = new THREE.BufferGeometry().setFromPoints(rightPoints);
-      const rightMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+      const rightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       const rightCurveObject = new THREE.Line(rightGeometry, rightMaterial);
 
       scene.add(rightCurveObject);
 
       const leftPoints = leftCurve.getPoints(500);
       const leftGeometry = new THREE.BufferGeometry().setFromPoints(leftPoints);
-      const leftMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+      const leftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       const leftCurveObject = new THREE.Line(leftGeometry, leftMaterial);
 
       scene.add(leftCurveObject);
