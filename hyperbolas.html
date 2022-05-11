@@ -52,21 +52,33 @@
       const light = new THREE.HemisphereLight();
       scene.add(light);
 
-      console.log(nerdamer);
-
-      let rightCurveVectors = [];
+      let topRightCurveVectors = [];
+      let bottomRightCurveVectors = [];
 
       for (let i = 5; i < 21; i++) {
+
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
-         var evaluated = y.evaluate().text();
-         var newArr = JSON.parse(evaluated);
+         const evaluated = y.evaluate().text();
+         const newArr = JSON.parse(evaluated);
+
          console.log(newArr);
+
+         const vector = new THREE.Vector3(i, newArr[0],0);
+
+         bottomRightCurveVectors.push(vector)
          
       }
 
+      console.log(bottomRightCurveVectors);
+
+
+      const rightCurve = new THREE.CatmullRomCurve3(bottomRightCurveVectors);
+
+
+
 
       //Create a closed wavey loop
-      const rightCurve = new THREE.CatmullRomCurve3([
+      /*const rightCurve = new THREE.CatmullRomCurve3([
 
         // upper right
 
@@ -130,7 +142,7 @@
         new THREE.Vector3(20, -15.49, 0),
 
         
-      ]);
+      ]);*/
 
       const leftCurve = new THREE.CatmullRomCurve3([
 
