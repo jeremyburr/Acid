@@ -55,7 +55,7 @@
       let topRightCurveVectors = [];
       let bottomRightCurveVectors = [];
 
-      for (let i = 5; i < 21; i++) {
+      for (let i = 5; i < 21; i+=.5) {
 
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
         const evaluated = y.evaluate().text();
@@ -69,87 +69,17 @@
         const topVector = new THREE.Vector3(i, newArr[1], 0);
         topRightCurveVectors.push(topVector)
 
-
       }
 
       const topRightCurveVectorsDescending = [...topRightCurveVectors].reverse();
 
-      console.log(topRightCurveVectorsDescending);
 
-      const testArr = [1, 2, 3];
-      const testArrReversed = testArr.reverse();
+      const rightCurveVectors = topRightCurveVectorsDescending.concat(bottomRightCurveVectors);
 
-      const topRightCurveVectorArray = topRightCurveVectorsDescending.concat(bottomRightCurveVectors);
+      console.log(rightCurveVectors);
 
-      const rightCurve = new THREE.CatmullRomCurve3(topRightCurveVectorArray);
-
-
-      //Create a closed wavey loop
-      /*const rightCurve = new THREE.CatmullRomCurve3([
-
-        // upper right
-
-        new THREE.Vector3(20, 15.49, 0),
-        new THREE.Vector3(19, 14.66, 0),
-        new THREE.Vector3(18, 13.83, 0),
-        new THREE.Vector3(17, 12.99, 0),
-        new THREE.Vector3(16, 12.15, 0),
-        new THREE.Vector3(15, 11.31, 0),
-        new THREE.Vector3(14, 10.46, 0),
-        new THREE.Vector3(13, 9.6, 0),
-        new THREE.Vector3(12, 8.72, 0),
-        new THREE.Vector3(11, 7.83, 0),
-        new THREE.Vector3(10, 6.92, 0),
-        new THREE.Vector3(9.5, 6.46, 0),
-        new THREE.Vector3(9, 5.98, 0),
-        new THREE.Vector3(8.5, 5.49, 0),
-        new THREE.Vector3(8.24, 5.24, 0),
-        new THREE.Vector3(8, 4.99, 0),
-        new THREE.Vector3(7.76, 4.74, 0),
-        new THREE.Vector3(7.5, 4.47, 0),
-        new THREE.Vector3(7.26, 4.21, 0),
-        new THREE.Vector3(7, 3.91, 0),
-        new THREE.Vector3(6.76, 3.64, 0),
-        new THREE.Vector3(6.5, 3.32, 0),
-        new THREE.Vector3(6.24, 2.98, 0),
-        new THREE.Vector3(6, 2.65, 0),
-        new THREE.Vector3(5.75, 2.27, 0),
-        new THREE.Vector3(5.5, 1.83, 0),
-        new THREE.Vector3(5.24, 1.25, 0),
-        new THREE.Vector3(5, 0, 0),
-
-        // lower right
-
-        new THREE.Vector3(5.24, -1.25, 0),
-        new THREE.Vector3(5.5, -1.83, 0),
-        new THREE.Vector3(5.75, -2.27, 0),
-        new THREE.Vector3(6, -2.65, 0),
-        new THREE.Vector3(6.24, -2.98, 0),
-        new THREE.Vector3(6.5, -3.32, 0),
-        new THREE.Vector3(6.76, -3.64, 0),
-        new THREE.Vector3(7, -3.91, 0),
-        new THREE.Vector3(7.26, -4.21, 0),
-        new THREE.Vector3(7.5, -4.47, 0),
-        new THREE.Vector3(7.76, -4.74, 0),
-        new THREE.Vector3(8, -4.99, 0),
-        new THREE.Vector3(8.24, -5.24, 0),
-        new THREE.Vector3(8.5, -5.49, 0),
-        new THREE.Vector3(9, -5.98, 0),
-        new THREE.Vector3(9.5, -6.46, 0),
-        new THREE.Vector3(10, -6.92, 0),
-        new THREE.Vector3(11, -7.83, 0),
-        new THREE.Vector3(12, -8.72, 0),
-        new THREE.Vector3(13, -9.6, 0),
-        new THREE.Vector3(14, -10.46, 0),
-        new THREE.Vector3(15, -11.31, 0),
-        new THREE.Vector3(16, -12.15, 0),
-        new THREE.Vector3(17, -12.99, 0),
-        new THREE.Vector3(18, -13.83, 0),
-        new THREE.Vector3(19, -14.66, 0),
-        new THREE.Vector3(20, -15.49, 0),
-
-        
-      ]);*/
+      const rightCurve = new THREE.CatmullRomCurve3(rightCurveVectors);
+      
 
       const leftCurve = new THREE.CatmullRomCurve3([
 
