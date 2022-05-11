@@ -72,6 +72,11 @@
 
       const topRightVectorsDescending = [...topRightVectors].reverse();
 
+      const topRightVectorsDescendingPopped = topRightVectorsDescending.pop();
+
+      console.log(topRightVectorsDescending);
+      console.log(topRightVectorsDescendingPopped);
+
       const rightCurveVectors = topRightVectorsDescending.concat(bottomRightVectors);
 
       console.log(rightCurveVectors);
