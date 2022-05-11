@@ -58,38 +58,30 @@
       for (let i = 5; i < 21; i++) {
 
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
-         const evaluated = y.evaluate().text();
-         const newArr = JSON.parse(evaluated);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
 
-         console.log(newArr);
+        console.log(newArr);
 
-         const bottomVector = new THREE.Vector3(i, newArr[0],0);
-         bottomRightCurveVectors.push(bottomVector)
+        const bottomVector = new THREE.Vector3(i, newArr[0], 0);
+        bottomRightCurveVectors.push(bottomVector)
 
-         const topVector = new THREE.Vector3(i, newArr[0],0);
-         topRightCurveVectors.push(topVector)
+        const topVector = new THREE.Vector3(i, newArr[1], 0);
+        topRightCurveVectors.push(topVector)
 
-         
+
       }
 
-      console.log(bottomRightCurveVectors);
+      const topRightCurveVectorsDescending = [...topRightCurveVectors].reverse();
 
-         console.log(topRightCurveVectors);
-         const reversed = topRightCurveVectors.reverse();
-         console.log(reversed);
+      console.log(topRightCurveVectorsDescending);
 
-         const reversed0 = [...topRightCurveVectors].reverse();
+      const testArr = [1, 2, 3];
+      const testArrReversed = testArr.reverse();
 
-         console.log(reversed0);
+      const topRightCurveVectorArray = topRightCurveVectorsDescending.concat(bottomRightCurveVectors);
 
-         const testArr = [1,2,3];
-         const testArrReversed = testArr.reverse();
-
-         console.log(testArrReversed);
-
-      const rightCurve = new THREE.CatmullRomCurve3(bottomRightCurveVectors);
-
-
+      const rightCurve = new THREE.CatmullRomCurve3(topRightCurveVectorArray);
 
 
       //Create a closed wavey loop
@@ -223,7 +215,7 @@
         new THREE.Vector3(-19, -14.66, 0),
         new THREE.Vector3(-20, -15.49, 0),
 
-    ]);
+      ]);
 
       const rightPoints = rightCurve.getPoints(500);
       const rightGeometry = new THREE.BufferGeometry().setFromPoints(rightPoints);
