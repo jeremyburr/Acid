@@ -61,26 +61,16 @@
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
 
-        console.log(newArr);
-
         const bottomVector = new THREE.Vector3(i, newArr[0], 0);
         bottomRightVectors.push(bottomVector)
-
-        const topVector = new THREE.Vector3(i, newArr[1], 0); topRightVectors.push(topVector);
+        const topRightVector = new THREE.Vector3(i, newArr[1], 0); 
+        topRightVectors.push(topRightVector);
 
       }
 
       const topRightVectorsDescending = [...topRightVectors].reverse();
-
       const topRightVectorsDescendingPopped = topRightVectorsDescending.pop();
-
-      console.log(topRightVectorsDescending);
-      console.log(topRightVectorsDescendingPopped);
-
       const rightCurveVectors = topRightVectorsDescending.concat(bottomRightVectors);
-
-      console.log(rightCurveVectors);
-
       const rightCurve = new THREE.CatmullRomCurve3(rightCurveVectors);
       
 
