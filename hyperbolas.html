@@ -63,14 +63,29 @@
 
          console.log(newArr);
 
-         const vector = new THREE.Vector3(i, newArr[0],0);
+         const bottomVector = new THREE.Vector3(i, newArr[0],0);
+         bottomRightCurveVectors.push(bottomVector)
 
-         bottomRightCurveVectors.push(vector)
+         const topVector = new THREE.Vector3(i, newArr[0],0);
+         topRightCurveVectors.push(topVector)
+
          
       }
 
       console.log(bottomRightCurveVectors);
 
+         console.log(topRightCurveVectors);
+         const reversed = topRightCurveVectors.reverse();
+         console.log(reversed);
+
+         const reversed0 = [...topRightCurveVectors].reverse();
+
+         console.log(reversed0);
+
+         const testArr = [1,2,3];
+         const testArrReversed = testArr.reverse();
+
+         console.log(testArrReversed);
 
       const rightCurve = new THREE.CatmullRomCurve3(bottomRightCurveVectors);
 
