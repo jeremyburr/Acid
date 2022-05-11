@@ -52,8 +52,8 @@
       const light = new THREE.HemisphereLight();
       scene.add(light);
 
-      let topRightCurveVectors = [];
-      let bottomRightCurveVectors = [];
+      let topRightVectors = [];
+      let bottomRightVectors = [];
 
       for (let i = 5; i < 21; i+=.5) {
 
@@ -64,17 +64,15 @@
         console.log(newArr);
 
         const bottomVector = new THREE.Vector3(i, newArr[0], 0);
-        bottomRightCurveVectors.push(bottomVector)
+        bottomRightVectors.push(bottomVector)
 
-        const topVector = new THREE.Vector3(i, newArr[1], 0);
-        topRightCurveVectors.push(topVector)
+        const topVector = new THREE.Vector3(i, newArr[1], 0); topRightVectors.push(topVector);
 
       }
 
-      const topRightCurveVectorsDescending = [...topRightCurveVectors].reverse();
+      const topRightVectorsDescending = [...topRightVectors].reverse();
 
-
-      const rightCurveVectors = topRightCurveVectorsDescending.concat(bottomRightCurveVectors);
+      const rightCurveVectors = topRightVectorsDescending.concat(bottomRightVectors);
 
       console.log(rightCurveVectors);
 
