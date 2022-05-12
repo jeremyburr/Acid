@@ -44,9 +44,9 @@
 
       window.addEventListener('resize', onWindowResize);
 
-      scene.add(Axis.x);
+      /*scene.add(Axis.x);
       scene.add(Axis.y);
-      scene.add(Axis.z);
+      scene.add(Axis.z);*/
 
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
@@ -142,49 +142,50 @@
       const coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
       scene.add(coronalRightCurveObject);
 
+
+
+      // Saggital
+
+      let saggitalQ1Vectors = [];
+      let saggitalQ2Vectors = [];
+      let saggitalQ3Vectors = [];
+      let saggitalQ4Vectors = [];
+
+
+      for (let i = 0; i < 21; i += .5) {
+        const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+        const saggitalQ1Vector = new THREE.Vector3(i, 0, newArr[0]);
+        const saggitalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]);
+        const saggitalQ3Vector = new THREE.Vector3(i, 0, newArr[1]);
+        const saggitalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]);
+        saggitalQ1Vectors.push(saggitalQ1Vector);
+        saggitalQ2Vectors.push(saggitalQ2Vector);
+        saggitalQ3Vectors.push(saggitalQ3Vector);
+        saggitalQ4Vectors.push(saggitalQ4Vector);
+      }
+
+      const saggitalQ2VectorsDescending = [...saggitalQ2Vectors].reverse();
+      const saggitalQ2VectorsDescendingPopped = saggitalQ2VectorsDescending.pop();
+      const saggitalLeftCurveVectors = saggitalQ2VectorsDescending.concat(saggitalQ1Vectors);
+      const saggitalLeftCurve = new THREE.CatmullRomCurve3(saggitalLeftCurveVectors);
+      const saggitalLeftPoints = saggitalLeftCurve.getPoints(500);
+      const saggitalLeftGeometry = new THREE.BufferGeometry().setFromPoints(saggitalLeftPoints);
+      const saggitalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      const saggitalLeftCurveObject = new THREE.Line(saggitalLeftGeometry, saggitalLeftMaterial);
+      scene.add(saggitalLeftCurveObject);
+
+      const saggitalQ3VectorsDescending = [...saggitalQ3Vectors].reverse();
+      const saggitalQ3VectorsDescendingPopped = saggitalQ3VectorsDescending.pop();
+      const saggitalRightCurveVectors = saggitalQ3VectorsDescending.concat(saggitalQ4Vectors);
+      const saggitalRightCurve = new THREE.CatmullRomCurve3(saggitalRightCurveVectors);
+      const saggitalRightPoints = saggitalRightCurve.getPoints(500);
+      const saggitalRightGeometry = new THREE.BufferGeometry().setFromPoints(saggitalRightPoints);
+      const saggitalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      const saggitalRightCurveObject = new THREE.Line(saggitalRightGeometry, saggitalRightMaterial);
+      scene.add(saggitalRightCurveObject);
     }
-
-    let saggitalQ1Vectors = [];
-    let saggitalQ2Vectors = [];
-    let saggitalQ3Vectors = [];
-    let saggitalQ4Vectors = [];
-
-    // Saggital
-
-    for (let i = 0; i < 21; i += .5) {
-      const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
-      const evaluated = y.evaluate().text();
-      const newArr = JSON.parse(evaluated);
-      const saggitalQ1Vector = new THREE.Vector3( i,0,newArr[0]);
-      const saggitalQ2Vector = new THREE.Vector3(  -i,0,newArr[0]);
-      const saggitalQ3Vector = new THREE.Vector3(  i,0,newArr[1]);
-      const saggitalQ4Vector = new THREE.Vector3(  -i, 0,newArr[1]);
-      saggitalQ1Vectors.push(saggitalQ1Vector);
-      saggitalQ2Vectors.push(saggitalQ2Vector);
-      saggitalQ3Vectors.push(saggitalQ3Vector);
-      saggitalQ4Vectors.push(saggitalQ4Vector);
-    }
-
-    const saggitalQ2VectorsDescending = [...saggitalQ2Vectors].reverse();
-    const saggitalQ2VectorsDescendingPopped = saggitalQ2VectorsDescending.pop();
-    const saggitalLeftCurveVectors = saggitalQ2VectorsDescending.concat(saggitalQ1Vectors);
-    const saggitalLeftCurve = new THREE.CatmullRomCurve3(saggitalLeftCurveVectors);
-    const saggitalLeftPoints = saggitalLeftCurve.getPoints(500);
-    const saggitalLeftGeometry = new THREE.BufferGeometry().setFromPoints(saggitalLeftPoints);
-    const saggitalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-    const saggitalLeftCurveObject = new THREE.Line(saggitalLeftGeometry, saggitalLeftMaterial);
-    scene.add(saggitalLeftCurveObject);
-
-    const saggitalQ3VectorsDescending = [...saggitalQ3Vectors].reverse();
-    const saggitalQ3VectorsDescendingPopped = saggitalQ3VectorsDescending.pop();
-    const saggitalRightCurveVectors = saggitalQ3VectorsDescending.concat(saggitalQ4Vectors);
-    const saggitalRightCurve = new THREE.CatmullRomCurve3(saggitalRightCurveVectors);
-    const saggitalRightPoints = saggitalRightCurve.getPoints(500);
-    const saggitalRightGeometry = new THREE.BufferGeometry().setFromPoints(saggitalRightPoints);
-    const saggitalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-    const saggitalRightCurveObject = new THREE.Line(saggitalRightGeometry, saggitalRightMaterial);
-    scene.add(saggitalRightCurveObject);
-
 
 
     function onWindowResize() {
