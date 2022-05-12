@@ -113,28 +113,40 @@
         const coronalQ1Vector = new THREE.Vector3(i, newArr[0], 0);
         const coronalQ2Vector = new THREE.Vector3(-i, newArr[0], 0);
 
-        coronalQ1Vectors.push(coronalQ1Vector)
-        coronalQ2Vectors.push(coronalQ2Vector)
+        const coronalQ3Vector = new THREE.Vector3(i, newArr[1], 0);
+        const coronalQ4Vector = new THREE.Vector3(-i, newArr[1], 0);
+
+        coronalQ1Vectors.push(coronalQ1Vector);
+        coronalQ2Vectors.push(coronalQ2Vector);
+        coronalQ3Vectors.push(coronalQ3Vector);
+        coronalQ4Vectors.push(coronalQ4Vector);
+
         
       }
 
       console.log(coronalQ2Vectors);
-
       
-      //const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
 
       const coronalQ2VectorsDescending = [...coronalQ2Vectors].reverse();
       const coronalQ2VectorsDescendingPopped = coronalQ2VectorsDescending.pop();
-
       const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
-
       const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
       const coronalLeftPoints = coronalLeftCurve.getPoints(500);
       const coronalLeftGeometry = new THREE.BufferGeometry().setFromPoints(coronalLeftPoints);
       const coronalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       const coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
-      
       scene.add(coronalLeftCurveObject);
+
+
+      const coronalQ3VectorsDescending = [...coronalQ3Vectors].reverse();
+      const coronalQ3VectorsDescendingPopped = coronalQ3VectorsDescending.pop();
+      const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
+      const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
+      const coronalRightPoints = coronalRightCurve.getPoints(500);
+      const coronalRightGeometry = new THREE.BufferGeometry().setFromPoints(coronalRightPoints);
+      const coronalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      const coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
+      scene.add(coronalRightCurveObject);
 
     }
 
