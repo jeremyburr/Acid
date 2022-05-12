@@ -52,10 +52,10 @@
       const light = new THREE.HemisphereLight();
       scene.add(light);
 
-      let topRightVectors = [];
-      let bottomRightVectors = [];
-      let topLeftVectors = [];
-      let bottomLeftVectors = [];
+      let transverseQ1Vectors = [];
+      let transverseQ4Vectors = [];
+      let transverseQ2Vectors = [];
+      let transverseQ3Vectors = [];
 
       let leftTopVectors = [];
       let rightTopVectors = [];
@@ -67,27 +67,27 @@
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
 
-        const bottomRightVector = new THREE.Vector3(i, newArr[0], 0);
-        bottomRightVectors.push(bottomRightVector)
-        const topRightVector = new THREE.Vector3(i, newArr[1], 0); 
-        topRightVectors.push(topRightVector);
+        const transverseQ4Vector = new THREE.Vector3(i, newArr[0], 0);
+        transverseQ4Vectors.push(transverseQ4Vector)
+        const transverseQ1Vector = new THREE.Vector3(i, newArr[1], 0); 
+        transverseQ1Vectors.push(transverseQ1Vector);
 
-        const bottomLeftVector = new THREE.Vector3(-i, newArr[0], 0);
-        bottomLeftVectors.push(bottomLeftVector)
-        const topLeftVector = new THREE.Vector3(-i, newArr[1], 0); 
-        topLeftVectors.push(topLeftVector);
+        const transverseQ3Vector = new THREE.Vector3(-i, newArr[0], 0);
+        transverseQ3Vectors.push(transverseQ3Vector)
+        const transverseQ2Vector = new THREE.Vector3(-i, newArr[1], 0); 
+        transverseQ2Vectors.push(transverseQ2Vector);
 
       }
 
-      const topRightVectorsDescending = [...topRightVectors].reverse();
-      const topRightVectorsDescendingPopped = topRightVectorsDescending.pop();
-      const rightCurveVectors = topRightVectorsDescending.concat(bottomRightVectors);
-      const rightCurve = new THREE.CatmullRomCurve3(rightCurveVectors);
+      const transverseQ1VectorsDescending = [...transverseQ1Vectors].reverse();
+      const transverseQ1VectorsDescendingPopped = transverseQ1VectorsDescending.pop();
+      const transverseRightCurveVectors = transverseQ1VectorsDescending.concat(transverseQ4Vectors);
+      const transverseRightCurve = new THREE.CatmullRomCurve3(transverseRightCurveVectors);
 
-      const topLeftVectorsDescending = [...topLeftVectors].reverse();
-      const topLeftVectorsDescendingPopped = topLeftVectorsDescending.pop();
-      const leftCurveVectors = topLeftVectorsDescending.concat(bottomLeftVectors);
-      const leftCurve = new THREE.CatmullRomCurve3(leftCurveVectors);
+      const transverseQ2VectorsDescending = [...transverseQ2Vectors].reverse();
+      const transverseQ2VectorsDescendingPopped = transverseQ2VectorsDescending.pop();
+      const transverseLeftCurveVectors = transverseQ2VectorsDescending.concat(transverseQ3Vectors);
+      const transverseLeftCurve = new THREE.CatmullRomCurve3(transverseLeftCurveVectors);
 
       for (let i = 5; i < 21; i+=.5) {
 
@@ -105,18 +105,18 @@
 
       
 
-      const rightPoints = rightCurve.getPoints(500);
-      const rightGeometry = new THREE.BufferGeometry().setFromPoints(rightPoints);
+      const transverseRightPoints = transverseRightCurve.getPoints(500);
+      const rightGeometry = new THREE.BufferGeometry().setFromPoints(transverseRightPoints);
       const rightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const rightCurveObject = new THREE.Line(rightGeometry, rightMaterial);
+      const transverseRightCurveObject = new THREE.Line(rightGeometry, rightMaterial);
 
-      const leftPoints = leftCurve.getPoints(500);
-      const leftGeometry = new THREE.BufferGeometry().setFromPoints(leftPoints);
+      const transverseLeftPoints = transverseLeftCurve.getPoints(500);
+      const leftGeometry = new THREE.BufferGeometry().setFromPoints(transverseLeftPoints);
       const leftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const leftCurveObject = new THREE.Line(leftGeometry, leftMaterial);
+      const transverseLeftCurveObject = new THREE.Line(leftGeometry, leftMaterial);
 
-      scene.add(leftCurveObject);
-      scene.add(rightCurveObject);
+      scene.add(transverseLeftCurveObject);
+      scene.add(transverseRightCurveObject);
 
     }
 
