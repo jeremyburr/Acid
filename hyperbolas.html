@@ -25,6 +25,13 @@
 
     let camera, scene, renderer, controls;
 
+    let coronalRightCurveObject;
+    let coronalLeftCurveObject;
+    let transverseRightCurveObject;
+    let transverseLeftCurveObject;
+    let saggitalRightCurveObject;
+    let saggitalLeftCurveObject;
+
     init();
     animate();
 
@@ -85,7 +92,7 @@
       const transverseRightPoints = transverseRightCurve.getPoints(500);
       const transverseRightGeometry = new THREE.BufferGeometry().setFromPoints(transverseRightPoints);
       const transverseRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const transverseRightCurveObject = new THREE.Line(transverseRightGeometry, transverseRightMaterial);
+      transverseRightCurveObject = new THREE.Line(transverseRightGeometry, transverseRightMaterial);
 
       const transverseQ2VectorsDescending = [...transverseQ2Vectors].reverse();
       const transverseQ2VectorsDescendingPopped = transverseQ2VectorsDescending.pop();
@@ -95,7 +102,7 @@
       const transverseLeftPoints = transverseLeftCurve.getPoints(500);
       const transverseLeftGeometry = new THREE.BufferGeometry().setFromPoints(transverseLeftPoints);
       const transverseLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const transverseLeftCurveObject = new THREE.Line(transverseLeftGeometry, transverseLeftMaterial);
+      transverseLeftCurveObject = new THREE.Line(transverseLeftGeometry, transverseLeftMaterial);
 
       scene.add(transverseLeftCurveObject);
       scene.add(transverseRightCurveObject);
@@ -129,7 +136,7 @@
       const coronalLeftPoints = coronalLeftCurve.getPoints(500);
       const coronalLeftGeometry = new THREE.BufferGeometry().setFromPoints(coronalLeftPoints);
       const coronalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
+      coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
       scene.add(coronalLeftCurveObject);
 
       const coronalQ3VectorsDescending = [...coronalQ3Vectors].reverse();
@@ -139,7 +146,7 @@
       const coronalRightPoints = coronalRightCurve.getPoints(500);
       const coronalRightGeometry = new THREE.BufferGeometry().setFromPoints(coronalRightPoints);
       const coronalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
+      coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
       scene.add(coronalRightCurveObject);
 
 
@@ -173,7 +180,7 @@
       const saggitalLeftPoints = saggitalLeftCurve.getPoints(500);
       const saggitalLeftGeometry = new THREE.BufferGeometry().setFromPoints(saggitalLeftPoints);
       const saggitalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const saggitalLeftCurveObject = new THREE.Line(saggitalLeftGeometry, saggitalLeftMaterial);
+      saggitalLeftCurveObject = new THREE.Line(saggitalLeftGeometry, saggitalLeftMaterial);
       scene.add(saggitalLeftCurveObject);
 
       const saggitalQ3VectorsDescending = [...saggitalQ3Vectors].reverse();
@@ -183,9 +190,10 @@
       const saggitalRightPoints = saggitalRightCurve.getPoints(500);
       const saggitalRightGeometry = new THREE.BufferGeometry().setFromPoints(saggitalRightPoints);
       const saggitalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const saggitalRightCurveObject = new THREE.Line(saggitalRightGeometry, saggitalRightMaterial);
+      saggitalRightCurveObject = new THREE.Line(saggitalRightGeometry, saggitalRightMaterial);
       scene.add(saggitalRightCurveObject);
     }
+    
 
 
     function onWindowResize() {
@@ -205,9 +213,28 @@
 
       const time = Date.now() * 0.002;
 
-      /*mesh0.rotation.x = time * 0.5;
-      mesh0.rotation.y = time * 0.5;
-      mesh0.rotation.z = time * 0.5; */
+      coronalLeftCurveObject.rotation.x = time * 0.1;
+      coronalLeftCurveObject.rotation.y = time * 0.1;
+      coronalLeftCurveObject.rotation.z = time * 0.1;
+      coronalRightCurveObject.rotation.x = time * 0.1;
+      coronalRightCurveObject.rotation.y = time * 0.1;
+      coronalRightCurveObject.rotation.z = time * 0.1; 
+
+      transverseLeftCurveObject.rotation.x = time * 0.1;
+      transverseLeftCurveObject.rotation.y = time * 0.1;
+      transverseLeftCurveObject.rotation.z = time * 0.1;
+      transverseRightCurveObject.rotation.x = time * 0.1;
+      transverseRightCurveObject.rotation.y = time * 0.1;
+      transverseRightCurveObject.rotation.z = time * 0.1;
+
+      saggitalLeftCurveObject.rotation.x = time * 0.1;
+      saggitalLeftCurveObject.rotation.y = time * 0.1;
+      saggitalLeftCurveObject.rotation.z = time * 0.1;
+      saggitalRightCurveObject.rotation.x = time * 0.1;
+      saggitalRightCurveObject.rotation.y = time * 0.1;
+      saggitalRightCurveObject.rotation.z = time * 0.1; 
+      
+      
 
       renderer.render(scene, camera);
     }
