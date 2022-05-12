@@ -106,14 +106,14 @@
       
 
       const transverseRightPoints = transverseRightCurve.getPoints(500);
-      const rightGeometry = new THREE.BufferGeometry().setFromPoints(transverseRightPoints);
-      const rightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const transverseRightCurveObject = new THREE.Line(rightGeometry, rightMaterial);
+      const transverseRightGeometry = new THREE.BufferGeometry().setFromPoints(transverseRightPoints);
+      const transverseRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      const transverseRightCurveObject = new THREE.Line(transverseRightGeometry, transverseRightMaterial);
 
       const transverseLeftPoints = transverseLeftCurve.getPoints(500);
-      const leftGeometry = new THREE.BufferGeometry().setFromPoints(transverseLeftPoints);
-      const leftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
-      const transverseLeftCurveObject = new THREE.Line(leftGeometry, leftMaterial);
+      const transverseLeftGeometry = new THREE.BufferGeometry().setFromPoints(transverseLeftPoints);
+      const transverseLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      const transverseLeftCurveObject = new THREE.Line(transverseLeftGeometry, transverseLeftMaterial);
 
       scene.add(transverseLeftCurveObject);
       scene.add(transverseRightCurveObject);
