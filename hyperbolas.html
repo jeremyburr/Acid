@@ -110,7 +110,10 @@
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
 
+        const coronalQ1Vector = new THREE.Vector3(i, newArr[0], 0);
         const coronalQ2Vector = new THREE.Vector3(-i, newArr[0], 0);
+
+        coronalQ1Vectors.push(coronalQ1Vector)
         coronalQ2Vectors.push(coronalQ2Vector)
         
       }
@@ -119,7 +122,13 @@
 
       
       //const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
-      const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalQ2Vectors);
+
+      const coronalQ2VectorsDescending = [...coronalQ2Vectors].reverse();
+      const coronalQ2VectorsDescendingPopped = coronalQ2VectorsDescending.pop();
+
+      const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
+
+      const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
       const coronalLeftPoints = coronalLeftCurve.getPoints(500);
       const coronalLeftGeometry = new THREE.BufferGeometry().setFromPoints(coronalLeftPoints);
       const coronalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
