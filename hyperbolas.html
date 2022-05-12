@@ -40,7 +40,7 @@
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 14;
       camera.position.y = 10;
-      camera.position.z = 30;
+      camera.position.z = 40;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -66,7 +66,7 @@
       let transverseQ2Vectors = [];
       let transverseQ3Vectors = [];
 
-      for (let i = 5; i < 21; i += .5) {
+      for (let i = 5; i < 31; i += .5) {
 
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
         const evaluated = y.evaluate().text();
@@ -114,7 +114,7 @@
       let coronalQ3Vectors = [];
       let coronalQ4Vectors = [];
 
-      for (let i = 0; i < 21; i += .5) {
+      for (let i = 0; i < 31; i += .5) {
         const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
@@ -159,7 +159,7 @@
       let saggitalQ4Vectors = [];
 
 
-      for (let i = 0; i < 21; i += .5) {
+      for (let i = 0; i < 31; i += .5) {
         const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
@@ -211,28 +211,29 @@
 
     function render() {
 
-      const time = Date.now() * 0.002;
+      //const time = Date.now() * 0.002;
+      //coronalLeftCurveObject.rotation.x = time * 0.1;
 
-      coronalLeftCurveObject.rotation.x = time * 0.1;
-      coronalLeftCurveObject.rotation.y = time * 0.1;
-      coronalLeftCurveObject.rotation.z = time * 0.1;
-      coronalRightCurveObject.rotation.x = time * 0.1;
-      coronalRightCurveObject.rotation.y = time * 0.1;
-      coronalRightCurveObject.rotation.z = time * 0.1; 
+      //coronalLeftCurveObject.rotation.x += 0.01;
+      coronalLeftCurveObject.rotation.y += 0.01;
+      //coronalLeftCurveObject.rotation.z += 0.01;
+      //coronalRightCurveObject.rotation.x += 0.01;
+      coronalRightCurveObject.rotation.y += 0.01;
+      //coronalRightCurveObject.rotation.z += 0.01; 
 
-      transverseLeftCurveObject.rotation.x = time * 0.1;
-      transverseLeftCurveObject.rotation.y = time * 0.1;
-      transverseLeftCurveObject.rotation.z = time * 0.1;
-      transverseRightCurveObject.rotation.x = time * 0.1;
-      transverseRightCurveObject.rotation.y = time * 0.1;
-      transverseRightCurveObject.rotation.z = time * 0.1;
+      //transverseLeftCurveObject.rotation.x += 0.01;
+      transverseLeftCurveObject.rotation.y += 0.01;
+      //transverseLeftCurveObject.rotation.z += 0.01;
+      //transverseRightCurveObject.rotation.x += 0.01;
+      transverseRightCurveObject.rotation.y += 0.01;
+      //transverseRightCurveObject.rotation.z += 0.01;
 
-      saggitalLeftCurveObject.rotation.x = time * 0.1;
-      saggitalLeftCurveObject.rotation.y = time * 0.1;
-      saggitalLeftCurveObject.rotation.z = time * 0.1;
-      saggitalRightCurveObject.rotation.x = time * 0.1;
-      saggitalRightCurveObject.rotation.y = time * 0.1;
-      saggitalRightCurveObject.rotation.z = time * 0.1; 
+      //saggitalLeftCurveObject.rotation.x += 0.01;
+      saggitalLeftCurveObject.rotation.y += 0.01;
+      //saggitalLeftCurveObject.rotation.z += 0.01;
+      //saggitalRightCurveObject.rotation.x += 0.01;
+      saggitalRightCurveObject.rotation.y += 0.01;
+      //saggitalRightCurveObject.rotation.z += 0.01; 
       
       
 
