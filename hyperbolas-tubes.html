@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Acid</title>
+  <link rel="shortcut icon" href="#">
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+
+  <script src="./js/nerdamer/nerdamer.core.js"></script>
+  <script src="./js/nerdamer/Algebra.js"></script>
+  <script src="./js/nerdamer/Calculus.js"></script>
+  <script src="./js/nerdamer/Solve.js"></script>
+  <script src="./js/nerdamer/Extra.js"></script>
+
+
+  <script type="module">
+    import * as THREE from './js/three.module.js';
+    import { TrackballControls } from './js/TrackballControls.js';
+    import * as Axis from './js/shapes/axis.js';
+
+    let camera, scene, renderer, controls;
+
+    let coronalRightCurveObject;
+    let coronalLeftCurveObject;
+    let transverseRightCurveObject;
+    let transverseLeftCurveObject;
+    let saggitalRightCurveObject;
+    let saggitalLeftCurveObject;
+
+    init();
+    animate();
+
+    function init() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3500);
+      camera.position.x = 14;
+      camera.position.y = 10;
+      camera.position.z = 40;
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      document.body.appendChild(renderer.domElement);
+      controls = new TrackballControls(camera, renderer.domElement);
+
+      window.addEventListener('resize', onWindowResize);
+
+      /*scene.add(Axis.x);
+      scene.add(Axis.y);
+      scene.add(Axis.z);*/
+
+      scene.background = new THREE.Color(0x050505);
+      const light = new THREE.HemisphereLight();
+      scene.add(light);
+
+      // Transverse
+
+      let transverseQ1Vectors = [];
+      let transverseQ4Vectors = [];
+      let transverseQ2Vectors = [];
+      let transverseQ3Vectors = [];
+
+      for (let i = 5; i < 31; i += .5) {
+
+        const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+
+        const transverseQ4Vector = new THREE.Vector3(i, newArr[0], 0);
+        transverseQ4Vectors.push(transverseQ4Vector)
+        const transverseQ1Vector = new THREE.Vector3(i, newArr[1], 0);
+        transverseQ1Vectors.push(transverseQ1Vector);
+
+        const transverseQ3Vector = new THREE.Vector3(-i, newArr[0], 0);
+        transverseQ3Vectors.push(transverseQ3Vector)
+        const transverseQ2Vector = new THREE.Vector3(-i, newArr[1], 0);
+        transverseQ2Vectors.push(transverseQ2Vector);
+
+      }
+
+      const transverseQ1VectorsDescending = [...transverseQ1Vectors].reverse();
+      const transverseQ1VectorsDescendingPopped = transverseQ1VectorsDescending.pop();
+      const transverseRightCurveVectors = transverseQ1VectorsDescending.concat(transverseQ4Vectors);
+      const transverseRightCurve = new THREE.CatmullRomCurve3(transverseRightCurveVectors);
+
+      const transverseRightPoints = transverseRightCurve.getPoints(500);
+      const transverseRightGeometry = new THREE.TubeGeometry(transverseRightCurve,64,1,16,false)
+      const transverseRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      transverseRightCurveObject = new THREE.Line(transverseRightGeometry, transverseRightMaterial);
+
+      const transverseQ2VectorsDescending = [...transverseQ2Vectors].reverse();
+      const transverseQ2VectorsDescendingPopped = transverseQ2VectorsDescending.pop();
+      const transverseLeftCurveVectors = transverseQ2VectorsDescending.concat(transverseQ3Vectors);
+      const transverseLeftCurve = new THREE.CatmullRomCurve3(transverseLeftCurveVectors);
+
+      const transverseLeftPoints = transverseLeftCurve.getPoints(500);
+      const transverseLeftGeometry = new THREE.TubeGeometry(transverseLeftCurve,64,1,16,false)
+      const transverseLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      transverseLeftCurveObject = new THREE.Line(transverseLeftGeometry, transverseLeftMaterial);
+
+      scene.add(transverseLeftCurveObject);
+      scene.add(transverseRightCurveObject);
+
+      // Coronal
+
+      let coronalQ1Vectors = [];
+      let coronalQ2Vectors = [];
+      let coronalQ3Vectors = [];
+      let coronalQ4Vectors = [];
+
+      for (let i = 0; i < 31; i += .5) {
+        const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+        const coronalQ1Vector = new THREE.Vector3(i, newArr[0], 0);
+        const coronalQ2Vector = new THREE.Vector3(-i, newArr[0], 0);
+        const coronalQ3Vector = new THREE.Vector3(i, newArr[1], 0);
+        const coronalQ4Vector = new THREE.Vector3(-i, newArr[1], 0);
+        coronalQ1Vectors.push(coronalQ1Vector);
+        coronalQ2Vectors.push(coronalQ2Vector);
+        coronalQ3Vectors.push(coronalQ3Vector);
+        coronalQ4Vectors.push(coronalQ4Vector);
+      }
+
+
+      const coronalQ2VectorsDescending = [...coronalQ2Vectors].reverse();
+      const coronalQ2VectorsDescendingPopped = coronalQ2VectorsDescending.pop();
+      const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
+      const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
+      const coronalLeftPoints = coronalLeftCurve.getPoints(500);
+      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve,64,1,16,false)
+      const coronalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
+      scene.add(coronalLeftCurveObject);
+
+      const coronalQ3VectorsDescending = [...coronalQ3Vectors].reverse();
+      const coronalQ3VectorsDescendingPopped = coronalQ3VectorsDescending.pop();
+      const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
+      const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
+      const coronalRightPoints = coronalRightCurve.getPoints(500);
+      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve,64,1,16,false)
+      const coronalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
+      scene.add(coronalRightCurveObject);
+
+
+
+      // Saggital
+
+      let saggitalQ1Vectors = [];
+      let saggitalQ2Vectors = [];
+      let saggitalQ3Vectors = [];
+      let saggitalQ4Vectors = [];
+
+
+      for (let i = 0; i < 31; i += .5) {
+        const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+        const saggitalQ1Vector = new THREE.Vector3(i, 0, newArr[0]);
+        const saggitalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]);
+        const saggitalQ3Vector = new THREE.Vector3(i, 0, newArr[1]);
+        const saggitalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]);
+        saggitalQ1Vectors.push(saggitalQ1Vector);
+        saggitalQ2Vectors.push(saggitalQ2Vector);
+        saggitalQ3Vectors.push(saggitalQ3Vector);
+        saggitalQ4Vectors.push(saggitalQ4Vector);
+      }
+
+      const saggitalQ2VectorsDescending = [...saggitalQ2Vectors].reverse();
+      const saggitalQ2VectorsDescendingPopped = saggitalQ2VectorsDescending.pop();
+      const saggitalLeftCurveVectors = saggitalQ2VectorsDescending.concat(saggitalQ1Vectors);
+      const saggitalLeftCurve = new THREE.CatmullRomCurve3(saggitalLeftCurveVectors);
+      const saggitalLeftPoints = saggitalLeftCurve.getPoints(500);
+      const saggitalLeftGeometry = new THREE.TubeGeometry(saggitalLeftCurve,64,1,16,false)
+      const saggitalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      saggitalLeftCurveObject = new THREE.Line(saggitalLeftGeometry, saggitalLeftMaterial);
+      scene.add(saggitalLeftCurveObject);
+
+      const saggitalQ3VectorsDescending = [...saggitalQ3Vectors].reverse();
+      const saggitalQ3VectorsDescendingPopped = saggitalQ3VectorsDescending.pop();
+      const saggitalRightCurveVectors = saggitalQ3VectorsDescending.concat(saggitalQ4Vectors);
+      const saggitalRightCurve = new THREE.CatmullRomCurve3(saggitalRightCurveVectors);
+      const saggitalRightPoints = saggitalRightCurve.getPoints(500);
+      //const saggitalRightGeometry = new THREE.BufferGeometry().setFromPoints(saggitalRightPoints);
+      //const saggitalRightMaterial = new THREE.LineBasicMaterial({ color: 0x74EE15 });
+      const saggitalRightGeometry = new THREE.TubeGeometry(saggitalRightCurve,64,1,16,false)
+      const saggitalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      saggitalRightCurveObject = new THREE.Line(saggitalRightGeometry, saggitalRightMaterial);
+      scene.add(saggitalRightCurveObject);
+
+
+
+      const geometry = new THREE.SphereGeometry( 1, 8, 8 );
+      const material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF,  transparent: true, opacity: 0.8 } );
+      const sphere = new THREE.Line( geometry, material );
+      scene.add( sphere );
+
+
+    }
+    
+
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      render();
+      //stats.update();
+    }
+
+    function render() {
+
+      //const time = Date.now() * 0.002;
+      //coronalLeftCurveObject.rotation.x = time * 0.1;
+
+      //coronalLeftCurveObject.rotation.x += 0.01;
+      coronalLeftCurveObject.rotation.y += 0.01;
+      //coronalLeftCurveObject.rotation.z += 0.01;
+      //coronalRightCurveObject.rotation.x += 0.01;
+      coronalRightCurveObject.rotation.y += 0.01;
+      //coronalRightCurveObject.rotation.z += 0.01; 
+
+      //transverseLeftCurveObject.rotation.x += 0.01;
+      transverseLeftCurveObject.rotation.y += 0.01;
+      //transverseLeftCurveObject.rotation.z += 0.01;
+      //transverseRightCurveObject.rotation.x += 0.01;
+      transverseRightCurveObject.rotation.y += 0.01;
+      //transverseRightCurveObject.rotation.z += 0.01;
+
+      //saggitalLeftCurveObject.rotation.x += 0.01;
+      saggitalLeftCurveObject.rotation.y += 0.01;
+      //saggitalLeftCurveObject.rotation.z += 0.01;
+      //saggitalRightCurveObject.rotation.x += 0.01;
+      saggitalRightCurveObject.rotation.y += 0.01;
+      //saggitalRightCurveObject.rotation.z += 0.01; 
+      
+      
+
+      renderer.render(scene, camera);
+    }
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
