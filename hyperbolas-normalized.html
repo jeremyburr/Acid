@@ -32,6 +32,8 @@
     let sagittalRightCurveObject;
     let sagittalLeftCurveObject;
 
+    const transverseAxisLength = 0;
+
     init();
     animate();
 
@@ -74,14 +76,14 @@
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
 
-        const axialQ4Vector = new THREE.Vector3(i+3, newArr[0], 0);
+        const axialQ4Vector = new THREE.Vector3(i+transverseAxisLength, newArr[0], 0);
         axialQ4Vectors.push(axialQ4Vector)
-        const axialQ1Vector = new THREE.Vector3(i+3, newArr[1], 0);
+        const axialQ1Vector = new THREE.Vector3(i+transverseAxisLength, newArr[1], 0);
         axialQ1Vectors.push(axialQ1Vector);
 
-        const axialQ3Vector = new THREE.Vector3(-i-3, newArr[0], 0);
+        const axialQ3Vector = new THREE.Vector3(-i-transverseAxisLength, newArr[0], 0);
         axialQ3Vectors.push(axialQ3Vector)
-        const axialQ2Vector = new THREE.Vector3(-i-3, newArr[1], 0);
+        const axialQ2Vector = new THREE.Vector3(-i-transverseAxisLength, newArr[1], 0);
         axialQ2Vectors.push(axialQ2Vector);
 
       }
@@ -121,11 +123,11 @@
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
 
-        const coronalQ1Vector = new THREE.Vector3(0, newArr[0]+3, i);
-        const coronalQ2Vector = new THREE.Vector3(0,  newArr[0]+3, -i);
+        const coronalQ1Vector = new THREE.Vector3(0, newArr[0]+transverseAxisLength, i);
+        const coronalQ2Vector = new THREE.Vector3(0,  newArr[0]+transverseAxisLength, -i);
 
-        const coronalQ3Vector = new THREE.Vector3(0, newArr[1]-3, i);
-        const coronalQ4Vector = new THREE.Vector3(0, newArr[1]-3, -i);
+        const coronalQ3Vector = new THREE.Vector3(0, newArr[1]-transverseAxisLength, i);
+        const coronalQ4Vector = new THREE.Vector3(0, newArr[1]-transverseAxisLength, -i);
 
         coronalQ1Vectors.push(coronalQ1Vector);
         coronalQ2Vectors.push(coronalQ2Vector);
@@ -168,10 +170,10 @@
         const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
-        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0]+3);
-        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]+3);
-        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1]-3);
-        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]-3);
+        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0]+transverseAxisLength);
+        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]+transverseAxisLength);
+        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1]-transverseAxisLength);
+        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]-transverseAxisLength);
         sagittalQ1Vectors.push(sagittalQ1Vector);
         sagittalQ2Vectors.push(sagittalQ2Vector);
         sagittalQ3Vectors.push(sagittalQ3Vector);
