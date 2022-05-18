@@ -37,6 +37,7 @@
 
     function init() {
       scene = new THREE.Scene();
+
       /*scene.add(Axis.x);
       scene.add(Axis.y);
       scene.add(Axis.z);*/
@@ -45,7 +46,7 @@
 
       camera.position.x = 14;
       camera.position.y = 12;
-      camera.position.z = 70;
+      camera.position.z = 80;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -73,14 +74,14 @@
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
 
-        const transverseQ4Vector = new THREE.Vector3(i, newArr[0], 0);
+        const transverseQ4Vector = new THREE.Vector3(i+3, newArr[0], 0);
         transverseQ4Vectors.push(transverseQ4Vector)
-        const transverseQ1Vector = new THREE.Vector3(i, newArr[1], 0);
+        const transverseQ1Vector = new THREE.Vector3(i+3, newArr[1], 0);
         transverseQ1Vectors.push(transverseQ1Vector);
 
-        const transverseQ3Vector = new THREE.Vector3(-i, newArr[0], 0);
+        const transverseQ3Vector = new THREE.Vector3(-i-3, newArr[0], 0);
         transverseQ3Vectors.push(transverseQ3Vector)
-        const transverseQ2Vector = new THREE.Vector3(-i, newArr[1], 0);
+        const transverseQ2Vector = new THREE.Vector3(-i-3, newArr[1], 0);
         transverseQ2Vectors.push(transverseQ2Vector);
 
       }
@@ -119,10 +120,13 @@
         const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
-        const coronalQ1Vector = new THREE.Vector3(0, newArr[0], i);
-        const coronalQ2Vector = new THREE.Vector3(0,  newArr[0], -i);
-        const coronalQ3Vector = new THREE.Vector3(0, newArr[1], i);
-        const coronalQ4Vector = new THREE.Vector3(0, newArr[1], -i);
+
+        const coronalQ1Vector = new THREE.Vector3(0, newArr[0]+3, i);
+        const coronalQ2Vector = new THREE.Vector3(0,  newArr[0]+3, -i);
+
+        const coronalQ3Vector = new THREE.Vector3(0, newArr[1]-3, i);
+        const coronalQ4Vector = new THREE.Vector3(0, newArr[1]-3, -i);
+
         coronalQ1Vectors.push(coronalQ1Vector);
         coronalQ2Vectors.push(coronalQ2Vector);
         coronalQ3Vectors.push(coronalQ3Vector);
@@ -164,10 +168,10 @@
         const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
-        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0]);
-        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]);
-        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1]);
-        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]);
+        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0]+3);
+        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]+3);
+        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1]-3);
+        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]-3);
         sagittalQ1Vectors.push(sagittalQ1Vector);
         sagittalQ2Vectors.push(sagittalQ2Vector);
         sagittalQ3Vectors.push(sagittalQ3Vector);
