@@ -115,8 +115,8 @@
       let coronalQ3Vectors = [];
       let coronalQ4Vectors = [];
 
-      for (let i = 0; i < 18; i += .5) {
-        const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
+      for (let i = 0; i < 31; i += .5) {
+        const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
         const coronalQ1Vector = new THREE.Vector3(0, newArr[0], i);
@@ -161,7 +161,7 @@
 
 
       for (let i = 0; i < 31; i += .5) {
-        const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
+        const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
         const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0]);
