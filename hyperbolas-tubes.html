@@ -29,8 +29,8 @@
     let coronalLeftCurveObject;
     let transverseRightCurveObject;
     let transverseLeftCurveObject;
-    let saggitalRightCurveObject;
-    let saggitalLeftCurveObject;
+    let sagittalRightCurveObject;
+    let sagittalLeftCurveObject;
 
     init();
     animate();
@@ -151,49 +151,49 @@
 
 
 
-      // Saggital
+      // Sagittal
 
-      let saggitalQ1Vectors = [];
-      let saggitalQ2Vectors = [];
-      let saggitalQ3Vectors = [];
-      let saggitalQ4Vectors = [];
+      let sagittalQ1Vectors = [];
+      let sagittalQ2Vectors = [];
+      let sagittalQ3Vectors = [];
+      let sagittalQ4Vectors = [];
 
 
       for (let i = 0; i < 31; i += .5) {
         const y = nerdamer(`solve( y^2/36 - ${i}^2/9  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
-        const saggitalQ1Vector = new THREE.Vector3(i, 0, newArr[0]);
-        const saggitalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]);
-        const saggitalQ3Vector = new THREE.Vector3(i, 0, newArr[1]);
-        const saggitalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]);
-        saggitalQ1Vectors.push(saggitalQ1Vector);
-        saggitalQ2Vectors.push(saggitalQ2Vector);
-        saggitalQ3Vectors.push(saggitalQ3Vector);
-        saggitalQ4Vectors.push(saggitalQ4Vector);
+        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0]);
+        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0]);
+        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1]);
+        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1]);
+        sagittalQ1Vectors.push(sagittalQ1Vector);
+        sagittalQ2Vectors.push(sagittalQ2Vector);
+        sagittalQ3Vectors.push(sagittalQ3Vector);
+        sagittalQ4Vectors.push(sagittalQ4Vector);
       }
 
-      const saggitalQ2VectorsDescending = [...saggitalQ2Vectors].reverse();
-      const saggitalQ2VectorsDescendingPopped = saggitalQ2VectorsDescending.pop();
-      const saggitalLeftCurveVectors = saggitalQ2VectorsDescending.concat(saggitalQ1Vectors);
-      const saggitalLeftCurve = new THREE.CatmullRomCurve3(saggitalLeftCurveVectors);
-      const saggitalLeftPoints = saggitalLeftCurve.getPoints(500);
-      const saggitalLeftGeometry = new THREE.TubeGeometry(saggitalLeftCurve,64,1,16,false)
-      const saggitalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
-      saggitalLeftCurveObject = new THREE.Line(saggitalLeftGeometry, saggitalLeftMaterial);
-      scene.add(saggitalLeftCurveObject);
+      const sagittalQ2VectorsDescending = [...sagittalQ2Vectors].reverse();
+      const sagittalQ2VectorsDescendingPopped = sagittalQ2VectorsDescending.pop();
+      const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
+      const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
+      const sagittalLeftPoints = sagittalLeftCurve.getPoints(500);
+      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve,64,1,16,false)
+      const sagittalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      sagittalLeftCurveObject = new THREE.Line(sagittalLeftGeometry, sagittalLeftMaterial);
+      scene.add(sagittalLeftCurveObject);
 
-      const saggitalQ3VectorsDescending = [...saggitalQ3Vectors].reverse();
-      const saggitalQ3VectorsDescendingPopped = saggitalQ3VectorsDescending.pop();
-      const saggitalRightCurveVectors = saggitalQ3VectorsDescending.concat(saggitalQ4Vectors);
-      const saggitalRightCurve = new THREE.CatmullRomCurve3(saggitalRightCurveVectors);
-      const saggitalRightPoints = saggitalRightCurve.getPoints(500);
-      //const saggitalRightGeometry = new THREE.BufferGeometry().setFromPoints(saggitalRightPoints);
-      //const saggitalRightMaterial = new THREE.LineBasicMaterial({ color: 0x74EE15 });
-      const saggitalRightGeometry = new THREE.TubeGeometry(saggitalRightCurve,64,1,16,false)
-      const saggitalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
-      saggitalRightCurveObject = new THREE.Line(saggitalRightGeometry, saggitalRightMaterial);
-      scene.add(saggitalRightCurveObject);
+      const sagittalQ3VectorsDescending = [...sagittalQ3Vectors].reverse();
+      const sagittalQ3VectorsDescendingPopped = sagittalQ3VectorsDescending.pop();
+      const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
+      const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
+      const sagittalRightPoints = sagittalRightCurve.getPoints(500);
+      //const sagittalRightGeometry = new THREE.BufferGeometry().setFromPoints(sagittalRightPoints);
+      //const sagittalRightMaterial = new THREE.LineBasicMaterial({ color: 0x74EE15 });
+      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve,64,1,16,false)
+      const sagittalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      sagittalRightCurveObject = new THREE.Line(sagittalRightGeometry, sagittalRightMaterial);
+      scene.add(sagittalRightCurveObject);
 
 
 
@@ -239,12 +239,12 @@
       transverseRightCurveObject.rotation.y += 0.01;
       //transverseRightCurveObject.rotation.z += 0.01;
 
-      //saggitalLeftCurveObject.rotation.x += 0.01;
-      saggitalLeftCurveObject.rotation.y += 0.01;
-      //saggitalLeftCurveObject.rotation.z += 0.01;
-      //saggitalRightCurveObject.rotation.x += 0.01;
-      saggitalRightCurveObject.rotation.y += 0.01;
-      //saggitalRightCurveObject.rotation.z += 0.01; 
+      //sagittalLeftCurveObject.rotation.x += 0.01;
+      sagittalLeftCurveObject.rotation.y += 0.01;
+      //sagittalLeftCurveObject.rotation.z += 0.01;
+      //sagittalRightCurveObject.rotation.x += 0.01;
+      sagittalRightCurveObject.rotation.y += 0.01;
+      //sagittalRightCurveObject.rotation.z += 0.01; 
       
       
 
