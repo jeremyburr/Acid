@@ -37,10 +37,14 @@
 
     function init() {
       scene = new THREE.Scene();
+      /*scene.add(Axis.x);
+      scene.add(Axis.y);
+      scene.add(Axis.z);*/
+
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
 
       camera.position.x = 14;
-      camera.position.y = 35;
+      camera.position.y = 12;
       camera.position.z = 80;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -51,10 +55,6 @@
       controls = new TrackballControls(camera, renderer.domElement);
 
       window.addEventListener('resize', onWindowResize);
-
-      scene.add(Axis.x);
-      scene.add(Axis.y);
-      scene.add(Axis.z);
 
       scene.background = new THREE.Color(0x050505);
       const light = new THREE.HemisphereLight();
@@ -228,34 +228,34 @@
 
       //coronalLeftCurveObject.rotation.x += 0.01;
 
-        //coronalLeftCurveObject.rotation.y += 0.01;
+        coronalLeftCurveObject.rotation.y += 0.01;
 
       //coronalLeftCurveObject.rotation.z += 0.01;
       //coronalRightCurveObject.rotation.x += 0.01;
 
-        //coronalRightCurveObject.rotation.y += 0.01;
+        coronalRightCurveObject.rotation.y += 0.01;
 
       //coronalRightCurveObject.rotation.z += 0.01; 
 
       //transverseLeftCurveObject.rotation.x += 0.01;
 
-        //transverseLeftCurveObject.rotation.y += 0.01;
+        transverseLeftCurveObject.rotation.y += 0.01;
 
       //transverseLeftCurveObject.rotation.z += 0.01;
       //transverseRightCurveObject.rotation.x += 0.01;
 
-        //transverseRightCurveObject.rotation.y += 0.01;
+        transverseRightCurveObject.rotation.y += 0.01;
 
       //transverseRightCurveObject.rotation.z += 0.01;
 
       //sagittalLeftCurveObject.rotation.x += 0.01;
 
-        //sagittalLeftCurveObject.rotation.y += 0.01;
+        sagittalLeftCurveObject.rotation.y += 0.01;
 
       //sagittalLeftCurveObject.rotation.z += 0.01;
       //sagittalRightCurveObject.rotation.x += 0.01;
 
-        //sagittalRightCurveObject.rotation.y += 0.01;
+        sagittalRightCurveObject.rotation.y += 0.01;
 
       //sagittalRightCurveObject.rotation.z += 0.01; 
       
