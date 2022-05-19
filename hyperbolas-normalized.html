@@ -232,23 +232,23 @@
 
 
 
+    const transverseLimit = 2.75; 
+
     function oscillate() {
       if (oscillatePositive) {
-        if (transverseLength < 3) {
-          transverseLength += .1;
+        if (transverseLength < transverseLimit) {
+          transverseLength += .05;
         }
-        else if (transverseLength >= 3) {
-          //transverseLength -= .1;
+        else if (transverseLength >= transverseLimit) {
           oscillatePositive = false;
           return;
         }
       }
       else {
         if (transverseLength > transverseAxisStartLength) {
-          transverseLength -= .1;
+          transverseLength -= .05;
         }
         else if (transverseLength >= transverseAxisStartLength) {
-          //transverseLength += .1;
           oscillatePositive = true;
           return;
         }
@@ -258,8 +258,7 @@
     setInterval(function(){
       oscillate();
       console.log('transverseLength',transverseLength);
-      //console.log('oscillatePositive',oscillatePositive);
-    },200)
+    },300)
 
 
 
