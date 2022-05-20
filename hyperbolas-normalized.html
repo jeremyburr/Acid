@@ -248,7 +248,8 @@
         if (transverseLength > transverseAxisStartLength) {
           transverseLength -= .05;
         }
-        else if (transverseLength >= transverseAxisStartLength) {
+        else if (transverseLength <= transverseAxisStartLength) {
+          console.log('go positive');
           oscillatePositive = true;
           return;
         }
@@ -258,7 +259,7 @@
     setInterval(function(){
       oscillate();
       console.log('transverseLength',transverseLength);
-    },300)
+    },200)
 
 
 
