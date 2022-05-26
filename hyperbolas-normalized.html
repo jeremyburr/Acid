@@ -18,10 +18,14 @@
   <script src="./js/nerdamer/Extra.js"></script>
 
 
+
   <script type="module">
     import * as THREE from './js/three.module.js';
     import { TrackballControls } from './js/TrackballControls.js';
     import * as Axis from './js/shapes/axis.js';
+    import TWEEN from './js/tween.esm.js';
+
+    console.log(TWEEN);
 
     let camera, scene, renderer, controls;
 
@@ -32,9 +36,14 @@
     let sagittalRightCurveObject;
     let sagittalLeftCurveObject;
     let unit;
+    let tweenY;
+    let tweenX;
+    let tweenZ;
+    let rotation;
+    let testNumber;
 
     const transverseAxisStartLength = 2;
-    let transverseLength = transverseAxisStartLength; 
+    let transverseLength = transverseAxisStartLength;
     let oscillatePositive = true;
 
 
@@ -51,7 +60,8 @@
 
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
 
-      camera.position.x = 14;
+      //camera.position.x = 14;
+      camera.position.x = 0;
       camera.position.y = 12;
       camera.position.z = 80;
 
@@ -212,25 +222,102 @@
       const sphere = new THREE.Line(geometry, material);
       scene.add(sphere);
 
-    unit = new THREE.Group();
+      unit = new THREE.Group();
 
-    //unit.add(coronalLeftCurveObject);
+      //unit.add(coronalLeftCurveObject);
 
-    scene.add(unit);
+      rotation = unit.rotation;
 
-    unit.add(coronalLeftCurveObject);
-    unit.add(coronalRightCurveObject);
+      scene.add(unit);
 
-    unit.add(axialLeftCurveObject);
-    unit.add(axialRightCurveObject);
+      unit.add(coronalLeftCurveObject);
+      unit.add(coronalRightCurveObject);
 
-    unit.add(sagittalLeftCurveObject);
-    unit.add(sagittalRightCurveObject);
+      unit.add(axialLeftCurveObject);
+      unit.add(axialRightCurveObject);
+
+      unit.add(sagittalLeftCurveObject);
+      unit.add(sagittalRightCurveObject);
 
 
+      console.log(rotation);
 
+      testNumber = 1;
 
+      tweenY = new TWEEN.Tween(rotation)
+        .to({
+          y: "-" + (rotation.y + testNumber)
+          //x: unit.rotation.x, 
+          /*z: unit.rotation.z*/
+}, 3000) // relative animation
+        //.delay(0)
+        .onStart(function(object){
+          console.log('Y start',rotation.y);
+        })
+        .onComplete(function () {
+          console.log('Y complete',rotation.y);
+          console.log(rotation);
+          if (Math.abs(rotation.y) >= 2 * Math.PI) {
+            rotation.y = rotation.y % (2 * Math.PI);
+          }
+          //tweenY.start();
+        })
+        .onUpdate(function (object) {
+          //console.log(object);
+          //console.log(rotation);
+        })
+
+      tweenZ = new TWEEN.Tween(rotation)
+        .to({
+          z: "-" + Math.PI / 2,
+          /*x: unit.rotation.x,
+          y: unit.rotation.y*/
+        }, 3000) // relative animation
+        //.delay(0)
+        .onComplete(function () {
+          if (Math.abs(rotation.z) >= 2 * Math.PI) {
+            rotation.z = rotation.z % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          //console.log(rotation);
+          //console.log(object);
+        })
+
+      tweenX = new TWEEN.Tween(rotation)
+        .to({
+          x: "-" + Math.PI / 2,
+          y: unit.rotation.y,
+          z: unit.rotation.z
+        }, 3000) // relative animation
+        //.delay(0)
+        .onComplete(function () {
+          if (Math.abs(unit.rotation.x) >= 2 * Math.PI) {
+            unit.rotation.x = unit.rotation.x % (2 * Math.PI);
+          }
+        })
+
+      tweenY.chain(tweenZ);
+      tweenZ.chain(tweenY);
+      //tweenZ.chain(tweenY);
+      //tweenX.chain(tweenY);
+      //tweenY.yoyo(true);
+      //tweenY.repeat(Infinity);
     }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      const oscillationValue = oscillatePositive ? .1 : -.1;
+      render(oscillationValue);
+      //stats.update();
+      TWEEN.update();
+      //console.log(unit.rotation)
+    }
+
+    init();
+    tweenY.start();
+    animate();
 
 
 
@@ -240,8 +327,8 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    
-    const transverseLimit = 2.75; 
+
+    const transverseLimit = 2.75;
 
     function oscillate() {
       if (oscillatePositive) {
@@ -265,10 +352,10 @@
       }
     }
 
-    setInterval(function(){
+    setInterval(function () {
       oscillate();
       //console.log('transverseLength',transverseLength);
-    },200)
+    }, 200)
 
     function rotateAxial() {
 
@@ -276,33 +363,24 @@
 
     }
 
-    function animate() {
-
-      requestAnimationFrame(animate);
-      controls.update();
-
-      const oscillationValue = oscillatePositive ? .1 : -.1;
-      render(oscillationValue);
-      //stats.update();
-    }
 
 
-    init();
-    animate();
-
-    //renderLoop(); 
 
     function renderLoop() {
       //unit.rotateY(Math.PI/2);
     }
 
 
+
+
+    //console.log(tween);
+
     function render(oscillatePositive) {
 
       //axialRightCurveObject.translateX(.01);
       //axialRightCurveObject.translateZ(.01);
 
-      unit.rotateY(.005);
+      //unit.rotateY(.005);
       //console.log(unit.rotation);
       //  console.log(unit.quaternion)
 
@@ -372,7 +450,7 @@
       //axialLeftCurveObject.translateX(-oscillatePositive);
       //axialLeftCurveObject.translateZ(-oscillatePositive);
 
-      
+
 
 
       //axialLeftCurveObject.rotation.z += 0.01;
