@@ -308,7 +308,6 @@
         })
         .onComplete(function () {
           console.log('Y4 complete',unit.rotation.y);
-          //console.log(unit.rotation);
           if (Math.abs(unit.rotation.y) >= 2 * Math.PI) {
             console.log('run');
             unit.rotation.y = unit.rotation.y % (2 * Math.PI);
@@ -319,25 +318,25 @@
           console.log(unit.rotation.y);
         })
 
-      tweenZ = new TWEEN.Tween(unit.rotation)
+        tweenZ = new TWEEN.Tween(unit.rotation)
         .to({ z: "-"  + Math.PI/2}, 3000) // relative animation
         .onStart(function(object){
-          console.log('Z start',unit.rotation.z);
+          console.log('Y4 start',unit.rotation.z);
         })
         .onComplete(function () {
-          console.log('Z complete',unit.rotation.z);
+          console.log('Y4 complete',unit.rotation.z);
           if (Math.abs(unit.rotation.z) >= 2 * Math.PI) {
-            console.log('run')
-            unit.rotation.Z = unit.rotation.z % (2 * Math.PI);
+            console.log('run');
+            unit.rotation.z = unit.rotation.z % (2 * Math.PI);
           }
         })
         .onUpdate(function (object) {
-          //console.log(object);
-          //console.log(unit.rotation);
           unit.rotation.z = unit.rotation.z; 
+          console.log(unit.rotation.z);
         })
 
-      tweenY.chain(tweenY2);
+      tweenY.chain(tweenZ);
+      tweenZ.chain(tweenY2);
       tweenY2.chain(tweenY3);
       tweenY3.chain(tweenY4)
       tweenY4.chain(tweenY)
