@@ -78,7 +78,7 @@
       //camera.position.x = 14;
       camera.position.x = 0;
       camera.position.y = 12;
-      camera.position.z = 70;
+      camera.position.z = 60;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -90,7 +90,11 @@
       window.addEventListener('resize', onWindowResize);
 
       scene.background = new THREE.Color(0x050505);
-      const light = new THREE.HemisphereLight();
+      
+      //const light = new THREE.AmbientLight();
+      //light.position.set( 0, 1, 1 ).normalize();
+      const light = new THREE.DirectionalLight();
+      light.position.set( 1, 2, 3 ).normalize();
       scene.add(light);
 
       // Axial
@@ -125,7 +129,7 @@
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
       const axialRightPoints = axialRightCurve.getPoints(1000);
 
-      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1, 16, false)
+      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
       //const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
       const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
       axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
@@ -137,7 +141,7 @@
 
       const axialLeftPoints = axialLeftCurve.getPoints(1000);
 
-      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1, 16, false)
+      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
       const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
       axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialLeftMaterial);
 
@@ -174,8 +178,8 @@
       const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
       const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
       const coronalLeftPoints = coronalLeftCurve.getPoints(1000);
-      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, 1, 16, false)
-      const coronalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, 1.75, 16, false)
+      const coronalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
       coronalLeftCurveObject = new THREE.Mesh(coronalLeftGeometry, coronalLeftMaterial);
       scene.add(coronalLeftCurveObject);
 
@@ -184,7 +188,7 @@
       const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
       const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
       const coronalRightPoints = coronalRightCurve.getPoints(1000);
-      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, 1, 16, false)
+      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, 1.75, 16, false)
       const coronalRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
       coronalRightCurveObject = new THREE.Mesh(coronalRightGeometry, coronalRightMaterial);
       scene.add(coronalRightCurveObject);
@@ -218,7 +222,7 @@
       const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
       const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
       const sagittalLeftPoints = sagittalLeftCurve.getPoints(1000);
-      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, 1, 16, false)
+      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, 1.75, 16, false)
       const sagittalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 })
       sagittalLeftCurveObject = new THREE.Mesh(sagittalLeftGeometry, sagittalLeftMaterial);
       scene.add(sagittalLeftCurveObject);
@@ -228,7 +232,7 @@
       const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
       const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
       const sagittalRightPoints = sagittalRightCurve.getPoints(1000);
-      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1, 16, false)
+      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1.75, 16, false)
       const sagittalRightMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 });
       sagittalRightCurveObject = new THREE.Mesh(sagittalRightGeometry, sagittalRightMaterial);
       scene.add(sagittalRightCurveObject);
@@ -242,7 +246,7 @@
         metalness: 0.5,
         emissive: 'red'
       });*/
-      const material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, opacity: 0.5 });
+      const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
       const sphere = new THREE.Mesh(geometry, material);
       scene.add(sphere);
 
