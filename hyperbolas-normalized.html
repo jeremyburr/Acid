@@ -131,7 +131,7 @@
 
       const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
       //const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
-      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
+      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff});
       axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
 
       const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
@@ -142,7 +142,7 @@
       const axialLeftPoints = axialLeftCurve.getPoints(1000);
 
       const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
-      const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff });
       axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialLeftMaterial);
 
       scene.add(axialLeftCurveObject);
