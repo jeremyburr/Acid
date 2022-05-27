@@ -57,7 +57,7 @@
     //let rotation;
     let testNumber;
 
-    const transverseAxisStartLength = 3.5;
+    const transverseAxisStartLength = 6;
     let transverseLength = transverseAxisStartLength;
     let oscillatePositive = true;
 
@@ -123,23 +123,23 @@
       const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
 
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
-      const axialRightPoints = axialRightCurve.getPoints(500);
+      const axialRightPoints = axialRightCurve.getPoints(1000);
 
-      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, .75, 16, false)
+      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1, 16, false)
       //const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
-      const axialRightMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF});
-      axialRightCurveObject = new THREE.Line(axialRightGeometry, axialRightMaterial);
+      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
+      axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
 
       const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
       const axialQ2VectorsDescendingPopped = axialQ2VectorsDescending.pop();
       const axialLeftCurveVectors = axialQ2VectorsDescending.concat(axialQ3Vectors);
       const axialLeftCurve = new THREE.CatmullRomCurve3(axialLeftCurveVectors);
 
-      const axialLeftPoints = axialLeftCurve.getPoints(500);
+      const axialLeftPoints = axialLeftCurve.getPoints(1000);
 
-      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, .75, 16, false)
-      const axialLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF });
-      axialLeftCurveObject = new THREE.Line(axialLeftGeometry, axialLeftMaterial);
+      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1, 16, false)
+      const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialLeftMaterial);
 
       scene.add(axialLeftCurveObject);
       scene.add(axialRightCurveObject);
@@ -173,20 +173,20 @@
       const coronalQ2VectorsDescendingPopped = coronalQ2VectorsDescending.pop();
       const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
       const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
-      const coronalLeftPoints = coronalLeftCurve.getPoints(500);
-      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, .75, 16, false)
-      const coronalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF });
-      coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
+      const coronalLeftPoints = coronalLeftCurve.getPoints(1000);
+      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, 1, 16, false)
+      const coronalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      coronalLeftCurveObject = new THREE.Mesh(coronalLeftGeometry, coronalLeftMaterial);
       scene.add(coronalLeftCurveObject);
 
       const coronalQ3VectorsDescending = [...coronalQ3Vectors].reverse();
       const coronalQ3VectorsDescendingPopped = coronalQ3VectorsDescending.pop();
       const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
       const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
-      const coronalRightPoints = coronalRightCurve.getPoints(500);
-      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, .75, 16, false)
-      const coronalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF });
-      coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
+      const coronalRightPoints = coronalRightCurve.getPoints(1000);
+      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, 1, 16, false)
+      const coronalRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      coronalRightCurveObject = new THREE.Mesh(coronalRightGeometry, coronalRightMaterial);
       scene.add(coronalRightCurveObject);
 
 
@@ -217,25 +217,33 @@
       const sagittalQ2VectorsDescendingPopped = sagittalQ2VectorsDescending.pop();
       const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
       const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
-      const sagittalLeftPoints = sagittalLeftCurve.getPoints(500);
-      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, .75, 16, false)
-      const sagittalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0xff73f6 })
-      sagittalLeftCurveObject = new THREE.Line(sagittalLeftGeometry, sagittalLeftMaterial);
+      const sagittalLeftPoints = sagittalLeftCurve.getPoints(1000);
+      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, 1, 16, false)
+      const sagittalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 })
+      sagittalLeftCurveObject = new THREE.Mesh(sagittalLeftGeometry, sagittalLeftMaterial);
       scene.add(sagittalLeftCurveObject);
 
       const sagittalQ3VectorsDescending = [...sagittalQ3Vectors].reverse();
       const sagittalQ3VectorsDescendingPopped = sagittalQ3VectorsDescending.pop();
       const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
       const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
-      const sagittalRightPoints = sagittalRightCurve.getPoints(500);
-      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, .75, 16, false)
-      const sagittalRightMaterial = new THREE.MeshBasicMaterial({ color: 0xff73f6 });
-      sagittalRightCurveObject = new THREE.Line(sagittalRightGeometry, sagittalRightMaterial);
+      const sagittalRightPoints = sagittalRightCurve.getPoints(1000);
+      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1, 16, false)
+      const sagittalRightMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 });
+      sagittalRightCurveObject = new THREE.Mesh(sagittalRightGeometry, sagittalRightMaterial);
       scene.add(sagittalRightCurveObject);
 
-      const geometry = new THREE.SphereGeometry(1, 8, 8);
-      const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, opacity: 0.8 });
-      const sphere = new THREE.Line(geometry, material);
+      const geometry = new THREE.SphereGeometry(4, 8, );
+      //const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, opacity: 0.5 });
+      /*const material = new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,    // red (can also use a CSS color string here)
+        shininess: 150,
+        side: THREE.DoubleSide,
+        metalness: 0.5,
+        emissive: 'red'
+      });*/
+      const material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, opacity: 0.5 });
+      const sphere = new THREE.Mesh(geometry, material);
       scene.add(sphere);
 
       unit = new THREE.Group();
