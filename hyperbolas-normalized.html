@@ -57,7 +57,7 @@
     //let rotation;
     let testNumber;
 
-    const transverseAxisStartLength = 2;
+    const transverseAxisStartLength = 3.5;
     let transverseLength = transverseAxisStartLength;
     let oscillatePositive = true;
 
@@ -78,7 +78,7 @@
       //camera.position.x = 14;
       camera.position.x = 0;
       camera.position.y = 12;
-      camera.position.z = 80;
+      camera.position.z = 70;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -100,7 +100,7 @@
       let axialQ2Vectors = [];
       let axialQ3Vectors = [];
 
-      for (let i = 5; i < 31; i += .5) {
+      for (let i = 5; i < 51; i += .5) {
 
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
         const evaluated = y.evaluate().text();
@@ -125,7 +125,7 @@
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
       const axialRightPoints = axialRightCurve.getPoints(500);
 
-      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1, 16, false)
+      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, .75, 16, false)
       //const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
       const axialRightMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF});
       axialRightCurveObject = new THREE.Line(axialRightGeometry, axialRightMaterial);
@@ -137,7 +137,7 @@
 
       const axialLeftPoints = axialLeftCurve.getPoints(500);
 
-      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1, 16, false)
+      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, .75, 16, false)
       const axialLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF });
       axialLeftCurveObject = new THREE.Line(axialLeftGeometry, axialLeftMaterial);
 
@@ -151,7 +151,7 @@
       let coronalQ3Vectors = [];
       let coronalQ4Vectors = [];
 
-      for (let i = 0; i < 31; i += .5) {
+      for (let i = 0; i < 51; i += .5) {
         const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
@@ -174,7 +174,7 @@
       const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
       const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
       const coronalLeftPoints = coronalLeftCurve.getPoints(500);
-      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, 1, 16, false)
+      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, .75, 16, false)
       const coronalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF });
       coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
       scene.add(coronalLeftCurveObject);
@@ -184,7 +184,7 @@
       const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
       const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
       const coronalRightPoints = coronalRightCurve.getPoints(500);
-      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, 1, 16, false)
+      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, .75, 16, false)
       const coronalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF });
       coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
       scene.add(coronalRightCurveObject);
@@ -199,7 +199,7 @@
       let sagittalQ4Vectors = [];
 
 
-      for (let i = 0; i < 31; i += .5) {
+      for (let i = 0; i < 51; i += .5) {
         const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
@@ -218,7 +218,7 @@
       const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
       const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
       const sagittalLeftPoints = sagittalLeftCurve.getPoints(500);
-      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, 1, 16, false)
+      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, .75, 16, false)
       const sagittalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0xff73f6 })
       sagittalLeftCurveObject = new THREE.Line(sagittalLeftGeometry, sagittalLeftMaterial);
       scene.add(sagittalLeftCurveObject);
@@ -228,7 +228,7 @@
       const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
       const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
       const sagittalRightPoints = sagittalRightCurve.getPoints(500);
-      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1, 16, false)
+      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, .75, 16, false)
       const sagittalRightMaterial = new THREE.MeshBasicMaterial({ color: 0xff73f6 });
       sagittalRightCurveObject = new THREE.Line(sagittalRightGeometry, sagittalRightMaterial);
       scene.add(sagittalRightCurveObject);
