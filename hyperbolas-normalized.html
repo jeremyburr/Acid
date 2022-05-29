@@ -233,7 +233,15 @@
       const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
       const sagittalRightPoints = sagittalRightCurve.getPoints(1000);
       const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1.75, 16, false)
-      const sagittalRightMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 });
+      const sagittalRightMaterial = new THREE.MeshPhongMaterial({ 
+
+          color: 0xff73f6,
+          /*shininess: 150,
+          side: THREE.DoubleSide,
+          metalness: 0.1,*/
+          //emissive: 'red'
+
+      });
       sagittalRightCurveObject = new THREE.Mesh(sagittalRightGeometry, sagittalRightMaterial);
       scene.add(sagittalRightCurveObject);
 
