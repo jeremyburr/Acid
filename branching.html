@@ -235,6 +235,47 @@
       scene.add(anteriorSaggitalRight);
 
 
+      // Posterior Saggital Top
+
+      const posteriorSaggitalTopPoints = [];
+      posteriorSaggitalTopPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
+      posteriorSaggitalTopPoints.push( new THREE.Vector3( 0, unitLength, 2*unitLength ) );
+      const posteriorSaggitalTopCurve = new THREE.CatmullRomCurve3(posteriorSaggitalTopPoints);
+      const posteriorSaggitalTopGeometry = new THREE.TubeGeometry(posteriorSaggitalTopCurve, 64, .2, 16, false)
+      posteriorSaggitalTop = new THREE.Mesh(posteriorSaggitalTopGeometry, yTubeMaterial);
+      scene.add(posteriorSaggitalTop);
+
+      // Posterior Saggital Bottom
+
+      const posteriorSaggitalBottomPoints = [];
+      posteriorSaggitalBottomPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
+      posteriorSaggitalBottomPoints.push( new THREE.Vector3( 0, -unitLength, 2*unitLength ) );
+      const posteriorSaggitalBottomCurve = new THREE.CatmullRomCurve3(posteriorSaggitalBottomPoints);
+      const posteriorSaggitalBottomGeometry = new THREE.TubeGeometry(posteriorSaggitalBottomCurve, 64, .2, 16, false)
+      posteriorSaggitalBottom = new THREE.Mesh(posteriorSaggitalBottomGeometry, yTubeMaterial);
+      scene.add(posteriorSaggitalBottom);
+
+      // Posterior Saggital Left
+
+      const posteriorSaggitalLeftPoints = [];
+      posteriorSaggitalLeftPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
+      posteriorSaggitalLeftPoints.push( new THREE.Vector3( -unitLength, 0, 2*unitLength ) );
+      const posteriorSaggitalLeftCurve = new THREE.CatmullRomCurve3(posteriorSaggitalLeftPoints);
+      const posteriorSaggitalLeftGeometry = new THREE.TubeGeometry(posteriorSaggitalLeftCurve, 64, .2, 16, false)
+      posteriorSaggitalLeft = new THREE.Mesh(posteriorSaggitalLeftGeometry, yTubeMaterial);
+      scene.add(posteriorSaggitalLeft);
+
+      // Posterior Saggital Right
+
+      const posteriorSaggitalRightPoints = [];
+      posteriorSaggitalRightPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
+      posteriorSaggitalRightPoints.push( new THREE.Vector3( unitLength, 0, 2*unitLength ) );
+      const posteriorSaggitalRightCurve = new THREE.CatmullRomCurve3(posteriorSaggitalRightPoints);
+      const posteriorSaggitalRightGeometry = new THREE.TubeGeometry(posteriorSaggitalRightCurve, 64, .2, 16, false)
+      posteriorSaggitalRight = new THREE.Mesh(posteriorSaggitalRightGeometry, yTubeMaterial);
+      scene.add(posteriorSaggitalRight);
+
+
 
 
 
