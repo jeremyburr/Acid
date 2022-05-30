@@ -89,7 +89,7 @@
       yTube = new THREE.Mesh(yTubeGeometry, yTubeMaterial);
       scene.add(yTube);
 
-      // Y Coronal Right
+      // Superior Coronal Right
       const superiorCoronalRightPoints = [];
       superiorCoronalRightPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
       superiorCoronalRightPoints.push( new THREE.Vector3( unitLength, 2*unitLength, 0 ) );
@@ -98,7 +98,7 @@
       superiorCoronalRight = new THREE.Mesh(superiorCoronalRightGeometry, yTubeMaterial);
       scene.add(superiorCoronalRight);
 
-      // Y Coronal Left
+      // Superior Coronal Left
       const superiorCoronalLeftPoints = [];
       superiorCoronalLeftPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
       superiorCoronalLeftPoints.push( new THREE.Vector3( -unitLength, 2*unitLength, 0 ) );
@@ -107,7 +107,7 @@
       superiorCoronalLeft = new THREE.Mesh(superiorCoronalLeftGeometry, yTubeMaterial);
       scene.add(superiorCoronalLeft);
 
-      // Y Saggital Posterior
+      // Superior Saggital Posterior
       const superiorSaggitalPosteriorPoints = [];
       superiorSaggitalPosteriorPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
       superiorSaggitalPosteriorPoints.push( new THREE.Vector3( 0, 2*unitLength, -unitLength ) );
@@ -116,7 +116,7 @@
       superiorSaggitalPosterior = new THREE.Mesh(superiorSaggitalPosteriorGeometry, yTubeMaterial);
       scene.add(superiorSaggitalPosterior);
 
-      // Y Saggital Anterior
+      // Superior Saggital Anterior
       const superiorSaggitalAnteriorPoints = [];
       superiorSaggitalAnteriorPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
       superiorSaggitalAnteriorPoints.push( new THREE.Vector3( 0, 2*unitLength, unitLength ) );
