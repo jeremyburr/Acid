@@ -212,6 +212,45 @@
       scene.add(transverseLeftPosterior);
 
 
+      // Transverse Right Top
+      const transverseRightTopPoints = [];
+      transverseRightTopPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightTopPoints.push( new THREE.Vector3( 2*unitLength, unitLength, 0 ) );
+      const transverseRightTopCurve = new THREE.CatmullRomCurve3(transverseRightTopPoints);
+      const transverseRightTopGeometry = new THREE.TubeGeometry(transverseRightTopCurve, 64, .2, 16, false)
+      transverseRightTop = new THREE.Mesh(transverseRightTopGeometry, yTubeMaterial);
+      scene.add(transverseRightTop);
+
+      // Tranverse Right Bottom
+      const transverseRightBottomPoints = [];
+      transverseRightBottomPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightBottomPoints.push( new THREE.Vector3( 2*unitLength, -unitLength, 0 ) );
+      const transverseRightBottomCurve = new THREE.CatmullRomCurve3(transverseRightBottomPoints);
+      const transverseRightBottomGeometry = new THREE.TubeGeometry(transverseRightBottomCurve, 64, .2, 16, false)
+      transverseRightBottom = new THREE.Mesh(transverseRightBottomGeometry, yTubeMaterial);
+      scene.add(transverseRightBottom);
+
+      // Tranverse Right Anterior
+      const transverseRightAnteriorPoints = [];
+      transverseRightAnteriorPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightAnteriorPoints.push( new THREE.Vector3( 2*unitLength, 0, -unitLength ) );
+      const transverseRightAnteriorCurve = new THREE.CatmullRomCurve3(transverseRightAnteriorPoints);
+      const transverseRightAnteriorGeometry = new THREE.TubeGeometry(transverseRightAnteriorCurve, 64, .2, 16, false)
+      transverseRightAnterior = new THREE.Mesh(transverseRightAnteriorGeometry, yTubeMaterial);
+      scene.add(transverseRightAnterior);
+
+      // Tranverse Right Posterior
+      const transverseRightPosteriorPoints = [];
+      transverseRightPosteriorPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightPosteriorPoints.push( new THREE.Vector3( 2*unitLength, 0, unitLength ) );
+      const transverseRightPosteriorCurve = new THREE.CatmullRomCurve3(transverseRightPosteriorPoints);
+      const transverseRightPosteriorGeometry = new THREE.TubeGeometry(transverseRightPosteriorCurve, 64, .2, 16, false)
+      transverseRightPosterior = new THREE.Mesh(transverseRightPosteriorGeometry, yTubeMaterial);
+      scene.add(transverseRightPosterior);
+
+
+
+
 
 
       
