@@ -34,7 +34,7 @@
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 14;
       camera.position.y = 10;
-      camera.position.z = 50;
+      camera.position.z = 75;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -61,6 +61,12 @@
           //emissive: 'red'
       });
 
+      const xTubeCurve = new THREE.CatmullRomCurve3(xNewPoints);
+      const xTubeGeometry = new THREE.TubeGeometry(xTubeCurve, 64, .2, 16, false)
+      xTube = new THREE.Mesh(xTubeGeometry, xTubeMaterial);
+      scene.add(xTube);
+
+
       // Y
 
       const yNewPoints = [];
@@ -84,11 +90,7 @@
       scene.add(yTube);
       
 
-      const xTubeCurve = new THREE.CatmullRomCurve3(xNewPoints);
-      const xTubeGeometry = new THREE.TubeGeometry(xTubeCurve, 64, .2, 16, false)
-      xTube = new THREE.Mesh(xTubeGeometry, xTubeMaterial);
-      scene.add(xTube);
-
+      
       // Z
 
       const zNewPoints = [];
