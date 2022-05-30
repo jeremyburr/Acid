@@ -90,13 +90,12 @@
       scene.add(yTube);
 
       const yCoronalRightPoints = [];
-      yNewPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
-      //yNewPoints.push( new THREE.Vector3( 0, 2*unitLength, 0 ) );
-      yNewPoints.push( new THREE.Vector3( unitLength, 2*unitLength, 0 ) );
+      yCoronalRightPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
+      yCoronalRightPoints.push( new THREE.Vector3( unitLength, 2*unitLength, 0 ) );
       
 
-      const yCoronalRightCurve = new THREE.CatmullRomCurve3(yNewPoints);
-      const yCoronalRightGeometry = new THREE.TubeGeometry(yTubeCurve, 64, .2, 16, false)
+      const yCoronalRightCurve = new THREE.CatmullRomCurve3(yCoronalRightPoints);
+      const yCoronalRightGeometry = new THREE.TubeGeometry(yCoronalRightCurve, 64, .2, 16, false)
       yCoronalRight = new THREE.Mesh(yCoronalRightGeometry, yTubeMaterial);
 
       scene.add(yCoronalRight);
