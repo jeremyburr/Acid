@@ -19,6 +19,8 @@
 
     let xTube, yTube, zTube;
 
+    let yCoronalRight;
+
     let unitLength = 8;
 
     init();
@@ -66,7 +68,6 @@
       xTube = new THREE.Mesh(xTubeGeometry, xTubeMaterial);
       scene.add(xTube);
 
-
       // Y
 
       const yNewPoints = [];
@@ -82,13 +83,24 @@
           side: THREE.DoubleSide,
           //emissive: 'red'
       });
-      
 
       const yTubeCurve = new THREE.CatmullRomCurve3(yNewPoints);
       const yTubeGeometry = new THREE.TubeGeometry(yTubeCurve, 64, .2, 16, false)
       yTube = new THREE.Mesh(yTubeGeometry, yTubeMaterial);
       scene.add(yTube);
+
+      const yCoronalRightPoints = [];
+      yNewPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
+      //yNewPoints.push( new THREE.Vector3( 0, 2*unitLength, 0 ) );
+      yNewPoints.push( new THREE.Vector3( unitLength, 2*unitLength, 0 ) );
       
+
+      const yCoronalRightCurve = new THREE.CatmullRomCurve3(yNewPoints);
+      const yCoronalRightGeometry = new THREE.TubeGeometry(yTubeCurve, 64, .2, 16, false)
+      yCoronalRight = new THREE.Mesh(yCoronalRightGeometry, yTubeMaterial);
+
+      scene.add(yCoronalRight);
+
 
       
       // Z
