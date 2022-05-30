@@ -16,6 +16,11 @@
     import * as Axis from './js/shapes/axis.js';
     let camera, scene, renderer, controls;
     let mesh0, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7;
+
+    let xTube, yTube, zTube;
+
+    let unitLength = 8;
+
     init();
     animate();
 
@@ -23,12 +28,13 @@
     controls.autoRotate = true; 
     const controls = new OrbitControls(camera, renderer.domElement);*/
 
+
     function init() {
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 14;
       camera.position.y = 10;
-      camera.position.z = 30;
+      camera.position.z = 50;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -39,33 +45,115 @@
       
       window.addEventListener('resize', onWindowResize);
 
-      const yNewLineMaterial = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+      // X
+
+      const xNewPoints = [];
+
+      xNewPoints.push( new THREE.Vector3( -unitLength, 0, 0 ) );
+      xNewPoints.push( new THREE.Vector3( 0, 0, 0 ) );
+      xNewPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+
+      const xTubeMaterial = new THREE.MeshPhongMaterial({ 
+          //color: 0xFC3EC1,
+          color: 0xffffff,
+          shininess: 150,
+          side: THREE.DoubleSide,
+          //emissive: 'red'
+      });
+
+      // Y
+
       const yNewPoints = [];
-      yNewPoints.push( new THREE.Vector3( 0, -8, 0 ) );
+
+      yNewPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
       yNewPoints.push( new THREE.Vector3( 0, 0, 0 ) );
-      yNewPoints.push( new THREE.Vector3( 0, 8, 0 ) );
+      yNewPoints.push( new THREE.Vector3( 0, unitLength, 0 ) );
 
-      const yNewLineGeometry = new THREE.BufferGeometry().setFromPoints( yNewPoints )
+      const yTubeMaterial = new THREE.MeshPhongMaterial({ 
+          //color: 0x12c0ff,
+          color: 0xffffff,
+          shininess: 150,
+          side: THREE.DoubleSide,
+          //emissive: 'red'
+      });
+      
 
-      const yNew = new THREE.Line( yNewLineGeometry, yNewLineMaterial );
+      const yTubeCurve = new THREE.CatmullRomCurve3(yNewPoints);
+      const yTubeGeometry = new THREE.TubeGeometry(yTubeCurve, 64, .2, 16, false)
+      yTube = new THREE.Mesh(yTubeGeometry, yTubeMaterial);
+      scene.add(yTube);
+      
+
+      const xTubeCurve = new THREE.CatmullRomCurve3(xNewPoints);
+      const xTubeGeometry = new THREE.TubeGeometry(xTubeCurve, 64, .2, 16, false)
+      xTube = new THREE.Mesh(xTubeGeometry, xTubeMaterial);
+      scene.add(xTube);
+
+      // Z
+
+      const zNewPoints = [];
+
+      zNewPoints.push( new THREE.Vector3( 0, 0, -unitLength ) );
+      zNewPoints.push( new THREE.Vector3( 0, 0, 0 ) );
+      zNewPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
+
+      const zTubeMaterial = new THREE.MeshPhongMaterial({ 
+          //color: 0x46DE74,
+          color: 0xffffff,
+          shininess: 150,
+          side: THREE.DoubleSide,
+          //emissive: 'red'
+      });
+      
+
+      const zTubeCurve = new THREE.CatmullRomCurve3(zNewPoints);
+      const zTubeGeometry = new THREE.TubeGeometry(zTubeCurve, 64, .2, 16, false)
+      zTube = new THREE.Mesh(zTubeGeometry, zTubeMaterial);
+      scene.add(zTube);
 
 
 
-      scene.add(yNew);
+
 
       //scene.add(Axis.x);
       //scene.add(Axis.y);
       //scene.add(Axis.z);
 
 
-      scene.background = new THREE.Color(0x050505);
-      const light = new THREE.HemisphereLight();
+      scene.background = new THREE.Color(0x111111);
+
+      /*const light = new THREE.HemisphereLight();
+      scene.add(light);*/
+
+      const light = new THREE.DirectionalLight(0xfffffff, 1);
+      light.position.set( 1, 1, 1 )//.normalize();
       scene.add(light);
 
-      const material = new THREE.MeshPhongMaterial({
+      const light2 = new THREE.DirectionalLight(0xfffffff, 1);
+      light2.position.set( -1, -1, -1 )//.normalize();
+      scene.add(light2);
+
+      /*const light3 = new THREE.DirectionalLight(0xfffffff, 1);
+      light3.position.set( 1, -1, 1 )//.normalize();
+      scene.add(light3);*/
+
+      /*const light4 = new THREE.DirectionalLight(0xfffffff, 1);
+      light4.position.set( -1, 1, -1 )//.normalize();
+      scene.add(light4);*/
+
+
+
+
+      /*const light = new THREE.PointLight( 0xFFFFFF, 5, 0 );
+      light.position.set( 1, 2, 3 );
+      scene.add( light );*/
+
+
+
+      /*const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true
-      });
+      });*/
 
       
     }
@@ -86,6 +174,11 @@
     function render() {
 
       const time = Date.now() * 0.002;
+
+
+      //yTube.rotation.x = time * 0.5;
+      //yTube.rotation.y = time * 0.5;
+      //yTube.rotation.z = time * 0.5;
 
       renderer.render(scene, camera);
     }
