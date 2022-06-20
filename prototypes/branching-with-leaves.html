@@ -11,9 +11,9 @@
     }
   </style>
   <script type="module">
-    import * as THREE from './js/three.module.js';
-    import { TrackballControls } from './js/TrackballControls.js';
-    import * as Axis from './js/shapes/axis.js';
+    import * as THREE from '../js/three.module.js';
+    import { TrackballControls } from '../js/TrackballControls.js';
+    import * as Axis from '../js/shapes/axis.js';
     let camera, scene, renderer, controls;
     let mesh0, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7;
 
@@ -38,7 +38,7 @@
     init();
     animate();
 
-    /*import { OrbitControls } from './js/OrbitControls.js';
+    /*import { OrbitControls } from '../js/OrbitControls.js';
     controls.autoRotate = true; 
     const controls = new OrbitControls(camera, renderer.domElement);*/
 
