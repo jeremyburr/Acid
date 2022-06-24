@@ -1,2 +1,3 @@
+Directional naming system needs global/local references to provide clarity
 add window.resize handlers
 look into vertix labeling stat module
