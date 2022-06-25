@@ -26,8 +26,8 @@
     let saggitalPosteriorTop, saggitalPosteriorBottom, saggitalPosteriorLeft, saggitalPosteriorRight;
     let saggitalAnteriorTop, saggitalAnteriorBottom, saggitalAnteriorLeft, saggitalAnteriorRight;
 
-    let transverseLeftTop, transverseLeftBottom, transverseLeftPosterior, transverseLeftAnterior;
-    let transverseRightTop, transverseRightBottom, transverseRightPosterior, transverseRightAnterior;
+    let transverseLeftSuperior, transverseLeftInferior, transverseLeftPosterior, transverseLeftAnterior;
+    let transverseRightSuperior, transverseRightInferior, transverseRightPosterior, transverseRightAnterior;
 
     let unit;
 
@@ -77,22 +77,22 @@
       unit.add(xTube);
 
       // Transverse Left Top
-      const transverseLeftTopPoints = [];
-      transverseLeftTopPoints.push( new THREE.Vector3( -unitLength, 0, 0 ) );
-      transverseLeftTopPoints.push( new THREE.Vector3( -2*unitLength, unitLength, 0 ) );
-      const transverseLeftTopCurve = new THREE.CatmullRomCurve3(transverseLeftTopPoints);
-      const transverseLeftTopGeometry = new THREE.TubeGeometry(transverseLeftTopCurve, 64, .25, 16, false)
-      transverseLeftTop = new THREE.Mesh(transverseLeftTopGeometry, xTubeMaterial);
-      unit.add(transverseLeftTop);
+      const transverseLeftSuperiorPoints = [];
+      transverseLeftSuperiorPoints.push( new THREE.Vector3( -unitLength, 0, 0 ) );
+      transverseLeftSuperiorPoints.push( new THREE.Vector3( -2*unitLength, unitLength, 0 ) );
+      const transverseLeftSuperiorCurve = new THREE.CatmullRomCurve3(transverseLeftSuperiorPoints);
+      const transverseLeftSuperiorGeometry = new THREE.TubeGeometry(transverseLeftSuperiorCurve, 64, .25, 16, false)
+      transverseLeftSuperior = new THREE.Mesh(transverseLeftSuperiorGeometry, xTubeMaterial);
+      unit.add(transverseLeftSuperior);
 
       // Tranverse Left Bottom
-      const transverseLeftBottomPoints = [];
-      transverseLeftBottomPoints.push( new THREE.Vector3( -unitLength, 0, 0 ) );
-      transverseLeftBottomPoints.push( new THREE.Vector3( -2*unitLength, -unitLength, 0 ) );
-      const transverseLeftBottomCurve = new THREE.CatmullRomCurve3(transverseLeftBottomPoints);
-      const transverseLeftBottomGeometry = new THREE.TubeGeometry(transverseLeftBottomCurve, 64, .25, 16, false)
-      transverseLeftBottom = new THREE.Mesh(transverseLeftBottomGeometry, xTubeMaterial);
-      unit.add(transverseLeftBottom);
+      const transverseLeftInferiorPoints = [];
+      transverseLeftInferiorPoints.push( new THREE.Vector3( -unitLength, 0, 0 ) );
+      transverseLeftInferiorPoints.push( new THREE.Vector3( -2*unitLength, -unitLength, 0 ) );
+      const transverseLeftInferiorCurve = new THREE.CatmullRomCurve3(transverseLeftInferiorPoints);
+      const transverseLeftInferiorGeometry = new THREE.TubeGeometry(transverseLeftInferiorCurve, 64, .25, 16, false)
+      transverseLeftInferior = new THREE.Mesh(transverseLeftInferiorGeometry, xTubeMaterial);
+      unit.add(transverseLeftInferior);
 
       // Tranverse Left Anterior
       const transverseLeftAnteriorPoints = [];
@@ -113,22 +113,22 @@
       unit.add(transverseLeftPosterior);
 
       // Transverse Right Top
-      const transverseRightTopPoints = [];
-      transverseRightTopPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
-      transverseRightTopPoints.push( new THREE.Vector3( 2*unitLength, unitLength, 0 ) );
-      const transverseRightTopCurve = new THREE.CatmullRomCurve3(transverseRightTopPoints);
-      const transverseRightTopGeometry = new THREE.TubeGeometry(transverseRightTopCurve, 64, .25, 16, false)
-      transverseRightTop = new THREE.Mesh(transverseRightTopGeometry, xTubeMaterial);
-      unit.add(transverseRightTop);
+      const transverseRightSuperiorPoints = [];
+      transverseRightSuperiorPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightSuperiorPoints.push( new THREE.Vector3( 2*unitLength, unitLength, 0 ) );
+      const transverseRightSuperiorCurve = new THREE.CatmullRomCurve3(transverseRightSuperiorPoints);
+      const transverseRightSuperiorGeometry = new THREE.TubeGeometry(transverseRightSuperiorCurve, 64, .25, 16, false)
+      transverseRightSuperior = new THREE.Mesh(transverseRightSuperiorGeometry, xTubeMaterial);
+      unit.add(transverseRightSuperior);
 
       // Tranverse Right Bottom
-      const transverseRightBottomPoints = [];
-      transverseRightBottomPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
-      transverseRightBottomPoints.push( new THREE.Vector3( 2*unitLength, -unitLength, 0 ) );
-      const transverseRightBottomCurve = new THREE.CatmullRomCurve3(transverseRightBottomPoints);
-      const transverseRightBottomGeometry = new THREE.TubeGeometry(transverseRightBottomCurve, 64, .25, 16, false)
-      transverseRightBottom = new THREE.Mesh(transverseRightBottomGeometry, xTubeMaterial);
-      unit.add(transverseRightBottom);
+      const transverseRightInferiorPoints = [];
+      transverseRightInferiorPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightInferiorPoints.push( new THREE.Vector3( 2*unitLength, -unitLength, 0 ) );
+      const transverseRightInferiorCurve = new THREE.CatmullRomCurve3(transverseRightInferiorPoints);
+      const transverseRightInferiorGeometry = new THREE.TubeGeometry(transverseRightInferiorCurve, 64, .25, 16, false)
+      transverseRightInferior = new THREE.Mesh(transverseRightInferiorGeometry, xTubeMaterial);
+      unit.add(transverseRightInferior);
 
       // Tranverse Right Anterior
       const transverseRightAnteriorPoints = [];
