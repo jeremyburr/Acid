@@ -17,7 +17,7 @@
 
     let camera, scene, renderer, controls;
     let mesh0, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7;
-    let transverseTubeRight, transverseTubeLeft, coronalTubeTop, coronalTubeBottom, saggitalTubeAnterior, saggitalTubePosterior;
+    let transverseTubeRight, transverseTubeLeft, coronalTubeTop, coronalTubeBottom, saggitalTubeFront, saggitalTubeBack;
     let coronalTopRight, coronalTopLeft, coronalTopBack, coronalTopFront;
     let coronalBottomRight, coronalBottomLeft, coronalBottomBack, coronalBottomFront;
     let saggitalBackTop, saggitalBackBottom, saggitalBackLeft, saggitalBackRight;
@@ -62,6 +62,8 @@
 
       // Transverse 
 
+      // RIGHT
+
       const transverseTubeRightPoints = [];
       //transverseTubeRightPoints.push( new THREE.Vector3( -unitLength, 0, 0 ) );
       transverseTubeRightPoints.push( new THREE.Vector3( 0, 0, 0 ) );
@@ -71,6 +73,44 @@
       const transverseTubeRightGeometry = new THREE.TubeGeometry(transverseTubeRightCurve, 64, .25, 16, false)
       transverseTubeRight = new THREE.Mesh(transverseTubeRightGeometry, tubeMaterial);
       unit.add(transverseTubeRight);
+
+      // Transverse Right Top
+      const transverseRightTopPoints = [];
+      transverseRightTopPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightTopPoints.push( new THREE.Vector3( 2*unitLength, unitLength, 0 ) );
+      const transverseRightTopCurve = new THREE.CatmullRomCurve3(transverseRightTopPoints);
+      const transverseRightTopGeometry = new THREE.TubeGeometry(transverseRightTopCurve, 64, .25, 16, false)
+      transverseRightTop = new THREE.Mesh(transverseRightTopGeometry, tubeMaterial);
+      unit.add(transverseRightTop);
+
+      // Tranverse Right Bottom
+      const transverseRightBottomPoints = [];
+      transverseRightBottomPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightBottomPoints.push( new THREE.Vector3( 2*unitLength, -unitLength, 0 ) );
+      const transverseRightBottomCurve = new THREE.CatmullRomCurve3(transverseRightBottomPoints);
+      const transverseRightBottomGeometry = new THREE.TubeGeometry(transverseRightBottomCurve, 64, .25, 16, false)
+      transverseRightBottom = new THREE.Mesh(transverseRightBottomGeometry, tubeMaterial);
+      unit.add(transverseRightBottom);
+
+      // Tranverse Right Front
+      const transverseRightFrontPoints = [];
+      transverseRightFrontPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightFrontPoints.push( new THREE.Vector3( 2*unitLength, 0, -unitLength ) );
+      const transverseRightFrontCurve = new THREE.CatmullRomCurve3(transverseRightFrontPoints);
+      const transverseRightFrontGeometry = new THREE.TubeGeometry(transverseRightFrontCurve, 64, .25, 16, false)
+      transverseRightFront = new THREE.Mesh(transverseRightFrontGeometry, tubeMaterial);
+      unit.add(transverseRightFront);
+
+      // Tranverse Right Back
+      const transverseRightBackPoints = [];
+      transverseRightBackPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
+      transverseRightBackPoints.push( new THREE.Vector3( 2*unitLength, 0, unitLength ) );
+      const transverseRightBackCurve = new THREE.CatmullRomCurve3(transverseRightBackPoints);
+      const transverseRightBackGeometry = new THREE.TubeGeometry(transverseRightBackCurve, 64, .25, 16, false)
+      transverseRightBack = new THREE.Mesh(transverseRightBackGeometry, tubeMaterial);
+      unit.add(transverseRightBack);
+
+      // LEFT
 
       const transverseTubeLeftPoints = [];
       transverseTubeLeftPoints.push( new THREE.Vector3( 0, 0, 0 ) );
@@ -116,43 +156,9 @@
       transverseLeftBack = new THREE.Mesh(transverseLeftBackGeometry, tubeMaterial);
       unit.add(transverseLeftBack);
 
-      // Transverse Right Top
-      const transverseRightTopPoints = [];
-      transverseRightTopPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
-      transverseRightTopPoints.push( new THREE.Vector3( 2*unitLength, unitLength, 0 ) );
-      const transverseRightTopCurve = new THREE.CatmullRomCurve3(transverseRightTopPoints);
-      const transverseRightTopGeometry = new THREE.TubeGeometry(transverseRightTopCurve, 64, .25, 16, false)
-      transverseRightTop = new THREE.Mesh(transverseRightTopGeometry, tubeMaterial);
-      unit.add(transverseRightTop);
-
-      // Tranverse Right Bottom
-      const transverseRightBottomPoints = [];
-      transverseRightBottomPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
-      transverseRightBottomPoints.push( new THREE.Vector3( 2*unitLength, -unitLength, 0 ) );
-      const transverseRightBottomCurve = new THREE.CatmullRomCurve3(transverseRightBottomPoints);
-      const transverseRightBottomGeometry = new THREE.TubeGeometry(transverseRightBottomCurve, 64, .25, 16, false)
-      transverseRightBottom = new THREE.Mesh(transverseRightBottomGeometry, tubeMaterial);
-      unit.add(transverseRightBottom);
-
-      // Tranverse Right Front
-      const transverseRightFrontPoints = [];
-      transverseRightFrontPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
-      transverseRightFrontPoints.push( new THREE.Vector3( 2*unitLength, 0, -unitLength ) );
-      const transverseRightFrontCurve = new THREE.CatmullRomCurve3(transverseRightFrontPoints);
-      const transverseRightFrontGeometry = new THREE.TubeGeometry(transverseRightFrontCurve, 64, .25, 16, false)
-      transverseRightFront = new THREE.Mesh(transverseRightFrontGeometry, tubeMaterial);
-      unit.add(transverseRightFront);
-
-      // Tranverse Right Back
-      const transverseRightBackPoints = [];
-      transverseRightBackPoints.push( new THREE.Vector3( unitLength, 0, 0 ) );
-      transverseRightBackPoints.push( new THREE.Vector3( 2*unitLength, 0, unitLength ) );
-      const transverseRightBackCurve = new THREE.CatmullRomCurve3(transverseRightBackPoints);
-      const transverseRightBackGeometry = new THREE.TubeGeometry(transverseRightBackCurve, 64, .25, 16, false)
-      transverseRightBack = new THREE.Mesh(transverseRightBackGeometry, tubeMaterial);
-      unit.add(transverseRightBack);
-
       // Coronal 
+
+      // TOP
 
       const coronalTubeTopPoints = [];
       coronalTubeTopPoints.push( new THREE.Vector3( 0, 0, 0 ) );
@@ -161,14 +167,6 @@
       const coronalTubeTopGeometry = new THREE.TubeGeometry(coronalTubeTopCurve, 64, .25, 16, false)
       coronalTubeTop = new THREE.Mesh(coronalTubeTopGeometry, tubeMaterial);
       unit.add(coronalTubeTop);
-
-      const coronalTubeBottomPoints = [];
-      coronalTubeBottomPoints.push( new THREE.Vector3( 0, 0, 0 ) );
-      coronalTubeBottomPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
-      const coronalTubeBottomCurve = new THREE.CatmullRomCurve3(coronalTubeBottomPoints);
-      const coronalTubeBottomGeometry = new THREE.TubeGeometry(coronalTubeBottomCurve, 64, .25, 16, false)
-      coronalTubeBottom = new THREE.Mesh(coronalTubeBottomGeometry, tubeMaterial);
-      unit.add(coronalTubeBottom);
 
       // Coronal Top Right
       const coronalTopRightPoints = [];
@@ -187,24 +185,6 @@
       const coronalTopLeftGeometry = new THREE.TubeGeometry(coronalTopLeftCurve, 64, .25, 16, false)
       coronalTopLeft = new THREE.Mesh(coronalTopLeftGeometry, tubeMaterial);
       unit.add(coronalTopLeft);
-      
-      // Coronal Bottom Right
-      const coronalBottomRightPoints = [];
-      coronalBottomRightPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
-      coronalBottomRightPoints.push( new THREE.Vector3( unitLength, -2*unitLength, 0 ) );
-      const coronalBottomRightCurve = new THREE.CatmullRomCurve3(coronalBottomRightPoints);
-      const coronalBottomRightGeometry = new THREE.TubeGeometry(coronalBottomRightCurve, 64, .25, 16, false)
-      coronalBottomRight = new THREE.Mesh(coronalBottomRightGeometry, tubeMaterial);
-      unit.add(coronalBottomRight);
-
-      // Coronal Bottom Left
-      const coronalBottomLeftPoints = [];
-      coronalBottomLeftPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
-      coronalBottomLeftPoints.push( new THREE.Vector3( -unitLength, -2*unitLength, 0 ) );
-      const coronalBottomLeftCurve = new THREE.CatmullRomCurve3(coronalBottomLeftPoints);
-      const coronalBottomLeftGeometry = new THREE.TubeGeometry(coronalBottomLeftCurve, 64, .25, 16, false)
-      coronalBottomLeft = new THREE.Mesh(coronalBottomLeftGeometry, tubeMaterial);
-      unit.add(coronalBottomLeft);
 
       // Coronal Top Back
       const coronalTopBackPoints = [];
@@ -224,6 +204,34 @@
       coronalTopFront = new THREE.Mesh(coronalTopFrontGeometry, tubeMaterial);
       unit.add(coronalTopFront);
 
+      // BOTTOM
+
+      const coronalTubeBottomPoints = [];
+      coronalTubeBottomPoints.push( new THREE.Vector3( 0, 0, 0 ) );
+      coronalTubeBottomPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
+      const coronalTubeBottomCurve = new THREE.CatmullRomCurve3(coronalTubeBottomPoints);
+      const coronalTubeBottomGeometry = new THREE.TubeGeometry(coronalTubeBottomCurve, 64, .25, 16, false)
+      coronalTubeBottom = new THREE.Mesh(coronalTubeBottomGeometry, tubeMaterial);
+      unit.add(coronalTubeBottom);
+      
+      // Coronal Bottom Right
+      const coronalBottomRightPoints = [];
+      coronalBottomRightPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
+      coronalBottomRightPoints.push( new THREE.Vector3( unitLength, -2*unitLength, 0 ) );
+      const coronalBottomRightCurve = new THREE.CatmullRomCurve3(coronalBottomRightPoints);
+      const coronalBottomRightGeometry = new THREE.TubeGeometry(coronalBottomRightCurve, 64, .25, 16, false)
+      coronalBottomRight = new THREE.Mesh(coronalBottomRightGeometry, tubeMaterial);
+      unit.add(coronalBottomRight);
+
+      // Coronal Bottom Left
+      const coronalBottomLeftPoints = [];
+      coronalBottomLeftPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
+      coronalBottomLeftPoints.push( new THREE.Vector3( -unitLength, -2*unitLength, 0 ) );
+      const coronalBottomLeftCurve = new THREE.CatmullRomCurve3(coronalBottomLeftPoints);
+      const coronalBottomLeftGeometry = new THREE.TubeGeometry(coronalBottomLeftCurve, 64, .25, 16, false)
+      coronalBottomLeft = new THREE.Mesh(coronalBottomLeftGeometry, tubeMaterial);
+      unit.add(coronalBottomLeft);
+
       // Coronal Bottom Back
       const coronalBottomBackPoints = [];
       coronalBottomBackPoints.push( new THREE.Vector3( 0, -unitLength, 0 ) );
@@ -241,25 +249,18 @@
       const coronalBottomFrontGeometry = new THREE.TubeGeometry(coronalBottomFrontCurve, 64, .25, 16, false)
       coronalBottomFront = new THREE.Mesh(coronalBottomFrontGeometry, tubeMaterial);
       unit.add(coronalBottomFront);
-      
 
       // Saggital 
 
-      const saggitalTubeAnteriorPoints = [];
-      saggitalTubeAnteriorPoints.push( new THREE.Vector3( 0, 0, 0 ) );
-      saggitalTubeAnteriorPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
-      const saggitalTubeAnteriorCurve = new THREE.CatmullRomCurve3(saggitalTubeAnteriorPoints);
-      const saggitalTubeAnteriorGeometry = new THREE.TubeGeometry(saggitalTubeAnteriorCurve, 64, .25, 16, false)
-      saggitalTubeAnterior = new THREE.Mesh(saggitalTubeAnteriorGeometry, tubeMaterial);
-      unit.add(saggitalTubeAnterior);
+      // Front
 
-      const saggitalTubePosteriorPoints = [];
-      saggitalTubePosteriorPoints.push( new THREE.Vector3( 0, 0, 0 ) );
-      saggitalTubePosteriorPoints.push( new THREE.Vector3( 0, 0, -unitLength ) );
-      const saggitalTubePosteriorCurve = new THREE.CatmullRomCurve3(saggitalTubePosteriorPoints);
-      const saggitalTubePosteriorGeometry = new THREE.TubeGeometry(saggitalTubePosteriorCurve, 64, .25, 16, false)
-      saggitalTubePosterior = new THREE.Mesh(saggitalTubePosteriorGeometry, tubeMaterial);
-      unit.add(saggitalTubePosterior);
+      const saggitalTubeFrontPoints = [];
+      saggitalTubeFrontPoints.push( new THREE.Vector3( 0, 0, 0 ) );
+      saggitalTubeFrontPoints.push( new THREE.Vector3( 0, 0, unitLength ) );
+      const saggitalTubeFrontCurve = new THREE.CatmullRomCurve3(saggitalTubeFrontPoints);
+      const saggitalTubeFrontGeometry = new THREE.TubeGeometry(saggitalTubeFrontCurve, 64, .25, 16, false)
+      saggitalTubeFront = new THREE.Mesh(saggitalTubeFrontGeometry, tubeMaterial);
+      unit.add(saggitalTubeFront);
 
       // Saggital Front Top
 
@@ -300,6 +301,16 @@
       const saggitalFrontRightGeometry = new THREE.TubeGeometry(saggitalFrontRightCurve, 64, .25, 16, false)
       saggitalFrontRight = new THREE.Mesh(saggitalFrontRightGeometry, tubeMaterial);
       unit.add(saggitalFrontRight);
+
+      // Back
+
+      const saggitalTubeBackPoints = [];
+      saggitalTubeBackPoints.push( new THREE.Vector3( 0, 0, 0 ) );
+      saggitalTubeBackPoints.push( new THREE.Vector3( 0, 0, -unitLength ) );
+      const saggitalTubeBackCurve = new THREE.CatmullRomCurve3(saggitalTubeBackPoints);
+      const saggitalTubeBackGeometry = new THREE.TubeGeometry(saggitalTubeBackCurve, 64, .25, 16, false)
+      saggitalTubeBack = new THREE.Mesh(saggitalTubeBackGeometry, tubeMaterial);
+      unit.add(saggitalTubeBack);
 
       // Saggital Back Top
 
