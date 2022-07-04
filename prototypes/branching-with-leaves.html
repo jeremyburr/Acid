@@ -60,69 +60,26 @@
         //emissive: 'red'
       });
 
-      function addSegment(name, start, end) {
+      // Add Segment
 
+      function addSegment(name, start, end) {
         const coordinates = [];
         coordinates.push(new THREE.Vector3(start[0],start[1],start[2]));
         coordinates.push(new THREE.Vector3(end[0],end[1],end[2]));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-
         const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
-        console.log(transverseTubeRight);
         unit.add(globalThis[name]);
       }
 
+      // Tranverse 
+
       addSegment("transverseTubeRight", [0, 0, 0], [unitLength, 0, 0])
-
-      // Transverse 
-
-      // Right
-
-      /*const transverseTubeRightPoints = [];
-      transverseTubeRightPoints.push(new THREE.Vector3(0, 0, 0));
-      transverseTubeRightPoints.push(new THREE.Vector3(unitLength, 0, 0));
-
-      const transverseTubeRightCurve = new THREE.CatmullRomCurve3(transverseTubeRightPoints);
-      const transverseTubeRightGeometry = new THREE.TubeGeometry(transverseTubeRightCurve, 64, .25, 16, false)
-      transverseTubeRight = new THREE.Mesh(transverseTubeRightGeometry, tubeMaterial);
-      unit.add(transverseTubeRight);*/
-
-      // Transverse Right Top
-      const transverseRightTopPoints = [];
-      transverseRightTopPoints.push(new THREE.Vector3(unitLength, 0, 0));
-      transverseRightTopPoints.push(new THREE.Vector3(2 * unitLength, unitLength, 0));
-      const transverseRightTopCurve = new THREE.CatmullRomCurve3(transverseRightTopPoints);
-      const transverseRightTopGeometry = new THREE.TubeGeometry(transverseRightTopCurve, 64, .25, 16, false)
-      transverseRightTop = new THREE.Mesh(transverseRightTopGeometry, tubeMaterial);
-      unit.add(transverseRightTop);
-
-      // Tranverse Right Bottom
-      const transverseRightBottomPoints = [];
-      transverseRightBottomPoints.push(new THREE.Vector3(unitLength, 0, 0));
-      transverseRightBottomPoints.push(new THREE.Vector3(2 * unitLength, -unitLength, 0));
-      const transverseRightBottomCurve = new THREE.CatmullRomCurve3(transverseRightBottomPoints);
-      const transverseRightBottomGeometry = new THREE.TubeGeometry(transverseRightBottomCurve, 64, .25, 16, false)
-      transverseRightBottom = new THREE.Mesh(transverseRightBottomGeometry, tubeMaterial);
-      unit.add(transverseRightBottom);
-
-      // Tranverse Right Front
-      const transverseRightFrontPoints = [];
-      transverseRightFrontPoints.push(new THREE.Vector3(unitLength, 0, 0));
-      transverseRightFrontPoints.push(new THREE.Vector3(2 * unitLength, 0, -unitLength));
-      const transverseRightFrontCurve = new THREE.CatmullRomCurve3(transverseRightFrontPoints);
-      const transverseRightFrontGeometry = new THREE.TubeGeometry(transverseRightFrontCurve, 64, .25, 16, false)
-      transverseRightFront = new THREE.Mesh(transverseRightFrontGeometry, tubeMaterial);
-      unit.add(transverseRightFront);
-
-      // Tranverse Right Back
-      const transverseRightBackPoints = [];
-      transverseRightBackPoints.push(new THREE.Vector3(unitLength, 0, 0));
-      transverseRightBackPoints.push(new THREE.Vector3(2 * unitLength, 0, unitLength));
-      const transverseRightBackCurve = new THREE.CatmullRomCurve3(transverseRightBackPoints);
-      const transverseRightBackGeometry = new THREE.TubeGeometry(transverseRightBackCurve, 64, .25, 16, false)
-      transverseRightBack = new THREE.Mesh(transverseRightBackGeometry, tubeMaterial);
-      unit.add(transverseRightBack);
+      addSegment("transverseRightTop", [unitLength, 0, 0], [2 * unitLength, unitLength, 0])
+      addSegment("transverseRightBottom", [unitLength, 0, 0], [2 * unitLength, -unitLength, 0])
+      addSegment("transverseRightFront", [unitLength, 0, 0], [2 * unitLength, 0, -unitLength])
+      addSegment("transverseRightBack", [unitLength, 0, 0], [2 * unitLength, 0, unitLength])
+      
 
       // Left
 
