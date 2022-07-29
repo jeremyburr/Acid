@@ -72,7 +72,7 @@
 
       // Tranverse - Right
 
-      addSegment("transverseTubeRight", [0, 0, 0], [unitLength, 0, 0])
+      addSegment("transverseRight", [0, 0, 0], [unitLength, 0, 0])
       addSegment("transverseRightTop", [unitLength, 0, 0], [2 * unitLength, unitLength, 0])
       addSegment("transverseRightBottom", [unitLength, 0, 0], [2 * unitLength, -unitLength, 0])
       addSegment("transverseRightFront", [unitLength, 0, 0], [2 * unitLength, 0, -unitLength])
@@ -80,97 +80,28 @@
 
       // Tranverse - Left
 
-      addSegment("transverseTubeLeft", [0, 0, 0], [-unitLength, 0, 0])
+      addSegment("transverseLeft", [0, 0, 0], [-unitLength, 0, 0])
       addSegment("transverseLeftTop", [-unitLength, 0, 0], [-2 * unitLength, unitLength, 0])
       addSegment("transverseLeftBottom", [-unitLength, 0, 0], [-2 * unitLength, -unitLength, 0])
       addSegment("transverseLeftFront", [-unitLength, 0, 0], [-2 * unitLength, 0, -unitLength])
       addSegment("transverseLeftBack", [-unitLength, 0, 0], [-2 * unitLength, 0, unitLength])
+
+      // Coronal  - Top
+
+      addSegment("coronalTop", [0, 0, 0], [0,unitLength, 0])
+      addSegment("coronalTopRight", [0, unitLength, 0], [unitLength,2 * unitLength, 0])
+      addSegment("coronalTopLeft", [0, unitLength, 0], [-unitLength,2 * unitLength, 0])
+      addSegment("coronalTopBack", [0, unitLength, 0], [0,2 * unitLength, -unitLength])
+
+      // Coronal  - Top Front
+
+      addSegment("coronalTopFront", [0, unitLength, 0], [0,2 * unitLength, unitLength])
+      addSegment("coronalBottom", [0, 0, 0], [0, -unitLength, 0])
+      addSegment("coronalBottomRight", [0, -unitLength, 0], [unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomLeft", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomBack", [0, -unitLength, 0], [0, -unitLength, -2 * unitLength, 0])
+
       
-
-      // Coronal 
-
-      // Top
-
-      const coronalTubeTopPoints = [];
-      coronalTubeTopPoints.push(new THREE.Vector3(0, 0, 0));
-      coronalTubeTopPoints.push(new THREE.Vector3(0, unitLength, 0));
-      const coronalTubeTopCurve = new THREE.CatmullRomCurve3(coronalTubeTopPoints);
-      const coronalTubeTopGeometry = new THREE.TubeGeometry(coronalTubeTopCurve, 64, .25, 16, false)
-      coronalTubeTop = new THREE.Mesh(coronalTubeTopGeometry, tubeMaterial);
-      unit.add(coronalTubeTop);
-
-      // Coronal Top Right
-      const coronalTopRightPoints = [];
-      coronalTopRightPoints.push(new THREE.Vector3(0, unitLength, 0));
-      coronalTopRightPoints.push(new THREE.Vector3(unitLength, 2 * unitLength, 0));
-      const coronalTopRightCurve = new THREE.CatmullRomCurve3(coronalTopRightPoints);
-      const coronalTopRightGeometry = new THREE.TubeGeometry(coronalTopRightCurve, 64, .25, 16, false)
-      coronalTopRight = new THREE.Mesh(coronalTopRightGeometry, tubeMaterial);
-      unit.add(coronalTopRight);
-
-      // Coronal Top Left
-      const coronalTopLeftPoints = [];
-      coronalTopLeftPoints.push(new THREE.Vector3(0, unitLength, 0));
-      coronalTopLeftPoints.push(new THREE.Vector3(-unitLength, 2 * unitLength, 0));
-      const coronalTopLeftCurve = new THREE.CatmullRomCurve3(coronalTopLeftPoints);
-      const coronalTopLeftGeometry = new THREE.TubeGeometry(coronalTopLeftCurve, 64, .25, 16, false)
-      coronalTopLeft = new THREE.Mesh(coronalTopLeftGeometry, tubeMaterial);
-      unit.add(coronalTopLeft);
-
-      // Coronal Top Back
-      const coronalTopBackPoints = [];
-      coronalTopBackPoints.push(new THREE.Vector3(0, unitLength, 0));
-      coronalTopBackPoints.push(new THREE.Vector3(0, 2 * unitLength, -unitLength));
-      const coronalTopBackCurve = new THREE.CatmullRomCurve3(coronalTopBackPoints);
-      const coronalTopBackGeometry = new THREE.TubeGeometry(coronalTopBackCurve, 64, .25, 16, false)
-      coronalTopBack = new THREE.Mesh(coronalTopBackGeometry, tubeMaterial);
-      unit.add(coronalTopBack);
-
-      // Coronal Top Front
-      const coronalTopFrontPoints = [];
-      coronalTopFrontPoints.push(new THREE.Vector3(0, unitLength, 0));
-      coronalTopFrontPoints.push(new THREE.Vector3(0, 2 * unitLength, unitLength));
-      const coronalTopFrontCurve = new THREE.CatmullRomCurve3(coronalTopFrontPoints);
-      const coronalTopFrontGeometry = new THREE.TubeGeometry(coronalTopFrontCurve, 64, .25, 16, false)
-      coronalTopFront = new THREE.Mesh(coronalTopFrontGeometry, tubeMaterial);
-      unit.add(coronalTopFront);
-
-      // Bottom
-
-      const coronalTubeBottomPoints = [];
-      coronalTubeBottomPoints.push(new THREE.Vector3(0, 0, 0));
-      coronalTubeBottomPoints.push(new THREE.Vector3(0, -unitLength, 0));
-      const coronalTubeBottomCurve = new THREE.CatmullRomCurve3(coronalTubeBottomPoints);
-      const coronalTubeBottomGeometry = new THREE.TubeGeometry(coronalTubeBottomCurve, 64, .25, 16, false)
-      coronalTubeBottom = new THREE.Mesh(coronalTubeBottomGeometry, tubeMaterial);
-      unit.add(coronalTubeBottom);
-
-      // Coronal Bottom Right
-      const coronalBottomRightPoints = [];
-      coronalBottomRightPoints.push(new THREE.Vector3(0, -unitLength, 0));
-      coronalBottomRightPoints.push(new THREE.Vector3(unitLength, -2 * unitLength, 0));
-      const coronalBottomRightCurve = new THREE.CatmullRomCurve3(coronalBottomRightPoints);
-      const coronalBottomRightGeometry = new THREE.TubeGeometry(coronalBottomRightCurve, 64, .25, 16, false)
-      coronalBottomRight = new THREE.Mesh(coronalBottomRightGeometry, tubeMaterial);
-      unit.add(coronalBottomRight);
-
-      // Coronal Bottom Left
-      const coronalBottomLeftPoints = [];
-      coronalBottomLeftPoints.push(new THREE.Vector3(0, -unitLength, 0));
-      coronalBottomLeftPoints.push(new THREE.Vector3(-unitLength, -2 * unitLength, 0));
-      const coronalBottomLeftCurve = new THREE.CatmullRomCurve3(coronalBottomLeftPoints);
-      const coronalBottomLeftGeometry = new THREE.TubeGeometry(coronalBottomLeftCurve, 64, .25, 16, false)
-      coronalBottomLeft = new THREE.Mesh(coronalBottomLeftGeometry, tubeMaterial);
-      unit.add(coronalBottomLeft);
-
-      // Coronal Bottom Back
-      const coronalBottomBackPoints = [];
-      coronalBottomBackPoints.push(new THREE.Vector3(0, -unitLength, 0));
-      coronalBottomBackPoints.push(new THREE.Vector3(0, -2 * unitLength, -unitLength));
-      const coronalBottomBackCurve = new THREE.CatmullRomCurve3(coronalBottomBackPoints);
-      const coronalBottomBackGeometry = new THREE.TubeGeometry(coronalBottomBackCurve, 64, .25, 16, false)
-      coronalBottomBack = new THREE.Mesh(coronalBottomBackGeometry, tubeMaterial);
-      unit.add(coronalBottomBack);
 
       // Coronal Botom Front
       const coronalBottomFrontPoints = [];
