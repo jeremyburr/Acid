@@ -98,121 +98,23 @@
       addSegment("coronalTopFront", [0, unitLength, 0], [0,2 * unitLength, unitLength])
       addSegment("coronalBottom", [0, 0, 0], [0, -unitLength, 0])
       addSegment("coronalBottomRight", [0, -unitLength, 0], [unitLength, -2 * unitLength, 0])
-      addSegment("coronalBottomLeft", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
-      addSegment("coronalBottomBack", [0, -unitLength, 0], [0, -unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomLeft", [0, -unitLength, 0], [0, -2 * unitLength, unitLength])
+      addSegment("coronalBottomBack", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomFront", [0, -unitLength, 0], [0, -2 * unitLength, -unitLength])
 
+      // Saggital - Front
+
+      addSegment("saggitalFront", [0, 0, 0], [0, 0, unitLength])
+      addSegment("saggitalFrontTop", [0, 0, -unitLength], [0, unitLength, -2 * unitLength])
+      addSegment("saggitalFrontBottom", [0, 0, -unitLength], [0, -unitLength, -2 * unitLength])
+      addSegment("saggitalFrontLeft", [0, 0, -unitLength], [-unitLength, 0, -2 * unitLength])
+      addSegment("saggitalFrontRight", [0, 0, -unitLength], [unitLength, 0, -2 * unitLength])
+      addSegment("saggitalBack", [0, 0, 0], [0, 0, -unitLength])
+      addSegment("saggitalBackTop", [0, 0, unitLength], [0, unitLength, 2 * unitLength])
+      addSegment("saggitalBackBottom", [0, 0, unitLength], [0, -unitLength, 2 * unitLength])
+      addSegment("saggitalBackLeft", [0, 0, unitLength], [-unitLength, 0, 2 * unitLength])
+      addSegment("saggitalBackRight", [0, 0, unitLength], [unitLength, 0, 2 * unitLength])
       
-
-      // Coronal Botom Front
-      const coronalBottomFrontPoints = [];
-      coronalBottomFrontPoints.push(new THREE.Vector3(0, -unitLength, 0));
-      coronalBottomFrontPoints.push(new THREE.Vector3(0, -2 * unitLength, unitLength));
-      const coronalBottomFrontCurve = new THREE.CatmullRomCurve3(coronalBottomFrontPoints);
-      const coronalBottomFrontGeometry = new THREE.TubeGeometry(coronalBottomFrontCurve, 64, .25, 16, false)
-      coronalBottomFront = new THREE.Mesh(coronalBottomFrontGeometry, tubeMaterial);
-      unit.add(coronalBottomFront);
-
-      // Saggital 
-
-      // Front
-
-      const saggitalTubeFrontPoints = [];
-      saggitalTubeFrontPoints.push(new THREE.Vector3(0, 0, 0));
-      saggitalTubeFrontPoints.push(new THREE.Vector3(0, 0, unitLength));
-      const saggitalTubeFrontCurve = new THREE.CatmullRomCurve3(saggitalTubeFrontPoints);
-      const saggitalTubeFrontGeometry = new THREE.TubeGeometry(saggitalTubeFrontCurve, 64, .25, 16, false)
-      saggitalTubeFront = new THREE.Mesh(saggitalTubeFrontGeometry, tubeMaterial);
-      unit.add(saggitalTubeFront);
-
-      // Saggital Front Top
-
-      const saggitalFrontTopPoints = [];
-      saggitalFrontTopPoints.push(new THREE.Vector3(0, 0, -unitLength));
-      saggitalFrontTopPoints.push(new THREE.Vector3(0, unitLength, -2 * unitLength));
-      const saggitalFrontTopCurve = new THREE.CatmullRomCurve3(saggitalFrontTopPoints);
-      const saggitalFrontTopGeometry = new THREE.TubeGeometry(saggitalFrontTopCurve, 64, .25, 16, false)
-      saggitalFrontTop = new THREE.Mesh(saggitalFrontTopGeometry, tubeMaterial);
-      unit.add(saggitalFrontTop);
-
-      // Saggital Front Bottom
-
-      const saggitalFrontBottomPoints = [];
-      saggitalFrontBottomPoints.push(new THREE.Vector3(0, 0, -unitLength));
-      saggitalFrontBottomPoints.push(new THREE.Vector3(0, -unitLength, -2 * unitLength));
-      const saggitalFrontBottomCurve = new THREE.CatmullRomCurve3(saggitalFrontBottomPoints);
-      const saggitalFrontBottomGeometry = new THREE.TubeGeometry(saggitalFrontBottomCurve, 64, .25, 16, false)
-      saggitalFrontBottom = new THREE.Mesh(saggitalFrontBottomGeometry, tubeMaterial);
-      unit.add(saggitalFrontBottom);
-
-      // Saggital Front Left
-
-      const saggitalFrontLeftPoints = [];
-      saggitalFrontLeftPoints.push(new THREE.Vector3(0, 0, -unitLength));
-      saggitalFrontLeftPoints.push(new THREE.Vector3(-unitLength, 0, -2 * unitLength));
-      const saggitalFrontLeftCurve = new THREE.CatmullRomCurve3(saggitalFrontLeftPoints);
-      const saggitalFrontLeftGeometry = new THREE.TubeGeometry(saggitalFrontLeftCurve, 64, .25, 16, false)
-      saggitalFrontLeft = new THREE.Mesh(saggitalFrontLeftGeometry, tubeMaterial);
-      unit.add(saggitalFrontLeft);
-
-      // Saggital Front Right
-
-      const saggitalFrontRightPoints = [];
-      saggitalFrontRightPoints.push(new THREE.Vector3(0, 0, -unitLength));
-      saggitalFrontRightPoints.push(new THREE.Vector3(unitLength, 0, -2 * unitLength));
-      const saggitalFrontRightCurve = new THREE.CatmullRomCurve3(saggitalFrontRightPoints);
-      const saggitalFrontRightGeometry = new THREE.TubeGeometry(saggitalFrontRightCurve, 64, .25, 16, false)
-      saggitalFrontRight = new THREE.Mesh(saggitalFrontRightGeometry, tubeMaterial);
-      unit.add(saggitalFrontRight);
-
-      // Back
-
-      const saggitalTubeBackPoints = [];
-      saggitalTubeBackPoints.push(new THREE.Vector3(0, 0, 0));
-      saggitalTubeBackPoints.push(new THREE.Vector3(0, 0, -unitLength));
-      const saggitalTubeBackCurve = new THREE.CatmullRomCurve3(saggitalTubeBackPoints);
-      const saggitalTubeBackGeometry = new THREE.TubeGeometry(saggitalTubeBackCurve, 64, .25, 16, false)
-      saggitalTubeBack = new THREE.Mesh(saggitalTubeBackGeometry, tubeMaterial);
-      unit.add(saggitalTubeBack);
-
-      // Saggital Back Top
-
-      const saggitalBackTopPoints = [];
-      saggitalBackTopPoints.push(new THREE.Vector3(0, 0, unitLength));
-      saggitalBackTopPoints.push(new THREE.Vector3(0, unitLength, 2 * unitLength));
-      const saggitalBackTopCurve = new THREE.CatmullRomCurve3(saggitalBackTopPoints);
-      const saggitalBackTopGeometry = new THREE.TubeGeometry(saggitalBackTopCurve, 64, .25, 16, false)
-      saggitalBackTop = new THREE.Mesh(saggitalBackTopGeometry, tubeMaterial);
-      unit.add(saggitalBackTop);
-
-      // Saggital Back Bottom
-
-      const saggitalBackBottomPoints = [];
-      saggitalBackBottomPoints.push(new THREE.Vector3(0, 0, unitLength));
-      saggitalBackBottomPoints.push(new THREE.Vector3(0, -unitLength, 2 * unitLength));
-      const saggitalBackBottomCurve = new THREE.CatmullRomCurve3(saggitalBackBottomPoints);
-      const saggitalBackBottomGeometry = new THREE.TubeGeometry(saggitalBackBottomCurve, 64, .25, 16, false)
-      saggitalBackBottom = new THREE.Mesh(saggitalBackBottomGeometry, tubeMaterial);
-      unit.add(saggitalBackBottom);
-
-      // Saggital Back Left
-
-      const saggitalBackLeftPoints = [];
-      saggitalBackLeftPoints.push(new THREE.Vector3(0, 0, unitLength));
-      saggitalBackLeftPoints.push(new THREE.Vector3(-unitLength, 0, 2 * unitLength));
-      const saggitalBackLeftCurve = new THREE.CatmullRomCurve3(saggitalBackLeftPoints);
-      const saggitalBackLeftGeometry = new THREE.TubeGeometry(saggitalBackLeftCurve, 64, .25, 16, false)
-      saggitalBackLeft = new THREE.Mesh(saggitalBackLeftGeometry, tubeMaterial);
-      unit.add(saggitalBackLeft);
-
-      // Saggital Back Right
-
-      const saggitalBackRightPoints = [];
-      saggitalBackRightPoints.push(new THREE.Vector3(0, 0, unitLength));
-      saggitalBackRightPoints.push(new THREE.Vector3(unitLength, 0, 2 * unitLength));
-      const saggitalBackRightCurve = new THREE.CatmullRomCurve3(saggitalBackRightPoints);
-      const saggitalBackRightGeometry = new THREE.TubeGeometry(saggitalBackRightCurve, 64, .25, 16, false)
-      saggitalBackRight = new THREE.Mesh(saggitalBackRightGeometry, tubeMaterial);
-      unit.add(saggitalBackRight);
 
       scene.add(unit);
 
