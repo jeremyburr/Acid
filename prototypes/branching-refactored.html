@@ -42,10 +42,6 @@
       document.body.appendChild(renderer.domElement);
       controls = new TrackballControls(camera, renderer.domElement);
 
-      /*import { OrbitControls } from '../js/OrbitControls.js';
-      controls.autoRotate = true; 
-      const controls = new OrbitControls(camera, renderer.domElement);*/
-
       window.addEventListener('resize', onWindowResize);
 
       unit = new THREE.Group();
@@ -70,21 +66,21 @@
         unit.add(globalThis[name]);
       }
 
-      // Tranverse - Right
-
-      addSegment("transverseRight", [0, 0, 0], [unitLength, 0, 0])
-      addSegment("transverseRightTop", [unitLength, 0, 0], [2 * unitLength, unitLength, 0])
-      addSegment("transverseRightBottom", [unitLength, 0, 0], [2 * unitLength, -unitLength, 0])
-      addSegment("transverseRightFront", [unitLength, 0, 0], [2 * unitLength, 0, -unitLength])
-      addSegment("transverseRightBack", [unitLength, 0, 0], [2 * unitLength, 0, unitLength])
-
       // Tranverse - Left
 
-      addSegment("transverseLeft", [0, 0, 0], [-unitLength, 0, 0])
-      addSegment("transverseLeftTop", [-unitLength, 0, 0], [-2 * unitLength, unitLength, 0])
-      addSegment("transverseLeftBottom", [-unitLength, 0, 0], [-2 * unitLength, -unitLength, 0])
-      addSegment("transverseLeftFront", [-unitLength, 0, 0], [-2 * unitLength, 0, -unitLength])
-      addSegment("transverseLeftBack", [-unitLength, 0, 0], [-2 * unitLength, 0, unitLength])
+      addSegment("transverseLeft", [0, 0, 0], [unitLength, 0, 0])
+      addSegment("transverseLeftTop", [unitLength, 0, 0], [2 * unitLength, unitLength, 0])
+      addSegment("transverseLeftBottom", [unitLength, 0, 0], [2 * unitLength, -unitLength, 0])
+      addSegment("transverseLeftFront", [unitLength, 0, 0], [2 * unitLength, 0, -unitLength])
+      addSegment("transverseLeftBack", [unitLength, 0, 0], [2 * unitLength, 0, unitLength])
+
+      // Tranverse - Right
+
+      addSegment("transverseRight", [0, 0, 0], [-unitLength, 0, 0])
+      addSegment("transverseRightTop", [-unitLength, 0, 0], [-2 * unitLength, unitLength, 0])
+      addSegment("transverseRightBottom", [-unitLength, 0, 0], [-2 * unitLength, -unitLength, 0])
+      addSegment("transverseRightBack", [-unitLength, 0, 0], [-2 * unitLength, 0, -unitLength])
+      addSegment("transverseRightFront", [-unitLength, 0, 0], [-2 * unitLength, 0, unitLength])
 
       // Coronal  - Top
 
@@ -98,8 +94,8 @@
 
       addSegment("coronalBottom", [0, 0, 0], [0, -unitLength, 0])
       addSegment("coronalBottomLeft", [0, -unitLength, 0], [unitLength, -2 * unitLength, 0])
-      addSegment("coronalBottomRight", [0, -unitLength, 0], [0, -2 * unitLength, unitLength])
-      addSegment("coronalBottomFront", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomRight", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomFront", [0, -unitLength, 0], [0, -2 * unitLength, unitLength])
       addSegment("coronalBottomBack", [0, -unitLength, 0], [0, -2 * unitLength, -unitLength])
 
       // Saggital - Front
