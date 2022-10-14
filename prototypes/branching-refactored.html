@@ -66,6 +66,28 @@
         unit.add(globalThis[name]);
       }
 
+      //const directionalCosines = [cosX,cosY,cosZ];
+
+      function returnEndCoordinates(startCoordinates, magnitude, directionalCosines) {
+        console.log(startCoordinates);
+        console.log(magnitude);
+
+        console.log(directionalCosines);
+
+        let endCoordinates = [];
+
+        endCoordinates.push(directionalCosines[0]*magnitude);
+        endCoordinates.push(directionalCosines[1]*magnitude);
+        endCoordinates.push(directionalCosines[2]*magnitude);
+
+        console.log(endCoordinates);
+
+        return endCoordinates;
+
+      }
+
+      returnEndCoordinates([0,0,0],Math.sqrt(29),[-4/Math.sqrt(29),2/Math.sqrt(29),3/Math.sqrt(29)]);
+
       // Tranverse - Left
 
       addSegment("transverseLeft", [0, 0, 0], [unitLength, 0, 0])
