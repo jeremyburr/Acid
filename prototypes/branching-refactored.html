@@ -54,6 +54,13 @@
         //emissive: 'red'
       });
 
+      function degreesToRadians(degrees) {
+        var pi = Math.PI;
+        return degrees * (Math.PI / 180);
+      }
+
+      //console.log(Math.cos(degreesToRadians(45)));
+
       // Add Segment
 
       function addSegment(name, start, end) {
@@ -66,36 +73,37 @@
         unit.add(globalThis[name]);
       }
 
-      function degreesToRadians(degrees) {
-        var pi = Math.PI;
-        return degrees * (Math.PI / 180);
+      // Find End Coordinates for New Segment
+
+      function returnEndCoordinates(startPosition, magnitude, direction) {
+
+        const startX = startPosition[0];
+        const startY = startPosition[1];
+        const startZ = startPosition[2];
+
+        const dirX = direction[0];
+        const dirY = direction[1];
+        const dirZ = direction[2];
+
+        let endPosition = [];
+
+        endPosition.push(dirX*magnitude + startX);
+        endPosition.push(dirY*magnitude + startY);
+        endPosition.push(dirZ*magnitude + startZ);
+
+        return endPosition;
       }
 
-      function returnEndCoordinates(startCoordinates, magnitude, directionalCosines) {
+      function addSubBranches(startPosition, direction, magnitude) {
 
-        const startX = startCoordinates[0];
-        const startY = startCoordinates[1];
-        const startZ = startCoordinates[2];
-
-        const dirCosX = directionalCosines[0];
-        const dirCosY = directionalCosines[1];
-        const dirCosZ = directionalCosines[2];
-
-        let endCoordinates = [];
-
-        endCoordinates.push(dirCosX*magnitude + startX);
-        endCoordinates.push(dirCosY*magnitude + startY);
-        endCoordinates.push(dirCosZ*magnitude + startZ);
-
-        return endCoordinates;
       }
 
       // Coronal  - Top
 
-      addSegment("coronalTop", [0, 0, 0],returnEndCoordinates([0,0,0],unitLength,[0,1,0]))
+      addSegment("coronalTop", [0, 0, 0],returnEndCoordinates([0,0,0],unitLength,[0,1,0]));
 
-      console.log(Math.cos(degreesToRadians(45)));
 
+      //addSubBranches([0,unitLength,0],dr)
 
       addSegment("coronalTopFront", [0, unitLength, 0], [0,2 * unitLength, unitLength])
 
