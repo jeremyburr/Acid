@@ -66,27 +66,58 @@
         unit.add(globalThis[name]);
       }
 
-      //const directionalCosines = [cosX,cosY,cosZ];
+      function degreesToRadians(degrees) {
+        var pi = Math.PI;
+        return degrees * (Math.PI / 180);
+      }
 
       function returnEndCoordinates(startCoordinates, magnitude, directionalCosines) {
-        console.log(startCoordinates);
-        console.log(magnitude);
 
-        console.log(directionalCosines);
+        const startX = startCoordinates[0];
+        const startY = startCoordinates[1];
+        const startZ = startCoordinates[2];
+
+        const dirCosX = directionalCosines[0];
+        const dirCosY = directionalCosines[1];
+        const dirCosZ = directionalCosines[2];
 
         let endCoordinates = [];
 
-        endCoordinates.push(directionalCosines[0]*magnitude);
-        endCoordinates.push(directionalCosines[1]*magnitude);
-        endCoordinates.push(directionalCosines[2]*magnitude);
-
-        console.log(endCoordinates);
+        endCoordinates.push(dirCosX*magnitude + startX);
+        endCoordinates.push(dirCosY*magnitude + startY);
+        endCoordinates.push(dirCosZ*magnitude + startZ);
 
         return endCoordinates;
-
       }
 
-      returnEndCoordinates([0,0,0],Math.sqrt(29),[-4/Math.sqrt(29),2/Math.sqrt(29),3/Math.sqrt(29)]);
+      // Coronal  - Top
+
+      addSegment("coronalTop", [0, 0, 0],returnEndCoordinates([0,0,0],unitLength,[0,1,0]))
+
+      console.log(Math.cos(degreesToRadians(45)));
+
+
+      addSegment("coronalTopFront", [0, unitLength, 0], [0,2 * unitLength, unitLength])
+
+
+
+
+
+
+
+
+
+      addSegment("coronalTopLeft", [0, unitLength, 0], [unitLength,2 * unitLength, 0])
+      addSegment("coronalTopRight", [0, unitLength, 0], [-unitLength,2 * unitLength, 0])
+      addSegment("coronalTopBack", [0, unitLength, 0], [0,2 * unitLength, -unitLength])
+
+      // Coronal  - Bottom 
+
+      addSegment("coronalBottom", [0, 0, 0], [0, -unitLength, 0])
+      addSegment("coronalBottomLeft", [0, -unitLength, 0], [unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomRight", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
+      addSegment("coronalBottomFront", [0, -unitLength, 0], [0, -2 * unitLength, unitLength])
+      addSegment("coronalBottomBack", [0, -unitLength, 0], [0, -2 * unitLength, -unitLength])
 
       // Tranverse - Left
 
@@ -103,23 +134,6 @@
       addSegment("transverseRightBottom", [-unitLength, 0, 0], [-2 * unitLength, -unitLength, 0])
       addSegment("transverseRightBack", [-unitLength, 0, 0], [-2 * unitLength, 0, -unitLength])
       addSegment("transverseRightFront", [-unitLength, 0, 0], [-2 * unitLength, 0, unitLength])
-
-      // Coronal  - Top
-
-      addSegment("coronalTop", [0, 0, 0], [0,unitLength, 0])
-      addSegment("coronalTopFront", [0, unitLength, 0], [0,2 * unitLength, unitLength])
-      addSegment("coronalTopLeft", [0, unitLength, 0], [unitLength,2 * unitLength, 0])
-      addSegment("coronalTopRight", [0, unitLength, 0], [-unitLength,2 * unitLength, 0])
-      addSegment("coronalTopBack", [0, unitLength, 0], [0,2 * unitLength, -unitLength])
-
-      // Coronal  - Top Front
-
-      addSegment("coronalBottom", [0, 0, 0], [0, -unitLength, 0])
-      addSegment("coronalBottomLeft", [0, -unitLength, 0], [unitLength, -2 * unitLength, 0])
-      addSegment("coronalBottomRight", [0, -unitLength, 0], [-unitLength, -2 * unitLength, 0])
-      addSegment("coronalBottomFront", [0, -unitLength, 0], [0, -2 * unitLength, unitLength])
-      addSegment("coronalBottomBack", [0, -unitLength, 0], [0, -2 * unitLength, -unitLength])
-
       // Saggital - Front
 
       addSegment("saggitalFront", [0, 0, 0], [0, 0, unitLength])
