@@ -90,6 +90,8 @@
       function addSubBranches(startPosition, direction, magnitude) {
         addSegment('coronalTopFront',startPosition,returnEndPosition(startPosition, [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))], magnitude));
         addSegment('coronalTopBack',startPosition,returnEndPosition(startPosition, [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135))], magnitude));
+        addSegment('coronalTopLeft',startPosition,returnEndPosition(startPosition, [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0], magnitude));
+        addSegment('coronalTopRight',startPosition,returnEndPosition(startPosition, [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0], magnitude));
       }
 
       console.log(Math.cos(degreesToRadians(45)));
