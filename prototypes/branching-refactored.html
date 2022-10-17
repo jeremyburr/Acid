@@ -85,6 +85,7 @@
         const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
+        console.log(end);
       }
 
       function addSubBranches(startPosition, direction, magnitude) {
@@ -94,21 +95,11 @@
         addSegment('coronalTopRight',startPosition,returnEndPosition(startPosition, [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0], magnitude));
       }
 
-      console.log(Math.cos(degreesToRadians(45)));
-      console.log(Math.cos(degreesToRadians(135)));
-
       // Coronal  - Top
 
       addSegment("coronalTop", [0, 0, 0],returnEndPosition([0,0,0],[0,1,0],unitLength));
 
-
-      addSubBranches([0,unitLength,0],[0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],unitLength);
-
-
-
-      /*addSegment("coronalTopLeft", [0, unitLength, 0], [unitLength,2 * unitLength, 0])
-      addSegment("coronalTopRight", [0, unitLength, 0], [-unitLength,2 * unitLength, 0])
-      addSegment("coronalTopBack", [0, unitLength, 0], [0,2 * unitLength, -unitLength])*/
+      addSubBranches([0,unitLength,0],[0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],unitLength*1.5);
 
       // Coronal  - Bottom 
 
