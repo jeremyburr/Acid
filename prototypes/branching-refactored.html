@@ -90,10 +90,11 @@
 
       function addLevel(start, direction, magnitude, branches) {
         if (branches === 1) {
-          addSegment('coronalTopCenter', start, [0, Math.cos(degreesToRadians(0)), 0], unitLength);
+          addSegment('coronalTopCenter', start, direction, unitLength);
         }
         if (branches === 5) {
-          addSegment('coronalTopCenter', start, [0, Math.cos(degreesToRadians(0)), 0], unitLength);
+          addSegment('coronalTopCenter', start, direction, unitLength);
+
           addSegment('coronalTopFront', start, [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))], magnitude);
           addSegment('coronalTopBack', start, [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))], magnitude);
           addSegment('coronalTopLeft', start, [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)), 0], magnitude);
@@ -103,8 +104,8 @@
 
       // Coronal  - Top
 
-      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))], unitLength * Math.sqrt(2),1);
-      addLevel([0, unitLength, 0], [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))], unitLength * Math.sqrt(2),5);
+      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1);
+      addLevel([0, unitLength, 0], [0,Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),5);
 
       // Coronal  - Bottom 
 
