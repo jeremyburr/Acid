@@ -59,6 +59,22 @@
         return degrees * (Math.PI / 180);
       }
 
+      // Add Segment
+
+      function addSegment(name, start, end) {
+        const coordinates = [];
+        coordinates.push(new THREE.Vector3(start[0],start[1],start[2]));
+        coordinates.push(new THREE.Vector3(end[0],end[1],end[2]));
+        const curve = new THREE.CatmullRomCurve3(coordinates);
+        const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
+        globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
+        unit.add(globalThis[name]);
+
+        console.log('addSegment() start: ',start);
+        console.log('addSegment() end: ',end);
+
+      }
+
       // Find End Coordinates for New Segment
 
       function returnEndPosition(startPosition, direction, magnitude) {
@@ -75,30 +91,16 @@
         return endPosition;
       }
 
-      // Add Segment
-
-      function addSegment(name, start, end) {
-        const coordinates = [];
-        coordinates.push(new THREE.Vector3(start[0],start[1],start[2]));
-        coordinates.push(new THREE.Vector3(end[0],end[1],end[2]));
-        const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
-        globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
-        unit.add(globalThis[name]);
-        console.log(end);
-      }
-
       function addSubBranches(startPosition, direction, magnitude) {
-
-        addSegment("coronalTop", [0, 0, 0],returnEndPosition(startPosition,[0,Math.cos(degreesToRadians(90)),0],magnitude));
         addSegment('coronalTopFront',startPosition,returnEndPosition(startPosition, [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))], magnitude));
         addSegment('coronalTopBack',startPosition,returnEndPosition(startPosition, [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135))], magnitude));
         addSegment('coronalTopLeft',startPosition,returnEndPosition(startPosition, [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0], magnitude));
         addSegment('coronalTopRight',startPosition,returnEndPosition(startPosition, [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0], magnitude));
-
       }
 
       // Coronal  - Top
+
+      addSegment("coronalTop",[0,0,0],returnEndPosition([0,0,0],[0,Math.cos(degreesToRadians(0)),0],unitLength));
 
       addSubBranches([0,unitLength,0],[0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],unitLength*Math.sqrt(2));
 
@@ -140,7 +142,8 @@
       addSegment("saggitalBackBottom", [0, 0, -unitLength], [0, -unitLength, -2 * unitLength])
       addSegment("saggitalBackLeft", [0, 0, -unitLength], [-unitLength, 0, -2 * unitLength])
       addSegment("saggitalBackRight", [0, 0, -unitLength], [unitLength, 0, -2 * unitLength])
-     *
+      
+     
 
       scene.add(unit);
 
