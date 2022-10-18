@@ -97,9 +97,10 @@
 
       // Coronal  - Top
 
+      //addSegment("coronalTop", [0, 0, 0],returnEndPosition([0,0,0],[Math.cos(degreesToRadians(90)),0,0],unitLength));
       addSegment("coronalTop", [0, 0, 0],returnEndPosition([0,0,0],[0,1,0],unitLength));
 
-      addSubBranches([0,unitLength,0],[0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],unitLength*1.5);
+      addSubBranches([0,unitLength,0],[0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],unitLength*Math.sqrt(2));
 
       // Coronal  - Bottom 
 
@@ -139,7 +140,7 @@
       addSegment("saggitalBackBottom", [0, 0, -unitLength], [0, -unitLength, -2 * unitLength])
       addSegment("saggitalBackLeft", [0, 0, -unitLength], [-unitLength, 0, -2 * unitLength])
       addSegment("saggitalBackRight", [0, 0, -unitLength], [unitLength, 0, -2 * unitLength])
-      
+     *
 
       scene.add(unit);
 
