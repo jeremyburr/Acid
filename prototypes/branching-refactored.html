@@ -106,7 +106,7 @@
 
       }
 
-      function addLevel(start, magnitude, branches, plane, orientation) {
+      function addLevel(start, plane, orientation, magnitude, branches) {
         if (orientation === 'down') {
           magnitude = magnitude * -1;
         }
@@ -126,13 +126,13 @@
     
         // Top
 
-      addLevel([0, 0, 0], unitLength * Math.sqrt(2),1,'coronal','top');
-      addLevel([0, unitLength, 0], unitLength * Math.sqrt(2),5,'coronal','top');
+      addLevel([0, 0, 0], 'coronal', 'top', unitLength * Math.sqrt(2),1);
+      addLevel([0, unitLength, 0], 'coronal', 'top', unitLength * Math.sqrt(2),5);
 
         // Bottom
 
-      addLevel([0, 0, 0], unitLength * Math.sqrt(2),1,'coronal','down');
-      addLevel([0, -unitLength, 0], unitLength * Math.sqrt(2),5,'coronal','down');
+      addLevel([0, 0, 0], 'coronal','down', unitLength * Math.sqrt(2),1);
+      addLevel([0, -unitLength, 0],'coronal','down', unitLength * Math.sqrt(2),5);
 
       // Transverse
 
