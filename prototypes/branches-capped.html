@@ -186,13 +186,19 @@
       //stats.update();
     }
 
+      //unit.rotation.x -= 0.20;
+      //unit.rotation.y += 0.80;
+      unit.rotation.z += 0.50;
+
     function render() {
 
       const time = Date.now() * 0.002;
 
-      //unit.rotation.x = time * 0.15;
-      //unit.rotation.y = time * 0.20;
-      //unit.rotation.z = time * 0.15;
+      /*unit.rotation.x = time * 0.15;
+      unit.rotation.y = time * 0.20;
+      unit.rotation.z = time * 0.15;*/
+
+      unit.rotation.y += .0075;
 
       renderer.render(scene, camera);
     }
