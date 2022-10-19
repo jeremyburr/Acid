@@ -98,10 +98,10 @@
         },
         transverse:  {
           center: [Math.cos(degreesToRadians(0)),0,0],
-          front: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))],
-          back: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0],
-          right: [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)),0]
+          front: [Math.cos(degreesToRadians(45)),0, Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(45)),0, Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135)), 0], // bottom
+          right: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0] // top
         }
 
       }
@@ -138,7 +138,8 @@
 
         // Left
 
-      addLevel([0, 0, 0], 'transverse', 'left', unitLength * Math.sqrt(2),1);
+      addLevel([0, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),1);
+      addLevel([unitLength, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),5);
 
       //addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'coronal','top');
 
