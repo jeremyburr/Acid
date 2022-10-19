@@ -88,24 +88,43 @@
         return endPosition;
       }
 
-      function addLevel(start, direction, magnitude, branches) {
+      const vectorMap = {
+        coronal:  {
+          up: [0, Math.cos(degreesToRadians(0)),0]
+          //down: 
+
+        }
+
+      }
+
+      function addLevel(start, direction, magnitude, branches, plane, orientation) {
+
+        if (orientation === 'Down') {
+          magnitude = magnitude * -1;
+        }
+
         if (branches === 1) {
-          addSegment('coronalTopCenter', start, direction, unitLength);
+          addSegment(plane+orientation+'Center', start, direction, magnitude/Math.sqrt(2));
         }
         if (branches === 5) {
-          addSegment('coronalTopCenter', start, direction, unitLength);
+          addSegment(plane+orientation+'Center', start, direction, magnitude/Math.sqrt(2));
 
-          addSegment('coronalTopFront', start, [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))], magnitude);
-          addSegment('coronalTopBack', start, [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))], magnitude);
-          addSegment('coronalTopLeft', start, [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)), 0], magnitude);
-          addSegment('coronalTopRight', start, [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)), 0], magnitude);
+
+          addSegment(plane+orientation+'Front', start, [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))], magnitude);
+          addSegment(plane+orientation+'Back', start, [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))], magnitude);
+          addSegment(plane+orientation+'Left', start, [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0], magnitude);
+          addSegment(plane+orientation+'Right', start, [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)),0], magnitude);
+
         }
       }
 
       // Coronal  - Top
 
-      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1);
-      addLevel([0, unitLength, 0], [0,Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),5);
+      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'Coronal','Top');
+      addLevel([0, unitLength, 0], [0,Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),5,'Coronal','Top');
+
+      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'Coronal','Down');
+      addLevel([0, -unitLength, 0], [0,Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),5,'Coronal','Down');
 
       // Coronal  - Bottom 
 
