@@ -91,19 +91,25 @@
       const vectorMap = {
         coronal:  {
           center: [0, Math.cos(degreesToRadians(0)),0],
-          front: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))],
-          back: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0],
-          right: [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)),0]
+          front: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],
+          back: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0],
+          right: [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0]
         },
         transverse:  {
           center: [Math.cos(degreesToRadians(0)),0,0],
-          front: [Math.cos(degreesToRadians(45)),0, Math.cos(degreesToRadians(45))],
-          back: [Math.cos(degreesToRadians(45)),0, Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135)), 0], // bottom
-          right: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0] // top
+          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135)), 0], // bottom
+          right: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0] // top
+        },
+        saggital:  {
+          center: [0,0,Math.cos(degreesToRadians(0))],
+          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(135)),0,Math.cos(degreesToRadians(45))],
+          left: [0,Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45))], // bottom
+          right: [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))] // top
         }
-
       }
 
       function addLevel(start, plane, orientation, magnitude, branches) {
@@ -123,47 +129,26 @@
       }
 
       // Coronal 
-    
         // Top
-
       addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),1);
       addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
-
         // Bottom
-
       addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
       addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
-
       // Transverse
-
         // Left
-
       addLevel([0, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),1);
       addLevel([unitLength, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),5);
-
         // Right
-
       addLevel([0, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),1);
       addLevel([-unitLength, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),5);
-
+      // Saggital
+       // Front
+      addLevel([0, 0, 0], 'saggital', 'positive', unitLength * Math.sqrt(2),1);
+      addLevel([0, 0, unitLength], 'saggital', 'positive', unitLength * Math.sqrt(2),5);
 
      /* 
-
-      // Tranverse - Left
-
-      addSegment("transverseLeft", [0, 0, 0], [unitLength, 0, 0])
-      addSegment("transverseLeftTop", [unitLength, 0, 0], [2 * unitLength, unitLength, 0])
-      addSegment("transverseLeftBottom", [unitLength, 0, 0], [2 * unitLength, -unitLength, 0])
-      addSegment("transverseLeftFront", [unitLength, 0, 0], [2 * unitLength, 0, -unitLength])
-      addSegment("transverseLeftBack", [unitLength, 0, 0], [2 * unitLength, 0, unitLength])
-
-      // Tranverse - Right
-
-      addSegment("transverseRight", [0, 0, 0], [-unitLength, 0, 0])
-      addSegment("transverseRightTop", [-unitLength, 0, 0], [-2 * unitLength, unitLength, 0])
-      addSegment("transverseRightBottom", [-unitLength, 0, 0], [-2 * unitLength, -unitLength, 0])
-      addSegment("transverseRightBack", [-unitLength, 0, 0], [-2 * unitLength, 0, -unitLength])
-      addSegment("transverseRightFront", [-unitLength, 0, 0], [-2 * unitLength, 0, unitLength])
+      
       // Saggital - Front
 
       addSegment("saggitalFront", [0, 0, 0], [0, 0, unitLength])
