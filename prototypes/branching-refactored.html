@@ -97,7 +97,7 @@
           right: [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)),0]
         },
         transverse:  {
-          center: [0, Math.cos(degreesToRadians(0)),0],
+          center: [Math.cos(degreesToRadians(0)),0,0],
           front: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))],
           back: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))],
           left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0],
@@ -107,7 +107,7 @@
       }
 
       function addLevel(start, plane, orientation, magnitude, branches) {
-        if (orientation === 'down') {
+        if (orientation === 'negative') {
           magnitude = magnitude * -1;
         }
         if (branches === 1) {
@@ -126,17 +126,19 @@
     
         // Top
 
-      addLevel([0, 0, 0], 'coronal', 'top', unitLength * Math.sqrt(2),1);
-      addLevel([0, unitLength, 0], 'coronal', 'top', unitLength * Math.sqrt(2),5);
+      addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),1);
+      addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
 
         // Bottom
 
-      addLevel([0, 0, 0], 'coronal','down', unitLength * Math.sqrt(2),1);
-      addLevel([0, -unitLength, 0],'coronal','down', unitLength * Math.sqrt(2),5);
+      addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
+      addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
 
       // Transverse
 
         // Left
+
+      addLevel([0, 0, 0], 'transverse', 'left', unitLength * Math.sqrt(2),1);
 
       //addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'coronal','top');
 
