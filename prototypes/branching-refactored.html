@@ -90,7 +90,14 @@
 
       const vectorMap = {
         coronal:  {
-          up: [0, Math.cos(degreesToRadians(0)),0],
+          center: [0, Math.cos(degreesToRadians(0)),0],
+          front: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))],
+          back: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0],
+          right: [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)),0]
+        },
+        transverse:  {
+          center: [0, Math.cos(degreesToRadians(0)),0],
           front: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))],
           back: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))],
           left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)),0],
@@ -99,19 +106,19 @@
 
       }
 
-      function addLevel(start, direction, magnitude, branches, plane, orientation) {
-        if (orientation === 'Down') {
+      function addLevel(start, magnitude, branches, plane, orientation) {
+        if (orientation === 'down') {
           magnitude = magnitude * -1;
         }
         if (branches === 1) {
-          addSegment(plane+orientation+'Center', start, direction, magnitude/Math.sqrt(2));
+          addSegment(plane+orientation+'center', start, vectorMap[plane].center, magnitude/Math.sqrt(2));
         }
         if (branches === 5) {
-          addSegment(plane+orientation+'Center', start, direction, magnitude/Math.sqrt(2));
-          addSegment(plane+orientation+'Front', start, vectorMap[plane].front, magnitude);
-          addSegment(plane+orientation+'Back', start, vectorMap[plane].back, magnitude);
-          addSegment(plane+orientation+'Left', start, vectorMap[plane].left, magnitude);
-          addSegment(plane+orientation+'Right', start, vectorMap[plane].right, magnitude);
+          addSegment(plane+orientation+'center', start,vectorMap[plane].center, magnitude/Math.sqrt(2));
+          addSegment(plane+orientation+'front', start, vectorMap[plane].front, magnitude);
+          addSegment(plane+orientation+'back', start, vectorMap[plane].back, magnitude);
+          addSegment(plane+orientation+'left', start, vectorMap[plane].left, magnitude);
+          addSegment(plane+orientation+'right', start, vectorMap[plane].right, magnitude);
         }
       }
 
@@ -119,13 +126,19 @@
     
         // Top
 
-      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'coronal','Top');
-      addLevel([0, unitLength, 0], [0,Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),5,'coronal','Top');
+      addLevel([0, 0, 0], unitLength * Math.sqrt(2),1,'coronal','top');
+      addLevel([0, unitLength, 0], unitLength * Math.sqrt(2),5,'coronal','top');
 
         // Bottom
 
-      addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'coronal','Down');
-      addLevel([0, -unitLength, 0], [0,Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),5,'coronal','Down');
+      addLevel([0, 0, 0], unitLength * Math.sqrt(2),1,'coronal','down');
+      addLevel([0, -unitLength, 0], unitLength * Math.sqrt(2),5,'coronal','down');
+
+      // Transverse
+
+        // Left
+
+      //addLevel([0, 0, 0], [0, Math.cos(degreesToRadians(0)),0], unitLength * Math.sqrt(2),1,'coronal','top');
 
      /* 
 
