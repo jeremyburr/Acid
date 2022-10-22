@@ -206,16 +206,21 @@
       /*const axesHelper = new THREE.AxesHelper( 50 );
       scene.add( axesHelper );*/
 
-      scene.background = new THREE.Color(0x111111);
+      scene.background = new THREE.Color(0x161616);
 
-      const light = new THREE.DirectionalLight(0xfffffff, 1);
+      /*const light = new THREE.DirectionalLight(0xfffffff, 1);
       light.position.set(1, 1, 1)//.normalize();
-      scene.add(light);
+      scene.add(light);*/
 
-      const light2 = new THREE.DirectionalLight(0xfffffff, 1);
-      light2.position.set(-1, -1, -1)//.normalize();
+      const lightColorHash = 0x888888;
+
+      const light2 = new THREE.DirectionalLight(lightColorHash, 1);
+      light2.position.set(1, 1, 1)//.normalize();
       scene.add(light2);
 
+
+      const lightAmbient = new THREE.AmbientLight(lightColorHash,.75 ); // soft white light
+      scene.add( lightAmbient );
     }
 
     function onWindowResize() {
