@@ -66,7 +66,7 @@
         const end = returnEndPosition(start, direction, magnitude);
         coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .05, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, .11, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
       }
@@ -165,7 +165,7 @@
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .45 
+        opacity: .5 
       });
 
 
@@ -550,7 +550,7 @@
       /*const axesHelper = new THREE.AxesHelper( 50 );
       scene.add( axesHelper );*/
 
-      scene.background = new THREE.Color(0x161616);
+      scene.background = new THREE.Color(0x000000);
 
 
       const lightColorHash = 0xFFFFFF;
@@ -564,7 +564,7 @@
       scene.add(light2);
 
 
-      const lightAmbient = new THREE.AmbientLight(lightColorHash,.75 ); // soft white light
+      const lightAmbient = new THREE.AmbientLight(lightColorHash,1 ); // soft white light
       scene.add( lightAmbient );
     }
 
