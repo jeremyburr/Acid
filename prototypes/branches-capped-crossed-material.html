@@ -165,7 +165,7 @@
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .80 
+        opacity: .45 
       });
 
 
@@ -552,11 +552,8 @@
 
       scene.background = new THREE.Color(0x161616);
 
-      /*const light = new THREE.DirectionalLight(0xfffffff, 1);
-      light.position.set(1, 1, 1)//.normalize();
-      scene.add(light);*/
 
-      const lightColorHash = 0xCCCCCC;
+      const lightColorHash = 0xFFFFFF;
 
       const light1 = new THREE.DirectionalLight(lightColorHash, 1);
       light1.position.set(-1, -1, -1)//.normalize();
