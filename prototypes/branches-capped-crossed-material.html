@@ -556,7 +556,7 @@
       light.position.set(1, 1, 1)//.normalize();
       scene.add(light);*/
 
-      const lightColorHash = 0x888888;
+      const lightColorHash = 0xAAAAAA;
 
       const light1 = new THREE.DirectionalLight(lightColorHash, 1);
       light1.position.set(-1, -1, -1)//.normalize();
@@ -585,16 +585,16 @@
     }
 
       //unit.rotation.x -= 0.20;
-      unit.rotation.y += 0.80;
-      unit.rotation.z += 0.50;
+      //unit.rotation.y += 0.90;
+      //unit.rotation.z += 0.50;
 
     function render() {
 
       const time = Date.now() * 0.002;
 
-      unit.rotation.x = time * 0.15;
-      unit.rotation.y = time * 0.20;
-      unit.rotation.z = time * 0.15;
+      //unit.rotation.x = time * 0.15;
+      unit.rotation.y = time * 0.25;
+      //unit.rotation.z = time * 0.15;
 
 
       renderer.render(scene, camera);
