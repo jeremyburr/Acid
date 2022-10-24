@@ -278,7 +278,7 @@
       addSegment('coronalOriginSpreadLeft',[0,-unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,-unitLength*2,0],[-1,0,0],unitLength)
 
-      /*
+      
 
 
       // Transverse
@@ -298,13 +298,120 @@
       addSegment('coronalOriginSpreadBack',[unitLength*2,0,0],[0,-1,0],unitLength)
       addSegment('coronalOriginSpreadLeft',[unitLength*2,0,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadRight',[unitLength*2,0,0],[0,0,-1],unitLength)
-           // Bottom
+           // Right
       addSegment('coronalOriginSpreadFront',[-unitLength*2,0,0],[0,1,0],unitLength)
       addSegment('coronalOriginSpreadBack',[-unitLength*2,0,0],[0,-1,0],unitLength)
       addSegment('coronalOriginSpreadLeft',[-unitLength*2,0,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadRight',[-unitLength*2,0,0],[0,0,-1],unitLength)
 
+      // Transverse
 
+      // Right
+
+      const geometryPane15 = new THREE.BufferGeometry();
+      geometryPane15.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,8,0, -16,0,8], 3));
+      geometryPane15.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane15 = new THREE.Mesh(geometryPane15, material);
+      scene.add(meshPane15);
+
+      const geometryPane16 = new THREE.BufferGeometry();
+      geometryPane16.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,8,0, -16,0,-8], 3));
+      geometryPane16.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane16 = new THREE.Mesh(geometryPane16, material);
+      scene.add(meshPane16);
+
+      const geometryPane17 = new THREE.BufferGeometry();
+      geometryPane17.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,8,0, -16,0,-8], 3));
+      geometryPane17.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane17 = new THREE.Mesh(geometryPane17, material);
+      scene.add(meshPane17);
+
+      const geometryPane18 = new THREE.BufferGeometry();
+      geometryPane18.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,8,0, -16,0,8], 3));
+      geometryPane18.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane18 = new THREE.Mesh(geometryPane18, material);
+      scene.add(meshPane18);
+
+
+      const geometryPane19 = new THREE.BufferGeometry();
+      geometryPane19.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,-8,0, -16,0,8], 3));
+      geometryPane19.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane19 = new THREE.Mesh(geometryPane19, material);
+      scene.add(meshPane19);
+
+      const geometryPane20 = new THREE.BufferGeometry();
+      geometryPane20.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,-8,0, -16,0,-8], 3));
+      geometryPane20.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane20 = new THREE.Mesh(geometryPane20, material);
+      scene.add(meshPane20);
+
+      const geometryPane21 = new THREE.BufferGeometry();
+      geometryPane21.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,-8,0, -16,0,-8], 3));
+      geometryPane21.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane21 = new THREE.Mesh(geometryPane21, material);
+      scene.add(meshPane21);
+
+      const geometryPane22 = new THREE.BufferGeometry();
+      geometryPane22.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,-8,0, -16,0,8], 3));
+      geometryPane22.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane22 = new THREE.Mesh(geometryPane22, material);
+      scene.add(meshPane22);
+
+      // Left
+
+      const geometryPane23 = new THREE.BufferGeometry();
+      geometryPane23.setAttribute('position', new THREE.Float32BufferAttribute([24,0,0, 16,8,0, 16,0,8], 3));
+      geometryPane23.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane23 = new THREE.Mesh(geometryPane23, material);
+      scene.add(meshPane23);
+
+      const geometryPane24 = new THREE.BufferGeometry();
+      geometryPane24.setAttribute('position', new THREE.Float32BufferAttribute([24,0,0, 16,8,0, 16,0,-8], 3));
+      geometryPane24.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane24 = new THREE.Mesh(geometryPane24, material);
+      scene.add(meshPane24);
+
+      const geometryPane25 = new THREE.BufferGeometry();
+      geometryPane25.setAttribute('position', new THREE.Float32BufferAttribute([8,0,0, 16,8,0, 16,0,-8], 3));
+      geometryPane25.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane25 = new THREE.Mesh(geometryPane25, material);
+      scene.add(meshPane25);
+
+
+      const geometryPane26 = new THREE.BufferGeometry();
+      geometryPane26.setAttribute('position', new THREE.Float32BufferAttribute([8,0,0, 16,8,0, 16,0,8], 3));
+      geometryPane26.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane26 = new THREE.Mesh(geometryPane26, material);
+      scene.add(meshPane26);
+
+      /*c
+
+
+      const geometryPane19 = new THREE.BufferGeometry();
+      geometryPane19.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,-8,0, -16,0,8], 3));
+      geometryPane19.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane19 = new THREE.Mesh(geometryPane19, material);
+      scene.add(meshPane19);
+
+      const geometryPane20 = new THREE.BufferGeometry();
+      geometryPane20.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,-8,0, -16,0,-8], 3));
+      geometryPane20.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane20 = new THREE.Mesh(geometryPane20, material);
+      scene.add(meshPane20);
+
+      const geometryPane21 = new THREE.BufferGeometry();
+      geometryPane21.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,-8,0, -16,0,-8], 3));
+      geometryPane21.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane21 = new THREE.Mesh(geometryPane21, material);
+      scene.add(meshPane21);
+
+      const geometryPane22 = new THREE.BufferGeometry();
+      geometryPane22.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,-8,0, -16,0,8], 3));
+      geometryPane22.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane22 = new THREE.Mesh(geometryPane22, material);
+      scene.add(meshPane22);*/
+
+      /*
       // Saggital
        // Front
       addLevel([0, 0, 0], 'saggital', 'positive', unitLength * Math.sqrt(2),1);
@@ -343,6 +450,10 @@
       scene.add(light);*/
 
       const lightColorHash = 0x888888;
+
+      const light1 = new THREE.DirectionalLight(lightColorHash, 1);
+      light1.position.set(-1, -1, -1)//.normalize();
+      scene.add(light1);
 
       const light2 = new THREE.DirectionalLight(lightColorHash, 1);
       light2.position.set(1, 1, 1)//.normalize();
