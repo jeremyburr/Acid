@@ -134,13 +134,13 @@
       addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
           // Cap
       addLevel([0, 3*unitLength, 0], 'coronal', 'negative', unitLength * Math.sqrt(2),5);
-      /*  // Bottom
+        // Bottom
       addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
       addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
           // Cap
       addLevel([0, 3*-unitLength, 0],'coronal','positive', unitLength * Math.sqrt(2),5);
          // Origin Spread
-         */
+        
            // Top
       addSegment('coronalOriginSpreadFront',[0,unitLength*2,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadBack',[0,unitLength*2,0],[0,0,-1],unitLength)
@@ -165,8 +165,11 @@
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .75 
+        opacity: .50 
       });
+
+
+      // Coronal Top
 
       const geometryPane = new THREE.BufferGeometry();
       geometryPane.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,8, 8,16,0], 3));
@@ -218,14 +221,64 @@
       scene.add(meshPane6);
 
 
+      // Coronal Bottom
 
+      const geometryPane7 = new THREE.BufferGeometry();
+      geometryPane7.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,8, 8,-16,0], 3));
+      geometryPane7.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane7 = new THREE.Mesh(geometryPane7, material);
+      scene.add(meshPane7);
 
-      /*
+      const geometryPane8 = new THREE.BufferGeometry();
+      geometryPane8.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,8, -8,-16,0], 3));
+      geometryPane8.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane8 = new THREE.Mesh(geometryPane8, material);
+      scene.add(meshPane8);
+
+      const geometryPane9 = new THREE.BufferGeometry();
+      geometryPane9.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,-8, -8,-16,0], 3));
+      geometryPane9.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane9 = new THREE.Mesh(geometryPane9, material);
+      scene.add(meshPane9);
+
+      const geometryPane10 = new THREE.BufferGeometry();
+      geometryPane10.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,-8, 8,-16,0], 3));
+      geometryPane10.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane10 = new THREE.Mesh(geometryPane10, material);
+      scene.add(meshPane10);
+
+      const geometryPane11 = new THREE.BufferGeometry();
+      geometryPane11.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,8, 8,-16,0], 3));
+      geometryPane11.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane11 = new THREE.Mesh(geometryPane11, material);
+      scene.add(meshPane11);
+
+      const geometryPane12 = new THREE.BufferGeometry();
+      geometryPane12.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,8, -8,-16,0], 3));
+      geometryPane12.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane12 = new THREE.Mesh(geometryPane12, material);
+      scene.add(meshPane12);
+
+      const geometryPane13 = new THREE.BufferGeometry();
+      geometryPane13.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,-8, -8,-16,0], 3));
+      geometryPane13.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane13 = new THREE.Mesh(geometryPane13, material);
+      scene.add(meshPane13);
+
+      const geometryPane14 = new THREE.BufferGeometry();
+      geometryPane14.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,-8, 8,-16,0], 3));
+      geometryPane14.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane14 = new THREE.Mesh(geometryPane14, material);
+      scene.add(meshPane14);
+
+      
            // Bottom
       addSegment('coronalOriginSpreadFront',[0,-unitLength*2,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadBack',[0,-unitLength*2,0],[0,0,-1],unitLength)
       addSegment('coronalOriginSpreadLeft',[0,-unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,-unitLength*2,0],[-1,0,0],unitLength)
+
+      /*
 
 
       // Transverse
