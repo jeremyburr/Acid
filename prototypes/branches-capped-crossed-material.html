@@ -31,7 +31,7 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 44;
-      camera.position.y = 20;
+      camera.position.y = 35;
       camera.position.z = 115;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -84,6 +84,7 @@
         endPosition.push(dirX * magnitude + startX);
         endPosition.push(dirY * magnitude + startY);
         endPosition.push(dirZ * magnitude + startZ);
+        console.log(endPosition);
         return endPosition;
       }
 
@@ -133,17 +134,93 @@
       addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
           // Cap
       addLevel([0, 3*unitLength, 0], 'coronal', 'negative', unitLength * Math.sqrt(2),5);
-        // Bottom
+      /*  // Bottom
       addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
       addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
           // Cap
       addLevel([0, 3*-unitLength, 0],'coronal','positive', unitLength * Math.sqrt(2),5);
          // Origin Spread
+         */
            // Top
       addSegment('coronalOriginSpreadFront',[0,unitLength*2,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadBack',[0,unitLength*2,0],[0,0,-1],unitLength)
       addSegment('coronalOriginSpreadLeft',[0,unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,unitLength*2,0],[-1,0,0],unitLength)
+
+      const colors = [
+        0, 0, 1,
+        1, 0, 1,
+        0, 1, 1,
+
+        1, 0, 1,
+        0, 1, 1,
+        0, 0, 1,
+
+        0, 1, 1,
+        0, 0, 1,
+        1, 0, 1,
+      ]
+
+      const material = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: .75 
+      });
+
+      const geometryPane = new THREE.BufferGeometry();
+      geometryPane.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,8, 8,16,0], 3));
+      geometryPane.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane = new THREE.Mesh(geometryPane, material);
+      scene.add(meshPane);
+
+      const geometryPane0 = new THREE.BufferGeometry();
+      geometryPane0.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,8, -8,16,0], 3));
+      geometryPane0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane0 = new THREE.Mesh(geometryPane0, material);
+      scene.add(meshPane0);
+
+      const geometryPane1 = new THREE.BufferGeometry();
+      geometryPane1.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,-8, -8,16,0], 3));
+      geometryPane1.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane1 = new THREE.Mesh(geometryPane1, material);
+      scene.add(meshPane1);
+
+      const geometryPane2 = new THREE.BufferGeometry();
+      geometryPane2.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,-8, 8,16,0], 3));
+      geometryPane2.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane2 = new THREE.Mesh(geometryPane2, material);
+      scene.add(meshPane2);
+
+
+      const geometryPane3 = new THREE.BufferGeometry();
+      geometryPane3.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,8, 8,16,0], 3));
+      geometryPane3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane3 = new THREE.Mesh(geometryPane3, material);
+      scene.add(meshPane3);
+
+      const geometryPane4 = new THREE.BufferGeometry();
+      geometryPane4.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,8, -8,16,0], 3));
+      geometryPane4.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane4 = new THREE.Mesh(geometryPane4, material);
+      scene.add(meshPane4);
+
+      const geometryPane5 = new THREE.BufferGeometry();
+      geometryPane5.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,-8, -8,16,0], 3));
+      geometryPane5.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane5 = new THREE.Mesh(geometryPane5, material);
+      scene.add(meshPane5);
+
+      const geometryPane6 = new THREE.BufferGeometry();
+      geometryPane6.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,-8, 8,16,0], 3));
+      geometryPane6.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane6 = new THREE.Mesh(geometryPane6, material);
+      scene.add(meshPane6);
+
+
+
+
+      /*
            // Bottom
       addSegment('coronalOriginSpreadFront',[0,-unitLength*2,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadBack',[0,-unitLength*2,0],[0,0,-1],unitLength)
@@ -198,6 +275,7 @@
       addSegment('coronalOriginSpreadBack',[0,0,-unitLength*2],[-1,0,0],unitLength)
       addSegment('coronalOriginSpreadLeft',[0,0,-unitLength*2],[0,1,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,0,-unitLength*2],[0,-1,0],unitLength)
+      */
 
 
       scene.add(unit);
@@ -235,9 +313,9 @@
       //stats.update();
     }
 
-      unit.rotation.x -= 0.20;
+      //unit.rotation.x -= 0.20;
       //unit.rotation.y += 0.80;
-      unit.rotation.z += 0.50;
+      //unit.rotation.z += 0.50;
 
     function render() {
 
@@ -247,7 +325,7 @@
       unit.rotation.y = time * 0.20;
       unit.rotation.z = time * 0.15;*/
 
-      unit.rotation.y += .0075;
+      //unit.rotation.y += .0075;
 
       renderer.render(scene, camera);
     }
