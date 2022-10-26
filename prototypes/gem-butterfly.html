@@ -151,21 +151,20 @@
         0, 0, 1,
         1, 0, 1,
         0, 1, 1,
-
-        1, 0, 1,
-        0, 1, 1,
-        0, 0, 1,
-
-        0, 1, 1,
-        0, 0, 1,
-        1, 0, 1,
       ]
 
       const material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .5 
+        opacity: .9 
+      });
+
+      const materialLight = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: .75 
       });
 
 
@@ -542,6 +541,51 @@
       geometryPane46.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane46 = new THREE.Mesh(geometryPane46, material);
       unit.add(meshPane46);
+
+      const wingColors = [
+        1, .46, 0,
+        1, 0, 0,
+        1, 1, 0,
+      ]
+
+      const wingLeftTopBase = new THREE.BufferGeometry();
+      wingLeftTopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,8,0, 8,0,0], 3));
+      wingLeftTopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopBase = new THREE.Mesh(wingLeftTopBase, materialLight);
+      unit.add(meshwingLeftTopBase);
+      
+      const wingLeftTopBaseNext = new THREE.BufferGeometry();
+      wingLeftTopBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 0,8,0, 8,0,0], 3));
+      wingLeftTopBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopBaseNext = new THREE.Mesh(wingLeftTopBaseNext, materialLight);
+      unit.add(meshwingLeftTopBaseNext);
+
+      const wingLeftTopNextTop = new THREE.BufferGeometry();
+      wingLeftTopNextTop.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 0,8,0, 8,16,0], 3));
+      wingLeftTopNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopNextTop = new THREE.Mesh(wingLeftTopNextTop, materialLight);
+      unit.add(meshwingLeftTopNextTop);
+
+      const wingLeftTopNextBottom = new THREE.BufferGeometry();
+      wingLeftTopNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 16,8,0, 8,0,0], 3));
+      wingLeftTopNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopNextBottom = new THREE.Mesh(wingLeftTopNextBottom, materialLight);
+      unit.add(meshwingLeftTopNextBottom);
+
+      const wingLeftTopCenter = new THREE.BufferGeometry();
+      wingLeftTopCenter.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 16,8,0, 8,16,0], 3));
+      wingLeftTopCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopCenter = new THREE.Mesh(wingLeftTopCenter, materialLight);
+      unit.add(meshwingLeftTopCenter);
+
+      const wingLeftTopCenterLeft = new THREE.BufferGeometry();
+      wingLeftTopCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([16,16,0, 16,8,0, 8,16,0], 3));
+      wingLeftTopCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopCenterLeft = new THREE.Mesh(wingLeftTopCenterLeft, materialLight);
+      unit.add(meshwingLeftTopCenterLeft);
+
+
+
 
 
 
