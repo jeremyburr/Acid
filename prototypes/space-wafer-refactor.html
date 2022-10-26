@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Acid</title>
+  <link rel="shortcut icon" href="#">
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+  <script type="module">
+    import * as THREE from '../js/three.module.js';
+    import { TrackballControls } from '../js/TrackballControls.js';
+    import * as Axis from '../js/shapes/axis.js';
+
+    let camera, scene, renderer, controls;
+    let coronalTubeTop, coronalTubeBottom, saggitalTubeFront, saggitalTubeBack;
+    let coronalTopRight, coronalTopLeft, coronalTopBack, coronalTopFront;
+    let coronalBottomRight, coronalBottomLeft, coronalBottomBack, coronalBottomFront;
+    let saggitalBackTop, saggitalBackBottom, saggitalBackLeft, saggitalBackRight;
+    let saggitalFrontTop, saggitalFrontBottom, saggitalFrontLeft, saggitalFrontRight;
+    let unit;
+    let unitLength = 8;
+
+    init();
+    animate();
+
+    function init() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
+      camera.position.x = 44;
+      camera.position.y = 35;
+      camera.position.z = 115;
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      document.body.appendChild(renderer.domElement);
+      controls = new TrackballControls(camera, renderer.domElement);
+
+      window.addEventListener('resize', onWindowResize);
+
+      unit = new THREE.Group();
+
+      const tubeMaterial = new THREE.MeshPhongMaterial({
+        //color: 0xFC3EC1,
+        color: 0xffffff,
+        shininess: 150,
+        side: THREE.DoubleSide,
+        //emissive: 'red'
+      });
+
+      function degreesToRadians(degrees) {
+        var pi = Math.PI;
+        return degrees * (Math.PI / 180);
+      }
+
+      // Add Segment
+
+      function addSegment(name, start, direction, magnitude) {
+        const coordinates = [];
+        coordinates.push(new THREE.Vector3(start[0], start[1], start[2]));
+        const end = returnEndPosition(start, direction, magnitude);
+        coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
+        const curve = new THREE.CatmullRomCurve3(coordinates);
+        const geometry = new THREE.TubeGeometry(curve, 64, .11, 16, false)
+        globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
+        unit.add(globalThis[name]);
+      }
+
+      // Find End Coordinates for New Segment
+
+      function returnEndPosition(startPosition, direction, magnitude) {
+        const startX = startPosition[0];
+        const startY = startPosition[1];
+        const startZ = startPosition[2];
+        const dirX = direction[0];
+        const dirY = direction[1];
+        const dirZ = direction[2];
+        let endPosition = [];
+        endPosition.push(dirX * magnitude + startX);
+        endPosition.push(dirY * magnitude + startY);
+        endPosition.push(dirZ * magnitude + startZ);
+        console.log(endPosition);
+        return endPosition;
+      }
+
+      const vectorMap = {
+        coronal:  {
+          center: [0, Math.cos(degreesToRadians(0)),0],
+          front: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],
+          back: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0],
+          right: [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0]
+        },
+        transverse:  {
+          center: [Math.cos(degreesToRadians(0)),0,0],
+          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135)), 0], // bottom
+          right: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0] // top
+        },
+        saggital:  {
+          center: [0,0,Math.cos(degreesToRadians(0))],
+          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(135)),0,Math.cos(degreesToRadians(45))],
+          left: [0,Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45))], // bottom
+          right: [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))] // top
+        }
+      }
+
+      function addLevel(start, plane, orientation, magnitude, branches) {
+        if (orientation === 'negative') {
+          magnitude = magnitude * -1;
+        }
+        if (branches === 1) {
+          addSegment(plane+orientation+'center', start, vectorMap[plane].center, magnitude/Math.sqrt(2));
+        }
+        if (branches === 5) {
+          addSegment(plane+orientation+'center', start,vectorMap[plane].center, magnitude/Math.sqrt(2));
+          addSegment(plane+orientation+'front', start, vectorMap[plane].front, magnitude);
+          addSegment(plane+orientation+'back', start, vectorMap[plane].back, magnitude);
+          addSegment(plane+orientation+'left', start, vectorMap[plane].left, magnitude);
+          addSegment(plane+orientation+'right', start, vectorMap[plane].right, magnitude);
+        }
+      }
+
+      // Coronal 
+        // Top
+      addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),1);
+      addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([0, 3*unitLength, 0], 'coronal', 'negative', unitLength * Math.sqrt(2),5);
+        // Bottom
+      addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
+      addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([0, 3*-unitLength, 0],'coronal','positive', unitLength * Math.sqrt(2),5);
+         // Origin Spread
+        
+           // Top
+      addSegment('coronalOriginSpreadFront',[0,unitLength*2,0],[0,0,1],unitLength)
+      addSegment('coronalOriginSpreadBack',[0,unitLength*2,0],[0,0,-1],unitLength)
+      addSegment('coronalOriginSpreadLeft',[0,unitLength*2,0],[1,0,0],unitLength)
+      addSegment('coronalOriginSpreadRight',[0,unitLength*2,0],[-1,0,0],unitLength)
+
+      const colors = [
+        0, 0, 1,
+        1, 0, 1,
+        0, 1, 1,
+      ]
+
+      const material = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: .9
+      });
+
+      const materialLight = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: .9 
+      });
+
+
+      // Coronal Top
+
+      const geometryPane = new THREE.BufferGeometry();
+      geometryPane.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,8, 8,16,0], 3));
+      geometryPane.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane = new THREE.Mesh(geometryPane, material);
+      unit.add(meshPane);
+
+      const geometryPane0 = new THREE.BufferGeometry();
+      geometryPane0.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,8, -8,16,0], 3));
+      geometryPane0.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane0 = new THREE.Mesh(geometryPane0, material);
+      unit.add(meshPane0);
+
+      const geometryPane1 = new THREE.BufferGeometry();
+      geometryPane1.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,-8, -8,16,0], 3));
+      geometryPane1.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane1 = new THREE.Mesh(geometryPane1, material);
+      unit.add(meshPane1);
+
+      const geometryPane2 = new THREE.BufferGeometry();
+      geometryPane2.setAttribute('position', new THREE.Float32BufferAttribute([0,24,0, 0,16,-8, 8,16,0], 3));
+      geometryPane2.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane2 = new THREE.Mesh(geometryPane2, material);
+      unit.add(meshPane2);
+
+
+      const geometryPane3 = new THREE.BufferGeometry();
+      geometryPane3.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,8, 8,16,0], 3));
+      geometryPane3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane3 = new THREE.Mesh(geometryPane3, material);
+      unit.add(meshPane3);
+
+      const geometryPane4 = new THREE.BufferGeometry();
+      geometryPane4.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,8, -8,16,0], 3));
+      geometryPane4.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane4 = new THREE.Mesh(geometryPane4, material);
+      unit.add(meshPane4);
+
+      const geometryPane5 = new THREE.BufferGeometry();
+      geometryPane5.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,-8, -8,16,0], 3));
+      geometryPane5.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane5 = new THREE.Mesh(geometryPane5, material);
+      unit.add(meshPane5);
+
+      const geometryPane6 = new THREE.BufferGeometry();
+      geometryPane6.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,-8, 8,16,0], 3));
+      geometryPane6.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane6 = new THREE.Mesh(geometryPane6, material);
+      unit.add(meshPane6);
+
+
+      // Coronal Bottom
+
+      const geometryPane7 = new THREE.BufferGeometry();
+      geometryPane7.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,8, 8,-16,0], 3));
+      geometryPane7.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane7 = new THREE.Mesh(geometryPane7, material);
+      unit.add(meshPane7);
+
+      const geometryPane8 = new THREE.BufferGeometry();
+      geometryPane8.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,8, -8,-16,0], 3));
+      geometryPane8.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane8 = new THREE.Mesh(geometryPane8, material);
+      unit.add(meshPane8);
+
+      const geometryPane9 = new THREE.BufferGeometry();
+      geometryPane9.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,-8, -8,-16,0], 3));
+      geometryPane9.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane9 = new THREE.Mesh(geometryPane9, material);
+      unit.add(meshPane9);
+
+      const geometryPane10 = new THREE.BufferGeometry();
+      geometryPane10.setAttribute('position', new THREE.Float32BufferAttribute([0,-24,0, 0,-16,-8, 8,-16,0], 3));
+      geometryPane10.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane10 = new THREE.Mesh(geometryPane10, material);
+      unit.add(meshPane10);
+
+      const geometryPane11 = new THREE.BufferGeometry();
+      geometryPane11.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,8, 8,-16,0], 3));
+      geometryPane11.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane11 = new THREE.Mesh(geometryPane11, material);
+      unit.add(meshPane11);
+
+      const geometryPane12 = new THREE.BufferGeometry();
+      geometryPane12.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,8, -8,-16,0], 3));
+      geometryPane12.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane12 = new THREE.Mesh(geometryPane12, material);
+      unit.add(meshPane12);
+
+      const geometryPane13 = new THREE.BufferGeometry();
+      geometryPane13.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,-8, -8,-16,0], 3));
+      geometryPane13.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane13 = new THREE.Mesh(geometryPane13, material);
+      unit.add(meshPane13);
+
+      const geometryPane14 = new THREE.BufferGeometry();
+      geometryPane14.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,0, 0,-16,-8, 8,-16,0], 3));
+      geometryPane14.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane14 = new THREE.Mesh(geometryPane14, material);
+      unit.add(meshPane14);
+
+      
+           // Bottom
+      addSegment('coronalOriginSpreadFront',[0,-unitLength*2,0],[0,0,1],unitLength)
+      addSegment('coronalOriginSpreadBack',[0,-unitLength*2,0],[0,0,-1],unitLength)
+      addSegment('coronalOriginSpreadLeft',[0,-unitLength*2,0],[1,0,0],unitLength)
+      addSegment('coronalOriginSpreadRight',[0,-unitLength*2,0],[-1,0,0],unitLength)
+
+      
+
+
+      // Transverse
+        // Left
+      addLevel([0, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),1);
+      addLevel([unitLength, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([3*unitLength, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),5);
+        // Right
+      addLevel([0, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),1);
+      addLevel([-unitLength, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([3*-unitLength, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),5);
+      // Origin Spread
+           // Left
+      addSegment('coronalOriginSpreadFront',[unitLength*2,0,0],[0,1,0],unitLength)
+      addSegment('coronalOriginSpreadBack',[unitLength*2,0,0],[0,-1,0],unitLength)
+      addSegment('coronalOriginSpreadLeft',[unitLength*2,0,0],[0,0,1],unitLength)
+      addSegment('coronalOriginSpreadRight',[unitLength*2,0,0],[0,0,-1],unitLength)
+           // Right
+      addSegment('coronalOriginSpreadFront',[-unitLength*2,0,0],[0,1,0],unitLength)
+      addSegment('coronalOriginSpreadBack',[-unitLength*2,0,0],[0,-1,0],unitLength)
+      addSegment('coronalOriginSpreadLeft',[-unitLength*2,0,0],[0,0,1],unitLength)
+      addSegment('coronalOriginSpreadRight',[-unitLength*2,0,0],[0,0,-1],unitLength)
+
+      // Transverse
+
+      // Right
+
+      const geometryPane15 = new THREE.BufferGeometry();
+      geometryPane15.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,8,0, -16,0,8], 3));
+      geometryPane15.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane15 = new THREE.Mesh(geometryPane15, material);
+      unit.add(meshPane15);
+
+      const geometryPane16 = new THREE.BufferGeometry();
+      geometryPane16.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,8,0, -16,0,-8], 3));
+      geometryPane16.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane16 = new THREE.Mesh(geometryPane16, material);
+      unit.add(meshPane16);
+
+      const geometryPane17 = new THREE.BufferGeometry();
+      geometryPane17.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,8,0, -16,0,-8], 3));
+      geometryPane17.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane17 = new THREE.Mesh(geometryPane17, material);
+      unit.add(meshPane17);
+
+      const geometryPane18 = new THREE.BufferGeometry();
+      geometryPane18.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,8,0, -16,0,8], 3));
+      geometryPane18.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane18 = new THREE.Mesh(geometryPane18, material);
+      unit.add(meshPane18);
+
+
+      const geometryPane19 = new THREE.BufferGeometry();
+      geometryPane19.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,-8,0, -16,0,8], 3));
+      geometryPane19.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane19 = new THREE.Mesh(geometryPane19, material);
+      unit.add(meshPane19);
+
+      const geometryPane20 = new THREE.BufferGeometry();
+      geometryPane20.setAttribute('position', new THREE.Float32BufferAttribute([-24,0,0, -16,-8,0, -16,0,-8], 3));
+      geometryPane20.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane20 = new THREE.Mesh(geometryPane20, material);
+      unit.add(meshPane20);
+
+      const geometryPane21 = new THREE.BufferGeometry();
+      geometryPane21.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,-8,0, -16,0,-8], 3));
+      geometryPane21.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane21 = new THREE.Mesh(geometryPane21, material);
+      unit.add(meshPane21);
+
+      const geometryPane22 = new THREE.BufferGeometry();
+      geometryPane22.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,0, -16,-8,0, -16,0,8], 3));
+      geometryPane22.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane22 = new THREE.Mesh(geometryPane22, material);
+      unit.add(meshPane22);
+
+      // Left
+
+      const geometryPane23 = new THREE.BufferGeometry();
+      geometryPane23.setAttribute('position', new THREE.Float32BufferAttribute([24,0,0, 16,8,0, 16,0,8], 3));
+      geometryPane23.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane23 = new THREE.Mesh(geometryPane23, material);
+      unit.add(meshPane23);
+
+      const geometryPane24 = new THREE.BufferGeometry();
+      geometryPane24.setAttribute('position', new THREE.Float32BufferAttribute([24,0,0, 16,8,0, 16,0,-8], 3));
+      geometryPane24.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane24 = new THREE.Mesh(geometryPane24, material);
+      unit.add(meshPane24);
+
+      const geometryPane25 = new THREE.BufferGeometry();
+      geometryPane25.setAttribute('position', new THREE.Float32BufferAttribute([8,0,0, 16,8,0, 16,0,-8], 3));
+      geometryPane25.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane25 = new THREE.Mesh(geometryPane25, material);
+      unit.add(meshPane25);
+
+
+      const geometryPane26 = new THREE.BufferGeometry();
+      geometryPane26.setAttribute('position', new THREE.Float32BufferAttribute([8,0,0, 16,8,0, 16,0,8], 3));
+      geometryPane26.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane26 = new THREE.Mesh(geometryPane26, material);
+      unit.add(meshPane26);
+
+
+      const geometryPane27 = new THREE.BufferGeometry();
+      geometryPane27.setAttribute('position', new THREE.Float32BufferAttribute([24,0,0, 16,-8,0, 16,0,8], 3));
+      geometryPane27.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane27 = new THREE.Mesh(geometryPane27, material);
+      unit.add(meshPane27);
+
+      const geometryPane28 = new THREE.BufferGeometry();
+      geometryPane28.setAttribute('position', new THREE.Float32BufferAttribute([24,0,0, 16,-8,0, 16,0,-8], 3));
+      geometryPane28.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane28 = new THREE.Mesh(geometryPane28, material);
+      unit.add(meshPane28);
+
+      const geometryPane29 = new THREE.BufferGeometry();
+      geometryPane29.setAttribute('position', new THREE.Float32BufferAttribute([8,0,0, 16,-8,0, 16,0,-8], 3));
+      geometryPane29.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane29 = new THREE.Mesh(geometryPane29, material);
+      unit.add(meshPane29);
+
+      const geometryPane30 = new THREE.BufferGeometry();
+      geometryPane30.setAttribute('position', new THREE.Float32BufferAttribute([8,0,0, 16,-8,0, 16,0,8], 3));
+      geometryPane30.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane30 = new THREE.Mesh(geometryPane30, material);
+      unit.add(meshPane30);
+
+      
+      // Saggital
+       // Front
+      addLevel([0, 0, 0], 'saggital', 'positive', unitLength * Math.sqrt(2),1);
+      addLevel([0, 0, unitLength], 'saggital', 'positive', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([0, 0, 3*unitLength], 'saggital', 'negative', unitLength * Math.sqrt(2),5);
+       // Back
+      addLevel([0, 0, 0], 'saggital', 'negative', unitLength * Math.sqrt(2),1);
+      addLevel([0, 0, -unitLength], 'saggital', 'negative', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([0, 0, 3*-unitLength], 'saggital', 'positive', unitLength * Math.sqrt(2),5);
+
+      // Origin Spread
+           // Front
+      addSegment('coronalOriginSpreadLeft',[0,0,unitLength*2],[1,0,0],unitLength)
+      addSegment('coronalOriginSpreadRight',[0,0,unitLength*2],[-1,0,0],unitLength)
+      addSegment('coronalOriginSpreadFront',[0,0,unitLength*2],[0,1,0],unitLength)
+      addSegment('coronalOriginSpreadBack',[0,0,unitLength*2],[0,-1,0],unitLength)
+           // Back
+      addSegment('coronalOriginSpreadFront',[0,0,-unitLength*2],[1,0,0],unitLength)
+      addSegment('coronalOriginSpreadBack',[0,0,-unitLength*2],[-1,0,0],unitLength)
+      addSegment('coronalOriginSpreadLeft',[0,0,-unitLength*2],[0,1,0],unitLength)
+      addSegment('coronalOriginSpreadRight',[0,0,-unitLength*2],[0,-1,0],unitLength)
+      
+      // Saggital
+
+      // Front
+
+      const geometryPane31 = new THREE.BufferGeometry();
+      geometryPane31.setAttribute('position', new THREE.Float32BufferAttribute([0,0,24, 0,8,16, 8,0,16], 3));
+      geometryPane31.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane31 = new THREE.Mesh(geometryPane31, material);
+      unit.add(meshPane31);
+
+      const geometryPane32 = new THREE.BufferGeometry();
+      geometryPane32.setAttribute('position', new THREE.Float32BufferAttribute([0,0,8, 0,8,16, 8,0,16], 3));
+      geometryPane32.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane32 = new THREE.Mesh(geometryPane32, material);
+      unit.add(meshPane32);
+
+      const geometryPane33 = new THREE.BufferGeometry();
+      geometryPane33.setAttribute('position', new THREE.Float32BufferAttribute([0,0,8, 0,8,16, -8,0,16], 3));
+      geometryPane33.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane33 = new THREE.Mesh(geometryPane33, material);
+      unit.add(meshPane33);
+
+      const geometryPane34 = new THREE.BufferGeometry();
+      geometryPane34.setAttribute('position', new THREE.Float32BufferAttribute([0,0,24, 0,8,16, -8,0,16], 3));
+      geometryPane34.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane34 = new THREE.Mesh(geometryPane34, material);
+      unit.add(meshPane34);
+
+      const geometryPane35 = new THREE.BufferGeometry();
+      geometryPane35.setAttribute('position', new THREE.Float32BufferAttribute([0,0,24, 0,-8,16, 8,0,16], 3));
+      geometryPane35.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane35 = new THREE.Mesh(geometryPane35, material);
+      unit.add(meshPane35);
+
+      const geometryPane36 = new THREE.BufferGeometry();
+      geometryPane36.setAttribute('position', new THREE.Float32BufferAttribute([0,0,8, 0,-8,16, 8,0,16], 3));
+      geometryPane36.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane36 = new THREE.Mesh(geometryPane36, material);
+      unit.add(meshPane36);
+
+      const geometryPane37 = new THREE.BufferGeometry();
+      geometryPane37.setAttribute('position', new THREE.Float32BufferAttribute([0,0,8, 0,-8,16, -8,0,16], 3));
+      geometryPane37.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane37 = new THREE.Mesh(geometryPane37, material);
+      unit.add(meshPane37);
+
+      const geometryPane38 = new THREE.BufferGeometry();
+      geometryPane38.setAttribute('position', new THREE.Float32BufferAttribute([0,0,24, 0,-8,16, -8,0,16], 3));
+      geometryPane38.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane38 = new THREE.Mesh(geometryPane38, material);
+      unit.add(meshPane38);
+
+      // Front
+
+      const geometryPane39 = new THREE.BufferGeometry();
+      geometryPane39.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-24, 0,8,-16, 8,0,-16], 3));
+      geometryPane39.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane39 = new THREE.Mesh(geometryPane39, material);
+      unit.add(meshPane39);
+      
+
+      const geometryPane40 = new THREE.BufferGeometry();
+      geometryPane40.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,8,-16, 8,0,-16], 3));
+      geometryPane40.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane40 = new THREE.Mesh(geometryPane40, material);
+      unit.add(meshPane40);
+
+
+      const geometryPane41 = new THREE.BufferGeometry();
+      geometryPane41.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,8,-16, -8,0,-16], 3));
+      geometryPane41.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane41 = new THREE.Mesh(geometryPane41, material);
+      unit.add(meshPane41);
+
+      const geometryPane42 = new THREE.BufferGeometry();
+      geometryPane42.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-24, 0,8,-16, -8,0,-16], 3));
+      geometryPane42.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane42 = new THREE.Mesh(geometryPane42, material);
+      unit.add(meshPane42);
+
+
+    
+      const geometryPane43 = new THREE.BufferGeometry();
+      geometryPane43.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-24, 0,-8,-16, 8,0,-16], 3));
+      geometryPane43.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane43 = new THREE.Mesh(geometryPane43, material);
+      unit.add(meshPane43);
+
+      
+
+      const geometryPane44 = new THREE.BufferGeometry();
+      geometryPane44.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,-8,-16, 8,0,-16], 3));
+      geometryPane44.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane44 = new THREE.Mesh(geometryPane44, material);
+      unit.add(meshPane44);
+
+
+      const geometryPane45 = new THREE.BufferGeometry();
+      geometryPane45.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,-8,-16, -8,0,-16], 3));
+      geometryPane45.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane45 = new THREE.Mesh(geometryPane45, material);
+      unit.add(meshPane45);
+
+      const geometryPane46 = new THREE.BufferGeometry();
+      geometryPane46.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-24, 0,-8,-16, -8,0,-16], 3));
+      geometryPane46.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const meshPane46 = new THREE.Mesh(geometryPane46, material);
+      unit.add(meshPane46);
+
+      const wingColors = [
+        1, .46, 0,
+        1, 0, 0,
+        1, 1, 0,
+      ]
+
+      // Top Left
+
+      const wingLeftTopBase = new THREE.BufferGeometry();
+      wingLeftTopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,8,0, 8,0,0], 3));
+      wingLeftTopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopBase = new THREE.Mesh(wingLeftTopBase, materialLight);
+      unit.add(meshwingLeftTopBase);
+      
+      const wingLeftTopBaseNext = new THREE.BufferGeometry();
+      wingLeftTopBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 0,8,0, 8,0,0], 3));
+      wingLeftTopBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopBaseNext = new THREE.Mesh(wingLeftTopBaseNext, materialLight);
+      unit.add(meshwingLeftTopBaseNext);
+
+      const wingLeftTopNextTop = new THREE.BufferGeometry();
+      wingLeftTopNextTop.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 0,8,0, 8,16,0], 3));
+      wingLeftTopNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopNextTop = new THREE.Mesh(wingLeftTopNextTop, materialLight);
+      unit.add(meshwingLeftTopNextTop);
+
+      const wingLeftTopNextBottom = new THREE.BufferGeometry();
+      wingLeftTopNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 16,8,0, 8,0,0], 3));
+      wingLeftTopNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopNextBottom = new THREE.Mesh(wingLeftTopNextBottom, materialLight);
+      unit.add(meshwingLeftTopNextBottom);
+
+      const wingLeftTopCenter = new THREE.BufferGeometry();
+      wingLeftTopCenter.setAttribute('position', new THREE.Float32BufferAttribute([8,8,0, 16,8,0, 8,16,0], 3));
+      wingLeftTopCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopCenter = new THREE.Mesh(wingLeftTopCenter, materialLight);
+      unit.add(meshwingLeftTopCenter);
+
+      const wingLeftTopCenterLeft = new THREE.BufferGeometry();
+      wingLeftTopCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([16,16,0, 16,8,0, 8,16,0], 3));
+      wingLeftTopCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftTopCenterLeft = new THREE.Mesh(wingLeftTopCenterLeft, materialLight);
+      unit.add(meshwingLeftTopCenterLeft);
+
+      // Top Right
+
+      const wingRightTopBase = new THREE.BufferGeometry();
+      wingRightTopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,8,0, -8,0,0], 3));
+      wingRightTopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightTopBase = new THREE.Mesh(wingRightTopBase, materialLight);
+      unit.add(meshwingRightTopBase);
+      
+      const wingRightTopBaseNext = new THREE.BufferGeometry();
+      wingRightTopBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([-8,8,0, 0,8,0, -8,0,0], 3));
+      wingRightTopBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightTopBaseNext = new THREE.Mesh(wingRightTopBaseNext, materialLight);
+      unit.add(meshwingRightTopBaseNext);
+
+      const wingRightTopNextTop = new THREE.BufferGeometry();
+      wingRightTopNextTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,8,0, 0,8,0, -8,16,0], 3));
+      wingRightTopNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightTopNextTop = new THREE.Mesh(wingRightTopNextTop, materialLight);
+      unit.add(meshwingRightTopNextTop);
+
+      const wingRightTopNextBottom = new THREE.BufferGeometry();
+      wingRightTopNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([-8,8,0, -16,8,0, -8,0,0], 3));
+      wingRightTopNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightTopNextBottom = new THREE.Mesh(wingRightTopNextBottom, materialLight);
+      unit.add(meshwingRightTopNextBottom);
+
+      const wingRightTopCenter = new THREE.BufferGeometry();
+      wingRightTopCenter.setAttribute('position', new THREE.Float32BufferAttribute([-8,8,0, -16,8,0, -8,16,0], 3));
+      wingRightTopCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightTopCenter = new THREE.Mesh(wingRightTopCenter, materialLight);
+      unit.add(meshwingRightTopCenter);
+
+      const wingRightTopCenterLeft = new THREE.BufferGeometry();
+      wingRightTopCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([-16,16,0, -16,8,0, -8,16,0], 3));
+      wingRightTopCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightTopCenterLeft = new THREE.Mesh(wingRightTopCenterLeft, materialLight);
+      unit.add(meshwingRightTopCenterLeft);
+
+
+      // Bottom Left
+
+      const wingLeftBottomBase = new THREE.BufferGeometry();
+      wingLeftBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,-8,0, 8,0,0], 3));
+      wingLeftBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftBottomBase = new THREE.Mesh(wingLeftBottomBase, materialLight);
+      unit.add(meshwingLeftBottomBase);
+      
+      const wingLeftBottomBaseNext = new THREE.BufferGeometry();
+      wingLeftBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([8,-8,0, 0,-8,0, 8,0,0], 3));
+      wingLeftBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftBottomBaseNext = new THREE.Mesh(wingLeftBottomBaseNext, materialLight);
+      unit.add(meshwingLeftBottomBaseNext);
+
+      const wingLeftBottomNextTop = new THREE.BufferGeometry();
+      wingLeftBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([8,-8,0, 0,-8,0, 8,-16,0], 3));
+      wingLeftBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftBottomNextTop = new THREE.Mesh(wingLeftBottomNextTop, materialLight);
+      unit.add(meshwingLeftBottomNextTop);
+
+      const wingLeftBottomNextBottom = new THREE.BufferGeometry();
+      wingLeftBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([8,-8,0, 16,-8,0, 8,0,0], 3));
+      wingLeftBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftBottomNextBottom = new THREE.Mesh(wingLeftBottomNextBottom, materialLight);
+      unit.add(meshwingLeftBottomNextBottom);
+
+      const wingLeftBottomCenter = new THREE.BufferGeometry();
+      wingLeftBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([8,-8,0, 16,-8,0, 8,-16,0], 3));
+      wingLeftBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftBottomCenter = new THREE.Mesh(wingLeftBottomCenter, materialLight);
+      unit.add(meshwingLeftBottomCenter);
+
+      const wingLeftBottomCenterLeft = new THREE.BufferGeometry();
+      wingLeftBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([16,-16,0, 16,-8,0, 8,-16,0], 3));
+      wingLeftBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingLeftBottomCenterLeft = new THREE.Mesh(wingLeftBottomCenterLeft, materialLight);
+      unit.add(meshwingLeftBottomCenterLeft);
+
+      // Bottom Right
+
+      const wingRightBottomBase = new THREE.BufferGeometry();
+      wingRightBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,-8,0, -8,0,0], 3));
+      wingRightBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightBottomBase = new THREE.Mesh(wingRightBottomBase, materialLight);
+      unit.add(meshwingRightBottomBase);
+      
+      const wingRightBottomBaseNext = new THREE.BufferGeometry();
+      wingRightBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([-8,-8,0, 0,-8,0, -8,0,0], 3));
+      wingRightBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightBottomBaseNext = new THREE.Mesh(wingRightBottomBaseNext, materialLight);
+      unit.add(meshwingRightBottomBaseNext);
+
+      const wingRightBottomNextTop = new THREE.BufferGeometry();
+      wingRightBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,-8,0, 0,-8,0, -8,-16,0], 3));
+      wingRightBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightBottomNextTop = new THREE.Mesh(wingRightBottomNextTop, materialLight);
+      unit.add(meshwingRightBottomNextTop);
+
+      const wingRightBottomNextBottom = new THREE.BufferGeometry();
+      wingRightBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([-8,-8,0, -16,-8,0, -8,0,0], 3));
+      wingRightBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightBottomNextBottom = new THREE.Mesh(wingRightBottomNextBottom, materialLight);
+      unit.add(meshwingRightBottomNextBottom);
+
+      const wingRightBottomCenter = new THREE.BufferGeometry();
+      wingRightBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([-8,-8,0, -16,-8,0, -8,-16,0], 3));
+      wingRightBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightBottomCenter = new THREE.Mesh(wingRightBottomCenter, materialLight);
+      unit.add(meshwingRightBottomCenter);
+
+      const wingRightBottomCenterLeft = new THREE.BufferGeometry();
+      wingRightBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([-16,-16,0, -16,-8,0, -8,-16,0], 3));
+      wingRightBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingRightBottomCenterLeft = new THREE.Mesh(wingRightBottomCenterLeft, materialLight);
+      unit.add(meshwingRightBottomCenterLeft);
+
+
+      // Neg
+      
+      // Top Left Neg
+
+      const wingNegLeftTopBase = new THREE.BufferGeometry();
+      wingNegLeftTopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,8,0, 0,0,8], 3));
+      wingNegLeftTopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftTopBase = new THREE.Mesh(wingNegLeftTopBase, materialLight);
+      unit.add(meshwingNegLeftTopBase);
+      
+      const wingNegLeftTopBaseNext = new THREE.BufferGeometry();
+      wingNegLeftTopBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([0,8,8, 0,8,0, 0,0,8], 3));
+      wingNegLeftTopBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftTopBaseNext = new THREE.Mesh(wingNegLeftTopBaseNext, materialLight);
+      unit.add(meshwingNegLeftTopBaseNext);
+
+      const wingNegLeftTopNextTop = new THREE.BufferGeometry();
+      wingNegLeftTopNextTop.setAttribute('position', new THREE.Float32BufferAttribute([0,8,8, 0,8,0, 0,16,8], 3));
+      wingNegLeftTopNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftTopNextTop = new THREE.Mesh(wingNegLeftTopNextTop, materialLight);
+      unit.add(meshwingNegLeftTopNextTop);
+
+      const wingNegLeftTopNextBottom = new THREE.BufferGeometry();
+      wingNegLeftTopNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,8,8, 0,8,16, 0,0,8], 3));
+      wingNegLeftTopNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftTopNextBottom = new THREE.Mesh(wingNegLeftTopNextBottom, materialLight);
+      unit.add(meshwingNegLeftTopNextBottom);
+
+      const wingNegLeftTopCenter = new THREE.BufferGeometry();
+      wingNegLeftTopCenter.setAttribute('position', new THREE.Float32BufferAttribute([0,8,8, 0,8,16, 0,16,8], 3));
+      wingNegLeftTopCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftTopCenter = new THREE.Mesh(wingNegLeftTopCenter, materialLight);
+      unit.add(meshwingNegLeftTopCenter);
+
+      const wingNegLeftTopCenterLeft = new THREE.BufferGeometry();
+      wingNegLeftTopCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,16,16, 0,8,16, 0,16,8], 3));
+      wingNegLeftTopCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftTopCenterLeft = new THREE.Mesh(wingNegLeftTopCenterLeft, materialLight);
+      unit.add(meshwingNegLeftTopCenterLeft);
+
+      // Top Neg Right
+
+      const wingNegRightTopBase = new THREE.BufferGeometry();
+      wingNegRightTopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,8,0, 0,0,-8], 3));
+      wingNegRightTopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightTopBase = new THREE.Mesh(wingNegRightTopBase, materialLight);
+      unit.add(meshwingNegRightTopBase);
+      
+      const wingNegRightTopBaseNext = new THREE.BufferGeometry();
+      wingNegRightTopBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([0,8,-8, 0,8,0, 0,0,-8], 3));
+      wingNegRightTopBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightTopBaseNext = new THREE.Mesh(wingNegRightTopBaseNext, materialLight);
+      unit.add(meshwingNegRightTopBaseNext);
+
+      const wingNegRightTopNextTop = new THREE.BufferGeometry();
+      wingNegRightTopNextTop.setAttribute('position', new THREE.Float32BufferAttribute([0,8,-8, 0,8,0, 0,16,-8], 3));
+      wingNegRightTopNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightTopNextTop = new THREE.Mesh(wingNegRightTopNextTop, materialLight);
+      unit.add(meshwingNegRightTopNextTop);
+
+      const wingNegRightTopNextBottom = new THREE.BufferGeometry();
+      wingNegRightTopNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,8,-8, 0,8,-16, 0,0,-8], 3));
+      wingNegRightTopNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightTopNextBottom = new THREE.Mesh(wingNegRightTopNextBottom, materialLight);
+      unit.add(meshwingNegRightTopNextBottom);
+
+      const wingNegRightTopCenter = new THREE.BufferGeometry();
+      wingNegRightTopCenter.setAttribute('position', new THREE.Float32BufferAttribute([0,8,-8, 0,8,-16, 0,16,-8], 3));
+      wingNegRightTopCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightTopCenter = new THREE.Mesh(wingNegRightTopCenter, materialLight);
+      unit.add(meshwingNegRightTopCenter);
+
+      const wingNegRightTopCenterLeft = new THREE.BufferGeometry();
+      wingNegRightTopCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,16,-16, 0,8,-16, 0,16,-8], 3));
+      wingNegRightTopCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightTopCenterLeft = new THREE.Mesh(wingNegRightTopCenterLeft, materialLight);
+      unit.add(meshwingNegRightTopCenterLeft);
+
+
+      // Neg Bottom Left
+
+      const wingNegLeftBottomBase = new THREE.BufferGeometry();
+      wingNegLeftBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,-8,0, 0,0,8], 3));
+      wingNegLeftBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftBottomBase = new THREE.Mesh(wingNegLeftBottomBase, materialLight);
+      unit.add(meshwingNegLeftBottomBase);
+      
+      const wingNegLeftBottomBaseNext = new THREE.BufferGeometry();
+      wingNegLeftBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,8, 0,-8,0, 0,0,8], 3));
+      wingNegLeftBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftBottomBaseNext = new THREE.Mesh(wingNegLeftBottomBaseNext, materialLight);
+      unit.add(meshwingNegLeftBottomBaseNext);
+
+      const wingNegLeftBottomNextTop = new THREE.BufferGeometry();
+      wingNegLeftBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,8, 0,-8,0, 0,-16,8], 3));
+      wingNegLeftBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftBottomNextTop = new THREE.Mesh(wingNegLeftBottomNextTop, materialLight);
+      unit.add(meshwingNegLeftBottomNextTop);
+
+      const wingNegLeftBottomNextBottom = new THREE.BufferGeometry();
+      wingNegLeftBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,8, 0,-8,16, 0,0,8], 3));
+      wingNegLeftBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftBottomNextBottom = new THREE.Mesh(wingNegLeftBottomNextBottom, materialLight);
+      unit.add(meshwingNegLeftBottomNextBottom);
+
+      const wingNegLeftBottomCenter = new THREE.BufferGeometry();
+      wingNegLeftBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,8, 0,-8,16, 0,-16,8], 3));
+      wingNegLeftBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftBottomCenter = new THREE.Mesh(wingNegLeftBottomCenter, materialLight);
+      unit.add(meshwingNegLeftBottomCenter);
+
+      const wingNegLeftBottomCenterLeft = new THREE.BufferGeometry();
+      wingNegLeftBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,-16,16, 0,-8,16, 0,-16,8], 3));
+      wingNegLeftBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegLeftBottomCenterLeft = new THREE.Mesh(wingNegLeftBottomCenterLeft, materialLight);
+      unit.add(meshwingNegLeftBottomCenterLeft);
+
+      // Neg Bottom Right
+
+      const wingNegRightBottomBase = new THREE.BufferGeometry();
+      wingNegRightBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 0,-8,0, 0,0,-8], 3));
+      wingNegRightBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightBottomBase = new THREE.Mesh(wingNegRightBottomBase, materialLight);
+      unit.add(meshwingNegRightBottomBase);
+      
+      const wingNegRightBottomBaseNext = new THREE.BufferGeometry();
+      wingNegRightBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,-8, 0,-8,0, 0,0,-8], 3));
+      wingNegRightBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightBottomBaseNext = new THREE.Mesh(wingNegRightBottomBaseNext, materialLight);
+      unit.add(meshwingNegRightBottomBaseNext);
+
+      const wingNegRightBottomNextTop = new THREE.BufferGeometry();
+      wingNegRightBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,-8, 0,-8,0, 0,-16,-8], 3));
+      wingNegRightBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightBottomNextTop = new THREE.Mesh(wingNegRightBottomNextTop, materialLight);
+      unit.add(meshwingNegRightBottomNextTop);
+
+      const wingNegRightBottomNextBottom = new THREE.BufferGeometry();
+      wingNegRightBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,-8, 0,-8,-16, 0,0,-8], 3));
+      wingNegRightBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightBottomNextBottom = new THREE.Mesh(wingNegRightBottomNextBottom, materialLight);
+      unit.add(meshwingNegRightBottomNextBottom);
+
+      const wingNegRightBottomCenter = new THREE.BufferGeometry();
+      wingNegRightBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([0,-8,-8, 0,-8,-16, 0,-16,-8], 3));
+      wingNegRightBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightBottomCenter = new THREE.Mesh(wingNegRightBottomCenter, materialLight);
+      unit.add(meshwingNegRightBottomCenter);
+
+      const wingNegRightBottomCenterLeft = new THREE.BufferGeometry();
+      wingNegRightBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,-16,-16, 0,-8,-16, 0,-16,-8], 3));
+      wingNegRightBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegRightBottomCenterLeft = new THREE.Mesh(wingNegRightBottomCenterLeft, materialLight);
+      unit.add(meshwingNegRightBottomCenterLeft);
+
+
+      scene.add(unit);
+
+      /*const axesHelper = new THREE.AxesHelper( 50 );
+      scene.add( axesHelper );*/
+
+      scene.background = new THREE.Color(0x000000);
+
+
+      const lightColorHash = 0xFFFFFF;
+
+      const light1 = new THREE.DirectionalLight(lightColorHash, 1);
+      light1.position.set(-1, -1, -1)//.normalize();
+      scene.add(light1);
+
+      const light2 = new THREE.DirectionalLight(lightColorHash, 1);
+      light2.position.set(1, 1, 1)//.normalize();
+      scene.add(light2);
+
+
+      const lightAmbient = new THREE.AmbientLight(lightColorHash,1 ); // soft white light
+      scene.add( lightAmbient );
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      render();
+      //stats.update();
+    }
+
+      //unit.rotation.x -= 0.20;
+      //unit.rotation.y += 0.90;
+      //unit.rotation.z += 0.50;
+
+    function render() {
+
+      const time = Date.now() * 0.002;
+
+      //unit.rotation.x = time * 0.15;
+      unit.rotation.y = time * -0.25;
+      //unit.rotation.z = time * 0.15;
+
+
+      renderer.render(scene, camera);
+    }
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
