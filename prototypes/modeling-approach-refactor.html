@@ -167,7 +167,6 @@
         opacity: .9 
       });
 
-
       // Coronal Top
 
       const geometryPane = new THREE.BufferGeometry();
@@ -194,7 +193,6 @@
       const meshPane2 = new THREE.Mesh(geometryPane2, material);
       unit.add(meshPane2);
 
-
       const geometryPane3 = new THREE.BufferGeometry();
       geometryPane3.setAttribute('position', new THREE.Float32BufferAttribute([0,8,0, 0,16,8, 8,16,0], 3));
       geometryPane3.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
@@ -218,7 +216,6 @@
       geometryPane6.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane6 = new THREE.Mesh(geometryPane6, material);
       unit.add(meshPane6);
-
 
       // Coronal Bottom
 
@@ -269,16 +266,12 @@
       geometryPane14.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane14 = new THREE.Mesh(geometryPane14, material);
       unit.add(meshPane14);
-
       
            // Bottom
       addSegment('coronalOriginSpreadFront',[0,-unitLength*2,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadBack',[0,-unitLength*2,0],[0,0,-1],unitLength)
       addSegment('coronalOriginSpreadLeft',[0,-unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,-unitLength*2,0],[-1,0,0],unitLength)
-
-      
-
 
       // Transverse
         // Left
@@ -492,14 +485,12 @@
       geometryPane39.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane39 = new THREE.Mesh(geometryPane39, material);
       unit.add(meshPane39);
-      
 
       const geometryPane40 = new THREE.BufferGeometry();
       geometryPane40.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,8,-16, 8,0,-16], 3));
       geometryPane40.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane40 = new THREE.Mesh(geometryPane40, material);
       unit.add(meshPane40);
-
 
       const geometryPane41 = new THREE.BufferGeometry();
       geometryPane41.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,8,-16, -8,0,-16], 3));
@@ -512,8 +503,6 @@
       geometryPane42.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane42 = new THREE.Mesh(geometryPane42, material);
       unit.add(meshPane42);
-
-
     
       const geometryPane43 = new THREE.BufferGeometry();
       geometryPane43.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-24, 0,-8,-16, 8,0,-16], 3));
@@ -521,14 +510,11 @@
       const meshPane43 = new THREE.Mesh(geometryPane43, material);
       unit.add(meshPane43);
 
-      
-
       const geometryPane44 = new THREE.BufferGeometry();
       geometryPane44.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,-8,-16, 8,0,-16], 3));
       geometryPane44.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane44 = new THREE.Mesh(geometryPane44, material);
       unit.add(meshPane44);
-
 
       const geometryPane45 = new THREE.BufferGeometry();
       geometryPane45.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-8, 0,-8,-16, -8,0,-16], 3));
@@ -541,7 +527,7 @@
       geometryPane46.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane46 = new THREE.Mesh(geometryPane46, material);
       unit.add(meshPane46);
-
+/*
       const wingColors = [
         1, .46, 0,
         1, 0, 0,
@@ -1009,6 +995,8 @@
       wingNegReverse3RightBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
       const meshwingNegReverse3RightBottomCenterLeft = new THREE.Mesh(wingNegReverse3RightBottomCenterLeft, materialLight);
       unit.add(meshwingNegReverse3RightBottomCenterLeft);
+
+      */
 
 
 
