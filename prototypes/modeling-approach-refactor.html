@@ -135,18 +135,17 @@
           // Cap
       addLevel([0, 3*unitLength, 0], 'coronal', 'negative', unitLength * Math.sqrt(2),5);
         // Bottom
-      addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
-      addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
-          // Cap
-      addLevel([0, 3*-unitLength, 0],'coronal','positive', unitLength * Math.sqrt(2),5);
+
+      
          // Origin Spread
         
            // Top
       addSegment('coronalOriginSpreadFront',[0,unitLength*2,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadBack',[0,unitLength*2,0],[0,0,-1],unitLength)
+
       addSegment('coronalOriginSpreadLeft',[0,unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,unitLength*2,0],[-1,0,0],unitLength)
-
+      
 
       const colors = [
         0, 0, 1,
@@ -218,6 +217,13 @@
       const meshPane6 = new THREE.Mesh(geometryPane6, material);
       unit.add(meshPane6);
 
+    /*
+
+      /*addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
+      addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
+          // Cap
+      addLevel([0, 3*-unitLength, 0],'coronal','positive', unitLength * Math.sqrt(2),5);
+      
       // Coronal Bottom
 
       const geometryPane7 = new THREE.BufferGeometry();
@@ -273,6 +279,9 @@
       addSegment('coronalOriginSpreadBack',[0,-unitLength*2,0],[0,0,-1],unitLength)
       addSegment('coronalOriginSpreadLeft',[0,-unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,-unitLength*2,0],[-1,0,0],unitLength)
+      */
+
+      /*
 
       // Transverse
         // Left
@@ -296,6 +305,7 @@
       addSegment('coronalOriginSpreadBack',[-unitLength*2,0,0],[0,-1,0],unitLength)
       addSegment('coronalOriginSpreadLeft',[-unitLength*2,0,0],[0,0,1],unitLength)
       addSegment('coronalOriginSpreadRight',[-unitLength*2,0,0],[0,0,-1],unitLength)
+
 
       // Transverse
 
@@ -528,6 +538,9 @@
       geometryPane46.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane46 = new THREE.Mesh(geometryPane46, material);
       unit.add(meshPane46);
+
+      */
+
 /*
       const wingColors = [
         1, .46, 0,
@@ -998,8 +1011,6 @@
       unit.add(meshwingNegReverse3RightBottomCenterLeft);
 
       */
-
-
 
       scene.add(unit);
 
