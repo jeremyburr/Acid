@@ -100,7 +100,7 @@
       // Green Teal Blue
 
       const oneUpFront = new THREE.BufferGeometry();
-      oneUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,val,-8, -8,val,0], 3));
+      oneUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,-8, -8,val,0, 0,0,0], 3));
       oneUpFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshoneUpFront = new THREE.Mesh(oneUpFront, materialLight);
       unit.add(meshoneUpFront);
@@ -150,7 +150,7 @@
       // Green Teal Blue
 
       const oneLeftFront = new THREE.BufferGeometry();
-      oneLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,val,-8, 0,-val,-8], 3));
+      oneLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,-8, 0,-val,-8, 0,0,0 ,], 3));
       oneLeftFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshoneLeftFront = new THREE.Mesh(oneLeftFront, materialLight);
       unit.add(meshoneLeftFront);
@@ -176,7 +176,7 @@
       // Right
 
       const oneRightFront = new THREE.BufferGeometry();
-      oneRightFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,-8,val,0, -8,-val,0], 3));
+      oneRightFront.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,0, -8,-val,0, 0,0,0 ,], 3));
       oneRightFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshoneRightFront = new THREE.Mesh(oneRightFront, materialLight);
       unit.add(meshoneRightFront);
@@ -201,12 +201,17 @@
 
 
 
+
+
+
+
+
     // Octant Seven
 
       // Green Teal Blue
 
       const sevenUpFront = new THREE.BufferGeometry();
-      sevenUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,val,8, 8,val,0], 3));
+      sevenUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,8, 8,val,0, 0,0,0], 3));
       sevenUpFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshsevenUpFront = new THREE.Mesh(sevenUpFront, materialLight);
       unit.add(meshsevenUpFront);
@@ -256,7 +261,7 @@
       // Green Teal Blue
 
       const sevenLeftFront = new THREE.BufferGeometry();
-      sevenLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,val,8, 0,-val,8], 3));
+      sevenLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,8, 0,-val,8, 0,0,0 ], 3));
       sevenLeftFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshsevenLeftFront = new THREE.Mesh(sevenLeftFront, materialLight);
       unit.add(meshsevenLeftFront);
@@ -282,7 +287,7 @@
       // Right
 
       const sevenRightFront = new THREE.BufferGeometry();
-      sevenRightFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,8,val,0, 8,-val,0], 3));
+      sevenRightFront.setAttribute('position', new THREE.Float32BufferAttribute([8,val,0, 8,-val,0, 0,0,0], 3));
       sevenRightFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshsevenRightFront = new THREE.Mesh(sevenRightFront, materialLight);
       unit.add(meshsevenRightFront);
