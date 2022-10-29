@@ -31,7 +31,7 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 44;
-      camera.position.y = 55;
+      camera.position.y = 45;
       camera.position.z = 115;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -64,18 +64,13 @@
         0, 1, 1,
       ]
 
-      const material = new THREE.MeshPhongMaterial({
-        side: THREE.DoubleSide,
-        vertexColors: true,
-        transparent: true,
-        opacity: .9
-      });
+
 
       const materialLight = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .75 
+        opacity: .85 
       });
       
       const wingColors = [
@@ -739,9 +734,9 @@
 
       scene.add(unit);
 
-      const axesHelper = new THREE.AxesHelper( 50 );
+      /*const axesHelper = new THREE.AxesHelper( 50 );
       axesHelper.setColors('red','blue','green');
-      scene.add( axesHelper );
+      scene.add( axesHelper );*/
 
       scene.background = new THREE.Color(0x000000);
 
@@ -784,7 +779,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * 0.15;
-      //unit.rotation.y = time * -0.25;
+      unit.rotation.y = time * -0.25;
       //unit.rotation.z = time * 0.15;
 
 
