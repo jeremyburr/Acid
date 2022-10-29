@@ -58,6 +58,26 @@
         return degrees * (Math.PI / 180);
       }
 
+      const colors = [
+        0, 0, 1,
+        1, 0, 1,
+        0, 1, 1,
+      ]
+
+      const material = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: .9
+      });
+
+      const materialLight = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: .9 
+      });
+
       // Add Segment
 
       function addSegment(name, start, direction, magnitude) {
@@ -128,6 +148,8 @@
         }
       }
 
+      /*
+
       // Coronal 
         // Top
       addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),1);
@@ -146,27 +168,6 @@
       addSegment('coronalOriginSpreadBack',[0,unitLength*2,0],[0,0,-1],unitLength)
       addSegment('coronalOriginSpreadLeft',[0,unitLength*2,0],[1,0,0],unitLength)
       addSegment('coronalOriginSpreadRight',[0,unitLength*2,0],[-1,0,0],unitLength)
-
-      const colors = [
-        0, 0, 1,
-        1, 0, 1,
-        0, 1, 1,
-      ]
-
-      const material = new THREE.MeshPhongMaterial({
-        side: THREE.DoubleSide,
-        vertexColors: true,
-        transparent: true,
-        opacity: .9
-      });
-
-      const materialLight = new THREE.MeshPhongMaterial({
-        side: THREE.DoubleSide,
-        vertexColors: true,
-        transparent: true,
-        opacity: .9 
-      });
-
 
       // Coronal Top
 
@@ -541,6 +542,8 @@
       geometryPane46.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
       const meshPane46 = new THREE.Mesh(geometryPane46, material);
       unit.add(meshPane46);
+
+      */
 
       const wingColors = [
         1, .46, 0,
