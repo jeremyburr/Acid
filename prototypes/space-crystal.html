@@ -411,6 +411,110 @@
 
 
 
+    // Octant four
+
+      // Green Teal Blue
+
+      const fourUpFront = new THREE.BufferGeometry();
+      fourUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,8, -8,val,0, 0,0,0], 3));
+      fourUpFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourUpFront = new THREE.Mesh(fourUpFront, materialLight);
+      unit.add(meshfourUpFront);
+
+      const fourTopLeft = new THREE.BufferGeometry();
+      fourTopLeft.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, 0,val,8, -8,val,0, ], 3));
+      fourTopLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourTopLeft = new THREE.Mesh(fourTopLeft, materialLight);
+      unit.add(meshfourTopLeft);
+
+      const fourTopRight = new THREE.BufferGeometry();
+      fourTopRight.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, -16,val,8, -8,val,0, ], 3));
+      fourTopRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourTopRight = new THREE.Mesh(fourTopRight, materialLight);
+      unit.add(meshfourTopRight);
+
+      const fourTopBack = new THREE.BufferGeometry();
+      fourTopBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, -16,val,8, -16,0,16], 3));
+      fourTopBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourTopBack = new THREE.Mesh(fourTopBack, materialLight);
+      unit.add(meshfourTopBack);
+
+      const fourDownFront = new THREE.BufferGeometry();
+      fourDownFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,-val,8, -8,-val,0], 3));
+      fourDownFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourDownFront = new THREE.Mesh(fourDownFront, materialLight);
+      unit.add(meshfourDownFront);
+      
+      const fourDownLeft = new THREE.BufferGeometry();
+      fourDownLeft.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,16, 0,-val,8, -8,-val,0, ], 3));
+      fourDownLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourDownLeft = new THREE.Mesh(fourDownLeft, materialLight);
+      unit.add(meshfourDownLeft);
+
+      const fourDownRight = new THREE.BufferGeometry();
+      fourDownRight.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,16, -16,-val,8, -8,-val,0, ], 3));
+      fourDownRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourDownRight = new THREE.Mesh(fourDownRight, materialLight);
+      unit.add(meshfourDownRight);
+      
+      const fourDownBack = new THREE.BufferGeometry();
+      fourDownBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,16, -16,-val,8, -16,0,16], 3));
+      fourDownBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourDownBack = new THREE.Mesh(fourDownBack, materialLight);
+      unit.add(meshfourDownBack);
+
+      const fourLeftFront = new THREE.BufferGeometry();
+      fourLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,8, 0,-val,8, 0,0,0 ], 3));
+      fourLeftFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourLeftFront = new THREE.Mesh(fourLeftFront, materialLight);
+      unit.add(meshfourLeftFront);
+
+      const fourLeftTop = new THREE.BufferGeometry();
+      fourLeftTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, 0,val,8, 0,-val,8, ], 3));
+      fourLeftTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourLeftTop = new THREE.Mesh(fourLeftTop, materialLight);
+      unit.add(meshfourLeftTop);
+
+      const fourLeftBottom = new THREE.BufferGeometry();
+      fourLeftBottom.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, -8,-val,16,  0,-val,8, ], 3));
+      fourLeftBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourLeftBottom = new THREE.Mesh(fourLeftBottom, materialLight);
+      unit.add(meshfourLeftBottom);
+
+      const fourLeftBack = new THREE.BufferGeometry();
+      fourLeftBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, -8,-val,16,  -16,0,16 ], 3));
+      fourLeftBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourLeftBack = new THREE.Mesh(fourLeftBack, materialLight);
+      unit.add(meshfourLeftBack);
+
+      // Right
+
+      const fourRightFront = new THREE.BufferGeometry();
+      fourRightFront.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,0, -8,-val,0, 0,0,0], 3));
+      fourRightFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourRightFront = new THREE.Mesh(fourRightFront, materialLight);
+      unit.add(meshfourRightFront);
+
+      const fourRightTop = new THREE.BufferGeometry();
+      fourRightTop.setAttribute('position', new THREE.Float32BufferAttribute([-16,val,8, -8,val,0, -8,-val,0], 3));
+      fourRightTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourRightTop = new THREE.Mesh(fourRightTop, materialLight);
+      unit.add(meshfourRightTop);
+
+      const fourRightBottom = new THREE.BufferGeometry();
+      fourRightBottom.setAttribute('position', new THREE.Float32BufferAttribute([-16,val,8, -16,-val,8, -8,-val,0], 3));
+      fourRightBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourRightBottom = new THREE.Mesh(fourRightBottom, materialLight);
+      unit.add(meshfourRightBottom);
+
+      const fourRightBack = new THREE.BufferGeometry();
+      fourRightBack.setAttribute('position', new THREE.Float32BufferAttribute([-16,val,8, -16,-val,8,  -16,0,16, ], 3));
+      fourRightBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshfourRightBack = new THREE.Mesh(fourRightBack, materialLight);
+      unit.add(meshfourRightBack);
+
+
+
 
 
 
