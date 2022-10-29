@@ -599,25 +599,25 @@
       // Right
 
       const fiveRightFront = new THREE.BufferGeometry();
-      fiveRightFront.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,0, -8,-val,0, 0,0,0], 3));
+      fiveRightFront.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,0, 0,val,-8, 0,0,0], 3));
       fiveRightFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveRightFront = new THREE.Mesh(fiveRightFront, materialLight);
       unit.add(meshfiveRightFront);
 
       const fiveRightTop = new THREE.BufferGeometry();
-      fiveRightTop.setAttribute('position', new THREE.Float32BufferAttribute([-16,val,8, -8,val,0, -8,-val,0], 3));
+      fiveRightTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,0, 0,val,-8, -8,16,0], 3));
       fiveRightTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveRightTop = new THREE.Mesh(fiveRightTop, materialLight);
       unit.add(meshfiveRightTop);
 
       const fiveRightBottom = new THREE.BufferGeometry();
-      fiveRightBottom.setAttribute('position', new THREE.Float32BufferAttribute([-16,val,8, -16,-val,8, -8,-val,0], 3));
+      fiveRightBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,16,-8, 0,val,-8, -8,16,0,], 3));
       fiveRightBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveRightBottom = new THREE.Mesh(fiveRightBottom, materialLight);
       unit.add(meshfiveRightBottom);
 
       const fiveRightBack = new THREE.BufferGeometry();
-      fiveRightBack.setAttribute('position', new THREE.Float32BufferAttribute([-16,val,8, -16,-val,8,  -16,0,16, ], 3));
+      fiveRightBack.setAttribute('position', new THREE.Float32BufferAttribute([0,16,-8, 0,20,0, -8,16,0], 3));
       fiveRightBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveRightBack = new THREE.Mesh(fiveRightBack, materialLight);
       unit.add(meshfiveRightBack);
