@@ -75,7 +75,7 @@
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .9 
+        opacity: .75 
       });
       
       const wingColors = [
@@ -200,12 +200,6 @@
       unit.add(meshoneRightBack);
 
 
-
-
-
-
-
-
     // Octant Seven
 
       // Green Teal Blue
@@ -309,6 +303,113 @@
       sevenRightBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshsevenRightBack = new THREE.Mesh(sevenRightBack, materialLight);
       unit.add(meshsevenRightBack);
+
+
+      // Octant Two
+
+      // Green Teal Blue
+
+      const twoUpFront = new THREE.BufferGeometry();
+      twoUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,-8, 8,val,0, 0,0,0], 3));
+      twoUpFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoUpFront = new THREE.Mesh(twoUpFront, materialLight);
+      unit.add(meshtwoUpFront);
+
+      const twoTopLeft = new THREE.BufferGeometry();
+      twoTopLeft.setAttribute('position', new THREE.Float32BufferAttribute([8,val,-16, 0,val,-8, 8,val,0, ], 3));
+      twoTopLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoTopLeft = new THREE.Mesh(twoTopLeft, materialLight);
+      unit.add(meshtwoTopLeft);
+
+      const twoTopRight = new THREE.BufferGeometry();
+      twoTopRight.setAttribute('position', new THREE.Float32BufferAttribute([8,val,-16, 16,val,-8, 8,val,0, ], 3));
+      twoTopRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoTopRight = new THREE.Mesh(twoTopRight, materialLight);
+      unit.add(meshtwoTopRight);
+
+      const twoTopBack = new THREE.BufferGeometry();
+      twoTopBack.setAttribute('position', new THREE.Float32BufferAttribute([8,val,-16, 16,val,-8, 16,0,-16], 3));
+      twoTopBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoTopBack = new THREE.Mesh(twoTopBack, materialLight);
+      unit.add(meshtwoTopBack);
+
+      const twoDownFront = new THREE.BufferGeometry();
+      twoDownFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,-val,-8, 8,-val,0], 3));
+      twoDownFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoDownFront = new THREE.Mesh(twoDownFront, materialLight);
+      unit.add(meshtwoDownFront);
+      
+      const twoDownLeft = new THREE.BufferGeometry();
+      twoDownLeft.setAttribute('position', new THREE.Float32BufferAttribute([8,-val,-16, 0,-val,-8, 8,-val,0, ], 3));
+      twoDownLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoDownLeft = new THREE.Mesh(twoDownLeft, materialLight);
+      unit.add(meshtwoDownLeft);
+
+      const twoDownRight = new THREE.BufferGeometry();
+      twoDownRight.setAttribute('position', new THREE.Float32BufferAttribute([8,-val,-16, 16,-val,-8, 8,-val,0, ], 3));
+      twoDownRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoDownRight = new THREE.Mesh(twoDownRight, materialLight);
+      unit.add(meshtwoDownRight);
+      
+      const twoDownBack = new THREE.BufferGeometry();
+      twoDownBack.setAttribute('position', new THREE.Float32BufferAttribute([8,-val,-16, 16,-val,-8, 16,0,-16], 3));
+      twoDownBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoDownBack = new THREE.Mesh(twoDownBack, materialLight);
+      unit.add(meshtwoDownBack);
+
+      // Green Teal Blue
+
+      const twoLeftFront = new THREE.BufferGeometry();
+      twoLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,-8, 0,-val,-8, 0,0,0 ], 3));
+      twoLeftFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoLeftFront = new THREE.Mesh(twoLeftFront, materialLight);
+      unit.add(meshtwoLeftFront);
+
+      const twoLeftTop = new THREE.BufferGeometry();
+      twoLeftTop.setAttribute('position', new THREE.Float32BufferAttribute([8,val,-16, 0,val,-8, 0,-val,-8, ], 3));
+      twoLeftTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoLeftTop = new THREE.Mesh(twoLeftTop, materialLight);
+      unit.add(meshtwoLeftTop);
+
+      const twoLeftBottom = new THREE.BufferGeometry();
+      twoLeftBottom.setAttribute('position', new THREE.Float32BufferAttribute([8,val,-16, 8,-val,-16,  0,-val,-8, ], 3));
+      twoLeftBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoLeftBottom = new THREE.Mesh(twoLeftBottom, materialLight);
+      unit.add(meshtwoLeftBottom);
+
+      const twoLeftBack = new THREE.BufferGeometry();
+      twoLeftBack.setAttribute('position', new THREE.Float32BufferAttribute([8,val,-16, 8,-val,-16,  16,0,-16 ], 3));
+      twoLeftBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoLeftBack = new THREE.Mesh(twoLeftBack, materialLight);
+      unit.add(meshtwoLeftBack);
+
+      // Right
+
+      const twoRightFront = new THREE.BufferGeometry();
+      twoRightFront.setAttribute('position', new THREE.Float32BufferAttribute([8,val,0, 8,-val,0, 0,0,0], 3));
+      twoRightFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoRightFront = new THREE.Mesh(twoRightFront, materialLight);
+      unit.add(meshtwoRightFront);
+
+      const twoRightTop = new THREE.BufferGeometry();
+      twoRightTop.setAttribute('position', new THREE.Float32BufferAttribute([16,val,-8, 8,val,0, 8,-val,0], 3));
+      twoRightTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoRightTop = new THREE.Mesh(twoRightTop, materialLight);
+      unit.add(meshtwoRightTop);
+
+      const twoRightBottom = new THREE.BufferGeometry();
+      twoRightBottom.setAttribute('position', new THREE.Float32BufferAttribute([16,val,-8, 16,-val,-8, 8,-val,0], 3));
+      twoRightBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoRightBottom = new THREE.Mesh(twoRightBottom, materialLight);
+      unit.add(meshtwoRightBottom);
+
+      const twoRightBack = new THREE.BufferGeometry();
+      twoRightBack.setAttribute('position', new THREE.Float32BufferAttribute([16,val,-8, 16,-val,-8,  16,0,-16, ], 3));
+      twoRightBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshtwoRightBack = new THREE.Mesh(twoRightBack, materialLight);
+      unit.add(meshtwoRightBack);
+
+
 
 
 
