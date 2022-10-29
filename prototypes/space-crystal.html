@@ -623,6 +623,116 @@
       unit.add(meshfiveRightBack);
 
 
+      //////
+
+
+      // Octant 6
+
+      // Green Teal Blue
+
+      const sixUpFront = new THREE.BufferGeometry();
+      sixUpFront.setAttribute('position', new THREE.Float32BufferAttribute([0,-val,8, -8,-val,0, 0,0,0], 3));
+      sixUpFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixUpFront = new THREE.Mesh(sixUpFront, materialLight);
+      unit.add(meshsixUpFront);
+
+      const sixTopLeft = new THREE.BufferGeometry();
+      sixTopLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,-val,8, -8,-val,0, 0,-16,8], 3));
+      sixTopLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixTopLeft = new THREE.Mesh(sixTopLeft, materialLight);
+      unit.add(meshsixTopLeft);
+
+      const sixTopRight = new THREE.BufferGeometry();
+      sixTopRight.setAttribute('position', new THREE.Float32BufferAttribute([-8,-16,0, -8,-val,0, 0,-16,8,], 3));
+      sixTopRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixTopRight = new THREE.Mesh(sixTopRight, materialLight);
+      unit.add(meshsixTopRight);
+
+      const sixTopBack = new THREE.BufferGeometry();
+      sixTopBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,-16,0, 0,-20,0, 0,-16,8,], 3));
+      sixTopBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixTopBack = new THREE.Mesh(sixTopBack, materialLight);
+      unit.add(meshsixTopBack);
+
+      //----
+
+      const sixDownFront = new THREE.BufferGeometry();
+      sixDownFront.setAttribute('position', new THREE.Float32BufferAttribute([0,-val,-8, 8,-val,0, 0,0,0], 3));
+      sixDownFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixDownFront = new THREE.Mesh(sixDownFront, materialLight);
+      unit.add(meshsixDownFront);
+      
+      const sixDownLeft = new THREE.BufferGeometry();
+      sixDownLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,-val,-8, 8,-val,0, 0,-16,-8], 3));
+      sixDownLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixDownLeft = new THREE.Mesh(sixDownLeft, materialLight);
+      unit.add(meshsixDownLeft);
+
+
+      const sixDownRight = new THREE.BufferGeometry();
+      sixDownRight.setAttribute('position', new THREE.Float32BufferAttribute([8,-16,0, 8,-val,0, 0,-16,-8,], 3));
+      sixDownRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixDownRight = new THREE.Mesh(sixDownRight, materialLight);
+      unit.add(meshsixDownRight);
+      
+      const sixDownBack = new THREE.BufferGeometry();
+      sixDownBack.setAttribute('position', new THREE.Float32BufferAttribute([8,-16,0, 0,-20,0, 0,-16,-8,], 3));
+      sixDownBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixDownBack = new THREE.Mesh(sixDownBack, materialLight);
+      unit.add(meshsixDownBack);
+
+      //---
+
+      const sixLeftFront = new THREE.BufferGeometry();
+      sixLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([8,-val,0, 0,-val,8, 0,0,0], 3));
+      sixLeftFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixLeftFront = new THREE.Mesh(sixLeftFront, materialLight);
+      unit.add(meshsixLeftFront);
+
+      const sixLeftTop = new THREE.BufferGeometry();
+      sixLeftTop.setAttribute('position', new THREE.Float32BufferAttribute([8,-val,0, 0,-val,8, 8,-16,0], 3));
+      sixLeftTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixLeftTop = new THREE.Mesh(sixLeftTop, materialLight);
+      unit.add(meshsixLeftTop);
+
+
+      const sixLeftBottom = new THREE.BufferGeometry();
+      sixLeftBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,-16,8, 0,-val,8, 8,-16,0,], 3));
+      sixLeftBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixLeftBottom = new THREE.Mesh(sixLeftBottom, materialLight);
+      unit.add(meshsixLeftBottom);
+
+      const sixLeftBack = new THREE.BufferGeometry();
+      sixLeftBack.setAttribute('position', new THREE.Float32BufferAttribute([0,-16,8, 0,-20,0, 8,-16,0,], 3));
+      sixLeftBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixLeftBack = new THREE.Mesh(sixLeftBack, materialLight);
+      unit.add(meshsixLeftBack);
+
+      // Right
+
+      const sixRightFront = new THREE.BufferGeometry();
+      sixRightFront.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,0, 0,-val,-8, 0,0,0], 3));
+      sixRightFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixRightFront = new THREE.Mesh(sixRightFront, materialLight);
+      unit.add(meshsixRightFront);
+
+      const sixRightTop = new THREE.BufferGeometry();
+      sixRightTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,0, 0,-val,-8, -8,-16,0], 3));
+      sixRightTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixRightTop = new THREE.Mesh(sixRightTop, materialLight);
+      unit.add(meshsixRightTop);
+
+      const sixRightBottom = new THREE.BufferGeometry();
+      sixRightBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,-16,-8, 0,-val,-8, -8,-16,0,], 3));
+      sixRightBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixRightBottom = new THREE.Mesh(sixRightBottom, materialLight);
+      unit.add(meshsixRightBottom);
+
+      const sixRightBack = new THREE.BufferGeometry();
+      sixRightBack.setAttribute('position', new THREE.Float32BufferAttribute([0,-16,-8, 0,-20,0, -8,-16,0], 3));
+      sixRightBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
+      const meshsixRightBack = new THREE.Mesh(sixRightBack, materialLight);
+      unit.add(meshsixRightBack);
 
 
 
