@@ -535,58 +535,63 @@
       unit.add(meshfiveTopRight);
 
 
-
-
       const fiveTopBack = new THREE.BufferGeometry();
-      fiveTopBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,16,0, 0,24,0, 0,16,8,], 3));
+      fiveTopBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,16,0, 0,20,0, 0,16,8,], 3));
       fiveTopBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveTopBack = new THREE.Mesh(fiveTopBack, materialLight);
       unit.add(meshfiveTopBack);
 
+      //----
+
+
       const fiveDownFront = new THREE.BufferGeometry();
-      fiveDownFront.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0 ,0,-val,8, -8,-val,0], 3));
+      fiveDownFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,-8, 8,val,0, 0,0,0], 3));
       fiveDownFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveDownFront = new THREE.Mesh(fiveDownFront, materialLight);
       unit.add(meshfiveDownFront);
       
       const fiveDownLeft = new THREE.BufferGeometry();
-      fiveDownLeft.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,16, 0,-val,8, -8,-val,0, ], 3));
+      fiveDownLeft.setAttribute('position', new THREE.Float32BufferAttribute([0,val,-8, 8,val,0, 0,16,-8], 3));
       fiveDownLeft.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveDownLeft = new THREE.Mesh(fiveDownLeft, materialLight);
       unit.add(meshfiveDownLeft);
 
+
       const fiveDownRight = new THREE.BufferGeometry();
-      fiveDownRight.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,16, -16,-val,8, -8,-val,0, ], 3));
+      fiveDownRight.setAttribute('position', new THREE.Float32BufferAttribute([8,16,0, 8,val,0, 0,16,-8,], 3));
       fiveDownRight.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveDownRight = new THREE.Mesh(fiveDownRight, materialLight);
       unit.add(meshfiveDownRight);
       
       const fiveDownBack = new THREE.BufferGeometry();
-      fiveDownBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,-val,16, -16,-val,8, -16,0,16], 3));
+      fiveDownBack.setAttribute('position', new THREE.Float32BufferAttribute([8,16,0, 0,20,0, 0,16,-8,], 3));
       fiveDownBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveDownBack = new THREE.Mesh(fiveDownBack, materialLight);
       unit.add(meshfiveDownBack);
 
+      //---
+
       const fiveLeftFront = new THREE.BufferGeometry();
-      fiveLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([0,val,8, 0,-val,8, 0,0,0 ], 3));
+      fiveLeftFront.setAttribute('position', new THREE.Float32BufferAttribute([8,val,0, 0,val,8, 0,0,0], 3));
       fiveLeftFront.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveLeftFront = new THREE.Mesh(fiveLeftFront, materialLight);
       unit.add(meshfiveLeftFront);
 
       const fiveLeftTop = new THREE.BufferGeometry();
-      fiveLeftTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, 0,val,8, 0,-val,8, ], 3));
+      fiveLeftTop.setAttribute('position', new THREE.Float32BufferAttribute([8,val,0, 0,val,8, 8,16,0], 3));
       fiveLeftTop.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveLeftTop = new THREE.Mesh(fiveLeftTop, materialLight);
       unit.add(meshfiveLeftTop);
 
+
       const fiveLeftBottom = new THREE.BufferGeometry();
-      fiveLeftBottom.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, -8,-val,16,  0,-val,8, ], 3));
+      fiveLeftBottom.setAttribute('position', new THREE.Float32BufferAttribute([0,16,8, 0,val,8, 8,16,0,], 3));
       fiveLeftBottom.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveLeftBottom = new THREE.Mesh(fiveLeftBottom, materialLight);
       unit.add(meshfiveLeftBottom);
 
       const fiveLeftBack = new THREE.BufferGeometry();
-      fiveLeftBack.setAttribute('position', new THREE.Float32BufferAttribute([-8,val,16, -8,-val,16,  -16,0,16 ], 3));
+      fiveLeftBack.setAttribute('position', new THREE.Float32BufferAttribute([0,16,8, 0,20,0, 8,16,0,], 3));
       fiveLeftBack.setAttribute('color', new THREE.Float32BufferAttribute(crystalColors, 3));
       const meshfiveLeftBack = new THREE.Mesh(fiveLeftBack, materialLight);
       unit.add(meshfiveLeftBack);
