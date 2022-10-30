@@ -12,47 +12,14 @@
   </style>
   <script type="module">
     import * as THREE from '../js/three.module.js';
-    import { TrackballControls } from '../js/TrackballControls.js';
-    import * as Axis from '../js/shapes/axis.js';
-
-    let camera, scene, renderer, controls;
-    let coronalTubeTop, coronalTubeBottom, saggitalTubeFront, saggitalTubeBack;
-    let coronalTopRight, coronalTopLeft, coronalTopBack, coronalTopFront;
-    let coronalBottomRight, coronalBottomLeft, coronalBottomBack, coronalBottomFront;
-    let saggitalBackTop, saggitalBackBottom, saggitalBackLeft, saggitalBackRight;
-    let saggitalFrontTop, saggitalFrontBottom, saggitalFrontLeft, saggitalFrontRight;
-    let unit;
-    let unitLength = 8;
-
-    init();
 
     function init() {
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
-      camera.position.x = 44;
-      camera.position.y = 35;
-      camera.position.z = 115;
-
       renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
       document.body.appendChild(renderer.domElement);
-      controls = new TrackballControls(camera, renderer.domElement);
-
-      window.addEventListener('resize', onWindowResize);
-
-      unit = new THREE.Group();
-
-      const tubeMaterial = new THREE.MeshPhongMaterial({
-        //color: 0xFC3EC1,
-        color: 0xffffff,
-        shininess: 150,
-        side: THREE.DoubleSide,
-        //emissive: 'red'
-      });
-      
     }
+
+    init();
 
   </script>
 </head>
