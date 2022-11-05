@@ -29,11 +29,11 @@
 
     function init() {
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 3500);
+      camera = new THREE.PerspectiveCamera(24, window.innerWidth / window.innerHeight, 1, 3500);
 
       camera.position.x = 100;
-      camera.position.y = 75;
-      camera.position.z = 90;
+      camera.position.y = 100;
+      camera.position.z = 100;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -2407,9 +2407,9 @@
 
       const time = Date.now() * 0.002;
 
-      //unit.rotation.x = time * 0.15;
-      //unit.rotation.y = time * -0.25;
-      //unit.rotation.z = time * 0.15;
+      //unit.rotation.x = time * -0.25;
+      unit.rotation.y = time * -0.25;
+      //unit.rotation.z = time * -0.25;
 
 
       renderer.render(scene, camera);
