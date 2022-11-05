@@ -64,9 +64,17 @@
       ]
 
       const wingColorsAlt = [
-        1, 1, 1,
-        0, 0, 1,
-        1, 1, 0,
+        rgb255To1(255),
+        rgb255To1(255),
+        rgb255To1(255),
+
+        rgb255To1(0),
+        rgb255To1(0),
+        rgb255To1(255),
+
+        rgb255To1(255),
+        rgb255To1(255),
+        rgb255To1(0),
       ]
 
       function degreesToRadians(degrees) {
@@ -175,7 +183,7 @@
         side: THREE.DoubleSide,
         vertexColors: true,
         transparent: true,
-        opacity: .9 
+        opacity: 1 
       });
 
 
@@ -2349,8 +2357,8 @@
 
       scene.add(unit);
 
-      const axesHelper = new THREE.AxesHelper( 50 );
-      scene.add( axesHelper );
+      /*const axesHelper = new THREE.AxesHelper( 50 );
+      scene.add( axesHelper );*/
 
       scene.background = new THREE.Color(0x000000);
 
