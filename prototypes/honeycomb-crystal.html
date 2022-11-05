@@ -45,147 +45,16 @@
       window.addEventListener('resize', onWindowResize);
 
       unit = new THREE.Group();
-
-      const tubeMaterial = new THREE.MeshPhongMaterial({
-        //color: 0xFC3EC1,
-        color: 0xffffff,
-        shininess: 150,
-        side: THREE.DoubleSide,
-        //emissive: 'red'
-      });
+      
       function rgb255To1(value) {
         return value/255;
       }
       
-      /*const wingColors = [
-        1, .46, 0,
-        1, 0, 0,
-        1, 1, 0,
-      ]*/
       const wingColors = [
         0, 0, 1,
         1, 0, 1,
         0, 1, 1,
       ]
-
-      /*const wingColors = [
-
-        rgb255To1(255),
-        rgb255To1(117),
-        rgb255To1(0),
-
-
-        rgb255To1(255),
-        rgb255To1(0),
-        rgb255To1(0),
-
-
-        rgb255To1(255),
-        rgb255To1(255),
-        rgb255To1(0),
-      ]*/
-
-      function degreesToRadians(degrees) {
-        var pi = Math.PI;
-        return degrees * (Math.PI / 180);
-      }
-
-      // Add Segment
-
-      function addSegment(name, start, direction, magnitude) {
-        const coordinates = [];
-        coordinates.push(new THREE.Vector3(start[0], start[1], start[2]));
-        const end = returnEndPosition(start, direction, magnitude);
-        coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
-        const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .11, 16, false)
-        globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
-        unit.add(globalThis[name]);
-      }
-
-      // Find End Coordinates for New Segment
-
-      function returnEndPosition(startPosition, direction, magnitude) {
-        const startX = startPosition[0];
-        const startY = startPosition[1];
-        const startZ = startPosition[2];
-        const dirX = direction[0];
-        const dirY = direction[1];
-        const dirZ = direction[2];
-        let endPosition = [];
-        endPosition.push(dirX * magnitude + startX);
-        endPosition.push(dirY * magnitude + startY);
-        endPosition.push(dirZ * magnitude + startZ);
-        console.log(endPosition);
-        return endPosition;
-      }
-
-      const vectorMap = {
-        coronal:  {
-          center: [0, Math.cos(degreesToRadians(0)),0],
-          front: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],
-          back: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0],
-          right: [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0]
-        },
-        transverse:  {
-          center: [Math.cos(degreesToRadians(0)),0,0],
-          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
-          back: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135)), 0], // bottom
-          right: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0] // top
-        },
-        saggital:  {
-          center: [0,0,Math.cos(degreesToRadians(0))],
-          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
-          back: [Math.cos(degreesToRadians(135)),0,Math.cos(degreesToRadians(45))],
-          left: [0,Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45))], // bottom
-          right: [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))] // top
-        }
-      }
-
-      function addLevel(start, plane, orientation, magnitude, branches) {
-        if (orientation === 'negative') {
-          magnitude = magnitude * -1;
-        }
-        if (branches === 1) {
-          addSegment(plane+orientation+'center', start, vectorMap[plane].center, magnitude/Math.sqrt(2));
-        }
-        if (branches === 5) {
-          addSegment(plane+orientation+'center', start,vectorMap[plane].center, magnitude/Math.sqrt(2));
-          addSegment(plane+orientation+'front', start, vectorMap[plane].front, magnitude);
-          addSegment(plane+orientation+'back', start, vectorMap[plane].back, magnitude);
-          addSegment(plane+orientation+'left', start, vectorMap[plane].left, magnitude);
-          addSegment(plane+orientation+'right', start, vectorMap[plane].right, magnitude);
-        }
-      }
-
-      // Coronal 
-        // Top
-      /*addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),1);
-      addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
-          // Cap
-      addLevel([0, 3*unitLength, 0], 'coronal', 'negative', unitLength * Math.sqrt(2),5);
-        // Bottom
-      addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
-      addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
-          // Cap
-      addLevel([0, 3*-unitLength, 0],'coronal','positive', unitLength * Math.sqrt(2),5);
-         // Origin Spread
-        
-           // Top
-      addSegment('coronalOriginSpreadFront',[0,unitLength*2,0],[0,0,1],unitLength)
-      addSegment('coronalOriginSpreadBack',[0,unitLength*2,0],[0,0,-1],unitLength)
-      addSegment('coronalOriginSpreadLeft',[0,unitLength*2,0],[1,0,0],unitLength)
-      addSegment('coronalOriginSpreadRight',[0,unitLength*2,0],[-1,0,0],unitLength)*/
-
-      const colors = [
-        0, 0, 1,
-        1, 0, 1,
-        0, 1, 1,
-      ]
-
-
 
       const materialLight = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
