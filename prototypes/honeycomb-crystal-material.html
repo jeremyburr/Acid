@@ -66,11 +66,19 @@
       light.position.set( 120, 40, 80 );
       scene.add(light);
 
+      const lightSecondary = new THREE.DirectionalLight(0xFFFFFF,1);
+      lightSecondary.position.set( -120, -40, -80 );
+      //scene.add(lightSecondary);
+
       const material = new THREE.MeshStandardMaterial( { 
-        color: 0x8fbec9, 
-        //color: 0x02c9fa, 
-        emissive: 0x454f61,
-        //emissive: 0x49709e,
+        color: 0x75c2eb, 
+        emissive: 0x36455c,
+
+
+        /*color: 0x8fbec9, 
+
+        //emissive: 0x3c495e,
+        emissive: 0x454f61,*/
         flatShading: true,
         side: THREE.DoubleSide,
         roughness: .65,
