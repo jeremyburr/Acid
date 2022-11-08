@@ -63,12 +63,14 @@
       //scene.add( pointlight );
 
       const light = new THREE.DirectionalLight(0xFFFFFF,1);
-      light.position.set( 20, 20, 20 );
+      light.position.set( 120, 40, 80 );
       scene.add(light);
 
       const material = new THREE.MeshStandardMaterial( { 
-        color: 0xbdf2ff, 
-        emissive: 0x1466c9,
+        color: 0x7ba4ad, 
+        //color: 0x02c9fa, 
+        emissive: 0x454f61,
+        //emissive: 0x49709e,
         flatShading: true,
         side: THREE.DoubleSide,
         roughness: .65,
