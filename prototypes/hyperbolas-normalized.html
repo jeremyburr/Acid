@@ -91,10 +91,15 @@
 
       scene.background = new THREE.Color(0x050505);
       
+      const lightColorHash = 0xFFFFFF;
+      const lightAmbient = new THREE.AmbientLight(lightColorHash,1 ); // soft white light
+      scene.add( lightAmbient );
+
       //const light = new THREE.AmbientLight();
       //light.position.set( 0, 1, 1 ).normalize();
       const light = new THREE.DirectionalLight();
-      light.position.set( 1, 2, 3 ).normalize();
+      //light.position.set( 1, 2, 3 ).normalize();
+      light.position.set( 1, 2, 3 );
       scene.add(light);
 
       // Axial
@@ -144,6 +149,24 @@
       const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
       const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff });
       axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialLeftMaterial);
+
+const newMaterial = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: 1 
+      });
+const wingColors = [
+        0, 0, 1,
+        1, 0, 1,
+        0, 1, 1,
+      ]
+
+const crystal1TopBase = new THREE.BufferGeometry();
+      crystal1TopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0,  4,4,4,  0,8,0], 3));
+      crystal1TopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshcrystal1TopBase = new THREE.Mesh(crystal1TopBase, newMaterial);
+      scene.add(meshcrystal1TopBase);
 
       scene.add(axialLeftCurveObject);
       scene.add(axialRightCurveObject);
