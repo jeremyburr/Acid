@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Acid</title>
+  <link rel="shortcut icon" href="#">
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+
+  <script src="../js/nerdamer/nerdamer.core.js"></script>
+  <script src="../js/nerdamer/Algebra.js"></script>
+  <script src="../js/nerdamer/Calculus.js"></script>
+  <script src="../js/nerdamer/Solve.js"></script>
+  <script src="../js/nerdamer/Extra.js"></script>
+
+
+
+  <script type="module">
+    import * as THREE from '../js/three.module.js';
+    import { TrackballControls } from '../js/TrackballControls.js';
+    import * as Axis from '../js/shapes/axis.js';
+    import TWEEN from '../js/tween.esm.js';
+
+    //console.log(TWEEN);
+
+    let camera, scene, renderer, controls;
+
+    let coronalRightCurveObject;
+    let coronalLeftCurveObject;
+    let axialRightCurveObject;
+    let axialLeftCurveObject;
+    let sagittalRightCurveObject;
+    let sagittalLeftCurveObject;
+    let unit;
+
+    let tweenX;
+    let tweenX2;
+    let tweenX3;
+    let tweenX4;
+
+
+    let tweenY;
+    let tweenY2;
+    let tweenY3;
+    let tweenY4;
+
+    let tweenZ;
+    let tweenZ2;
+    let tweenZ3;
+    let tweenZ4;
+
+
+    //let rotation;
+    let testNumber;
+
+    const transverseAxisStartLength = 6;
+    let transverseLength = transverseAxisStartLength;
+    let oscillatePositive = true;
+
+
+    //axialRightCurveObject.translateX(10);
+    //axialLeftCurveObject.translateX(-10);
+
+
+    function init() {
+      scene = new THREE.Scene();
+
+      /*scene.add(Axis.x);
+      scene.add(Axis.y);
+      scene.add(Axis.z);*/
+
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+
+      //camera.position.x = 14;
+      camera.position.x = 0;
+      camera.position.y = 12;
+      camera.position.z = 120;
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      document.body.appendChild(renderer.domElement);
+      controls = new TrackballControls(camera, renderer.domElement);
+
+      window.addEventListener('resize', onWindowResize);
+
+      scene.background = new THREE.Color(0x050505);
+      
+      const lightColorHash = 0xFFFFFF;
+      const lightAmbient = new THREE.AmbientLight(lightColorHash,.3 ); // soft white light
+      scene.add( lightAmbient );
+
+      //const light = new THREE.AmbientLight();
+      //light.position.set( 0, 1, 1 ).normalize();
+      const light = new THREE.DirectionalLight();
+      //light.position.set( 1, 2, 3 ).normalize();
+      light.position.set( 1, 2, 3 );
+      scene.add(light);
+
+      // Axial
+
+      let axialQ1Vectors = [];
+      let axialQ4Vectors = [];
+      let axialQ2Vectors = [];
+      let axialQ3Vectors = [];
+
+      for (let i = 5; i < 51; i += .5) {
+
+        const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+
+        const axialQ4Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[0], 0);
+        axialQ4Vectors.push(axialQ4Vector)
+        const axialQ1Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[1], 0);
+        axialQ1Vectors.push(axialQ1Vector);
+
+        const axialQ3Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[0], 0);
+        axialQ3Vectors.push(axialQ3Vector)
+        const axialQ2Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[1], 0);
+        axialQ2Vectors.push(axialQ2Vector);
+
+      }
+
+      const axialQ1VectorsDescending = [...axialQ1Vectors].reverse();
+      const axialQ1VectorsDescendingPopped = axialQ1VectorsDescending.pop();
+      const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
+
+      const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
+      const axialRightPoints = axialRightCurve.getPoints(1000);
+
+      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
+      //const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
+      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0xFFFFFF});
+      axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
+
+      const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
+      const axialQ2VectorsDescendingPopped = axialQ2VectorsDescending.pop();
+      const axialLeftCurveVectors = axialQ2VectorsDescending.concat(axialQ3Vectors);
+      const axialLeftCurve = new THREE.CatmullRomCurve3(axialLeftCurveVectors);
+
+      const axialLeftPoints = axialLeftCurve.getPoints(1000);
+
+      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
+      const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff });
+      axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialRightMaterial);
+
+const newMaterial = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: 1 
+      });
+const wingColors = [
+        0, 0, 1,
+        1, 0, 1,
+        0, 1, 1,
+      ]
+
+const crystal1TopBase = new THREE.BufferGeometry();
+      crystal1TopBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0,  4,4,4,  0,8,0], 3));
+      crystal1TopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshcrystal1TopBase = new THREE.Mesh(crystal1TopBase, newMaterial);
+      //scene.add(meshcrystal1TopBase);
+
+      scene.add(axialLeftCurveObject);
+      scene.add(axialRightCurveObject);
+
+      // Coronal
+
+      let coronalQ1Vectors = [];
+      let coronalQ2Vectors = [];
+      let coronalQ3Vectors = [];
+      let coronalQ4Vectors = [];
+
+      for (let i = 0; i < 51; i += .5) {
+        const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+
+        const coronalQ1Vector = new THREE.Vector3(0, newArr[0] + transverseAxisStartLength, i);
+        const coronalQ2Vector = new THREE.Vector3(0, newArr[0] + transverseAxisStartLength, -i);
+
+        const coronalQ3Vector = new THREE.Vector3(0, newArr[1] - transverseAxisStartLength, i);
+        const coronalQ4Vector = new THREE.Vector3(0, newArr[1] - transverseAxisStartLength, -i);
+
+        coronalQ1Vectors.push(coronalQ1Vector);
+        coronalQ2Vectors.push(coronalQ2Vector);
+        coronalQ3Vectors.push(coronalQ3Vector);
+        coronalQ4Vectors.push(coronalQ4Vector);
+      }
+
+
+      const coronalQ2VectorsDescending = [...coronalQ2Vectors].reverse();
+      const coronalQ2VectorsDescendingPopped = coronalQ2VectorsDescending.pop();
+      const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
+      const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
+      const coronalLeftPoints = coronalLeftCurve.getPoints(1000);
+      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, 1.75, 16, false)
+      const coronalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
+      coronalLeftCurveObject = new THREE.Mesh(coronalLeftGeometry, axialRightMaterial);
+      scene.add(coronalLeftCurveObject);
+
+      const coronalQ3VectorsDescending = [...coronalQ3Vectors].reverse();
+      const coronalQ3VectorsDescendingPopped = coronalQ3VectorsDescending.pop();
+      const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
+      const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
+      const coronalRightPoints = coronalRightCurve.getPoints(1000);
+      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, 1.75, 16, false)
+      const coronalRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      coronalRightCurveObject = new THREE.Mesh(coronalRightGeometry, axialRightMaterial);
+      scene.add(coronalRightCurveObject);
+
+
+
+      // Sagittal
+
+      let sagittalQ1Vectors = [];
+      let sagittalQ2Vectors = [];
+      let sagittalQ3Vectors = [];
+      let sagittalQ4Vectors = [];
+
+
+      for (let i = 0; i < 51; i += .5) {
+        const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0] + transverseAxisStartLength);
+        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0] + transverseAxisStartLength);
+        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1] - transverseAxisStartLength);
+        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1] - transverseAxisStartLength);
+        sagittalQ1Vectors.push(sagittalQ1Vector);
+        sagittalQ2Vectors.push(sagittalQ2Vector);
+        sagittalQ3Vectors.push(sagittalQ3Vector);
+        sagittalQ4Vectors.push(sagittalQ4Vector);
+      }
+
+      const sagittalQ2VectorsDescending = [...sagittalQ2Vectors].reverse();
+      const sagittalQ2VectorsDescendingPopped = sagittalQ2VectorsDescending.pop();
+      const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
+      const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
+      const sagittalLeftPoints = sagittalLeftCurve.getPoints(1000);
+      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, 1.75, 16, false)
+      const sagittalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 })
+      sagittalLeftCurveObject = new THREE.Mesh(sagittalLeftGeometry, axialRightMaterial);
+      scene.add(sagittalLeftCurveObject);
+
+      const sagittalQ3VectorsDescending = [...sagittalQ3Vectors].reverse();
+      const sagittalQ3VectorsDescendingPopped = sagittalQ3VectorsDescending.pop();
+      const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
+      const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
+      const sagittalRightPoints = sagittalRightCurve.getPoints(1000);
+      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1.75, 16, false)
+      const sagittalRightMaterial = new THREE.MeshPhongMaterial({ 
+
+          color: 0xff73f6,
+          /*shininess: 150,
+          side: THREE.DoubleSide,
+          metalness: 0.1,*/
+          //emissive: 'red'
+
+      });
+      sagittalRightCurveObject = new THREE.Mesh(sagittalRightGeometry, axialRightMaterial);
+      scene.add(sagittalRightCurveObject);
+
+      const geometry = new THREE.SphereGeometry(4, 8, );
+      //const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, opacity: 0.5 });
+      /*const material = new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,    // red (can also use a CSS color string here)
+        shininess: 150,
+        side: THREE.DoubleSide,
+        metalness: 0.5,
+        emissive: 'red'
+      });*/
+      const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
+      const sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
+
+      unit = new THREE.Group();
+
+      //unit.add(coronalLeftCurveObject);
+
+      //rotation = unit.rotation;
+
+      scene.add(unit);
+
+      unit.add(coronalLeftCurveObject);
+      unit.add(coronalRightCurveObject);
+
+      unit.add(axialLeftCurveObject);
+      unit.add(axialRightCurveObject);
+
+      unit.add(sagittalLeftCurveObject);
+      unit.add(sagittalRightCurveObject);
+
+
+      //console.log(rotation);
+
+      testNumber = 1;
+
+      tweenX = new TWEEN.Tween(unit.rotation)
+        .to({ x: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('x start',unit.rotation.x);
+        })
+        .onComplete(function () {
+          console.log('x complete',unit.rotation.x);
+          if (Math.abs(unit.rotation.x) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.x = unit.rotation.x % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.x = unit.rotation.x; 
+          console.log(unit.rotation.x);
+        })
+
+        tweenX2 = new TWEEN.Tween(unit.rotation)
+        .to({ x: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('x2 start',unit.rotation.x);
+        })
+        .onComplete(function () {
+          console.log('x2 complete',unit.rotation.x);
+          if (Math.abs(unit.rotation.x) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.x = unit.rotation.x % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.x = unit.rotation.x; 
+          console.log(unit.rotation.x);
+        })
+
+        tweenX3 = new TWEEN.Tween(unit.rotation)
+        .to({ x: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('x3 start',unit.rotation.x);
+        })
+        .onComplete(function () {
+          console.log('x3 complete',unit.rotation.x);
+          //console.log(unit.rotation);
+          if (Math.abs(unit.rotation.x) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.x = unit.rotation.x % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.x = unit.rotation.x; 
+          console.log(unit.rotation.x);
+        })
+
+        tweenX4 = new TWEEN.Tween(unit.rotation)
+        .to({ x: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('x4 start',unit.rotation.x);
+        })
+        .onComplete(function () {
+          console.log('x4 complete',unit.rotation.x);
+          if (Math.abs(unit.rotation.x) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.x = unit.rotation.x % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.x = unit.rotation.x; 
+          console.log(unit.rotation.x);
+        })
+
+      tweenY = new TWEEN.Tween(unit.rotation)
+        .to({ y: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y start',unit.rotation.y);
+        })
+        .onComplete(function () {
+          console.log('Y complete',unit.rotation.y);
+          if (Math.abs(unit.rotation.y) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.y = unit.rotation.y % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.y = unit.rotation.y; 
+          console.log(unit.rotation.y);
+        })
+
+        tweenY2 = new TWEEN.Tween(unit.rotation)
+        .to({ y: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y2 start',unit.rotation.y);
+        })
+        .onComplete(function () {
+          console.log('Y2 complete',unit.rotation.y);
+          if (Math.abs(unit.rotation.y) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.y = unit.rotation.y % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.y = unit.rotation.y; 
+          console.log(unit.rotation.y);
+        })
+
+        tweenY3 = new TWEEN.Tween(unit.rotation)
+        .to({ y: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y3 start',unit.rotation.y);
+        })
+        .onComplete(function () {
+          console.log('Y3 complete',unit.rotation.y);
+          //console.log(unit.rotation);
+          if (Math.abs(unit.rotation.y) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.y = unit.rotation.y % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.y = unit.rotation.y; 
+          console.log(unit.rotation.y);
+        })
+
+        tweenY4 = new TWEEN.Tween(unit.rotation)
+        .to({ y: "-"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y4 start',unit.rotation.y);
+        })
+        .onComplete(function () {
+          console.log('Y4 complete',unit.rotation.y);
+          if (Math.abs(unit.rotation.y) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.y = unit.rotation.y % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.y = unit.rotation.y; 
+          console.log(unit.rotation.y);
+        })
+
+        tweenZ = new TWEEN.Tween(unit.rotation)
+        .to({ z: "+"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y4 start',unit.rotation.z);
+        })
+        .onComplete(function () {
+          console.log('Y4 complete',unit.rotation.z);
+          if (Math.abs(unit.rotation.z) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.z = unit.rotation.z % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.z = unit.rotation.z; 
+          console.log(unit.rotation.z);
+        })
+
+        tweenZ2 = new TWEEN.Tween(unit.rotation)
+        .to({ z: "+"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y4 start',unit.rotation.z);
+        })
+        .onComplete(function () {
+          console.log('Y4 complete',unit.rotation.z);
+          if (Math.abs(unit.rotation.z) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.z = unit.rotation.z % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.z = unit.rotation.z; 
+          console.log(unit.rotation.z);
+        })
+
+        tweenZ3 = new TWEEN.Tween(unit.rotation)
+        .to({ z: "+"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y4 start',unit.rotation.z);
+        })
+        .onComplete(function () {
+          console.log('Y4 complete',unit.rotation.z);
+          if (Math.abs(unit.rotation.z) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.z = unit.rotation.z % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.z = unit.rotation.z; 
+          console.log(unit.rotation.z);
+        })
+
+        tweenZ4 = new TWEEN.Tween(unit.rotation)
+        .to({ z: "+"  + Math.PI/2}, 3000) // relative animation
+        .onStart(function(object){
+          console.log('Y4 start',unit.rotation.z);
+        })
+        .onComplete(function () {
+          console.log('Y4 complete',unit.rotation.z);
+          if (Math.abs(unit.rotation.z) >= 2 * Math.PI) {
+            console.log('run');
+            unit.rotation.z = unit.rotation.z % (2 * Math.PI);
+          }
+        })
+        .onUpdate(function (object) {
+          unit.rotation.z = unit.rotation.z; 
+          console.log(unit.rotation.z);
+        })
+
+      tweenY.chain(tweenZ);
+      tweenZ.chain(tweenY2);
+      tweenY2.chain(tweenZ2);
+      tweenZ2.chain(tweenY3);
+      tweenY3.chain(tweenZ3);
+      tweenZ3.chain(tweenY4);
+      tweenY4.chain(tweenZ4);
+      tweenZ4.chain(tweenY);
+
+      //tweenY.chain(tweenX);
+     // tweenX.chain(tweenY3)
+
+      //tweenY2.chain(tweenZ2);
+      
+      /*tweenZ2.chain(tweenY3);
+      tweenY3.chain(tweenZ3);
+      tweenZ3.chain(tweenY4);
+      tweenY4.chain(tweenZ4);
+      tweenZ4.chain(tweenY);*/
+
+      tweenY.start();
+
+      //tweenY.repeat(Infinity);
+
+    }
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+      controls.update();
+      const oscillationValue = oscillatePositive ? .1 : -.1;
+      render(oscillationValue);
+      TWEEN.update();
+
+      //console.log(unit.rotation)
+      //stats.update();
+    }
+
+    init();
+    animate();
+
+
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+
+    const transverseLimit = 2.75;
+
+    function oscillate() {
+      if (oscillatePositive) {
+        if (transverseLength < transverseLimit) {
+          transverseLength += .05;
+        }
+        else if (transverseLength >= transverseLimit) {
+          oscillatePositive = false;
+          return;
+        }
+      }
+      else {
+        if (transverseLength > transverseAxisStartLength) {
+          transverseLength -= .05;
+        }
+        else if (transverseLength <= transverseAxisStartLength) {
+          //console.log('go positive');
+          oscillatePositive = true;
+          return;
+        }
+      }
+    }
+
+    setInterval(function () {
+      oscillate();
+      //console.log('transverseLength',transverseLength);
+    }, 200)
+
+    function rotateAxial() {
+
+      const radius = transverseLength;
+
+    }
+
+
+
+
+    function renderLoop() {
+      //unit.rotateY(Math.PI/2);
+    }
+
+
+
+
+    //console.log(tween);
+
+    function render(oscillatePositive) {
+
+      //axialRightCurveObject.translateX(.01);
+      //axialRightCurveObject.translateZ(.01);
+
+      //unit.rotateY(.005);
+      //console.log(unit.rotation);
+      //  console.log(unit.quaternion)
+
+      //console.log(unit.position);
+
+      /*coronalRightCurveObject.rotateY(.01);
+      coronalLeftCurveObject.rotateY(.01);
+
+      axialRightCurveObject.rotateY(.01);
+      axialLeftCurveObject.rotateY(.01);
+
+      sagittalRightCurveObject.rotateY(.01);
+      sagittalLeftCurveObject.rotateY(.01);*/
+
+      //console.log(coronalRightCurveObject.rotation);
+
+
+      renderer.render(scene, camera);
+
+      //console.log(axialRightCurveObject.position);
+
+      //console.log(oscillatePositive);
+
+      //const time = Date.now() * 0.002;
+      //coronalLeftCurveObject.rotation.x = time * 0.1;
+
+      //coronalLeftCurveObject.rotation.x += 0.01;
+
+      //coronalLeftCurveObject.rotation.y += 0.01;
+      //coronalLeftCurveObject.translateY(oscillatePositive);
+
+      /*if (oscillatePositive) {
+        coronalLeftCurveObject.translateY(.1);
+      }
+      else {
+        coronalLeftCurveObject.translateY(-.1);
+      }*/
+
+      //coronalLeftCurveObject.rotation.z += 0.01;
+      //coronalRightCurveObject.rotation.x += 0.01;
+
+      //coronalRightCurveObject.rotation.y += 0.01;
+      //coronalRightCurveObject.rotateY(.01);
+
+
+      //axialLeftCurveObject.rotateY(.01);
+      //axialRightCurveObject.rotateY(.01);
+
+      /*axialRightCurveObject.translateX(.01);
+      axialRightCurveObject.translateZ(.01);*/
+
+      //coronalLeftCurveObject.rotateY(.01);
+      //coronalRightCurveObject.rotateY(.01);
+
+      //console.log(axialRightCurveObject.position);
+      //console.log(axialRightCurveObject.rotation);
+
+      //coronalRightCurveObject.translateY(-oscillatePositive);
+
+      //coronalRightCurveObject.rotation.z += 0.01; 
+
+      //axialLeftCurveObject.rotation.x += 0.01;
+
+      //axialLeftCurveObject.rotation.y += 0.01;
+      //axialLeftCurveObject.rotateY(.01);
+
+      //axialLeftCurveObject.translateX(-oscillatePositive);
+      //axialLeftCurveObject.translateZ(-oscillatePositive);
+
+
+
+
+      //axialLeftCurveObject.rotation.z += 0.01;
+
+      //axialLeftCurveObject.translateZ(-oscillatePositive);
+
+      //axialLeftCurveObject.rotation.z += 0.01;
+      //axialRightCurveObject.rotation.x += 0.01;
+
+      //axialRightCurveObject.rotation.y += 0.01;
+
+
+      //axialRightCurveObject.rotation.z += 0.01;
+      //axialRightCurveObject.translateX(oscillatePositive);
+      //axialRightCurveObject.translateZ(oscillatePositive);
+
+      //axialRightCurveObject.rotation.z += 0.01;
+
+      //sagittalLeftCurveObject.rotation.x += 0.01;
+
+      //sagittalLeftCurveObject.rotation.y += 0.01;
+
+      //sagittalLeftCurveObject.rotation.z += 0.01;
+      //sagittalRightCurveObject.rotation.x += 0.01;
+
+
+      //sagittalRightCurveObject.rotation.y += 0.01;
+
+      //sagittalRightCurveObject.rotation.z += 0.01; 
+
+
+    }
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
