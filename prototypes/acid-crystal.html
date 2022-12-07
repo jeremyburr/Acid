@@ -78,7 +78,7 @@
       //camera.position.x = 14;
       camera.position.x = 0;
       camera.position.y = 12;
-      camera.position.z = 120;
+      camera.position.z = 180;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -539,9 +539,12 @@ const crystal1TopBase = new THREE.BufferGeometry();
 
       requestAnimationFrame(animate);
       controls.update();
-      const oscillationValue = oscillatePositive ? .1 : -.1;
+      /*const oscillationValue = oscillatePositive ? .1 : -.1;
       render(oscillationValue);
-      TWEEN.update();
+      TWEEN.update();*/
+
+      unit.rotation.y +=.005;
+      render();
 
       //console.log(unit.rotation)
       //stats.update();
