@@ -17,15 +17,11 @@
   <script src="../js/nerdamer/Solve.js"></script>
   <script src="../js/nerdamer/Extra.js"></script>
 
-
-
   <script type="module">
     import * as THREE from '../js/three.module.js';
     import { TrackballControls } from '../js/TrackballControls.js';
     import * as Axis from '../js/shapes/axis.js';
     import TWEEN from '../js/tween.esm.js';
-
-    //console.log(TWEEN);
 
     let camera, scene, renderer, controls;
 
@@ -37,34 +33,10 @@
     let sagittalLeftCurveObject;
     let unit;
 
-    let tweenX;
-    let tweenX2;
-    let tweenX3;
-    let tweenX4;
-
-
-    let tweenY;
-    let tweenY2;
-    let tweenY3;
-    let tweenY4;
-
-    let tweenZ;
-    let tweenZ2;
-    let tweenZ3;
-    let tweenZ4;
-
-
-    //let rotation;
     let testNumber;
 
-    const transverseAxisStartLength = 6;
+    const transverseAxisStartLength = 24;
     let transverseLength = transverseAxisStartLength;
-    let oscillatePositive = true;
-
-
-    //axialRightCurveObject.translateX(10);
-    //axialLeftCurveObject.translateX(-10);
-
 
     function init() {
       scene = new THREE.Scene();
@@ -95,10 +67,7 @@
       const lightAmbient = new THREE.AmbientLight(lightColorHash, .3); // soft white light
       scene.add(lightAmbient);
 
-      //const light = new THREE.AmbientLight();
-      //light.position.set( 0, 1, 1 ).normalize();
       const light = new THREE.DirectionalLight();
-      //light.position.set( 1, 2, 3 ).normalize();
       light.position.set(1, 2, 3);
       scene.add(light);
 
@@ -112,45 +81,39 @@
       let axialQ3Vectors = [];
 
       for (let i = 5; i < 51; i += .5) {
-
         const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
         const evaluated = y.evaluate().text();
         const newArr = JSON.parse(evaluated);
-
         const axialQ4Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[0], 0);
         axialQ4Vectors.push(axialQ4Vector)
         const axialQ1Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[1], 0);
         axialQ1Vectors.push(axialQ1Vector);
-
         const axialQ3Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[0], 0);
         axialQ3Vectors.push(axialQ3Vector)
         const axialQ2Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[1], 0);
         axialQ2Vectors.push(axialQ2Vector);
-
       }
 
       const axialQ1VectorsDescending = [...axialQ1Vectors].reverse();
       const axialQ1VectorsDescendingPopped = axialQ1VectorsDescending.pop();
       const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
-
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
       const axialRightPoints = axialRightCurve.getPoints(1000);
-
       const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
-      //const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF});
       const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
       axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
-
       const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
       const axialQ2VectorsDescendingPopped = axialQ2VectorsDescending.pop();
       const axialLeftCurveVectors = axialQ2VectorsDescending.concat(axialQ3Vectors);
       const axialLeftCurve = new THREE.CatmullRomCurve3(axialLeftCurveVectors);
-
       const axialLeftPoints = axialLeftCurve.getPoints(1000);
-
       const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
       const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff });
       axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialRightMaterial);
+
+
+
+
 
       const newMaterial = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide,
@@ -266,7 +229,7 @@
       sagittalRightCurveObject = new THREE.Mesh(sagittalRightGeometry, axialRightMaterial);
       //unit.add(sagittalRightCurveObject);
 
-      const geometry = new THREE.SphereGeometry(4, 8,);
+      const geometry = new THREE.SphereGeometry(3.5, 8,);
       const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
       const sphere = new THREE.Mesh(geometry, material);
       scene.add(sphere);
