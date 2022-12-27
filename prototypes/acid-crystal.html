@@ -63,11 +63,16 @@
 
       function addSegment(name, start, direction, magnitude) {
         const coordinates = [];
+        //console.log('start',start);
         coordinates.push(new THREE.Vector3(start[0], start[1], start[2]));
         const end = returnEndPosition(start, direction, magnitude);
         coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
+
+        console.log('coordinates',coordinates);
         const curve = new THREE.CatmullRomCurve3(coordinates);
+        console.log('curve',curve);
         const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
+
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
       }
@@ -89,26 +94,26 @@
       }
 
       const vectorMap = {
-        coronal:  {
-          center: [0, Math.cos(degreesToRadians(0)),0],
-          front: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))],
-          back: [0, Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0],
-          right: [Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45)),0]
+        coronal: {
+          center: [0, Math.cos(degreesToRadians(0)), 0],
+          front: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))],
+          back: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)), 0],
+          right: [Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45)), 0]
         },
-        transverse:  {
-          center: [Math.cos(degreesToRadians(0)),0,0],
-          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
-          back: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(135))],
-          left: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(135)), 0], // bottom
-          right: [Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45)),0] // top
+        transverse: {
+          center: [Math.cos(degreesToRadians(0)), 0, 0],
+          front: [Math.cos(degreesToRadians(45)), 0, Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(45)), 0, Math.cos(degreesToRadians(135))],
+          left: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(135)), 0], // bottom
+          right: [Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45)), 0] // top
         },
-        saggital:  {
-          center: [0,0,Math.cos(degreesToRadians(0))],
-          front: [Math.cos(degreesToRadians(45)),0,Math.cos(degreesToRadians(45))],
-          back: [Math.cos(degreesToRadians(135)),0,Math.cos(degreesToRadians(45))],
-          left: [0,Math.cos(degreesToRadians(135)),Math.cos(degreesToRadians(45))], // bottom
-          right: [0,Math.cos(degreesToRadians(45)),Math.cos(degreesToRadians(45))] // top
+        saggital: {
+          center: [0, 0, Math.cos(degreesToRadians(0))],
+          front: [Math.cos(degreesToRadians(45)), 0, Math.cos(degreesToRadians(45))],
+          back: [Math.cos(degreesToRadians(135)), 0, Math.cos(degreesToRadians(45))],
+          left: [0, Math.cos(degreesToRadians(135)), Math.cos(degreesToRadians(45))], // bottom
+          right: [0, Math.cos(degreesToRadians(45)), Math.cos(degreesToRadians(45))] // top
         }
       }
 
@@ -117,38 +122,56 @@
           magnitude = magnitude * -1;
         }
         if (branches === 1) {
-          addSegment(plane+orientation+'center', start, vectorMap[plane].center, magnitude/Math.sqrt(2));
+          addSegment(plane + orientation + 'center', start, vectorMap[plane].center, magnitude / Math.sqrt(2));
         }
         if (branches === 5) {
-          addSegment(plane+orientation+'center', start,vectorMap[plane].center, magnitude/Math.sqrt(2));
-          addSegment(plane+orientation+'front', start, vectorMap[plane].front, magnitude);
-          addSegment(plane+orientation+'back', start, vectorMap[plane].back, magnitude);
-          addSegment(plane+orientation+'left', start, vectorMap[plane].left, magnitude);
-          addSegment(plane+orientation+'right', start, vectorMap[plane].right, magnitude);
+          addSegment(plane + orientation + 'center', start, vectorMap[plane].center, magnitude / Math.sqrt(2));
+          addSegment(plane + orientation + 'front', start, vectorMap[plane].front, magnitude);
+          addSegment(plane + orientation + 'back', start, vectorMap[plane].back, magnitude);
+          addSegment(plane + orientation + 'left', start, vectorMap[plane].left, magnitude);
+          addSegment(plane + orientation + 'right', start, vectorMap[plane].right, magnitude);
         }
       }
 
       // Coronal 
-        // Top
-      addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),1);
-      addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2),5);
-        // Bottom
-      addLevel([0, 0, 0], 'coronal','negative', unitLength * Math.sqrt(2),1);
-      addLevel([0, -unitLength, 0],'coronal','negative', unitLength * Math.sqrt(2),5);
+      // Top
+      //addLevel([0, 0, 0], 'coronal', 'positive', unitLength * Math.sqrt(2), 1);
+      //addLevel([0, unitLength, 0], 'coronal', 'positive', unitLength * Math.sqrt(2), 5);
+      // Bottom
+      //addLevel([0, 0, 0], 'coronal', 'negative', unitLength * Math.sqrt(2), 1);
+      //addLevel([0, -unitLength, 0], 'coronal', 'negative', unitLength * Math.sqrt(2), 5);
       // Transverse
-        // Left
-      addLevel([0, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),1);
-      addLevel([unitLength, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2),5);
-        // Right
-      addLevel([0, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),1);
-      addLevel([-unitLength, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2),5);
+      // Left
+      /*addLevel([0, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2), 1);
+      addLevel([unitLength, 0, 0], 'transverse', 'positive', unitLength * Math.sqrt(2), 5);*/
+      // Right
+      //addLevel([0, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2), 1);
+      //addLevel([-unitLength, 0, 0], 'transverse', 'negative', unitLength * Math.sqrt(2), 5);
       // Saggital
-       // Front
-      addLevel([0, 0, 0], 'saggital', 'positive', unitLength * Math.sqrt(2),1);
-      addLevel([0, 0, unitLength], 'saggital', 'positive', unitLength * Math.sqrt(2),5);
+      // Front
+      //addLevel([0, 0, 0], 'saggital', 'positive', unitLength * Math.sqrt(2), 1);
+      //addLevel([0, 0, unitLength], 'saggital', 'positive', unitLength * Math.sqrt(2), 5);
 
-      addLevel([0, 0, 0], 'saggital', 'negative', unitLength * Math.sqrt(2),1);
-      addLevel([0, 0, -unitLength], 'saggital', 'negative', unitLength * Math.sqrt(2),5);
+      //addLevel([0, 0, 0], 'saggital', 'negative', unitLength * Math.sqrt(2), 1);
+      //addLevel([0, 0, -unitLength], 'saggital', 'negative', unitLength * Math.sqrt(2), 5);
+
+      function testSegment(start,end) {
+        const coordinates = [];
+        coordinates.push(new THREE.Vector3(...start));
+        coordinates.push(new THREE.Vector3(...end));
+        console.log('test coordinates',coordinates);
+        const curve = new THREE.CatmullRomCurve3(coordinates);
+        console.log('test curve',curve);
+        const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
+        const testSegment = new THREE.Mesh(geometry, tubeMaterial);
+        unit.add(testSegment);
+      }
+
+      testSegment([16,16,0],[8,8,0]);
+      testSegment([8,8,0],[8,-8,0]);
+      testSegment([8,-8,0],[16,-16,0]);
+
+
 
       scene.add(unit);
 
