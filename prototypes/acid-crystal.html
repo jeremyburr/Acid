@@ -167,9 +167,28 @@
         unit.add(testSegment);
       }
 
+      // transverse left
       testSegment([16,16,0],[8,8,0]);
       testSegment([8,8,0],[8,-8,0]);
       testSegment([8,-8,0],[16,-16,0]);
+
+      // transverse right
+      testSegment([-16,16,0],[-8,8,0]);
+      testSegment([-8,8,0],[-8,-8,0]);
+      testSegment([-8,-8,0],[-16,-16,0]);
+
+      // coronal top
+      testSegment([-16,16,0],[-8,8,0]);
+      testSegment([-8,8,0],[-8,-8,0]);
+      testSegment([-8,-8,0],[-16,-16,0]);
+
+      testSegment([4,8,4*Math.sqrt(3)],[4,-8,4*Math.sqrt(3)])
+      testSegment([-4,8,4*Math.sqrt(3)],[-4,-8,4*Math.sqrt(3)])
+
+      testSegment([4,8,-4*Math.sqrt(3)],[4,-8,-4*Math.sqrt(3)])
+      testSegment([-4,8,-4*Math.sqrt(3)],[-4,-8,-4*Math.sqrt(3)])
+
+
 
 
 
