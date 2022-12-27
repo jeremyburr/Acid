@@ -88,31 +88,44 @@
         axialQ4Vectors.push(axialQ4Vector)
         const axialQ1Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[1], 0);
         axialQ1Vectors.push(axialQ1Vector);
+
         const axialQ3Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[0], 0);
         axialQ3Vectors.push(axialQ3Vector)
         const axialQ2Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[1], 0);
         axialQ2Vectors.push(axialQ2Vector);
+
       }
 
       const axialQ1VectorsDescending = [...axialQ1Vectors].reverse();
+
       const axialQ1VectorsDescendingPopped = axialQ1VectorsDescending.pop();
-      const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
+
+      console.log(axialQ4Vectors);
+
+      const axialRightCurveVectors = axialQ1VectorsDescending/*.concat(axialQ4Vectors);*/
+
+      //const axialRightCurveVectors = axialQ1VectorsDescending.concat([29.5,-10,0]);
+
+      console.log(axialRightCurveVectors);
+
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
+
       const axialRightPoints = axialRightCurve.getPoints(1000);
+
       const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
+
       const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
       axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
-      const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
+
+
+      /*const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
       const axialQ2VectorsDescendingPopped = axialQ2VectorsDescending.pop();
       const axialLeftCurveVectors = axialQ2VectorsDescending.concat(axialQ3Vectors);
       const axialLeftCurve = new THREE.CatmullRomCurve3(axialLeftCurveVectors);
       const axialLeftPoints = axialLeftCurve.getPoints(1000);
       const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
       const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff });
-      axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialRightMaterial);
-
-
-
+      axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialRightMaterial);*/
 
 
       const newMaterial = new THREE.MeshPhongMaterial({
@@ -127,6 +140,8 @@
         0, 1, 1,
       ]
 
+      //axialRightNew = 
+
 
       const crystal1TopBase = new THREE.BufferGeometry();
       crystal1TopBase.setAttribute('position', new THREE.Float32BufferAttribute([0, 0, 0, 4, 4, 4, 0, 8, 0], 3));
@@ -134,7 +149,7 @@
       const meshcrystal1TopBase = new THREE.Mesh(crystal1TopBase, newMaterial);
       //scene.add(meshcrystal1TopBase);
 
-      unit.add(axialLeftCurveObject);
+      //unit.add(axialLeftCurveObject);
       unit.add(axialRightCurveObject);
 
       // Coronal
