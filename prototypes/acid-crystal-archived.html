@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Acid</title>
+  <link rel="shortcut icon" href="#">
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+
+  <script src="../js/nerdamer/nerdamer.core.js"></script>
+  <script src="../js/nerdamer/Algebra.js"></script>
+  <script src="../js/nerdamer/Calculus.js"></script>
+  <script src="../js/nerdamer/Solve.js"></script>
+  <script src="../js/nerdamer/Extra.js"></script>
+
+  <script type="module">
+    import * as THREE from '../js/three.module.js';
+    import { TrackballControls } from '../js/TrackballControls.js';
+    import * as Axis from '../js/shapes/axis.js';
+    import TWEEN from '../js/tween.esm.js';
+
+    let camera, scene, renderer, controls;
+
+    let coronalRightCurveObject;
+    let coronalLeftCurveObject;
+    let axialRightCurveObject;
+    let axialLeftCurveObject;
+    let sagittalRightCurveObject;
+    let sagittalLeftCurveObject;
+    let unit;
+
+    let testNumber;
+
+    const transverseAxisStartLength = 24;
+    let transverseLength = transverseAxisStartLength;
+
+    function init() {
+      scene = new THREE.Scene();
+
+      /*scene.add(Axis.x);
+      scene.add(Axis.y);
+      scene.add(Axis.z);*/
+
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+
+      //camera.position.x = 14;
+      camera.position.x = 0;
+      camera.position.y = 12;
+      camera.position.z = 180;
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      document.body.appendChild(renderer.domElement);
+      controls = new TrackballControls(camera, renderer.domElement);
+
+      window.addEventListener('resize', onWindowResize);
+
+      scene.background = new THREE.Color(0x050505);
+
+      const lightColorHash = 0xFFFFFF;
+      const lightAmbient = new THREE.AmbientLight(lightColorHash, .3); // soft white light
+      scene.add(lightAmbient);
+
+      const light = new THREE.DirectionalLight();
+      light.position.set(1, 2, 3);
+      scene.add(light);
+
+      unit = new THREE.Group();
+
+      // Axial
+
+      let axialQ1Vectors = [];
+      let axialQ4Vectors = [];
+      let axialQ2Vectors = [];
+      let axialQ3Vectors = [];
+
+      for (let i = 5; i < 51; i += .5) {
+        const y = nerdamer(`solve( ${i}^2/25 - y^2/16 = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+        const axialQ4Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[0], 0);
+        axialQ4Vectors.push(axialQ4Vector)
+        const axialQ1Vector = new THREE.Vector3(i + transverseAxisStartLength, newArr[1], 0);
+        axialQ1Vectors.push(axialQ1Vector);
+
+        const axialQ3Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[0], 0);
+        axialQ3Vectors.push(axialQ3Vector)
+        const axialQ2Vector = new THREE.Vector3(-i - transverseAxisStartLength, newArr[1], 0);
+        axialQ2Vectors.push(axialQ2Vector);
+
+      }
+
+      const axialQ1VectorsDescending = [...axialQ1Vectors].reverse();
+
+      const axialQ1VectorsDescendingPopped = axialQ1VectorsDescending.pop();
+
+      console.log(axialQ4Vectors);
+
+      const axialRightCurveVectors = axialQ1VectorsDescending/*.concat(axialQ4Vectors);*/
+
+      //const axialRightCurveVectors = axialQ1VectorsDescending.concat([29.5,-10,0]);
+
+      console.log(axialRightCurveVectors);
+
+      const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
+
+      const axialRightPoints = axialRightCurve.getPoints(1000);
+
+      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
+
+      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
+      axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);
+
+
+      /*const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
+      const axialQ2VectorsDescendingPopped = axialQ2VectorsDescending.pop();
+      const axialLeftCurveVectors = axialQ2VectorsDescending.concat(axialQ3Vectors);
+      const axialLeftCurve = new THREE.CatmullRomCurve3(axialLeftCurveVectors);
+      const axialLeftPoints = axialLeftCurve.getPoints(1000);
+      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve, 64, 1.75, 16, false)
+      const axialLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff });
+      axialLeftCurveObject = new THREE.Mesh(axialLeftGeometry, axialRightMaterial);*/
+
+
+      const newMaterial = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,
+        vertexColors: true,
+        transparent: true,
+        opacity: 1
+      });
+      const wingColors = [
+        0, 0, 1,
+        1, 0, 1,
+        0, 1, 1,
+      ]
+
+      //axialRightNew = 
+
+
+      const crystal1TopBase = new THREE.BufferGeometry();
+      crystal1TopBase.setAttribute('position', new THREE.Float32BufferAttribute([0, 0, 0, 4, 4, 4, 0, 8, 0], 3));
+      crystal1TopBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshcrystal1TopBase = new THREE.Mesh(crystal1TopBase, newMaterial);
+      //scene.add(meshcrystal1TopBase);
+
+      //unit.add(axialLeftCurveObject);
+      unit.add(axialRightCurveObject);
+
+      // Coronal
+
+      let coronalQ1Vectors = [];
+      let coronalQ2Vectors = [];
+      let coronalQ3Vectors = [];
+      let coronalQ4Vectors = [];
+
+      for (let i = 0; i < 51; i += .5) {
+        const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+
+        const coronalQ1Vector = new THREE.Vector3(0, newArr[0] + transverseAxisStartLength, i);
+        const coronalQ2Vector = new THREE.Vector3(0, newArr[0] + transverseAxisStartLength, -i);
+
+        const coronalQ3Vector = new THREE.Vector3(0, newArr[1] - transverseAxisStartLength, i);
+        const coronalQ4Vector = new THREE.Vector3(0, newArr[1] - transverseAxisStartLength, -i);
+
+        coronalQ1Vectors.push(coronalQ1Vector);
+        coronalQ2Vectors.push(coronalQ2Vector);
+        coronalQ3Vectors.push(coronalQ3Vector);
+        coronalQ4Vectors.push(coronalQ4Vector);
+      }
+
+
+      const coronalQ2VectorsDescending = [...coronalQ2Vectors].reverse();
+      const coronalQ2VectorsDescendingPopped = coronalQ2VectorsDescending.pop();
+      const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
+      const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
+      const coronalLeftPoints = coronalLeftCurve.getPoints(1000);
+      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve, 64, 1.75, 16, false)
+      const coronalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      coronalLeftCurveObject = new THREE.Mesh(coronalLeftGeometry, axialRightMaterial);
+      //unit.add(coronalLeftCurveObject);
+
+      const coronalQ3VectorsDescending = [...coronalQ3Vectors].reverse();
+      const coronalQ3VectorsDescendingPopped = coronalQ3VectorsDescending.pop();
+      const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
+      const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
+      const coronalRightPoints = coronalRightCurve.getPoints(1000);
+      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve, 64, 1.75, 16, false)
+      const coronalRightMaterial = new THREE.MeshPhongMaterial({ color: 0x00FFFF });
+      coronalRightCurveObject = new THREE.Mesh(coronalRightGeometry, axialRightMaterial);
+      //unit.add(coronalRightCurveObject);
+
+
+      // Sagittal
+
+      let sagittalQ1Vectors = [];
+      let sagittalQ2Vectors = [];
+      let sagittalQ3Vectors = [];
+      let sagittalQ4Vectors = [];
+
+
+      for (let i = 0; i < 51; i += .5) {
+        const y = nerdamer(`solve( y^2/25 - ${i}^2/16  = 1 , y)`);
+        const evaluated = y.evaluate().text();
+        const newArr = JSON.parse(evaluated);
+        const sagittalQ1Vector = new THREE.Vector3(i, 0, newArr[0] + transverseAxisStartLength);
+        const sagittalQ2Vector = new THREE.Vector3(-i, 0, newArr[0] + transverseAxisStartLength);
+        const sagittalQ3Vector = new THREE.Vector3(i, 0, newArr[1] - transverseAxisStartLength);
+        const sagittalQ4Vector = new THREE.Vector3(-i, 0, newArr[1] - transverseAxisStartLength);
+        sagittalQ1Vectors.push(sagittalQ1Vector);
+        sagittalQ2Vectors.push(sagittalQ2Vector);
+        sagittalQ3Vectors.push(sagittalQ3Vector);
+        sagittalQ4Vectors.push(sagittalQ4Vector);
+      }
+
+      const sagittalQ2VectorsDescending = [...sagittalQ2Vectors].reverse();
+      const sagittalQ2VectorsDescendingPopped = sagittalQ2VectorsDescending.pop();
+      const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
+      const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
+      const sagittalLeftPoints = sagittalLeftCurve.getPoints(1000);
+      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve, 64, 1.75, 16, false)
+      const sagittalLeftMaterial = new THREE.MeshPhongMaterial({ color: 0xff73f6 })
+      sagittalLeftCurveObject = new THREE.Mesh(sagittalLeftGeometry, axialRightMaterial);
+      //unit.add(sagittalLeftCurveObject);
+
+      const sagittalQ3VectorsDescending = [...sagittalQ3Vectors].reverse();
+      const sagittalQ3VectorsDescendingPopped = sagittalQ3VectorsDescending.pop();
+      const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
+      const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
+      const sagittalRightPoints = sagittalRightCurve.getPoints(1000);
+      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve, 64, 1.75, 16, false)
+      const sagittalRightMaterial = new THREE.MeshPhongMaterial({
+
+        color: 0xff73f6,
+
+      });
+      sagittalRightCurveObject = new THREE.Mesh(sagittalRightGeometry, axialRightMaterial);
+      //unit.add(sagittalRightCurveObject);
+
+      const geometry = new THREE.SphereGeometry(3.5, 8,);
+      const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF });
+      const sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
+
+
+      scene.add(unit);
+
+    }
+
+    function render(oscillatePositive) {
+      renderer.render(scene, camera);
+    }
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+      controls.update();
+      render();
+    }
+
+    init();
+    animate();
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+
+
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
