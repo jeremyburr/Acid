@@ -162,24 +162,30 @@
       }
 
       // transverse left
-      testSegment([16,16,0],[8,8,0]);
+
+      //testSegment([16,16,0],[8,8,0]);
       testSegment([8,8,0],[8,-8,0]);
-      testSegment([8,-8,0],[16,-16,0]);
+      //testSegment([8,-8,0],[16,-16,0]);
 
       // transverse right
-      testSegment([-16,16,0],[-8,8,0]);
+
+      //testSegment([-16,16,0],[-8,8,0]);
       testSegment([-8,8,0],[-8,-8,0]);
-      testSegment([-8,-8,0],[-16,-16,0]);
+      //testSegment([-8,-8,0],[-16,-16,0]);
 
       // coronal top
-      testSegment([-16,16,0],[-8,8,0]);
+
+      /*testSegment([-16,16,0],[-8,8,0]);
       testSegment([-8,8,0],[-8,-8,0]);
-      testSegment([-8,-8,0],[-16,-16,0]);
+      testSegment([-8,-8,0],[-16,-16,0]);*/
 
       testSegment([4,8,4*Math.sqrt(3)],[4,-8,4*Math.sqrt(3)]);
       // name start direction magnitude
 
+      addSegment('X_Pos',[4,8,4*Math.sqrt(3)],[Math.cos(45),Math.cos(45),Math.cos(45)],Math.sqrt(128));
+
       addSegment('XZ_Pos',[4,8,4*Math.sqrt(3)],[Math.cos(45),Math.cos(45),Math.cos(45)],Math.sqrt(128));
+      addSegment('XZ_Neg',[4,-8,4*Math.sqrt(3)],[Math.cos(45),-Math.cos(45),Math.cos(45)],Math.sqrt(128));
 
       //testSegment([4,8,4*Math.sqrt(3)], [4/Math.sqrt(29), 8/Math.sqrt(29), (4*Math.sqrt(3))/Math.sqrt(29)])
 
