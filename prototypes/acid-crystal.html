@@ -180,11 +180,31 @@
 
       //X Pos
       testSegment([8,8,0],[8,-8,0]);
-      addSegment('XZ_Pos_Y_Neg',[8,8,0],
+      addSegment('XZ_Pos_Y_Pos',[8,8,0],
       [Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(90))],
       Math.sqrt(128));
+      addSegment('XZ_Pos_Y_Neg',[8,-8,0],
+      [Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(90))],
+      Math.sqrt(128));
+
+      //X Neg
+      testSegment([-8,8,0],[-8,-8,0]);
+      addSegment('XZ_Pos_Y_Pos',[-8,8,0],
+      [Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(90))],
+      Math.sqrt(128));
+      addSegment('XZ_Pos_Y_Neg',[-8,-8,0],
+      [Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(90))],
+      Math.sqrt(128));
+
+
 
       // XZ Pos
       testSegment([4,8,4*Math.sqrt(3)],[4,-8,4*Math.sqrt(3)]);
