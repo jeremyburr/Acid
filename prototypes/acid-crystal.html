@@ -180,38 +180,43 @@
 
       //X Pos
       testSegment([8,8,0],[8,-8,0]);
-      addSegment('X_Neg_Y_Pos',[8,8,0],
-      [Math.cos(degreesToRadians(45)),
+      addSegment('X_Pos_Y_Pos',[8,8,0],
+      [Math.cos(degreesToRadians(0)),
       Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(90))],
-      Math.sqrt(256));
-      addSegment('X_Neg_Y_Neg',[8,-8,0],
-      [Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(90))],
       Math.sqrt(256));
 
-      //X Neg
-      testSegment([-8,8,0],[-8,-8,0]);
-      addSegment('X_Pos_Y_Pos',[-8,8,0],
-      [Math.cos(degreesToRadians(135)),
-      Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(90))],
-      Math.sqrt(256));
-      addSegment('X_Pos_Y_Neg',[-8,-8,0],
-      [Math.cos(degreesToRadians(135)),
+      addSegment('X_Pos_Y_Neg',[8,-8,0],
+      [Math.cos(degreesToRadians(0)),
       Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(90))],
       Math.sqrt(256));
 
       // XZ Pos Y Pos
-      testSegment([4,8,(8*Math.sqrt(3))/2],[4,-8,(8*Math.sqrt(3))/2]);
+      /*testSegment([4,8,(8*Math.sqrt(3))/2],[4,-8,(8*Math.sqrt(3))/2]);
       addSegment('XZ_Pos_Y_Pos',[4,8,(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(66)),
       Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(45))],
       Math.sqrt(256));
-      
+
+      //X Neg
+      */
+      testSegment([-8,8,0],[-8,-8,0]);
+      addSegment('X_Neg_Y_Pos',[-8,8,0],
+      [Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(90))],
+      Math.sqrt(256));
+      addSegment('X_Neg_Y_Neg',[-8,-8,0],
+      [Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(90))],
+      Math.sqrt(256));
+
+      /*
+
+            
       // XZ Pos Y Neg
       addSegment('XZ_Pos_Y_Neg',[4,-8,(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(66)),
@@ -235,31 +240,35 @@
       Math.cos(degreesToRadians(225))],
       Math.sqrt(256));
 
-      
 
       // X Neg Z Pos Y Pos
-      /*addSegment('X_Neg_Z_Pos_Y_Pos',[-4,8,(8*Math.sqrt(3))/2],
-      [Math.cos(degreesToRadians(126)),
+      addSegment('X_Neg_Z_Pos_Y_Pos',[-4,8,(8*Math.sqrt(3))/2],
+      [Math.cos(degreesToRadians(120)),
       Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(345))],
-      Math.sqrt(128));
+      Math.sqrt(256));
 
       testSegment([-4,8,(8*Math.sqrt(3))/2],[-4,-8,(8*Math.sqrt(3))/2]);
 
+      /*
       // X Neg Z Pos Y Neg
       addSegment('X_Neg_Z_Pos_Y_Neg',[-4,-8,(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(126)),
       Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(345))],
-      Math.sqrt(128));
+      Math.sqrt(256));
 
+      */
+
+
+      /*
 
       // X Pos Z Neg Y Pos
       addSegment('X_Pos_Z_Neg_Y_Pos',[4,8,-(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(306)),
       Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(165))],
-      Math.sqrt(128));
+      Math.sqrt(256));
 
       testSegment([4,8,-(8*Math.sqrt(3))/2],[4,-8,-(8*Math.sqrt(3))/2]);
 
@@ -268,18 +277,16 @@
       [Math.cos(degreesToRadians(306)),
       Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(165))],
-      Math.sqrt(128));*/
+      Math.sqrt(256));
 
-
-
-
+      */
 
 
 
       scene.add(unit);
 
-      /*const axesHelper = new THREE.AxesHelper( 50 );
-      scene.add( axesHelper );*/
+      const axesHelper = new THREE.AxesHelper( 50 );
+      scene.add( axesHelper );
 
       scene.background = new THREE.Color(0x111111);
 
