@@ -69,7 +69,7 @@
         const curve = new THREE.CatmullRomCurve3(coordinates);
         const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
-        console.log(name,start,direction,magnitude);
+        //console.log(name,start,direction,magnitude);
         unit.add(globalThis[name]);
       }
 
@@ -204,8 +204,6 @@
       Math.cos(degreesToRadians(90))],
       Math.sqrt(128));
 
-
-
       // XZ Pos
       //testSegment([4,8,4*Math.sqrt(3)],[4,-8,4*Math.sqrt(3)]);
       addSegment('XZ_Pos_Y_Pos',[4,8,4*Math.sqrt(3)],
@@ -213,6 +211,8 @@
       Math.cos(degreesToRadians(0)),
       Math.cos(degreesToRadians(270))],
       Math.sqrt(128));
+
+      console.log(Math.cos(degreesToRadians(360))),
 
       /*addSegment('XZ_Pos_Y_Neg',[4,-8,4*Math.sqrt(3)],
       [Math.cos(degreesToRadians(45)),
@@ -224,8 +224,6 @@
       testSegment([-4,8,-4*Math.sqrt(3)],[-4,-8,-4*Math.sqrt(3)]);
       /*addSegment('XZ_Neg_Y_Pos',[-4,8,-4*Math.sqrt(3)],[-Math.cos(45),Math.cos(45),-Math.cos(45)],Math.sqrt(128));
       addSegment('XZ_Neg_Y_Neg',[-4,-8,-4*Math.sqrt(3)],[-Math.cos(45),-Math.cos(45),-Math.cos(45)],Math.sqrt(128));*/
-
-
 
       // name start direction magnitude
 
