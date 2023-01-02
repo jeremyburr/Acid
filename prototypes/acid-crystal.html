@@ -252,11 +252,22 @@
       Math.sqrt(128));
 
 
-
-
-
+      // X Pos Z Neg Y Pos
+      addSegment('X_Pos_Z_Neg_Y_Pos',[4,8,-4*Math.sqrt(3)],
+      [Math.cos(degreesToRadians(306)),
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(165))],
+      Math.sqrt(128));
 
       testSegment([4,8,-4*Math.sqrt(3)],[4,-8,-4*Math.sqrt(3)]);
+
+      // X Pos Z Neg Y Neg
+      addSegment('X_Pos_Z_Neg_Y_Neg',[4,-8,-4*Math.sqrt(3)],
+      [Math.cos(degreesToRadians(306)),
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(165))],
+      Math.sqrt(128));
+
 
 
 
