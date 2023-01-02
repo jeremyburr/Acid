@@ -277,7 +277,6 @@
       // center segment
       testSegment([0,8,0],[0,-8,0]);
 
-
       scene.add(unit);
 
       /*const axesHelper = new THREE.AxesHelper( 50 );
@@ -285,13 +284,23 @@
 
       scene.background = new THREE.Color(0x111111);
 
-      const light = new THREE.DirectionalLight(0xfffffff, 1);
-      light.position.set(1, 1, 1)//.normalize();
-      scene.add(light);
+      const light0 = new THREE.DirectionalLight(0xfffffff, 1);
+      light0.position.set(100, 100, 100)//.normalize();
+      scene.add(light0);
 
       const light2 = new THREE.DirectionalLight(0xfffffff, 1);
-      light2.position.set(-100, -1, -1)//.normalize();
+      light2.position.set(-100, -100, -100)//.normalize();
       scene.add(light2);
+
+      const light3 = new THREE.DirectionalLight(0xfffffff, 1);
+      light3.position.set(100, -100, 100)//.normalize();
+      scene.add(light3);
+
+      const light4 = new THREE.DirectionalLight(0xfffffff, 1);
+      light4.position.set(-100, 100, -100)//.normalize();
+      scene.add(light4);
+
+
 
     }
 
@@ -316,7 +325,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * 0.15;
-      unit.rotation.y = time * 0.25;
+      unit.rotation.y = time * -0.30;
       //unit.rotation.z = time * .03;
 
       renderer.render(scene, camera);
