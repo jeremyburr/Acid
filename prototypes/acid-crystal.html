@@ -31,9 +31,9 @@
     function init() {
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(37, window.innerWidth / window.innerHeight, 1, 3500);
-      camera.position.x = 14;
-      camera.position.y = 20;
-      camera.position.z = 85;
+      camera.position.x = 30;
+      camera.position.y = 0;
+      camera.position.z = 150;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -274,12 +274,14 @@
       Math.sqrt(256));
 
 
+      // center segment
+      testSegment([0,8,0],[0,-8,0]);
 
 
       scene.add(unit);
 
-      const axesHelper = new THREE.AxesHelper( 50 );
-      scene.add( axesHelper );
+      /*const axesHelper = new THREE.AxesHelper( 50 );
+      scene.add( axesHelper );*/
 
       scene.background = new THREE.Color(0x111111);
 
@@ -306,13 +308,16 @@
       //stats.update();
     }
 
+    //unit.rotation.z -= .3;
+    //unit.rotation.y -= .3;
+
     function render() {
 
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * 0.15;
-      //unit.rotation.y = time * 0.20;
-      //unit.rotation.z = time * 0.15;
+      unit.rotation.y = time * 0.25;
+      //unit.rotation.z = time * .03;
 
       renderer.render(scene, camera);
     }
