@@ -30,7 +30,7 @@
 
     function init() {
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
+      camera = new THREE.PerspectiveCamera(37, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 14;
       camera.position.y = 20;
       camera.position.z = 85;
@@ -169,7 +169,7 @@
       // transverse right
 
       //testSegment([-16,16,0],[-8,8,0]);
-      testSegment([-8,8,0],[-8,-8,0]);
+      //testSegment([-8,8,0],[-8,-8,0]);
       //testSegment([-8,-8,0],[-16,-16,0]);
 
       // coronal top
@@ -204,36 +204,41 @@
       Math.cos(degreesToRadians(90))],
       Math.sqrt(128));
 
-      // XZ Pos
-      //testSegment([4,8,4*Math.sqrt(3)],[4,-8,4*Math.sqrt(3)]);
+      // XZ Pos Y Pos
+      testSegment([4,8,4*Math.sqrt(3)],[4,-8,4*Math.sqrt(3)]);
       addSegment('XZ_Pos_Y_Pos',[4,8,4*Math.sqrt(3)],
-      [Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(270))],
+      [Math.cos(degreesToRadians(66)),
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(45))],
       Math.sqrt(128));
-
-      console.log(Math.cos(degreesToRadians(360))),
-
-      /*addSegment('XZ_Pos_Y_Neg',[4,-8,4*Math.sqrt(3)],
-      [Math.cos(degreesToRadians(45)),
+      
+      // XZ Pos Y Neg
+      addSegment('XZ_Pos_Y_Neg',[4,-8,4*Math.sqrt(3)],
+      [Math.cos(degreesToRadians(66)),
       Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(45))],
-      Math.sqrt(128));*/
+      Math.sqrt(128));
 
-      // XZ Neg
+      // XZ Neg Y Pos
       testSegment([-4,8,-4*Math.sqrt(3)],[-4,-8,-4*Math.sqrt(3)]);
-      /*addSegment('XZ_Neg_Y_Pos',[-4,8,-4*Math.sqrt(3)],[-Math.cos(45),Math.cos(45),-Math.cos(45)],Math.sqrt(128));
-      addSegment('XZ_Neg_Y_Neg',[-4,-8,-4*Math.sqrt(3)],[-Math.cos(45),-Math.cos(45),-Math.cos(45)],Math.sqrt(128));*/
+      addSegment('XZ_Pos_Y_Pos',[-4,8,-4*Math.sqrt(3)],
+      [Math.cos(degreesToRadians(246)),
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(225))],
+      Math.sqrt(128));
+      
+      // XZ Neg Y Neg
+      addSegment('XZ_Pos_Y_Neg',[-4,-8,-4*Math.sqrt(3)],
+      [Math.cos(degreesToRadians(246)),
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(225))],
+      Math.sqrt(128));
 
-      // name start direction magnitude
-
-      //addSegment('X_Pos',[4,8,4*Math.sqrt(3)],[Math.cos(45),Math.cos(45),Math.cos(45)],Math.sqrt(128));
+      //testSegment([-4,8,-4*Math.sqrt(3)],[-4,-8,-4*Math.sqrt(3)]);
 
 
-      //testSegment([4,8,4*Math.sqrt(3)], [4/Math.sqrt(29), 8/Math.sqrt(29), (4*Math.sqrt(3))/Math.sqrt(29)])
 
       testSegment([-4,8,4*Math.sqrt(3)],[-4,-8,4*Math.sqrt(3)]);
-
       testSegment([4,8,-4*Math.sqrt(3)],[4,-8,-4*Math.sqrt(3)]);
 
 
