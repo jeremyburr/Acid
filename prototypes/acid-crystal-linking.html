@@ -50,8 +50,10 @@
           console.log('origin',origin);
           const [orgX, orgY, orgZ] = origin;
 
-          // Center Segment
-          testSegment([orgX,unitLength,orgZ],[orgX,-unitLength,orgZ]);
+          // Segment - Center
+          testSegment([orgX,orgY+unitLength,orgZ],[orgX,orgY-unitLength,orgZ]);
+
+          // Segment X+ 
 
         }
 
