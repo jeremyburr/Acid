@@ -23,7 +23,6 @@
     let coronalBottomRight, coronalBottomLeft, coronalBottomBack, coronalBottomFront;
     let saggitalBackTop, saggitalBackBottom, saggitalBackLeft, saggitalBackRight;
     let saggitalFrontTop, saggitalFrontBottom, saggitalFrontLeft, saggitalFrontRight;
-    //let unit;
     let unitLength = 8;
 
     init();
@@ -35,25 +34,28 @@
       camera.position.x = 30;
       camera.position.y = 0;
       camera.position.z = 150;
-
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
-
       document.body.appendChild(renderer.domElement);
       controls = new TrackballControls(camera, renderer.domElement);
-
       window.addEventListener('resize', onWindowResize);
+
+      // Model Details
       
 
       //X Pos
+
       testSegment([8,8,0],[8,-8,0]);
+
+        // Y Pos
       addSegment('X_Pos_Y_Pos',[8,8,0],
       [Math.cos(degreesToRadians(0)),
       Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(90))],
       8*Math.sqrt(3));
 
+        // Y Neg
       addSegment('X_Pos_Y_Neg',[8,-8,0],
       [Math.cos(degreesToRadians(0)),
       Math.cos(degreesToRadians(135)),
@@ -61,23 +63,27 @@
       8*Math.sqrt(3));
 
       testSegment([8,0,0],[(8)+8*Math.sqrt(3),0,0]);
+
       
-      // XZ Pos Y Pos
+      // XZ Pos 
+
       testSegment([4,8,(8*Math.sqrt(3))/2],[4,-8,(8*Math.sqrt(3))/2]);
+
+        // Y Pos
       addSegment('XZ_Pos_Y_Pos',[4,8,(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(60)),
       Math.cos(degreesToRadians(45)),
       Math.cos(degreesToRadians(30))],
       8*Math.sqrt(3));
 
-      // XZ Pos Y Neg
+        // Y Neg
       addSegment('XZ_Pos_Y_Neg',[4,-8,(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(60)),
       Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(30))],
       8*Math.sqrt(3));
 
-      addSegment('XZ_Pos_Y_Neg',[4,0,(8*Math.sqrt(3))/2],
+      addSegment('XZ_Pos_Y_Neutral',[4,0,(8*Math.sqrt(3))/2],
       [Math.cos(degreesToRadians(60)),
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(30))],
@@ -129,9 +135,7 @@
       Math.cos(degreesToRadians(30))],
       8*Math.sqrt(3));
 
-
       testSegment([-4,8,(8*Math.sqrt(3))/2],[-4,-8,(8*Math.sqrt(3))/2]);
-
       
       // X Neg Z Pos Y Neg
       addSegment('X_Neg_Z_Pos_Y_Neg',[-4,-8,(8*Math.sqrt(3))/2],
@@ -177,8 +181,8 @@
 
       scene.add(unit);
 
-      /*const axesHelper = new THREE.AxesHelper( 50 );
-      scene.add( axesHelper );*/
+      const axesHelper = new THREE.AxesHelper( 50 );
+      scene.add( axesHelper );
 
       scene.background = new THREE.Color(0x111111);
 
