@@ -51,10 +51,33 @@
           const [orgX, orgY, orgZ] = origin;
 
           // Segment - Center
-          testSegment([orgX,orgY+unitLength,orgZ],[orgX,orgY-unitLength,orgZ]);
+          testSegment(
+            [
+              orgX,
+              orgY+unitLength,
+              orgZ
+            ],
+            [
+              orgX,
+              orgY-unitLength,
+              orgZ
+            ]
+          );
 
           // Segment X+ 
-
+          // Base
+          testSegment(
+            [
+              orgX+unitLength,
+              orgX+unitLength,
+              0
+            ],
+            [
+              orgX+unitLength,
+              orgX-unitLength,
+              0
+            ]
+          );
         }
 
       }
@@ -64,8 +87,6 @@
 
       //X Pos
 
-      // Base
-      testSegment([8,8,0],[8,-8,0]);
 
       // Y Pos
       addSegment('X_Pos_Y_Pos',[8,8,0],
