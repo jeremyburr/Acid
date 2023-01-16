@@ -45,22 +45,20 @@
 
       class AcidCrystal {
 
-        constructor(name,origin) {
+        constructor(name,origin,unitLength) {
           console.log('name',name);
           console.log('origin',origin);
+          const [orgX, orgY, orgZ] = origin;
 
+          // Center Segment
+          testSegment([orgX,unitLength,orgZ],[orgX,-unitLength,orgZ]);
 
         }
 
       }
 
-      const AC_Origin = new AcidCrystal('origin',[0,0,0])
+      const AC_Origin = new AcidCrystal('center',[0,0,0],8)
 
-      // Model Details
-
-      // Center Segment
-
-      testSegment([0,8,0],[0,-8,0]);
 
       //X Pos
 
