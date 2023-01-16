@@ -69,13 +69,13 @@
           testSegment(
             [
               orgX+unitLength,
-              orgX+unitLength,
-              0
+              orgY+unitLength,
+              orgZ
             ],
             [
               orgX+unitLength,
-              orgX-unitLength,
-              0
+              orgY-unitLength,
+              orgZ
             ]
           );
         }
@@ -83,6 +83,8 @@
       }
 
       const AC_Origin = new AcidCrystal('center',[0,0,0],8)
+      
+      //const AC_X_Pos = new AcidCrystal('X_Pos',[40,0,40],8)
 
 
       //X Pos
