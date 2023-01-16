@@ -78,24 +78,23 @@
               orgZ
             ]
           );
+          // Y Pos
+          addSegment('X_Pos_Y_Pos',[unitLength,unitLength,0],
+          [
+            Math.cos(degreesToRadians(0)),
+            Math.cos(degreesToRadians(45)),
+            Math.cos(degreesToRadians(90))
+          ],
+            unitLength*Math.sqrt(3)
+          );
         }
 
       }
 
+
       const AC_Origin = new AcidCrystal('center',[0,0,0],8)
-      
       //const AC_X_Pos = new AcidCrystal('X_Pos',[40,0,40],8)
-
-
-      //X Pos
-
-
-      // Y Pos
-      addSegment('X_Pos_Y_Pos',[8,8,0],
-      [Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(90))],
-      8*Math.sqrt(3));
+      
 
       // Y Bisect
       testSegment([8,0,0],[(8)+8*Math.sqrt(3),0,0]);
