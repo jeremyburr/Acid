@@ -225,6 +225,18 @@
             Math.cos(degreesToRadians(210))],
             unit*Math.sqrt(3));
 
+            // X Neg Z Pos 
+
+            // Bisect
+            testSegment([orgX-unit/2,orgY+unit,orgZ+(unit*Math.sqrt(3))/2],[orgX-(unit/2),orgY-unit,orgZ+(unit*Math.sqrt(3))/2]);
+
+            // Y Pos
+            addSegment('X_Neg_Z_Pos_Y_Pos',[-4,8,(8*Math.sqrt(3))/2],
+            [Math.cos(degreesToRadians(120)),
+            Math.cos(degreesToRadians(45)),
+            Math.cos(degreesToRadians(30))],
+            unit*Math.sqrt(3));
+
 
 
         }
@@ -234,22 +246,9 @@
 
       const AC_Origin = new AcidCrystal('center',[0,0,0],unitLength)
       const AC_X_Pos = new AcidCrystal('X_Pos',[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
-
-      
-      
       
 
-      // X Neg Z Pos 
-
-      // Bisect
-      testSegment([-4,8,(8*Math.sqrt(3))/2],[-4,-8,(8*Math.sqrt(3))/2]);
-
-      // Y Pos
-      addSegment('X_Neg_Z_Pos_Y_Pos',[-4,8,(8*Math.sqrt(3))/2],
-      [Math.cos(degreesToRadians(120)),
-      Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(30))],
-      8*Math.sqrt(3));
+      
       
       // Y Neg
       addSegment('X_Neg_Z_Pos_Y_Neg',[-4,-8,(8*Math.sqrt(3))/2],
