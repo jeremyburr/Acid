@@ -108,6 +108,21 @@
           ],
             unit*Math.sqrt(3));
 
+            // XZ Pos 
+
+            // Base
+            testSegment(
+              [
+               orgX+unit/2,
+               orgY+unit,
+               orgZ+(unit*Math.sqrt(3))/2
+              ],
+              [
+                orgX+unit/2,
+                orgY-unit,
+                orgZ+(unit*Math.sqrt(3))/2
+              ]
+            );
         }
 
 
@@ -121,8 +136,6 @@
 
       // XZ Pos 
 
-      // Base
-      testSegment([4,8,(8*Math.sqrt(3))/2],[4,-8,(8*Math.sqrt(3))/2]);
 
       // Y Pos
       addSegment('XZ_Pos_Y_Pos',[4,8,(8*Math.sqrt(3))/2],
