@@ -186,7 +186,7 @@
             );
     
             // Y Bisect
-            testSegment([orgX-unit,orgY,orgZ],[(-unit)-unit*Math.sqrt(3),orgY,orgZ]);
+            testSegment([orgX-unit,orgY,orgZ],[orgX-unit-unit*Math.sqrt(3),orgY,orgZ]);
 
 
 
@@ -196,8 +196,8 @@
 
       }
 
-      const AC_Origin = new AcidCrystal('center',[0,0,0],8)
-      const AC_X_Pos = new AcidCrystal('X_Pos',[40,0,0],8)
+      const AC_Origin = new AcidCrystal('center',[0,0,0],unitLength)
+      const AC_X_Pos = new AcidCrystal('X_Pos',[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
       
 
       
