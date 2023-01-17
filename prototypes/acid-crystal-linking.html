@@ -150,39 +150,59 @@
             Math.cos(degreesToRadians(30))],
             unit*Math.sqrt(3));
 
+            // X Neg
+
+            // Base
+            testSegment(
+              [
+              orgX-unit,
+              orgY+unit,
+              orgZ
+            ],
+            [
+              orgX-unit,
+              orgY-unit,
+              orgZ
+            ]);
+
+            // Y Pos
+            addSegment('X_Neg_Y_Pos',[orgX-unit,orgY+unit,orgZ],
+            [
+              Math.cos(degreesToRadians(180)),
+              Math.cos(degreesToRadians(45)),
+              Math.cos(degreesToRadians(90))
+            ],
+              unit*Math.sqrt(3)
+            );
+
+            // Y Neg
+            addSegment('X_Neg_Y_Neg',[orgX-unit,orgY-unit,orgZ],
+            [
+              Math.cos(degreesToRadians(180)),
+              Math.cos(degreesToRadians(135)),
+              Math.cos(degreesToRadians(90))
+            ],
+             unit*Math.sqrt(3)
+            );
+    
+            // Y Bisect
+            testSegment([orgX-unit,orgY,orgZ],[(-unit)-unit*Math.sqrt(3),orgY,orgZ]);
+
+
+
 
         }
-
 
 
       }
 
       const AC_Origin = new AcidCrystal('center',[0,0,0],8)
       const AC_X_Pos = new AcidCrystal('X_Pos',[40,0,0],8)
-        
       
-      // X Neg
-      
-      // Base
-      testSegment([-8,8,0],[-8,-8,0]);
 
-      // Y Pos
-      addSegment('X_Neg_Y_Pos',[-8,8,0],
-      [Math.cos(degreesToRadians(180)),
-      Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(90))],
-      8*Math.sqrt(3));
-
-      // Y Neg
-      addSegment('X_Neg_Y_Neg',[-8,-8,0],
-      [Math.cos(degreesToRadians(180)),
-      Math.cos(degreesToRadians(135)),
-      Math.cos(degreesToRadians(90))],
-      8*Math.sqrt(3));
-    
-       // Y Bisect
-      testSegment([-8,0,0],[(-8)-8*Math.sqrt(3),0,0]);
       
+
+            
       
       // XZ Neg 
 
