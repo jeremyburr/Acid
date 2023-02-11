@@ -1,5 +1,5 @@
 # Acid
-Acid is a software framework for generating graphics, 3D models, and imagery. It is currently in prototyping & under construction. Acid has an atomic nature. At its core is the "Acid Crystal" a interactive modular space unit that can be linked together and modified. Three.js is currently used. Nerdamer.js for help with math computation. Tween.js is sometimes used to help animate rotations.
+Acid is a math-based software framework for generating graphics, 3D models, and imagery. It is currently in prototyping & under construction. Acid has an atomic nature. At its core is the "Acid Crystal" a interactive modular space unit that can be linked together and modified. Three.js is currently used. Nerdamer.js for help with math computation. Tween.js is sometimes used to help animate rotations.
 
 ## Installation and Setup 
 
@@ -11,7 +11,7 @@ The nature of this repository is very fluid as how Acid works continues to evolv
 
 ## Glossary
 
-AC = Acid Crystal
-AC-4 = 4-directional Acid Crystal
-AC-6 = 6-directional Acid Crystal
+AC = Acid Crystal<br />
+AC-4 = 4-directional Acid Crystal<br />
+AC-6 = 6-directional Acid Crystal<br />
 
