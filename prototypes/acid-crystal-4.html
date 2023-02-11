@@ -286,14 +286,15 @@
       }
 
       const AC_Org = new AcidCrystal('center',[0,0,0],unitLength)
-      const AC_X_Pos = new AcidCrystal('X_Pos',[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
-      const AC_X_Neg = new AcidCrystal('X_Neg',[(-2*unitLength)+(-2*unitLength*Math.sqrt(3)),0,0],unitLength);
+
+      /*const AC_X_Pos = new AcidCrystal('X_Pos',[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
+      const AC_X_Neg = new AcidCrystal('X_Neg',[(-2*unitLength)+(-2*unitLength*Math.sqrt(3)),0,0],unitLength);*/
 
       /*const AC_Z_Neg = new AcidCrystal('Z_Neg',[0,0,(-2*unitLength)+(-2*unitLength*Math.sqrt(3))],unitLength);
       const AC_Z_Pos = new AcidCrystal('Z_Pos',[0,0,(2*unitLength)+(2*unitLength*Math.sqrt(3))],unitLength);*/
 
-      const AC_Y_Pos = new AcidCrystal('Y_Pos',[0,4.5*unitLength,0],unitLength);
-      const AC_Y_Neg = new AcidCrystal('Y_Neg',[0,-4.5*unitLength,0],unitLength);
+      /*const AC_Y_Pos = new AcidCrystal('Y_Pos',[0,4.5*unitLength,0],unitLength);
+      const AC_Y_Neg = new AcidCrystal('Y_Neg',[0,-4.5*unitLength,0],unitLength);*/
 
 
       
@@ -348,7 +349,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * 0.2;
-      unit.rotation.y = time * -0.25;
+      //unit.rotation.y = time * -0.25;
       //unit.rotation.z = time * .03;
 
       renderer.render(scene, camera);
