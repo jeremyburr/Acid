@@ -45,7 +45,7 @@
 
       class AcidCrystal {
 
-        constructor(name,origin,unit) {
+        constructor(name,origin,unitLength) {
 
           console.log('name',name);
           console.log('origin',origin);
@@ -55,12 +55,12 @@
           testSegment(
             [
               orgX,
-              orgY+unit,
+              orgY+unitLength,
               orgZ
             ],
             [
               orgX,
-              orgY-unit,
+              orgY-unitLength,
               orgZ
             ]
           );
@@ -69,214 +69,214 @@
           // Base
           testSegment(
             [
-              orgX+unit,
-              orgY+unit,
+              orgX+unitLength,
+              orgY+unitLength,
               orgZ
             ],
             [
-              orgX+unit,
-              orgY-unit,
+              orgX+unitLength,
+              orgY-unitLength,
               orgZ
             ]
           );
           // Y Pos
-          addSegment('X_Pos_Y_Pos',[orgX+unit,orgY+unit,orgZ],
+          addSegment('X_Pos_Y_Pos',[orgX+unitLength,orgY+unitLength,orgZ],
           [
             Math.cos(degreesToRadians(0)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(90))
           ],
-            unit*Math.sqrt(3)
+            unitLength*Math.sqrt(3)
           );
           // Y Bisect
           testSegment(
             [
-              orgX+unit,
+              orgX+unitLength,
               orgY,
               orgZ
             ],
-            [ orgX+(unit)+unit*Math.sqrt(3),
+            [ orgX+(unitLength)+unitLength*Math.sqrt(3),
               orgY,
               orgZ
             ]);
           // Y Neg
-          addSegment('X_Pos_Y_Neg',[orgX+unit,orgY-unit,orgZ],
+          addSegment('X_Pos_Y_Neg',[orgX+unitLength,orgY-unitLength,orgZ],
           [
             Math.cos(degreesToRadians(0)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(90))
           ],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // XZ Pos 
 
             // Base
             testSegment(
               [
-               orgX+unit/2,
-               orgY+unit,
-               orgZ+(unit*Math.sqrt(3))/2
+               orgX+unitLength/2,
+               orgY+unitLength,
+               orgZ+(unitLength*Math.sqrt(3))/2
               ],
               [
-                orgX+unit/2,
-                orgY-unit,
-                orgZ+(unit*Math.sqrt(3))/2
+                orgX+unitLength/2,
+                orgY-unitLength,
+                orgZ+(unitLength*Math.sqrt(3))/2
               ]
             );
 
             // XZ Pos
 
              // Y Pos
-            addSegment('XZ_Pos_Y_Pos',[orgX+(unit/2),orgY+unit,orgZ+(unit*Math.sqrt(3))/2],
+            addSegment('XZ_Pos_Y_Pos',[orgX+(unitLength/2),orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [
             Math.cos(degreesToRadians(60)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(30))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Neg
-            addSegment('XZ_Pos_Y_Neg',[orgX+(unit/2),orgY-unit,orgZ+(unit*Math.sqrt(3))/2],
+            addSegment('XZ_Pos_Y_Neg',[orgX+(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [
             Math.cos(degreesToRadians(60)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(30))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Bisect
-            addSegment('XZ_Pos_Y_Bisect',[orgX+(unit/2),orgY,orgZ+(unit*Math.sqrt(3))/2],
+            addSegment('XZ_Pos_Y_Bisect',[orgX+(unitLength/2),orgY,orgZ+(unitLength*Math.sqrt(3))/2],
             [
             Math.cos(degreesToRadians(60)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(30))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // X Neg
 
             // Base
             testSegment(
               [
-              orgX-unit,
-              orgY+unit,
+              orgX-unitLength,
+              orgY+unitLength,
               orgZ
             ],
             [
-              orgX-unit,
-              orgY-unit,
+              orgX-unitLength,
+              orgY-unitLength,
               orgZ
             ]);
 
             // Y Pos
-            addSegment('X_Neg_Y_Pos',[orgX-unit,orgY+unit,orgZ],
+            addSegment('X_Neg_Y_Pos',[orgX-unitLength,orgY+unitLength,orgZ],
             [
               Math.cos(degreesToRadians(180)),
               Math.cos(degreesToRadians(45)),
               Math.cos(degreesToRadians(90))
             ],
-              unit*Math.sqrt(3)
+              unitLength*Math.sqrt(3)
             );
 
             // Y Neg
-            addSegment('X_Neg_Y_Neg',[orgX-unit,orgY-unit,orgZ],
+            addSegment('X_Neg_Y_Neg',[orgX-unitLength,orgY-unitLength,orgZ],
             [
               Math.cos(degreesToRadians(180)),
               Math.cos(degreesToRadians(135)),
               Math.cos(degreesToRadians(90))
             ],
-             unit*Math.sqrt(3)
+             unitLength*Math.sqrt(3)
             );
     
             // Y Bisect
-            testSegment([orgX-unit,orgY,orgZ],[orgX-unit-unit*Math.sqrt(3),orgY,orgZ]);
+            testSegment([orgX-unitLength,orgY,orgZ],[orgX-unitLength-unitLength*Math.sqrt(3),orgY,orgZ]);
 
             // XZ Neg 
 
             // Base
             testSegment(
               [
-                orgX-(unit/2),
-                orgY+unit,
-                orgZ-(unit*Math.sqrt(3))/2
+                orgX-(unitLength/2),
+                orgY+unitLength,
+                orgZ-(unitLength*Math.sqrt(3))/2
               ],
               [
-                orgX-(unit/2),
-                orgY-unit,
-                orgZ-(unit*Math.sqrt(3))/2
+                orgX-(unitLength/2),
+                orgY-unitLength,
+                orgZ-(unitLength*Math.sqrt(3))/2
               ]
             );
 
             // Y Pos
-            addSegment('XZ_Neg_Y_Pos',[orgX-(unit/2),orgY+unit,orgZ-(unit*Math.sqrt(3))/2],
+            addSegment('XZ_Neg_Y_Pos',[orgX-(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(240)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(210))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Neg
-            addSegment('XZ_Neg_Y_Neg',[orgX-(unit/2),orgY-unit,orgZ-(unit*Math.sqrt(3))/2],
+            addSegment('XZ_Neg_Y_Neg',[orgX-(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(240)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(215))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Bisect
-            addSegment('XZ_Neg_Y_Bisect',[orgX-(unit/2),orgY,orgZ-(unit*Math.sqrt(3))/2],
+            addSegment('XZ_Neg_Y_Bisect',[orgX-(unitLength/2),orgY,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(240)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(210))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // X Neg Z Pos 
 
             // Base
-            testSegment([orgX-unit/2,orgY+unit,orgZ+(unit*Math.sqrt(3))/2],[orgX-(unit/2),orgY-unit,orgZ+(unit*Math.sqrt(3))/2]);
+            testSegment([orgX-unitLength/2,orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],[orgX-(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2]);
 
             // Y Pos
-            addSegment('X_Neg_Z_Pos_Y_Pos',[orgX-(unit/2),orgY+unit,orgZ+(unit*Math.sqrt(3))/2],
+            addSegment('X_Neg_Z_Pos_Y_Pos',[orgX-(unitLength/2),orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(120)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(30))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Neg
 
-            addSegment('X_Neg_Z_Pos_Y_Neg',[orgX-(unit/2),orgY-unit,orgZ+(unit*Math.sqrt(3))/2],
+            addSegment('X_Neg_Z_Pos_Y_Neg',[orgX-(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(120)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(30))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Bisect 
-            addSegment('X_Pos_Z_Neg_Y_Bisect',[orgX-(unit/2),orgY,orgZ+(unit*Math.sqrt(3))/2],
+            addSegment('X_Pos_Z_Neg_Y_Bisect',[orgX-(unitLength/2),orgY,orgZ+(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(120)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(30))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // X Pos Z Neg 
 
             // Base
-            testSegment([orgX+(unit/2),orgY+unit,orgZ-(unit*Math.sqrt(3))/2],[orgX+(unit/2),orgY-unit,orgZ-(unit*Math.sqrt(3))/2]);
+            testSegment([orgX+(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],[orgX+(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2]);
 
             // Y Pos
-            addSegment('X_Pos_Z_Neg_Y_Pos',[orgX+(unit/2),orgY+unit,orgZ-(unit*Math.sqrt(3))/2],
+            addSegment('X_Pos_Z_Neg_Y_Pos',[orgX+(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(300)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(210))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Bisect
-            addSegment('X_Pos_Z_Neg_Y_Bisect',[orgX+(unit/2),orgY,orgZ-(unit*Math.sqrt(3))/2],
+            addSegment('X_Pos_Z_Neg_Y_Bisect',[orgX+(unitLength/2),orgY,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(300)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(210))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
             // Y Neg
-            addSegment('X_Pos_Z_Neg_Y_Neg',[orgX+(unit/2),orgY-unit,orgZ-(unit*Math.sqrt(3))/2],
+            addSegment('X_Pos_Z_Neg_Y_Neg',[orgX+(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(300)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(210))],
-            unit*Math.sqrt(3));
+            unitLength*Math.sqrt(3));
 
 
 

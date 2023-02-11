@@ -4,3 +4,8 @@ Acid is a software framework for generating graphics, 3D models, and imagery. It
 ## Installation and Setup 
 
 Prototypes are built to facilitate initial development. To view them, start a local development server in the project root and visit any of the HTML files in the '/prototypes' directory.
+
+## Note
+
+The nature of this repository is very fluid as how Acid works continues to evolve. Expect it to keep changing substantially. 
+
