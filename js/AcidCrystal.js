@@ -16,6 +16,78 @@ export class AcidCrystal {
     // AC-4
 
     if (type === 4) {
+      // Segment X+ 
+      // Base
+      addLine(
+        [
+          orgX + unitLength,
+          orgY + unitLength,
+          orgZ
+        ],
+        [
+          orgX + unitLength,
+          orgY - unitLength,
+          orgZ
+        ]
+      );
+      // Y Pos
+      addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(0)),
+          Math.cos(degreesToRadians(45)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+      // Y Neg
+      addVectorLine('X_Pos_Y_Neg', [orgX + unitLength, orgY - unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(0)),
+          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3));
+
+        // Segement X-
+
+        // X Neg
+
+      // Base
+      addLine(
+        [
+          orgX - unitLength,
+          orgY + unitLength,
+          orgZ
+        ],
+        [
+          orgX - unitLength,
+          orgY - unitLength,
+          orgZ
+        ]);
+
+      // Y Pos
+      addVectorLine('X_Neg_Y_Pos', [orgX - unitLength, orgY + unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(180)),
+          Math.cos(degreesToRadians(45)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+
+      // Y Neg
+      addVectorLine('X_Neg_Y_Neg', [orgX - unitLength, orgY - unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(180)),
+          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+
+
+
+      //-------------------
 
     }
 
