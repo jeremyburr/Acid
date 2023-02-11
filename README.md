@@ -9,3 +9,9 @@ Prototypes are built to facilitate initial development. To view them, start a lo
 
 The nature of this repository is very fluid as how Acid works continues to evolve. Expect it to keep changing substantially. 
 
+## Glossary
+
+AC = Acid Crystal
+AC-4 = 4-directional Acid Crystal
+AC-6 = 6-directional Acid Crystal
+
