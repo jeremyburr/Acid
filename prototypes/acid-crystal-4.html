@@ -14,7 +14,7 @@
     import * as THREE from '../js/three.module.js';
     import { TrackballControls } from '../js/TrackballControls.js';
     import * as Axis from '../js/shapes/axis.js';
-    import { unit, tubeMaterial, returnEndPosition, addSegment, testSegment, degreesToRadians } from '../js/utilities.js'
+    import { unit, tubeMaterial, returnEndPosition, addVectorLine, addLine, degreesToRadians } from '../js/utilities.js'
 
     let camera, scene, renderer, controls;
     let mesh0, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7;
@@ -45,14 +45,14 @@
 
       class AcidCrystal {
 
-        constructor(name,origin,unitLength) {
+        constructor(name,type,origin,unitLength) {
 
           console.log('name',name);
           console.log('origin',origin);
           const [orgX, orgY, orgZ] = origin;
 
           // Segment - Center
-          testSegment(
+          addLine(
             [
               orgX,
               orgY+unitLength,
@@ -67,7 +67,7 @@
 
           // Segment X+ 
           // Base
-          testSegment(
+          addLine(
             [
               orgX+unitLength,
               orgY+unitLength,
@@ -80,7 +80,7 @@
             ]
           );
           // Y Pos
-          addSegment('X_Pos_Y_Pos',[orgX+unitLength,orgY+unitLength,orgZ],
+          addVectorLine('X_Pos_Y_Pos',[orgX+unitLength,orgY+unitLength,orgZ],
           [
             Math.cos(degreesToRadians(0)),
             Math.cos(degreesToRadians(45)),
@@ -89,7 +89,7 @@
             unitLength*Math.sqrt(3)
           );
           // Y Bisect
-          testSegment(
+          addLine(
             [
               orgX+unitLength,
               orgY,
@@ -100,7 +100,7 @@
               orgZ
             ]);
           // Y Neg
-          addSegment('X_Pos_Y_Neg',[orgX+unitLength,orgY-unitLength,orgZ],
+          addVectorLine('X_Pos_Y_Neg',[orgX+unitLength,orgY-unitLength,orgZ],
           [
             Math.cos(degreesToRadians(0)),
             Math.cos(degreesToRadians(135)),
@@ -111,7 +111,7 @@
             // XZ Pos 
 
             // Base
-            testSegment(
+            addLine(
               [
                orgX+unitLength/2,
                orgY+unitLength,
@@ -127,7 +127,7 @@
             // XZ Pos
 
              // Y Pos
-            addSegment('XZ_Pos_Y_Pos',[orgX+(unitLength/2),orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
+            addVectorLine('XZ_Pos_Y_Pos',[orgX+(unitLength/2),orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [
             Math.cos(degreesToRadians(60)),
             Math.cos(degreesToRadians(45)),
@@ -135,7 +135,7 @@
             unitLength*Math.sqrt(3));
 
             // Y Neg
-            addSegment('XZ_Pos_Y_Neg',[orgX+(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
+            addVectorLine('XZ_Pos_Y_Neg',[orgX+(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [
             Math.cos(degreesToRadians(60)),
             Math.cos(degreesToRadians(135)),
@@ -143,7 +143,7 @@
             unitLength*Math.sqrt(3));
 
             // Y Bisect
-            addSegment('XZ_Pos_Y_Bisect',[orgX+(unitLength/2),orgY,orgZ+(unitLength*Math.sqrt(3))/2],
+            addVectorLine('XZ_Pos_Y_Bisect',[orgX+(unitLength/2),orgY,orgZ+(unitLength*Math.sqrt(3))/2],
             [
             Math.cos(degreesToRadians(60)),
             Math.cos(degreesToRadians(90)),
@@ -153,7 +153,7 @@
             // X Neg
 
             // Base
-            testSegment(
+            addLine(
               [
               orgX-unitLength,
               orgY+unitLength,
@@ -166,7 +166,7 @@
             ]);
 
             // Y Pos
-            addSegment('X_Neg_Y_Pos',[orgX-unitLength,orgY+unitLength,orgZ],
+            addVectorLine('X_Neg_Y_Pos',[orgX-unitLength,orgY+unitLength,orgZ],
             [
               Math.cos(degreesToRadians(180)),
               Math.cos(degreesToRadians(45)),
@@ -176,7 +176,7 @@
             );
 
             // Y Neg
-            addSegment('X_Neg_Y_Neg',[orgX-unitLength,orgY-unitLength,orgZ],
+            addVectorLine('X_Neg_Y_Neg',[orgX-unitLength,orgY-unitLength,orgZ],
             [
               Math.cos(degreesToRadians(180)),
               Math.cos(degreesToRadians(135)),
@@ -186,12 +186,12 @@
             );
     
             // Y Bisect
-            testSegment([orgX-unitLength,orgY,orgZ],[orgX-unitLength-unitLength*Math.sqrt(3),orgY,orgZ]);
+            addLine([orgX-unitLength,orgY,orgZ],[orgX-unitLength-unitLength*Math.sqrt(3),orgY,orgZ]);
 
             // XZ Neg 
 
             // Base
-            testSegment(
+            addLine(
               [
                 orgX-(unitLength/2),
                 orgY+unitLength,
@@ -205,21 +205,21 @@
             );
 
             // Y Pos
-            addSegment('XZ_Neg_Y_Pos',[orgX-(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
+            addVectorLine('XZ_Neg_Y_Pos',[orgX-(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(240)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(210))],
             unitLength*Math.sqrt(3));
 
             // Y Neg
-            addSegment('XZ_Neg_Y_Neg',[orgX-(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
+            addVectorLine('XZ_Neg_Y_Neg',[orgX-(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(240)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(215))],
             unitLength*Math.sqrt(3));
 
             // Y Bisect
-            addSegment('XZ_Neg_Y_Bisect',[orgX-(unitLength/2),orgY,orgZ-(unitLength*Math.sqrt(3))/2],
+            addVectorLine('XZ_Neg_Y_Bisect',[orgX-(unitLength/2),orgY,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(240)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(210))],
@@ -228,10 +228,10 @@
             // X Neg Z Pos 
 
             // Base
-            testSegment([orgX-unitLength/2,orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],[orgX-(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2]);
+            addLine([orgX-unitLength/2,orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],[orgX-(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2]);
 
             // Y Pos
-            addSegment('X_Neg_Z_Pos_Y_Pos',[orgX-(unitLength/2),orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
+            addVectorLine('X_Neg_Z_Pos_Y_Pos',[orgX-(unitLength/2),orgY+unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(120)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(30))],
@@ -239,14 +239,14 @@
 
             // Y Neg
 
-            addSegment('X_Neg_Z_Pos_Y_Neg',[orgX-(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
+            addVectorLine('X_Neg_Z_Pos_Y_Neg',[orgX-(unitLength/2),orgY-unitLength,orgZ+(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(120)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(30))],
             unitLength*Math.sqrt(3));
 
             // Y Bisect 
-            addSegment('X_Pos_Z_Neg_Y_Bisect',[orgX-(unitLength/2),orgY,orgZ+(unitLength*Math.sqrt(3))/2],
+            addVectorLine('X_Pos_Z_Neg_Y_Bisect',[orgX-(unitLength/2),orgY,orgZ+(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(120)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(30))],
@@ -255,51 +255,43 @@
             // X Pos Z Neg 
 
             // Base
-            testSegment([orgX+(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],[orgX+(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2]);
+            addLine([orgX+(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],[orgX+(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2]);
 
             // Y Pos
-            addSegment('X_Pos_Z_Neg_Y_Pos',[orgX+(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
+            addVectorLine('X_Pos_Z_Neg_Y_Pos',[orgX+(unitLength/2),orgY+unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(300)),
             Math.cos(degreesToRadians(45)),
             Math.cos(degreesToRadians(210))],
             unitLength*Math.sqrt(3));
 
             // Y Bisect
-            addSegment('X_Pos_Z_Neg_Y_Bisect',[orgX+(unitLength/2),orgY,orgZ-(unitLength*Math.sqrt(3))/2],
+            addVectorLine('X_Pos_Z_Neg_Y_Bisect',[orgX+(unitLength/2),orgY,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(300)),
             Math.cos(degreesToRadians(90)),
             Math.cos(degreesToRadians(210))],
             unitLength*Math.sqrt(3));
 
             // Y Neg
-            addSegment('X_Pos_Z_Neg_Y_Neg',[orgX+(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
+            addVectorLine('X_Pos_Z_Neg_Y_Neg',[orgX+(unitLength/2),orgY-unitLength,orgZ-(unitLength*Math.sqrt(3))/2],
             [Math.cos(degreesToRadians(300)),
             Math.cos(degreesToRadians(135)),
             Math.cos(degreesToRadians(210))],
             unitLength*Math.sqrt(3));
 
-
-
         }
-
 
       }
 
-      const AC_Org = new AcidCrystal('center',[0,0,0],unitLength)
+      const AC_Org = new AcidCrystal('center',6,[0,0,0],unitLength)
 
-      /*const AC_X_Pos = new AcidCrystal('X_Pos',[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
-      const AC_X_Neg = new AcidCrystal('X_Neg',[(-2*unitLength)+(-2*unitLength*Math.sqrt(3)),0,0],unitLength);*/
+      /*const AC_X_Pos = new AcidCrystal('X_Pos',6,[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
+      const AC_X_Neg = new AcidCrystal('X_Neg',6,[(-2*unitLength)+(-2*unitLength*Math.sqrt(3)),0,0],unitLength);*/
 
-      /*const AC_Z_Neg = new AcidCrystal('Z_Neg',[0,0,(-2*unitLength)+(-2*unitLength*Math.sqrt(3))],unitLength);
-      const AC_Z_Pos = new AcidCrystal('Z_Pos',[0,0,(2*unitLength)+(2*unitLength*Math.sqrt(3))],unitLength);*/
+      /*const AC_Z_Neg = new AcidCrystal('Z_Neg',6,[0,0,(-2*unitLength)+(-2*unitLength*Math.sqrt(3))],unitLength);
+      const AC_Z_Pos = new AcidCrystal('Z_Pos',6,[0,0,(2*unitLength)+(2*unitLength*Math.sqrt(3))],unitLength);*/
 
-      /*const AC_Y_Pos = new AcidCrystal('Y_Pos',[0,4.5*unitLength,0],unitLength);
-      const AC_Y_Neg = new AcidCrystal('Y_Neg',[0,-4.5*unitLength,0],unitLength);*/
-
-
-      
-
-      
+      /*const AC_Y_Pos = new AcidCrystal('Y_Pos',6,[0,4.5*unitLength,0],unitLength);
+      const AC_Y_Neg = new AcidCrystal('Y_Neg',6,[0,-4.5*unitLength,0],unitLength);*/
       
 
       scene.add(unit);

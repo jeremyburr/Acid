@@ -27,7 +27,7 @@
 
       // Add Segment
 
-      function addSegment(name, start, direction, magnitude) {
+      function addVectorLine(name, start, direction, magnitude) {
         const coordinates = [];
         coordinates.push(new THREE.Vector3(start[0], start[1], start[2]));
         const end = returnEndPosition(start, direction, magnitude);
@@ -41,14 +41,14 @@
 
       // Test Segment
 
-      function testSegment(start,end) {
+      function addLine(start,end) {
         const coordinates = [];
         coordinates.push(new THREE.Vector3(...start));
         coordinates.push(new THREE.Vector3(...end));
         const curve = new THREE.CatmullRomCurve3(coordinates);
         const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
-        const testSegment = new THREE.Mesh(geometry, tubeMaterial);
-        unit.add(testSegment);
+        const addLine = new THREE.Mesh(geometry, tubeMaterial);
+        unit.add(addLine);
       }
 
       // Degrees To Radians
@@ -58,4 +58,4 @@
         return degrees * (Math.PI / 180);
       }
 
-      export {unit, tubeMaterial, returnEndPosition, addSegment, testSegment, degreesToRadians}
+      export {unit, tubeMaterial, returnEndPosition, addVectorLine, addLine, degreesToRadians}
