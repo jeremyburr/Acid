@@ -117,6 +117,39 @@ export class AcidCrystal {
         ],
         unitLength * Math.sqrt(3));
 
+        // Segment Z- 
+      // Base
+      addLine(
+        [
+          orgX, 
+          orgY + unitLength,
+          orgZ - unitLength
+        ],
+        [
+          orgX,
+          orgY - unitLength,
+          orgZ - unitLength
+        ]
+      );
+      // Y Pos
+      addVectorLine('Z_Pos_Y_Pos', [orgX, orgY + unitLength, orgZ - unitLength],
+        [
+          Math.cos(degreesToRadians(270)),
+          Math.cos(degreesToRadians(45)),
+          Math.cos(degreesToRadians(180))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+      // Y Neg
+      addVectorLine('Z_Pos_Y_Neg', [orgX, orgY - unitLength, orgZ - unitLength],
+        [
+          Math.cos(degreesToRadians(270)),
+          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(180))
+        ],
+        unitLength * Math.sqrt(3));
+
+
 
 
 
