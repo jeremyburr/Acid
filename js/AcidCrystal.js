@@ -13,6 +13,12 @@ export class AcidCrystal {
     // Segment - Center
     addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
 
+    // AC-4
+
+    if (type === 4) {
+
+    }
+
     // AC-6
 
     if (type === 6) {
@@ -229,7 +235,6 @@ export class AcidCrystal {
         Math.cos(degreesToRadians(210))],
         unitLength * Math.sqrt(3));
     }
-
 
   }
 
