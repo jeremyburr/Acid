@@ -1,13 +1,11 @@
 # Acid
-Acid is a software framework (and methodology) for generating 3D models, graphics, and imagery. At its core, is the **Acid Crystal** - an interactive modular unit which can be linked and modified. While this repository uses certain tools, Acid's methodology is not specific to any language, platform, or implementation. 
+Acid is a software framework (and methodology) for generating 3D models, graphics, and imagery. At its core, is the **Acid Crystal** - an interactive modular unit which can be linked and modified. While this repository uses certain tools, Acid's methodology is not specific to any language, platform, or implementation. This repository is using Three.js for modeling, Nerdamer.js for math computation, and Tween.js for animation tweening.    
 
-Three.js is currently used. Nerdamer.js for help with math computation. Tween.js for animation.    
-
-**It is currently in prototyping & under construction.**
+**It is currently in prototyping and under construction.**
 
 ## Installation and Setup 
 
-Prototypes are built to help shape and guide initial development. To view them, start a local development server in the project root and visit any of the HTML files in the '/prototypes' directory.
+At this early stage of development, simply start a local development server in the project root and navigate to the 'prototypes' directory to explore the project's current state. The "acid-crystal.html" file is undergoing active development. It imports an AcidCrystal class from 'js/AcidCrystal.js' and constructs AC objects from configuration parameters. Older protoypes can be found in the 'protypes/archive' directory.
 
 ## Note
 
