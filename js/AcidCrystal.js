@@ -522,7 +522,7 @@ export class AcidCrystal {
             ]
           );
           // Y Pos
-          addVectorLine('Z_Pos_Y_Pos', [orgX + unitLength/2, orgY + unitLength, orgZ + unitLength/2],
+          addVectorLine('XZ_Pos_Y_Pos', [orgX + unitLength/2, orgY + unitLength, orgZ + unitLength/2],
             [
               Math.cos(degreesToRadians(45)),
               Math.cos(degreesToRadians(45)),
@@ -531,13 +531,49 @@ export class AcidCrystal {
             unitLength * Math.sqrt(3)
           );
           // Y Neg
-          addVectorLine('Z_Pos_Y_Neg', [orgX + unitLength/2, orgY - unitLength, orgZ + unitLength/2],
+          addVectorLine('XZ_Pos_Y_Neg', [orgX + unitLength/2, orgY - unitLength, orgZ + unitLength/2],
             [
               Math.cos(degreesToRadians(45)),
               Math.cos(degreesToRadians(135)),
               Math.cos(degreesToRadians(0))
             ],
             unitLength * Math.sqrt(3));
+
+            // Segment X+Z-
+
+            // Base
+            addLine(
+              [
+                orgX + unitLength/2,  
+                orgY + unitLength,
+                orgZ - unitLength/2
+              ],
+              [
+                orgX + unitLength/2,
+                orgY - unitLength,
+                orgZ - unitLength/2
+              ]
+            );
+            // Y Pos
+            addVectorLine('X_Pos_Z_Neg_Y_Pos', [orgX + unitLength/2, orgY + unitLength, orgZ - unitLength/2],
+              [
+                Math.cos(degreesToRadians(45)),
+                Math.cos(degreesToRadians(45)),
+                Math.cos(degreesToRadians(235))
+              ],
+              unitLength * Math.sqrt(3)
+            );
+            // Y Neg
+            addVectorLine('X_Pos_Z_Neg_Y_Neg', [orgX + unitLength/2, orgY - unitLength, orgZ - unitLength/2],
+              [
+                Math.cos(degreesToRadians(45)),
+                Math.cos(degreesToRadians(135)),
+                Math.cos(degreesToRadians(235))
+              ],
+              unitLength * Math.sqrt(3));
+
+
+
 
 
 
