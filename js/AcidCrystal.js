@@ -4,7 +4,7 @@ import { addVectorLine, addLine, degreesToRadians } from '../js/utilities.js'
 
 export class AcidCrystal {
 
-  constructor(name, type, origin, unitLength) {
+  constructor(name, segments, curvature, origin, unitLength) {
 
     const [orgX, orgY, orgZ] = origin;
 
@@ -13,7 +13,7 @@ export class AcidCrystal {
 
     // AC-4
 
-    if (type === 4) {
+    if (segments === 4) {
       // Segment X+ 
       // Base
       addLine(
@@ -153,7 +153,7 @@ export class AcidCrystal {
 
     // AC-6
 
-    if (type === 6) {
+    if (segments === 6) {
       // Segment X+ 
       // Base
       addLine(
@@ -370,7 +370,7 @@ export class AcidCrystal {
 
     // AC-8
 
-    if (type === 8) {
+    if (segments === 8) {
 
       // Segment X+ 
       
