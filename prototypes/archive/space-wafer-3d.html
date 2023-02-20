@@ -11,9 +11,9 @@
     }
   </style>
   <script type="module">
-    import * as THREE from '../js/three.module.js';
-    import { TrackballControls } from '../js/TrackballControls.js';
-    import * as Axis from '../js/shapes/axis.js';
+    import * as THREE from '../../js/three.module.js';
+    import { TrackballControls } from '../../js/TrackballControls.js';
+    import * as Axis from '../../js/shapes/axis.js';
 
     let camera, scene, renderer, controls;
     let coronalTubeTop, coronalTubeBottom, saggitalTubeFront, saggitalTubeBack;
@@ -31,7 +31,7 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 44;
-      camera.position.y = 35;
+      camera.position.y = 55;
       camera.position.z = 115;
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -857,6 +857,160 @@
       const meshwingNegRightBottomCenterLeft = new THREE.Mesh(wingNegRightBottomCenterLeft, materialLight);
       unit.add(meshwingNegRightBottomCenterLeft);
 
+      // Neg Reverse Bottom Left
+
+      const wingNegReverseLeftBottomBase = new THREE.BufferGeometry();
+      wingNegReverseLeftBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, -8,0,0, 0,0,8], 3));
+      wingNegReverseLeftBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseLeftBottomBase = new THREE.Mesh(wingNegReverseLeftBottomBase, materialLight);
+      unit.add(meshwingNegReverseLeftBottomBase);
+      
+      const wingNegReverseLeftBottomBaseNext = new THREE.BufferGeometry();
+      wingNegReverseLeftBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,8, -8,0,0, 0,0,8], 3));
+      wingNegReverseLeftBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseLeftBottomBaseNext = new THREE.Mesh(wingNegReverseLeftBottomBaseNext, materialLight);
+      unit.add(meshwingNegReverseLeftBottomBaseNext);
+
+      const wingNegReverseLeftBottomNextTop = new THREE.BufferGeometry();
+      wingNegReverseLeftBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,8,-8,0,0,-16,0,8], 3));
+      wingNegReverseLeftBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseLeftBottomNextTop = new THREE.Mesh(wingNegReverseLeftBottomNextTop, materialLight);
+      unit.add(meshwingNegReverseLeftBottomNextTop);
+
+      const wingNegReverseLeftBottomNextBottom = new THREE.BufferGeometry();
+      wingNegReverseLeftBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,8,-8,0,16,0,0,8], 3));
+      wingNegReverseLeftBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseLeftBottomNextBottom = new THREE.Mesh(wingNegReverseLeftBottomNextBottom, materialLight);
+      unit.add(meshwingNegReverseLeftBottomNextBottom);
+
+      //O R Y
+      const wingNegReverseLeftBottomCenter = new THREE.BufferGeometry();
+      wingNegReverseLeftBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,8,-8,0,16,-16,0,8,], 3));
+      wingNegReverseLeftBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseLeftBottomCenter = new THREE.Mesh(wingNegReverseLeftBottomCenter, materialLight);
+      unit.add(meshwingNegReverseLeftBottomCenter);
+
+      const wingNegReverseLeftBottomCenterLeft = new THREE.BufferGeometry();
+      wingNegReverseLeftBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([-16,0,16,-8,0,16,-16,0,8], 3));
+      wingNegReverseLeftBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseLeftBottomCenterLeft = new THREE.Mesh(wingNegReverseLeftBottomCenterLeft, materialLight);
+      unit.add(meshwingNegReverseLeftBottomCenterLeft);
+
+      // NegReverse Bottom Right
+
+      const wingNegReverseRightBottomBase = new THREE.BufferGeometry();
+      wingNegReverseRightBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 8,0,0, 0,0,8], 3));
+      wingNegReverseRightBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseRightBottomBase = new THREE.Mesh(wingNegReverseRightBottomBase, materialLight);
+      unit.add(meshwingNegReverseRightBottomBase);
+      
+      const wingNegReverseRightBottomBaseNext = new THREE.BufferGeometry();
+      wingNegReverseRightBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([8,0,8, 8,0,0, 0,0,8], 3));
+      wingNegReverseRightBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseRightBottomBaseNext = new THREE.Mesh(wingNegReverseRightBottomBaseNext, materialLight);
+      unit.add(meshwingNegReverseRightBottomBaseNext);
+
+      const wingNegReverseRightBottomNextTop = new THREE.BufferGeometry();
+      wingNegReverseRightBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([8,0,8,8,0,0,16,0,8], 3));
+      wingNegReverseRightBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseRightBottomNextTop = new THREE.Mesh(wingNegReverseRightBottomNextTop, materialLight);
+      unit.add(meshwingNegReverseRightBottomNextTop);
+
+      const wingNegReverseRightBottomNextBottom = new THREE.BufferGeometry();
+      wingNegReverseRightBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([8,0,8,8,0,16,0,0,8], 3));
+      wingNegReverseRightBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseRightBottomNextBottom = new THREE.Mesh(wingNegReverseRightBottomNextBottom, materialLight);
+      unit.add(meshwingNegReverseRightBottomNextBottom);
+
+      const wingNegReverseRightBottomCenter = new THREE.BufferGeometry();
+      wingNegReverseRightBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([8,0,8,8,0,16,16,0,8,], 3));
+      wingNegReverseRightBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseRightBottomCenter = new THREE.Mesh(wingNegReverseRightBottomCenter, materialLight);
+      unit.add(meshwingNegReverseRightBottomCenter);
+
+      const wingNegReverseRightBottomCenterLeft = new THREE.BufferGeometry();
+      wingNegReverseRightBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([16,0,16,8,0,16,16,0,8], 3));
+      wingNegReverseRightBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverseRightBottomCenterLeft = new THREE.Mesh(wingNegReverseRightBottomCenterLeft, materialLight);
+      unit.add(meshwingNegReverseRightBottomCenterLeft);
+
+      // NegReverse2 Bottom Right
+
+      const wingNegReverse2RightBottomBase = new THREE.BufferGeometry();
+      wingNegReverse2RightBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 8,0,0, 0,0,-8], 3));
+      wingNegReverse2RightBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse2RightBottomBase = new THREE.Mesh(wingNegReverse2RightBottomBase, materialLight);
+      unit.add(meshwingNegReverse2RightBottomBase);
+      
+      const wingNegReverse2RightBottomBaseNext = new THREE.BufferGeometry();
+      wingNegReverse2RightBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([8,0,-8, 8,0,0, 0,0,-8], 3));
+      wingNegReverse2RightBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse2RightBottomBaseNext = new THREE.Mesh(wingNegReverse2RightBottomBaseNext, materialLight);
+      unit.add(meshwingNegReverse2RightBottomBaseNext);
+
+      const wingNegReverse2RightBottomNextTop = new THREE.BufferGeometry();
+      wingNegReverse2RightBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([8,0,-8,8,0,0,16,0,-8], 3));
+      wingNegReverse2RightBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse2RightBottomNextTop = new THREE.Mesh(wingNegReverse2RightBottomNextTop, materialLight);
+      unit.add(meshwingNegReverse2RightBottomNextTop);
+
+      const wingNegReverse2RightBottomNextBottom = new THREE.BufferGeometry();
+      wingNegReverse2RightBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([8,0,-8,8,0,-16,0,0,-8], 3));
+      wingNegReverse2RightBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse2RightBottomNextBottom = new THREE.Mesh(wingNegReverse2RightBottomNextBottom, materialLight);
+      unit.add(meshwingNegReverse2RightBottomNextBottom);
+
+      const wingNegReverse2RightBottomCenter = new THREE.BufferGeometry();
+      wingNegReverse2RightBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([8,0,-8,8,0,-16,16,0,-8,], 3));
+      wingNegReverse2RightBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse2RightBottomCenter = new THREE.Mesh(wingNegReverse2RightBottomCenter, materialLight);
+      unit.add(meshwingNegReverse2RightBottomCenter);
+
+      const wingNegReverse2RightBottomCenterLeft = new THREE.BufferGeometry();
+      wingNegReverse2RightBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([16,0,-16,8,0,-16,16,0,-8], 3));
+      wingNegReverse2RightBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse2RightBottomCenterLeft = new THREE.Mesh(wingNegReverse2RightBottomCenterLeft, materialLight);
+      unit.add(meshwingNegReverse2RightBottomCenterLeft);
+
+      // NegReverse3 Bottom Right
+
+      const wingNegReverse3RightBottomBase = new THREE.BufferGeometry();
+      wingNegReverse3RightBottomBase.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, -8,0,0, 0,0,-8], 3));
+      wingNegReverse3RightBottomBase.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse3RightBottomBase = new THREE.Mesh(wingNegReverse3RightBottomBase, materialLight);
+      unit.add(meshwingNegReverse3RightBottomBase);
+      
+      const wingNegReverse3RightBottomBaseNext = new THREE.BufferGeometry();
+      wingNegReverse3RightBottomBaseNext.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,-8, -8,0,0, 0,0,-8], 3));
+      wingNegReverse3RightBottomBaseNext.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse3RightBottomBaseNext = new THREE.Mesh(wingNegReverse3RightBottomBaseNext, materialLight);
+      unit.add(meshwingNegReverse3RightBottomBaseNext);
+
+      const wingNegReverse3RightBottomNextTop = new THREE.BufferGeometry();
+      wingNegReverse3RightBottomNextTop.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,-8,-8,0,0,-16,0,-8], 3));
+      wingNegReverse3RightBottomNextTop.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse3RightBottomNextTop = new THREE.Mesh(wingNegReverse3RightBottomNextTop, materialLight);
+      unit.add(meshwingNegReverse3RightBottomNextTop);
+
+      const wingNegReverse3RightBottomNextBottom = new THREE.BufferGeometry();
+      wingNegReverse3RightBottomNextBottom.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,-8,-8,0,-16,0,0,-8], 3));
+      wingNegReverse3RightBottomNextBottom.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse3RightBottomNextBottom = new THREE.Mesh(wingNegReverse3RightBottomNextBottom, materialLight);
+      unit.add(meshwingNegReverse3RightBottomNextBottom);
+
+      const wingNegReverse3RightBottomCenter = new THREE.BufferGeometry();
+      wingNegReverse3RightBottomCenter.setAttribute('position', new THREE.Float32BufferAttribute([-8,0,-8,-8,0,-16,-16,0,-8,], 3));
+      wingNegReverse3RightBottomCenter.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse3RightBottomCenter = new THREE.Mesh(wingNegReverse3RightBottomCenter, materialLight);
+      unit.add(meshwingNegReverse3RightBottomCenter);
+
+      const wingNegReverse3RightBottomCenterLeft = new THREE.BufferGeometry();
+      wingNegReverse3RightBottomCenterLeft.setAttribute('position', new THREE.Float32BufferAttribute([-16,0,-16,-8,0,-16,-16,0,-8], 3));
+      wingNegReverse3RightBottomCenterLeft.setAttribute('color', new THREE.Float32BufferAttribute(wingColors, 3));
+      const meshwingNegReverse3RightBottomCenterLeft = new THREE.Mesh(wingNegReverse3RightBottomCenterLeft, materialLight);
+      unit.add(meshwingNegReverse3RightBottomCenterLeft);
+
+
 
       scene.add(unit);
 
@@ -902,7 +1056,7 @@
 
       const time = Date.now() * 0.002;
 
-      //unit.rotation.x = time * 0.15;
+      unit.rotation.x = time * 0.15;
       unit.rotation.y = time * -0.25;
       //unit.rotation.z = time * 0.15;
 

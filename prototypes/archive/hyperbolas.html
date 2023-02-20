@@ -11,17 +11,17 @@
     }
   </style>
 
-  <script src="../js/nerdamer/nerdamer.core.js"></script>
-  <script src="../js/nerdamer/Algebra.js"></script>
-  <script src="../js/nerdamer/Calculus.js"></script>
-  <script src="../js/nerdamer/Solve.js"></script>
-  <script src="../js/nerdamer/Extra.js"></script>
+  <script src="../../js/nerdamer/nerdamer.core.js"></script>
+  <script src="../../js/nerdamer/Algebra.js"></script>
+  <script src="../../js/nerdamer/Calculus.js"></script>
+  <script src="../../js/nerdamer/Solve.js"></script>
+  <script src="../../js/nerdamer/Extra.js"></script>
 
 
   <script type="module">
-    import * as THREE from '../js/three.module.js';
-    import { TrackballControls } from '../js/TrackballControls.js';
-    import * as Axis from '../js/shapes/axis.js';
+    import * as THREE from '../../js/three.module.js';
+    import { TrackballControls } from '../../js/TrackballControls.js';
+    import * as Axis from '../../js/shapes/axis.js';
 
     let camera, scene, renderer, controls;
 
@@ -90,8 +90,8 @@
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
 
       const axialRightPoints = axialRightCurve.getPoints(500);
-      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve,64,1,16,false)
-      const axialRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      const axialRightGeometry = new THREE.BufferGeometry().setFromPoints(axialRightPoints);
+      const axialRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       axialRightCurveObject = new THREE.Line(axialRightGeometry, axialRightMaterial);
 
       const axialQ2VectorsDescending = [...axialQ2Vectors].reverse();
@@ -100,8 +100,8 @@
       const axialLeftCurve = new THREE.CatmullRomCurve3(axialLeftCurveVectors);
 
       const axialLeftPoints = axialLeftCurve.getPoints(500);
-      const axialLeftGeometry = new THREE.TubeGeometry(axialLeftCurve,64,1,16,false)
-      const axialLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      const axialLeftGeometry = new THREE.BufferGeometry().setFromPoints(axialLeftPoints);
+      const axialLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       axialLeftCurveObject = new THREE.Line(axialLeftGeometry, axialLeftMaterial);
 
       scene.add(axialLeftCurveObject);
@@ -134,8 +134,8 @@
       const coronalLeftCurveVectors = coronalQ2VectorsDescending.concat(coronalQ1Vectors);
       const coronalLeftCurve = new THREE.CatmullRomCurve3(coronalLeftCurveVectors);
       const coronalLeftPoints = coronalLeftCurve.getPoints(500);
-      const coronalLeftGeometry = new THREE.TubeGeometry(coronalLeftCurve,64,1,16,false)
-      const coronalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      const coronalLeftGeometry = new THREE.BufferGeometry().setFromPoints(coronalLeftPoints);
+      const coronalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       coronalLeftCurveObject = new THREE.Line(coronalLeftGeometry, coronalLeftMaterial);
       scene.add(coronalLeftCurveObject);
 
@@ -144,8 +144,8 @@
       const coronalRightCurveVectors = coronalQ3VectorsDescending.concat(coronalQ4Vectors);
       const coronalRightCurve = new THREE.CatmullRomCurve3(coronalRightCurveVectors);
       const coronalRightPoints = coronalRightCurve.getPoints(500);
-      const coronalRightGeometry = new THREE.TubeGeometry(coronalRightCurve,64,1,16,false)
-      const coronalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      const coronalRightGeometry = new THREE.BufferGeometry().setFromPoints(coronalRightPoints);
+      const coronalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       coronalRightCurveObject = new THREE.Line(coronalRightGeometry, coronalRightMaterial);
       scene.add(coronalRightCurveObject);
 
@@ -178,8 +178,8 @@
       const sagittalLeftCurveVectors = sagittalQ2VectorsDescending.concat(sagittalQ1Vectors);
       const sagittalLeftCurve = new THREE.CatmullRomCurve3(sagittalLeftCurveVectors);
       const sagittalLeftPoints = sagittalLeftCurve.getPoints(500);
-      const sagittalLeftGeometry = new THREE.TubeGeometry(sagittalLeftCurve,64,1,16,false)
-      const sagittalLeftMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      const sagittalLeftGeometry = new THREE.BufferGeometry().setFromPoints(sagittalLeftPoints);
+      const sagittalLeftMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       sagittalLeftCurveObject = new THREE.Line(sagittalLeftGeometry, sagittalLeftMaterial);
       scene.add(sagittalLeftCurveObject);
 
@@ -188,23 +188,17 @@
       const sagittalRightCurveVectors = sagittalQ3VectorsDescending.concat(sagittalQ4Vectors);
       const sagittalRightCurve = new THREE.CatmullRomCurve3(sagittalRightCurveVectors);
       const sagittalRightPoints = sagittalRightCurve.getPoints(500);
-      //const sagittalRightGeometry = new THREE.BufferGeometry().setFromPoints(sagittalRightPoints);
-      //const sagittalRightMaterial = new THREE.LineBasicMaterial({ color: 0x74EE15 });
-      const sagittalRightGeometry = new THREE.TubeGeometry(sagittalRightCurve,64,1,16,false)
-      const sagittalRightMaterial = new THREE.MeshBasicMaterial({ color: 0x74EE15 });
+      const sagittalRightGeometry = new THREE.BufferGeometry().setFromPoints(sagittalRightPoints);
+      const sagittalRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
       sagittalRightCurveObject = new THREE.Line(sagittalRightGeometry, sagittalRightMaterial);
       scene.add(sagittalRightCurveObject);
 
-
-
-      const geometry = new THREE.SphereGeometry( 1, 8, 8 );
-      const material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF,  transparent: true, opacity: 0.8 } );
-      const sphere = new THREE.Line( geometry, material );
+      const geometry = new THREE.SphereGeometry( 1.5, 32, 16 );
+      const material = new THREE.MeshBasicMaterial( { color: 0x74EE15,  transparent: true, opacity: 0.8 } );
+      const sphere = new THREE.Mesh( geometry, material );
       scene.add( sphere );
 
-
     }
-    
 
 
     function onWindowResize() {
