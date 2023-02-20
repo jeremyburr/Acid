@@ -42,19 +42,7 @@
       controls = new TrackballControls(camera, renderer.domElement);
       window.addEventListener('resize', onWindowResize);
 
-      
-
-      const AC_Org = new AcidCrystal('center', 4, [0, 0, 0], unitLength)
-
-      /*const AC_X_Pos = new AcidCrystal('X_Pos',6,[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
-      const AC_X_Neg = new AcidCrystal('X_Neg',6,[(-2*unitLength)+(-2*unitLength*Math.sqrt(3)),0,0],unitLength);*/
-
-      /*const AC_Z_Neg = new AcidCrystal('Z_Neg',6,[0,0,(-2*unitLength)+(-2*unitLength*Math.sqrt(3))],unitLength);
-      const AC_Z_Pos = new AcidCrystal('Z_Pos',6,[0,0,(2*unitLength)+(2*unitLength*Math.sqrt(3))],unitLength);*/
-
-      /*const AC_Y_Pos = new AcidCrystal('Y_Pos',6,[0,4.5*unitLength,0],unitLength);
-      const AC_Y_Neg = new AcidCrystal('Y_Neg',6,[0,-4.5*unitLength,0],unitLength);*/
-
+      const AC_Org = new AcidCrystal('center', 8, [0, 0, 0], unitLength)
 
       scene.add(unit);
 
@@ -109,6 +97,20 @@
       renderer.render(scene, camera);
     }
 
+
+
+    // Linking
+
+      /*const AC_X_Pos = new AcidCrystal('X_Pos',6,[(2*unitLength)+(2*unitLength*Math.sqrt(3)),0,0],unitLength);
+      const AC_X_Neg = new AcidCrystal('X_Neg',6,[(-2*unitLength)+(-2*unitLength*Math.sqrt(3)),0,0],unitLength);*/
+
+      /*const AC_Z_Neg = new AcidCrystal('Z_Neg',6,[0,0,(-2*unitLength)+(-2*unitLength*Math.sqrt(3))],unitLength);
+      const AC_Z_Pos = new AcidCrystal('Z_Pos',6,[0,0,(2*unitLength)+(2*unitLength*Math.sqrt(3))],unitLength);*/
+
+      /*const AC_Y_Pos = new AcidCrystal('Y_Pos',6,[0,4.5*unitLength,0],unitLength);
+      const AC_Y_Neg = new AcidCrystal('Y_Neg',6,[0,-4.5*unitLength,0],unitLength);*/
+
+
   </script>
 </head>
 
@@ -116,3 +118,4 @@
 </body>
 
 </html>
+
