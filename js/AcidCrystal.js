@@ -1,4 +1,4 @@
-import { addVectorLine, addLine, degreesToRadians } from '../js/utilities.js'
+import { addVectorLine, addLine, degreesToRadians, phi } from '../js/utilities.js'
 
 // Acid Crystal 
 
@@ -8,12 +8,14 @@ export class AcidCrystal {
 
     const [orgX, orgY, orgZ] = origin;
 
-    // Segment - Center
-    addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
 
     // AC-4
 
     if (segments === 4) {
+
+      // Segment - Center
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+
       // Segment X+ 
       // Base
       addLine(
@@ -154,6 +156,10 @@ export class AcidCrystal {
     // AC-6
 
     if (segments === 6) {
+
+      // Segment - Center
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+
       // Segment X+ 
       // Base
       addLine(
@@ -371,6 +377,9 @@ export class AcidCrystal {
     // AC-8 Straight
 
     if ((segments === 8) && (curvature === 'straight')) {
+
+      // Segment - Center
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
 
       // Segment X+ 
 
@@ -645,6 +654,9 @@ export class AcidCrystal {
 
     if ((segments === 8) && (curvature === 'curved')) {
 
+      // Segment - Center
+      //addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+
       // Segment X+ 
 
       // Base
@@ -660,6 +672,9 @@ export class AcidCrystal {
           orgZ
         ]
       );
+
+      /*
+
       // Y Pos
       addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
         [
@@ -669,18 +684,25 @@ export class AcidCrystal {
         ],
         unitLength * Math.sqrt(3)
       );
+
+      */
+
       // Y Neg
       addVectorLine('X_Pos_Y_Neg', [orgX + unitLength, orgY - unitLength, orgZ],
         [
           Math.cos(degreesToRadians(0)),
-          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(90)),
           Math.cos(degreesToRadians(90))
         ],
-        unitLength * Math.sqrt(3));
+        //unitLength * Math.sqrt(3));
+        unitLength * 2 * phi);
+        //unitLength * Math.sqrt(3) * phi);
 
       // Segment X-
 
       // X Neg
+
+      /*
 
       // Base
       addLine(
@@ -714,6 +736,10 @@ export class AcidCrystal {
         ],
         unitLength * Math.sqrt(3)
       );
+
+      */
+
+      /* 
 
       // Segment Z+ 
       // Base
@@ -911,6 +937,8 @@ export class AcidCrystal {
           Math.cos(degreesToRadians(45))
         ],
         unitLength * Math.sqrt(3));
+
+        */
 
     }
 

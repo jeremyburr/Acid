@@ -1,5 +1,7 @@
     import * as THREE from './three.module.js';
 
+      let phi = (1 + Math.sqrt(5)) / 2;
+
       let unit = new THREE.Group();
 
       const tubeMaterial = new THREE.MeshPhongMaterial({
@@ -58,4 +60,12 @@
         return degrees * (Math.PI / 180);
       }
 
-      export {unit, tubeMaterial, returnEndPosition, addVectorLine, addLine, degreesToRadians}
+      export {
+              unit, 
+              tubeMaterial, 
+              returnEndPosition, 
+              addVectorLine, 
+              addLine, 
+              degreesToRadians, 
+              phi
+            }
