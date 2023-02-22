@@ -9,7 +9,6 @@ export class AcidCrystal {
 
     const [orgX, orgY, orgZ] = origin;
 
-
     // AC-4
 
     if (segments === 4) {
@@ -697,9 +696,12 @@ export class AcidCrystal {
         ],
         unitLength * 2 * phi);
 
-        addCurve();
+        let vectors = [];
+        
 
-      
+        const coordinates = [[0,0,0,],[10,10,10],[20,20,20],[20,-20,-20]];
+
+        addCurve(coordinates);
         
       
 

@@ -55,49 +55,29 @@
 
       // Add Curve
 
-      function addCurve(vectors) {
+      function addCurve(coordinates) {
 
-      // Y Neg Curve
+        let YNegCurveVectors = [];
 
-      /*const axialQ1VectorsDescending = [...axialQ1Vectors].reverse();
-      const axialQ1VectorsDescendingPopped = axialQ1VectorsDescending.pop();
-      const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
+        for (const coordinate of coordinates) {
 
-      const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
-      const axialRightPoints = axialRightCurve.getPoints(1000);
+          YNegCurveVectors.push(new THREE.Vector3(coordinate[0],coordinate[1],coordinate[2]));
 
-      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
-      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff});
-      const axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);*/
-
-      //unit.add(axialRightCurveObject);
-
-      //const axialQ4Vector = new THREE.Vector3(i, newArr[0], 0);
-      //axialQ4Vectors.push(axialQ4Vector)
-
-      let YNegCurveVectors = [];
-
-      //const YNegCurveVector = new THREE.Vector3(0,0,0)
-
-      YNegCurveVectors.push(new THREE.Vector3(0,0,0));
-      YNegCurveVectors.push(new THREE.Vector3(10,10,10));
-      YNegCurveVectors.push(new THREE.Vector3(20,20,20));
-      YNegCurveVectors.push(new THREE.Vector3(20,-20,-20));
+        }
 
 
-      //const YNegCurveVectors = [0,0,0,10,10,10,20,20,20];
+        /*YNegCurveVectors.push(new THREE.Vector3(0,0,0));
+        YNegCurveVectors.push(new THREE.Vector3(10,10,10));
+        YNegCurveVectors.push(new THREE.Vector3(20,20,20));
+        YNegCurveVectors.push(new THREE.Vector3(20,-20,-20));*/
 
-      const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
-      const YNegCurvePoints = YNegCurve.getPoints(1000);
-      const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, 1.75, 16, false)
-      const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff});
-      const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
+        const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
+        const YNegCurvePoints = YNegCurve.getPoints(1000);
+        const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .25, 16, false)
+        const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff44});
+        const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
 
-
-      unit.add(YNegCurveObject);
-
-
-
+        unit.add(YNegCurveObject);
 
       }
 
