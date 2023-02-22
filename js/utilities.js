@@ -1,6 +1,6 @@
     import * as THREE from './three.module.js';
 
-      let phi = (1 + Math.sqrt(5)) / 2;
+      const phi = (1 + Math.sqrt(5)) / 2;
 
       let unit = new THREE.Group();
 
@@ -41,7 +41,7 @@
         unit.add(globalThis[name]);
       }
 
-      // Test Segment
+      // Add Line
 
       function addLine(start,end) {
         const coordinates = [];
@@ -53,6 +53,55 @@
         unit.add(addLine);
       }
 
+      // Add Curve
+
+      function addCurve(vectors) {
+
+      // Y Neg Curve
+
+      /*const axialQ1VectorsDescending = [...axialQ1Vectors].reverse();
+      const axialQ1VectorsDescendingPopped = axialQ1VectorsDescending.pop();
+      const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
+
+      const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
+      const axialRightPoints = axialRightCurve.getPoints(1000);
+
+      const axialRightGeometry = new THREE.TubeGeometry(axialRightCurve, 64, 1.75, 16, false)
+      const axialRightMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff});
+      const axialRightCurveObject = new THREE.Mesh(axialRightGeometry, axialRightMaterial);*/
+
+      //unit.add(axialRightCurveObject);
+
+      //const axialQ4Vector = new THREE.Vector3(i, newArr[0], 0);
+      //axialQ4Vectors.push(axialQ4Vector)
+
+      let YNegCurveVectors = [];
+
+      //const YNegCurveVector = new THREE.Vector3(0,0,0)
+
+      YNegCurveVectors.push(new THREE.Vector3(0,0,0));
+      YNegCurveVectors.push(new THREE.Vector3(10,10,10));
+      YNegCurveVectors.push(new THREE.Vector3(20,20,20));
+      YNegCurveVectors.push(new THREE.Vector3(20,-20,-20));
+
+
+      //const YNegCurveVectors = [0,0,0,10,10,10,20,20,20];
+
+      const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
+      const YNegCurvePoints = YNegCurve.getPoints(1000);
+      const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, 1.75, 16, false)
+      const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: 0x69c5ff});
+      const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
+
+
+      unit.add(YNegCurveObject);
+
+
+
+
+      }
+
+
       // Degrees To Radians
 
       function degreesToRadians(degrees) {
@@ -61,11 +110,12 @@
       }
 
       export {
-              unit, 
-              tubeMaterial, 
-              returnEndPosition, 
-              addVectorLine, 
-              addLine, 
-              degreesToRadians, 
-              phi
-            }
+        unit, 
+        tubeMaterial, 
+        returnEndPosition, 
+        addVectorLine, 
+        addLine,
+        addCurve, 
+        degreesToRadians, 
+        phi
+      }

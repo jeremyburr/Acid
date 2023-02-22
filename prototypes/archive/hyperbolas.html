@@ -89,6 +89,8 @@
       const axialRightCurveVectors = axialQ1VectorsDescending.concat(axialQ4Vectors);
       const axialRightCurve = new THREE.CatmullRomCurve3(axialRightCurveVectors);
 
+      console.log(axialRightCurveVectors);
+
       const axialRightPoints = axialRightCurve.getPoints(500);
       const axialRightGeometry = new THREE.BufferGeometry().setFromPoints(axialRightPoints);
       const axialRightMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });

@@ -1,4 +1,5 @@
-import { addVectorLine, addLine, degreesToRadians, phi } from '../js/utilities.js'
+import { addVectorLine, addLine, degreesToRadians, phi, addCurve } from '../js/utilities.js'
+import * as THREE from '../js/three.module.js';
 
 // Acid Crystal 
 
@@ -694,9 +695,13 @@ export class AcidCrystal {
           Math.cos(degreesToRadians(90)),
           Math.cos(degreesToRadians(90))
         ],
-        //unitLength * Math.sqrt(3));
         unitLength * 2 * phi);
-        //unitLength * Math.sqrt(3) * phi);
+
+        addCurve();
+
+      
+        
+      
 
       // Segment X-
 
