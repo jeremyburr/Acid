@@ -43,7 +43,9 @@ const [orgX, orgY, orgZ] = origin;
 
   */
 
-  // Y Neg
+  // Thigh - X Pos Y Neg
+
+
   addVectorLine('X_Pos_Y_Neg', [orgX + unitLength, orgY - unitLength, orgZ],
     [
       Math.cos(degreesToRadians(0)),
@@ -52,6 +54,7 @@ const [orgX, orgY, orgZ] = origin;
     ],
     unitLength * 2 * phi);
 
+  /*
 
   const coordinates = [
     [unitLength * 2 * phi, orgY - unitLength, orgZ],
@@ -59,8 +62,19 @@ const [orgX, orgY, orgZ] = origin;
     [unitLength * 2 * phi, 0, 0]
   ];
 
+  */
+
+  const coordinates = [
+    [33.88, orgY - unitLength, orgZ],
+    [50, orgY - unitLength * 3, orgZ],
+    //[unitLength * 2 * phi, orgY - unitLength, orgZ],
+    //[10,10,10],[20,20,20],
+    //[unitLength * 2 * phi, 0, 0]
+  ]
+
   addCurve(coordinates);
 
+  
 
 
   // Segment X-

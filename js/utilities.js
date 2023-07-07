@@ -24,6 +24,7 @@
         endPosition.push(dirX * magnitude + startX);
         endPosition.push(dirY * magnitude + startY);
         endPosition.push(dirZ * magnitude + startZ);
+        console.log(dirX * magnitude + startX);
         return endPosition;
       }
 
