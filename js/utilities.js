@@ -65,12 +65,6 @@
 
         }
 
-
-        /*YNegCurveVectors.push(new THREE.Vector3(0,0,0));
-        YNegCurveVectors.push(new THREE.Vector3(10,10,10));
-        YNegCurveVectors.push(new THREE.Vector3(20,20,20));
-        YNegCurveVectors.push(new THREE.Vector3(20,-20,-20));*/
-
         const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
         const YNegCurvePoints = YNegCurve.getPoints(1000);
         const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .25, 16, false)
