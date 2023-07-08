@@ -193,7 +193,7 @@ const [orgX, orgY, orgZ] = origin;
 
   /*****************/
 
-  //  X Pos Y Neg
+  //  X Pos Y Neg Z Pos
 
   // Base
     addLine(
@@ -232,10 +232,58 @@ const [orgX, orgY, orgZ] = origin;
   const coordinatesXPosYNegZPos = [
     [endPoint1XPosYNegZPos[0], orgY - unitLength, endPoint1XPosYNegZPos[2]],
     [endPoint1XPosYNegZPos[0]+unitLength/2, orgY - unitLength * 3, endPoint1XPosYNegZPos[2] + unitLength  / 2],
-    [endPoint1XPosYNegZPos[0]+unitLength*3/2, orgY - unitLength * 3.75, endPoint1XPosYNegZPos[2] + unitLength * 3 / 2],
+    [endPoint1XPosYNegZPos[0]+unitLength*3.75/2, orgY - unitLength * 3.75, endPoint1XPosYNegZPos[2] + unitLength * 3.75 / 2],
   ]
 
   addCurve(coordinatesXPosYNegZPos);
+
+  /*****************/
+
+  //  X Pos Y Pos Z Pos
+
+  // Base
+    addLine(
+      [
+        orgX + unitLength / 2,
+        orgY + unitLength,
+        orgZ + unitLength / 2
+      ],
+      [
+        orgX + unitLength / 2,
+        orgY + unitLength,
+        orgZ + unitLength / 2
+      ]
+    );
+
+    
+  addVectorLine(
+  'X_Pos_Y_Pos_Z_Pos', 
+  [orgX + unitLength / 2, orgY + unitLength, orgZ + unitLength / 2],
+    [
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(45))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XPosYPosZPos = returnEndPosition(
+    [orgX + unitLength / 2, orgY - unitLength, orgZ + unitLength / 2],
+    [
+      Math.cos(degreesToRadians(45)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(45))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXPosYPosZPos = [
+    [endPoint1XPosYPosZPos[0], orgY + unitLength, endPoint1XPosYPosZPos[2]],
+    [endPoint1XPosYPosZPos[0]+unitLength/2, orgY + unitLength * 3, endPoint1XPosYPosZPos[2] + unitLength  / 2],
+    [endPoint1XPosYPosZPos[0]+unitLength*3.75/2, orgY + unitLength * 3.75, endPoint1XPosYPosZPos[2] + unitLength * 3.75 / 2],
+  ]
+
+  addCurve(coordinatesXPosYPosZPos);
+
+
 
   
 
