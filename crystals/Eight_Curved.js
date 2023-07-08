@@ -11,29 +11,9 @@ function Eight_Curved(origin, unitLength) {
 
 const [orgX, orgY, orgZ] = origin;
 
-  // Segment - Center
-  //addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+  /*****************/
 
-  // Segment X+ 
-
-  
-
-  /*
-
-  // Y Pos
-  addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength * Math.sqrt(3)
-  );
-
-  */
-
-
-  // Thigh - X Pos Y Neg
+  //  X Pos Y Neg
 
   // Base
     addLine(
@@ -76,8 +56,9 @@ const [orgX, orgY, orgZ] = origin;
 
   addCurve(coordinatesXPosYNeg);
 
+  /*****************/
 
-  // Thigh - X Neg Y Neg
+  // X Neg Y Neg
 
     // Base
     addLine(
@@ -119,6 +100,97 @@ const [orgX, orgY, orgZ] = origin;
   ]
 
   addCurve(coordinatesXNegYNeg);
+
+  /*****************/
+
+  //  X Pos Y Pos
+
+  // Base
+    addLine(
+      [
+        orgX + unitLength,
+        orgY + unitLength,
+        orgZ
+      ],
+      [
+        orgX + unitLength,
+        orgY + unitLength,
+        orgZ
+      ]
+    );
+
+  addVectorLine(
+  'X_Pos_Y_Pos', 
+  [orgX + unitLength, orgY + unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XPosYPos = returnEndPosition(
+    [orgX + unitLength, orgY + unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXPosYPos = [
+    [endPoint1XPosYNeg[0], orgY + unitLength, orgZ],
+    [endPoint1XPosYNeg[0]+unitLength, orgY + unitLength * 3, orgZ],
+    [endPoint1XPosYNeg[0]+unitLength*3, orgY + unitLength * 3.75, orgZ],
+  ]
+
+  addCurve(coordinatesXPosYPos);
+
+  /*****************/
+
+  //  X Neg Y Pos
+
+  // Base
+    addLine(
+      [
+        orgX - unitLength,
+        orgY + unitLength,
+        orgZ
+      ],
+      [
+        orgX - unitLength,
+        orgY + unitLength,
+        orgZ
+      ]
+    );
+
+  addVectorLine(
+  'X_Neg_Y_Pos', 
+  [orgX - unitLength, orgY + unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNegYPos = returnEndPosition(
+    [orgX - unitLength, orgY + unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNegYPos = [
+    [endPoint1XNegYNeg[0], orgY + unitLength, orgZ],
+    [endPoint1XNegYNeg[0]-unitLength, orgY + unitLength * 3, orgZ],
+    [endPoint1XNegYNeg[0]-unitLength*3, orgY + unitLength * 3.75, orgZ],
+  ]
+
+  addCurve(coordinatesXNegYPos);
+
 
 
   
