@@ -59,7 +59,6 @@
 
         for (const coordinate of coordinates) {
           YNegCurveVectors.push(new THREE.Vector3(coordinate[0],coordinate[1],coordinate[2]));
-          console.log(coordinate);
         }
 
         //const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
