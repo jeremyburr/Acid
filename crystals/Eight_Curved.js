@@ -283,7 +283,7 @@ const [orgX, orgY, orgZ] = origin;
 
   addCurve(coordinatesXPosYPosZPos);
 
-    /*****************/
+  /*****************/
 
   //  X Neg Y Pos Z Neg
 
@@ -328,6 +328,53 @@ const [orgX, orgY, orgZ] = origin;
   ]
 
   addCurve(coordinatesXNegYPosZNeg);
+
+  /*****************/
+
+  //  X Neg Y Neg Z Neg
+
+  // Base
+    addLine(
+      [
+        orgX - unitLength / 2,
+        orgY + unitLength,
+        orgZ - unitLength / 2
+      ],
+      [
+        orgX - unitLength / 2,
+        orgY - unitLength,
+        orgZ - unitLength / 2
+      ]
+    );
+
+    
+  addVectorLine(
+  'X_Neg_Y_Neg_Z_Neg', 
+  [orgX - unitLength / 2, orgY - unitLength, orgZ - unitLength / 2],
+    [
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(135))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNegYNegZNeg = returnEndPosition(
+    [orgX - unitLength / 2, orgY - unitLength, orgZ - unitLength / 2],
+    [
+      Math.cos(degreesToRadians(135)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(135))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNegYNegZNeg = [
+    [endPoint1XNegYNegZNeg[0], orgY - unitLength, endPoint1XNegYNegZNeg[2]],
+    [endPoint1XNegYNegZNeg[0]-unitLength/2, orgY - unitLength * 3, endPoint1XNegYNegZNeg[2] - unitLength  / 2],
+    [endPoint1XNegYNegZNeg[0]-unitLength*3.75/2, orgY - unitLength * 3.75, endPoint1XNegYNegZNeg[2] - unitLength * 3.75 / 2],
+  ]
+
+  addCurve(coordinatesXNegYNegZNeg);
+
 
 
 
