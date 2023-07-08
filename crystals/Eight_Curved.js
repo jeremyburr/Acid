@@ -1,5 +1,6 @@
 import {
   addVectorLine,
+  returnEndPosition,
   addLine,
   degreesToRadians,
   phi,
@@ -46,7 +47,9 @@ const [orgX, orgY, orgZ] = origin;
   // Thigh - X Pos Y Neg
 
 
-  addVectorLine('X_Pos_Y_Neg', [orgX + unitLength, orgY - unitLength, orgZ],
+  addVectorLine(
+  'X_Pos_Y_Neg', 
+  [orgX + unitLength, orgY - unitLength, orgZ],
     [
       Math.cos(degreesToRadians(0)),
       Math.cos(degreesToRadians(90)),
@@ -54,24 +57,22 @@ const [orgX, orgY, orgZ] = origin;
     ],
     unitLength * 2 * phi);
 
-  /*
+
+  const endPoint1 = returnEndPosition(
+    [orgX + unitLength, orgY - unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 2 * phi)
+
+    console.log('endPoint1',endPoint1);
 
   const coordinates = [
-    [unitLength * 2 * phi, orgY - unitLength, orgZ],
-    //[10,10,10],[20,20,20],
-    [unitLength * 2 * phi, 0, 0]
-  ];
-
-  */
-
-  const coordinates = [
-    [33.88, orgY - unitLength, orgZ],
-    //[40, orgY - unitLength * 2.5, orgZ],
-    [40, orgY - unitLength * 3, orgZ],
-    [60, orgY - unitLength * 4, orgZ],
-    //[unitLength * 2 * phi, orgY - unitLength, orgZ],
-    //[10,10,10],[20,20,20],
-    //[unitLength * 2 * phi, 0, 0]
+    [endPoint1[0], orgY - unitLength, orgZ],
+    [endPoint1[0]+unitLength, orgY - unitLength * 3, orgZ],
+    [endPoint1[0]+unitLength*3.25, orgY - unitLength * 4, orgZ],
   ]
 
   addCurve(coordinates);

@@ -64,13 +64,8 @@
 
         //const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
         const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0],YNegCurveVectors[1],YNegCurveVectors[2]);
-        console.log(YNegCurve);
         const YNegCurvePoints = YNegCurve.getPoints(1000);
-
         const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .25, 16, false)
-
-          console.log(YNegCurveGeometry);
-
         const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff44});
         const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
 
