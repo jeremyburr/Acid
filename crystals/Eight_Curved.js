@@ -66,7 +66,9 @@ const [orgX, orgY, orgZ] = origin;
 
   const coordinates = [
     [33.88, orgY - unitLength, orgZ],
-    [50, orgY - unitLength * 3, orgZ],
+    //[40, orgY - unitLength * 2.5, orgZ],
+    [40, orgY - unitLength * 3, orgZ],
+    [60, orgY - unitLength * 4, orgZ],
     //[unitLength * 2 * phi, orgY - unitLength, orgZ],
     //[10,10,10],[20,20,20],
     //[unitLength * 2 * phi, 0, 0]
