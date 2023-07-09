@@ -34,7 +34,7 @@
         const end = returnEndPosition(start, direction, magnitude);
         coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, .35, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
       }
@@ -46,7 +46,7 @@
         coordinates.push(new THREE.Vector3(...start));
         coordinates.push(new THREE.Vector3(...end));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .25, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, .35, 16, false)
         const addLine = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(addLine);
       }
@@ -64,7 +64,7 @@
         //const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
         const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0],YNegCurveVectors[1],YNegCurveVectors[2]);
         const YNegCurvePoints = YNegCurve.getPoints(1000);
-        const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .25, 16, false)
+        const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .35, 16, false)
         const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff44});
         const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
 

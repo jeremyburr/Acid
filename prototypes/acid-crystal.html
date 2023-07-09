@@ -33,7 +33,7 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(37, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 30;
-      camera.position.y = 75;
+      camera.position.y = 60;
       camera.position.z = 250;
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -84,7 +84,7 @@
 
     //unit.rotation.z -= .3;
     //unit.rotation.y -= .3;
-    //unit.rotation.x += .3;
+    unit.rotation.x += .1;
 
     function render() {
 
