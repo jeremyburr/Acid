@@ -331,18 +331,23 @@ function Eight_Curved(origin, unitLength) {
   //  X Neg Y Neg Z Neg
 
   // Base
-  /*addLine(
+  addCurve([
     [
       orgX - unitLength / 2,
       orgY + unitLength,
       orgZ - unitLength / 2
     ],
     [
+      orgX - unitLength,
+      orgY + unitLength / 2,
+      orgZ - unitLength
+    ],
+    [
       orgX - unitLength / 2,
       orgY - unitLength,
       orgZ - unitLength / 2
     ]
-  );*/
+  ]);
 
 
   addVectorLine(
@@ -545,7 +550,7 @@ function Eight_Curved(origin, unitLength) {
   /*****************/
 
   // Base
-  /*addLine(
+  addCurve([
     [
       orgX,
       orgY + unitLength,
@@ -553,10 +558,15 @@ function Eight_Curved(origin, unitLength) {
     ],
     [
       orgX,
+      orgY + unitLength / 2,
+      orgZ + unitLength * 1.5
+    ],
+    [
+      orgX,
       orgY - unitLength,
       orgZ + unitLength
     ]
-  );*/
+  ]);
 
   // X Nue Y Neg Z Pos
 
@@ -623,7 +633,7 @@ function Eight_Curved(origin, unitLength) {
   // X Nue Y Pos Z Neg
   // Base
 
-  /*addLine(
+  addCurve([
     [
       orgX,
       orgY + unitLength,
@@ -631,10 +641,16 @@ function Eight_Curved(origin, unitLength) {
     ],
     [
       orgX,
+      orgY + unitLength / 2,
+      orgZ - unitLength * 1.5
+    ],
+    [
+      orgX,
       orgY - unitLength,
       orgZ - unitLength
     ]
-  );*/
+  ]);
+
   addVectorLine(
     'X_Nue_Y_Pos_Z_Neg',
     [orgX, orgY + unitLength, orgZ - unitLength],
