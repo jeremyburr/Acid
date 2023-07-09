@@ -621,6 +621,37 @@ const [orgX, orgY, orgZ] = origin;
 
   addCurve(coordinatesXNueYPosZPos);
 
+  /*****************/
+
+  // X Nue Y Pos Z Neg
+    
+  addVectorLine(
+  'X_Nue_Y_Pos_Z_Neg', 
+  [orgX, orgY + unitLength, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNueYPosZNeg = returnEndPosition(
+    [orgX, orgY + unitLength, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNueYPosZNeg = [
+    [endPoint1XNueYPosZNeg[0], orgY + unitLength, endPoint1XNueYPosZNeg[2]],
+    [endPoint1XNueYPosZNeg[0], orgY + unitLength * 3, endPoint1XNueYPosZNeg[2] - unitLength  / 2],
+    [endPoint1XNueYPosZNeg[0], orgY + unitLength * 3.75, endPoint1XNueYPosZNeg[2] - unitLength * 3.75 / 2],
+  ]
+
+  addCurve(coordinatesXNueYPosZNeg);
+
 
 
 
