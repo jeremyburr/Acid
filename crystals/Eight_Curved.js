@@ -1,7 +1,6 @@
 import {
   addVectorLine,
   returnEndPosition,
-  addLine,
   degreesToRadians,
   phi,
   addCurve
@@ -162,9 +161,9 @@ function Eight_Curved(origin, unitLength) {
     unitLength * 1.25 * phi)
 
   const coordinatesXNegYPos = [
-    [endPoint1XNegYNeg[0], orgY + unitLength, orgZ],
-    [endPoint1XNegYNeg[0] - unitLength, orgY + unitLength * 3, orgZ],
-    [endPoint1XNegYNeg[0] - unitLength * 3, orgY + unitLength * 3.75, orgZ],
+    [endPoint1XNegYPos[0], orgY + unitLength, orgZ],
+    [endPoint1XNegYPos[0] - unitLength, orgY + unitLength * 3, orgZ],
+    [endPoint1XNegYPos[0] - unitLength * 3, orgY + unitLength * 3.75, orgZ],
   ]
 
   addCurve(coordinatesXNegYPos);
