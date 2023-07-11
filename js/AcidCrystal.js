@@ -1,6 +1,7 @@
 import { addVectorLine, addLine, degreesToRadians, phi, addCurve } from '../js/utilities.js';
 
 import { Eight_Curved } from '../crystals/Eight_Curved.js';
+import { Eight_Curved_Lattice } from '../crystals/Eight_Curved_Lattice.js';
 
 import * as THREE from '../js/three.module.js';
 
@@ -657,6 +658,12 @@ export class AcidCrystal {
 
     if ((segments === 8) && (curvature === 'curved')) {
       Eight_Curved(origin, unitLength);
+    }
+
+    // AC-8 Curved Bug Walk
+
+    if ((segments === 8) && (curvature === 'curved_bug_walk')) {
+      Eight_Curved_Lattice(origin, unitLength);
     }
 
   }

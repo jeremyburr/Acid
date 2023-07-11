@@ -42,7 +42,8 @@
       controls = new TrackballControls(camera, renderer.domElement);
       window.addEventListener('resize', onWindowResize);
 
-      const AC_Org = new AcidCrystal('center', 8, 'curved', [0, 0, 0], unitLength);
+      const AC_Org = new AcidCrystal('center', 8, 'curved_bug_walk', [0, 0, 0], unitLength);
+      const AC_Org0 = new AcidCrystal('center', 8, 'curved_bug_walk', [unitLength*20, 0, 0], unitLength);
 
       scene.add(unit);
 
@@ -91,7 +92,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * .10;
-      unit.rotation.y = time * .175;
+      //unit.rotation.y = time * .175;
       //unit.rotation.z = time * .05;
 
       renderer.render(scene, camera);
