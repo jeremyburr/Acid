@@ -54,22 +54,16 @@
       // Add Curve
 
       function addCurve(coordinates) {
-
         let YNegCurveVectors = [];
-
         for (const coordinate of coordinates) {
           YNegCurveVectors.push(new THREE.Vector3(coordinate[0],coordinate[1],coordinate[2]));
         }
-
-        //const YNegCurve = new THREE.CatmullRomCurve3(YNegCurveVectors);
         const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0],YNegCurveVectors[1],YNegCurveVectors[2]);
         const YNegCurvePoints = YNegCurve.getPoints(1000);
         const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .45, 16, false)
         const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff44});
         const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
-
         unit.add(YNegCurveObject);
-
       }
 
 
