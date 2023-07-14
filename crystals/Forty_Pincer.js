@@ -13,24 +13,6 @@ function Pincer(origin, unitLength) {
 
   /*****************/
 
-  //  X Pos Y Neg
-
-  // Base
-  addLine(
-      [
-        orgX + 3*unitLength,
-        orgY + 4*unitLength,
-        orgZ
-      ],
-      [
-        orgX + 3*unitLength,
-        orgY + 2*unitLength,
-        orgZ
-      ]
-  );
-
-  /*****************/
-
   //  X Pos Y Pos
 
   addVectorLine(
@@ -60,7 +42,26 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXPosYPos);
 
+
   /*****************/
+
+  //  X Pos Y Neg
+
+  // Base
+  addLine(
+      [
+        orgX + 3*unitLength,
+        orgY + 4*unitLength,
+        orgZ
+      ],
+      [
+        orgX + 3*unitLength,
+        orgY + 2*unitLength,
+        orgZ
+      ]
+  );
+
+    /*****************/
 
   // Base
   addLine(
