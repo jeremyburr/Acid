@@ -510,20 +510,6 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYPosZPos);
 
-  console.log('X-Y+Z+ FULL',coordinatesXNegYPosZPos[0]);
-
-  console.log('first operation',endPoint1XNegYPosZPos[0] - unitLength * 3);
-
-  console.log('first operation chunk',-unitLength * 3)
-
-
-
-  console.log('second operation',endPoint1XNegYPosZPos[0] + unitLength * 3);
-
-  console.log('second operation chunk', unitLength * 3)
-
-
-
 
   //  X Neg Y Pos Z Neg
 
@@ -546,7 +532,7 @@ function Pincer(origin, unitLength) {
     'X_Neg_Y_Pos_Z_Neg',
     [orgX - 1.5 * unitLength, orgY + 4 * unitLength, orgZ - unitLength * 1.5],
     [
-      Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(270)),
       Math.cos(degreesToRadians(135))
     ],
@@ -555,7 +541,7 @@ function Pincer(origin, unitLength) {
   const endPoint1XNegYPosZNeg = returnEndPosition(
     [orgX - unitLength / 2, orgY + unitLength, orgZ - unitLength * 1.5],
     [
-      Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(135)),
       Math.cos(degreesToRadians(270)),
       Math.cos(degreesToRadians(135))
     ],
@@ -657,12 +643,6 @@ function Pincer(origin, unitLength) {
   ]
 
   addCurve(coordinatesXPosYPosZPos);
-
-  //console.log('X+Y+Z+',coordinatesXPosYPosZPos[0]);
-
-
-
-
 
 
   /*****************/
