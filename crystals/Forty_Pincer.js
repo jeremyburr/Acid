@@ -5,6 +5,7 @@ import {
   phi,
   addCurve,
   addLine,
+  unit,
 } from '../js/utilities.js'
 
 function Pincer(origin, unitLength) {
@@ -60,7 +61,7 @@ function Pincer(origin, unitLength) {
 
   //  X Pos Y Pos Inner
 
-  addVectorLine(
+  /*addVectorLine(
     'X_Pos_Y_Pos_Inner',
     [orgX + 3 * unitLength, orgY + 4 * unitLength, orgZ],
     [
@@ -87,13 +88,12 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXPosYPosInner);
 
+  */
 
 
   /*****************/
 
   //  X Pos Y Neg
-
-
 
   /*****************/
 
@@ -138,6 +138,54 @@ function Pincer(origin, unitLength) {
   addCurve(coordinatesXPosYNeg);
 
   /*****************/
+
+  //  X Pos Y Neg Z Pos
+
+  /*****************/
+
+  // Base
+  addLine(
+    [
+      orgX + 1.5 * unitLength,
+      orgY - 4 * unitLength,
+      orgZ + unitLength,
+    ],
+    [
+      orgX + 1.5 * unitLength,
+      orgY - 2 * unitLength,
+      orgZ + unitLength,
+    ]
+  );
+  addVectorLine(
+    'X_Pos_Y_Neg_Z_Pos',
+    [orgX + 1.5 * unitLength, orgY - 4 * unitLength, orgZ + unitLength],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(45))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XPosYNegZPos = returnEndPosition(
+    [orgX + unitLength / 2, orgY - unitLength, orgZ + unitLength],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(45))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXPosYNegZPos = [
+    [endPoint1XPosYNegZPos[0] +  unitLength, orgY - 4 * unitLength, endPoint1XPosYNegZPos[2]],
+    [endPoint1XPosYNegZPos[0] +  unitLength, orgY - unitLength * 6.25, endPoint1XPosYNegZPos[2]],
+    [endPoint1XPosYNegZPos[0] + unitLength * 3, orgY - unitLength * 6.25, endPoint1XPosYNegZPos[2] + unitLength * 1.5],
+  ]
+
+  addCurve(coordinatesXPosYNegZPos);
+  
+
+  /*****************/
+
 
   // Base
   addLine(
