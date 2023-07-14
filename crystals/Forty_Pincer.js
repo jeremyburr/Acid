@@ -429,17 +429,17 @@ function Pincer(origin, unitLength) {
     [
       orgX - 1.5 * unitLength,
       orgY - 4 * unitLength,
-      orgZ + unitLength,
+      orgZ + unitLength * 1.5,
     ],
     [
       orgX - 1.5 * unitLength,
       orgY - 2 * unitLength,
-      orgZ + unitLength,
+      orgZ + unitLength * 1.5,
     ]
   );
   addVectorLine(
     'X_Pos_Y_Neg_Z_Pos',
-    [orgX - 1.5 * unitLength, orgY - 4 * unitLength, orgZ + unitLength],
+    [orgX - 1.5 * unitLength, orgY - 4 * unitLength, orgZ + unitLength * 1.5],
     [
       Math.cos(degreesToRadians(180)),
       Math.cos(degreesToRadians(90)),
@@ -448,7 +448,7 @@ function Pincer(origin, unitLength) {
     unitLength * 1.25 * phi);
 
   const endPoint1XNegYNegZPos = returnEndPosition(
-    [orgX - unitLength / 2, orgY - unitLength, orgZ + unitLength],
+    [orgX - unitLength / 2, orgY - unitLength, orgZ + unitLength * 1.5],
     [
       Math.cos(degreesToRadians(180)),
       Math.cos(degreesToRadians(90)),
