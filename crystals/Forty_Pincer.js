@@ -54,8 +54,8 @@ function Pincer(origin, unitLength) {
 
   const coordinatesXPosYPos = [
     [endPoint1XPosYPos[0], orgY + 4*unitLength, orgZ],
-    [endPoint1XPosYPos[0] + unitLength, orgY + unitLength * 7, orgZ],
-    [endPoint1XPosYPos[0] + unitLength * 4, orgY + unitLength * 7, orgZ],
+    [endPoint1XPosYPos[0] + unitLength, orgY + unitLength * 6.25, orgZ],
+    [endPoint1XPosYPos[0] + unitLength * 4, orgY + unitLength * 6.25, orgZ],
   ]
 
   addCurve(coordinatesXPosYPos);
