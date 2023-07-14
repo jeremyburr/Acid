@@ -102,6 +102,145 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNueYPosZPos);
 
+  /*****************/
+
+  //  X Nue Y Neg Z Neg
+
+  // Base
+  addLine(
+    [
+      orgX,
+      orgY - 4 * unitLength,
+      orgZ - 3 * unitLength
+    ],
+    [
+      orgX,
+      orgY - 2 * unitLength,
+      orgZ - 3 * unitLength
+    ]
+  );
+
+  addVectorLine(
+    'X_Nue_Y_Neg_Z_Neg',
+    [orgX, orgY - 4 * unitLength, orgZ - 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNueYNegZNeg = returnEndPosition(
+    [orgX, orgY - unitLength, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNueYNegZNeg = [
+    [orgX, orgY - 4 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
+    [orgX, orgY - unitLength * 6.25, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
+    [orgX, orgY - unitLength * 6.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
+  ]
+
+  addCurve(coordinatesXNueYNegZNeg);
+
+    /*****************/
+
+  //  X Nue Y Neg Z Pos
+
+  // Base
+  addLine(
+    [
+      orgX,
+      orgY - 4 * unitLength,
+      orgZ + 3 * unitLength
+    ],
+    [
+      orgX,
+      orgY - 2 * unitLength,
+      orgZ + 3 * unitLength
+    ]
+  );
+
+  addVectorLine(
+    'X_Nue_Y_Neg_Z_Pos',
+    [orgX, orgY - 4 * unitLength, orgZ + 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(0))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNueYNegZPos = returnEndPosition(
+    [orgX, orgY - unitLength, orgZ + unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(0))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNueYNegZPos = [
+    [orgX, orgY - 4 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
+    [orgX, orgY - unitLength * 6.25, endPoint1XNueYNegZPos[2] + 2 * unitLength],
+    [orgX, orgY - unitLength * 6.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
+  ]
+
+  addCurve(coordinatesXNueYNegZPos);
+
+  /*****************/
+
+  //  X Nue Y Pos Z Neg
+
+  // Base
+  addLine(
+    [
+      orgX,
+      orgY + 4 * unitLength,
+      orgZ - 3 * unitLength
+    ],
+    [
+      orgX,
+      orgY + 2 * unitLength,
+      orgZ - 3 * unitLength
+    ]
+  );
+
+  addVectorLine(
+    'X_Nue_Y_Pos_Z_Neg',
+    [orgX, orgY + 4 * unitLength, orgZ - 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNueYPosZNeg = returnEndPosition(
+    [orgX, orgY + unitLength, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNueYPosZNeg = [
+    [orgX, orgY + 4 * unitLength, endPoint1XNueYPosZNeg[2] - 2 * unitLength],
+    [orgX, orgY + unitLength * 6.25, endPoint1XNueYPosZNeg[2] - 2 * unitLength],
+    [orgX, orgY + unitLength * 6.25, endPoint1XNueYPosZNeg[2] - unitLength * 4],
+  ]
+
+  addCurve(coordinatesXNueYPosZNeg);
+
+
+
+
+
 
   /*****************/
 
