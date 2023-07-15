@@ -14,13 +14,13 @@
 
       const tubeMaterial = new THREE.MeshPhongMaterial({
         color: 0xad1152,
-        shininess: 250,
+        shininess: 200,
         side: THREE.DoubleSide,
       });
 
       const tubeMaterialThick = new THREE.MeshPhongMaterial({
         color: 0x004bb5,
-        shininess: 250,
+        shininess: 200,
         side: THREE.DoubleSide,
       });
 
@@ -49,7 +49,7 @@
         const end = returnEndPosition(start, direction, magnitude);
         coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .70, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, .80, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
       }
@@ -61,7 +61,7 @@
         coordinates.push(new THREE.Vector3(...start));
         coordinates.push(new THREE.Vector3(...end));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, 1.25, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, 1.5, 16, false)
         const addLine = new THREE.Mesh(geometry, tubeMaterialThick);
         unit.add(addLine);
       }
