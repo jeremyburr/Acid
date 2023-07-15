@@ -96,7 +96,7 @@
           emissive: 'red'
         });*/
 
-        const material = new THREE.MeshPhongMaterial({ color: 0x00ff5e });
+        const material = new THREE.MeshPhongMaterial({ color: 0xff9a03 });
         const sphere = new THREE.Mesh(geometry, material);
 
 
