@@ -33,7 +33,7 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(37, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 0;
-      camera.position.y = 0;
+      camera.position.y = 90;
       camera.position.z = 450;
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -56,6 +56,20 @@
       /*const AC_OrgXPosYNegDouble = new AcidCrystal('center', 8, 'curved_bug_walk', [unitLength*12,-unitLength*7.48*2, 0], unitLength);
       const AC_OrgXNueYNegDouble = new AcidCrystal('center', 8, 'curved_bug_walk', [0,-unitLength*7.48*2, 0], unitLength);
       const AC_OrgXNegYNegDouble = new AcidCrystal('center', 8, 'curved_bug_walk', [-unitLength*12,-unitLength*7.48*2, 0], unitLength);*/
+
+      const geometry = new THREE.SphereGeometry(4, 8, );
+      //const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, opacity: 0.5 });
+      /*const material = new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,    // red (can also use a CSS color string here)
+        shininess: 150,
+        side: THREE.DoubleSide,
+        metalness: 0.5,
+        emissive: 'red'
+      });*/
+
+      const material = new THREE.MeshPhongMaterial({ color: 0xFF7C2B });
+      const sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
 
 
       scene.add(unit);
@@ -105,7 +119,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * .10;
-      //unit.rotation.y = time * .2;
+      unit.rotation.y = time * .125;
       //unit.rotation.z = time * .05;
 
       renderer.render(scene, camera);
