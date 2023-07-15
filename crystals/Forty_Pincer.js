@@ -59,6 +59,52 @@ function Pincer(origin, unitLength) {
 
   /*****************/
 
+  //  X Pos Y Pos
+
+  // Base
+  /*addLine(
+    [
+      orgX + 3 * unitLength,
+      orgY + unitLength * 1.5,
+      orgZ
+    ],
+    [
+      orgX + 3 * unitLength,
+      orgY + unitLength / 2,
+      orgZ
+    ]
+  );
+
+  addVectorLine(
+    'X_Pos_Y_Pos_Mid',
+    [orgX + 3 * unitLength, orgY + unitLength * 1.5, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XPosYPosMid = returnEndPosition(
+    [orgX + unitLength, orgY + unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXPosYPosMid = [
+    [endPoint1XPosYPosMid[0] + 2 * unitLength, orgY + 4 * unitLength, orgZ],
+    [endPoint1XPosYPosMid[0] + 2 * unitLength, orgY + unitLength * 6.25, orgZ],
+    [endPoint1XPosYPosMid[0] + unitLength * 4, orgY + unitLength * 6.25, orgZ],
+  ]
+
+  addCurve(coordinatesXPosYPosMid);*/
+
+  /*****************/
+
+
   //  X Nue Y Pos Z Pos
 
   // Base
