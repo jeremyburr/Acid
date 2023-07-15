@@ -655,7 +655,7 @@ function Pincer(origin, unitLength) {
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX + 1.5 * unitLength,
       orgY - 4 * unitLength,
@@ -693,13 +693,14 @@ function Pincer(origin, unitLength) {
   ]
 
   addCurve(coordinatesXPosYNegZPos);
+  */
 
   //  X Pos Y Neg Z Neg
 
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX + 1.5 * unitLength,
       orgY - 4 * unitLength,
@@ -740,10 +741,12 @@ function Pincer(origin, unitLength) {
 
   //  X Neg Y Neg Z Neg
 
+  */
+
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX - 1.5 * unitLength,
       orgY - 4 * unitLength,
@@ -782,6 +785,8 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYNegZNeg);
 
+  */
+
 
 
   //  X Neg Y Neg Z Pos
@@ -789,7 +794,7 @@ function Pincer(origin, unitLength) {
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX - 1.5 * unitLength,
       orgY - 4 * unitLength,
@@ -828,12 +833,14 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYNegZPos);
 
+  */
+
   //  X Neg Y Pos Z Pos
 
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX - 1.5 * unitLength,
       orgY + 4 * unitLength,
@@ -874,13 +881,15 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYPosZPos);
 
+  */
+
 
   //  X Neg Y Pos Z Neg
 
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX - 1.5 * unitLength,
       orgY + 4 * unitLength,
@@ -919,12 +928,14 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYPosZNeg);
 
+  */
+
   //  X Pos Y Pos Z Neg
 
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX + 1.5 * unitLength,
       orgY + 4 * unitLength,
@@ -963,12 +974,14 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXPosYPosZNeg);
 
+  */
+
   //  X Pos Y Pos Z Pos
 
   /*****************/
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX + 1.5 * unitLength,
       orgY + 4 * unitLength,
@@ -1007,6 +1020,8 @@ function Pincer(origin, unitLength) {
   ]
 
   addCurve(coordinatesXPosYPosZPos);
+
+  */
 
 
   /*****************/
