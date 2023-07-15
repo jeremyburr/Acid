@@ -81,6 +81,31 @@
         unit.add(YNegCurveObject);
       }
 
+      // Add Sphere
+
+      function addSphere(origin) {
+
+        const geometry = new THREE.SphereGeometry(2,8);
+
+        //const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, opacity: 0.5 });
+        /*const material = new THREE.MeshPhongMaterial({
+          color: 0xFFFFFF,    // red (can also use a CSS color string here)
+          shininess: 150,
+          side: THREE.DoubleSide,
+          metalness: 0.5,
+          emissive: 'red'
+        });*/
+
+        const material = new THREE.MeshPhongMaterial({ color: 0x00ff5e });
+        const sphere = new THREE.Mesh(geometry, material);
+
+
+        unit.add(sphere);
+
+        sphere.position.set(...origin);
+
+      }
+
 
       // Degrees To Radians
 
@@ -97,5 +122,6 @@
         addLine,
         addCurve, 
         degreesToRadians, 
-        phi
+        phi,
+        addSphere
       }

@@ -44,7 +44,9 @@
 
       const AC_Org = new AcidCrystal('center', 40, 'pincer', [0, 0, 0], unitLength);
 
-      /*const AC_OrgXPos = new AcidCrystal('center', 8, 'curved_bug_walk', [unitLength*12, 0, 0], unitLength);
+      const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer', [unitLength*14, 0, 0], unitLength);
+
+      /*
       const AC_Org1XNeg = new AcidCrystal('center', 8, 'curved_bug_walk', [-unitLength*12, 0, 0], unitLength);
       const AC_OrgYPos = new AcidCrystal('center', 8, 'curved_bug_walk', [0,unitLength*7.48, 0], unitLength);
       const AC_OrgYNeg = new AcidCrystal('center', 8, 'curved_bug_walk', [0,-unitLength*7.48, 0], unitLength);
@@ -56,21 +58,6 @@
       /*const AC_OrgXPosYNegDouble = new AcidCrystal('center', 8, 'curved_bug_walk', [unitLength*12,-unitLength*7.48*2, 0], unitLength);
       const AC_OrgXNueYNegDouble = new AcidCrystal('center', 8, 'curved_bug_walk', [0,-unitLength*7.48*2, 0], unitLength);
       const AC_OrgXNegYNegDouble = new AcidCrystal('center', 8, 'curved_bug_walk', [-unitLength*12,-unitLength*7.48*2, 0], unitLength);*/
-
-      const geometry = new THREE.SphereGeometry(2.75, 8, );
-      //const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, opacity: 0.5 });
-      /*const material = new THREE.MeshPhongMaterial({
-        color: 0xFFFFFF,    // red (can also use a CSS color string here)
-        shininess: 150,
-        side: THREE.DoubleSide,
-        metalness: 0.5,
-        emissive: 'red'
-      });*/
-
-      const material = new THREE.MeshPhongMaterial({ color: 0x00ff5e });
-      const sphere = new THREE.Mesh(geometry, material);
-      scene.add(sphere);
-
 
       scene.add(unit);
 

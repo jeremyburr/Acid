@@ -6,6 +6,7 @@ import {
   addCurve,
   addLine,
   unit,
+  addSphere,
 } from '../js/utilities.js'
 
 function Pincer(origin, unitLength) {
@@ -1115,6 +1116,7 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYPos);
 
+  addSphere(origin);
 
 
 
