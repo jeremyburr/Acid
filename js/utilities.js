@@ -34,7 +34,7 @@
         const end = returnEndPosition(start, direction, magnitude);
         coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .45, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, .70, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
       }
@@ -46,7 +46,7 @@
         coordinates.push(new THREE.Vector3(...start));
         coordinates.push(new THREE.Vector3(...end));
         const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, .45, 16, false)
+        const geometry = new THREE.TubeGeometry(curve, 64, 1.15, 16, false)
         const addLine = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(addLine);
       }
