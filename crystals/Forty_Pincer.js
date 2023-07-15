@@ -192,6 +192,97 @@ function Pincer(origin, unitLength) {
 
   addCurve(coordinatesXNegYNueZPosPosMid);
 
+  /*****************/
+
+  //  X Neg Y Nue Z Neg Neg Mid
+
+  // Base
+  addLine(
+    [
+      orgX - .5 * unitLength,
+      orgY,
+      orgZ - 3 * unitLength
+    ],
+    [
+      orgX - 1.5 * unitLength,
+      orgY,
+      orgZ - 3 * unitLength,
+    ]
+  );
+
+  addVectorLine(
+    'X_Neg_Y_Nue_Z_Neg_Neg_Mid',
+    [  orgX - 1.5 * unitLength, orgY, orgZ - 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XNegYNueZNegNegMid = returnEndPosition(
+    [orgX - 1.5 * unitLength, orgY, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXNegYNueZNegNegMid = [
+    [orgX - 1.5 * unitLength, orgY,endPoint1XNegYNueZNegNegMid[2] - 2 * unitLength],
+    [orgX - unitLength * 3.125, orgY,endPoint1XNegYNueZNegNegMid[2] - 2 * unitLength],
+    [ orgX - unitLength * 3.125, orgY,endPoint1XNegYNueZNegNegMid[2] - unitLength * 4],
+  ]
+
+  addCurve(coordinatesXNegYNueZNegNegMid);
+
+  /*****************/
+
+  //  X Pos Y Nue Z Neg Neg Mid
+
+  // Base
+  addLine(
+    [
+      orgX + .5 * unitLength,
+      orgY,
+      orgZ - 3 * unitLength
+    ],
+    [
+      orgX + 1.5 * unitLength,
+      orgY,
+      orgZ - 3 * unitLength,
+    ]
+  );
+
+  addVectorLine(
+    'X_Pos_Y_Nue_Z_Neg_Neg_Mid',
+    [  orgX + 1.5 * unitLength, orgY, orgZ - 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi);
+
+  const endPoint1XPosYNueZNegNegMid = returnEndPosition(
+    [orgX + 1.5 * unitLength, orgY, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(270)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXPosYNueZNegNegMid = [
+    [orgX + 1.5 * unitLength, orgY,endPoint1XPosYNueZNegNegMid[2] - 2 * unitLength],
+    [orgX + unitLength * 3.125, orgY,endPoint1XPosYNueZNegNegMid[2] - 2 * unitLength],
+    [orgX + unitLength * 3.125, orgY,endPoint1XPosYNueZNegNegMid[2] - unitLength * 4],
+  ]
+
+  addCurve(coordinatesXPosYNueZNegNegMid);
+
+
 
 
   /*****************/
