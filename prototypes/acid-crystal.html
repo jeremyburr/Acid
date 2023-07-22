@@ -42,13 +42,15 @@
       controls = new TrackballControls(camera, renderer.domElement);
       window.addEventListener('resize', onWindowResize);
 
-      const AC_Org = new AcidCrystal('center', 40, 'pincer', [0, 0, 0], unitLength);
+      const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength);
+      /*const AC_Org = new AcidCrystal('center', 8, 'curved', [0, 0, 0], unitLength);*/
 
       
-      const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer', [unitLength*14, 0, 0], unitLength);
+      /*const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer', [unitLength*14, 0, 0], unitLength);
       const AC_Org1XNeg = new AcidCrystal('center',40, 'pincer', [-unitLength*14, 0, 0], unitLength);
       const AC_OrgYPos = new AcidCrystal('center',40, 'pincer', [0,unitLength*12.5, 0], unitLength);
       const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer', [0,-unitLength*12.5, 0], unitLength);
+      */
       /*
       const AC_OrgXPosYPos = new AcidCrystal('center',40, 'pincer', [unitLength*12,unitLength*7.48, 0], unitLength);
       const AC_OrgXNegYPos = new AcidCrystal('center',40, 'pincer', [-unitLength*12,unitLength*7.48, 0], unitLength);
@@ -106,7 +108,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * .10;
-      unit.rotation.y = time * .125;
+      //unit.rotation.y = time * .125;
       //unit.rotation.z = time * .05;
 
       renderer.render(scene, camera);

@@ -3,6 +3,7 @@ import { addVectorLine, addLine, degreesToRadians, phi, addCurve } from '../js/u
 import { Eight_Curved } from '../crystals/Eight_Curved.js';
 import { Eight_Curved_Lattice } from '../crystals/Eight_Curved_Lattice.js';
 import { Pincer } from '../crystals/Forty_Pincer.js';
+import { Pincer_Short } from '../crystals/Pincer_Short.js';
 
 import * as THREE from '../js/three.module.js';
 
@@ -667,8 +668,16 @@ export class AcidCrystal {
       Eight_Curved_Lattice(origin, unitLength);
     }
 
+    // Pincer
+
     if ((segments === 40) && (curvature === 'pincer')) {
       Pincer(origin, unitLength);
+    }
+
+    // Pincer Short
+
+    if ((curvature === 'pincer_short')) {
+      Pincer_Short(origin, unitLength);
     }
 
   }
