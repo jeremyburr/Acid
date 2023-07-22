@@ -14,6 +14,8 @@ function Pincer_Short(origin, unitLength) {
 
   /*****************/
 
+  // TOP
+
 
   //  X Pos Y Pos
 
@@ -145,203 +147,7 @@ function Pincer_Short(origin, unitLength) {
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZNeg[2] - unitLength * 4],
   ]
 
-  addCurve(coordinatesXNueYPosZNeg);
-
-
-  // BOTTOM
-
-  //  X Pos Y Neg
-
-  /*****************/
-
-  // Base
-  addLine(
-    [
-      orgX + 3 * unitLength,
-      orgY - 2 * unitLength,
-      orgZ
-    ],
-    [
-      orgX + 3 * unitLength,
-      orgY,
-      orgZ
-    ]
-  );
-  addVectorLine(
-    'X_Pos_Y_Neg',
-    [orgX + 3 * unitLength, orgY - 2 * unitLength, orgZ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength * 1.25 * phi);
-
-  const endPoint1XPosYNeg = returnEndPosition(
-    [orgX + unitLength, orgY, orgZ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength * 1.25 * phi)
-
-  const coordinatesXPosYNeg = [
-    [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ],
-    [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - unitLength * 4.25, orgZ],
-    [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
-  ]
-  
-  const endPoint1XNueYNegZPos = returnEndPosition(
-    [orgX, orgY, orgZ + unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(0))
-    ],
-    unitLength * 1.25 * phi)
-
-
-  addCurve(coordinatesXPosYNeg);
-
-  // Extend X Pos Z Pos
-
-  addLine(
-    [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
-    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
-    "thin"
-  );
-
-  //  X Nue Y Neg Z Pos
-
-  // Base
-  addLine(
-    [
-      orgX,
-      orgY - 2 * unitLength,
-      orgZ + 3 * unitLength
-    ],
-    [
-      orgX,
-      orgY,
-      orgZ + 3 * unitLength
-    ]
-  );
-
-  addVectorLine(
-    'X_Nue_Y_Neg_Z_Pos',
-    [orgX, orgY - 2 * unitLength, orgZ + 3 * unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(0))
-    ],
-    unitLength * 1.25 * phi);
-
-  
-  const coordinatesXNueYNegZPos = [
-    [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
-    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + 2 * unitLength],
-    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
-  ]
-
-  addCurve(coordinatesXNueYNegZPos);
-  
-
-
-
-  /*****************/
-
-  //  X Nue Y Neg Z Neg
-
-  // Base
-  addLine(
-    [
-      orgX,
-      orgY - 2 * unitLength,
-      orgZ - 3 * unitLength
-    ],
-    [
-      orgX,
-      orgY,
-      orgZ - 3 * unitLength
-    ]
-  );
-
-  addVectorLine(
-    'X_Nue_Y_Neg_Z_Neg',
-    [orgX, orgY - 2 * unitLength, orgZ - 3 * unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(180))
-    ],
-    unitLength * 1.25 * phi);
-
-  const endPoint1XNueYNegZNeg = returnEndPosition(
-    [orgX, orgY, orgZ - unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(180))
-    ],
-    unitLength * 1.25 * phi)
-
-  const coordinatesXNueYNegZNeg = [
-    [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
-    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
-    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
-  ]
-
-  addCurve(coordinatesXNueYNegZNeg);
-
-    /*****************/
-
-  
-  
-
-  // Base
-  addLine(
-    [
-      orgX - 3 * unitLength,
-      orgY - 2 * unitLength,
-      orgZ
-    ],
-    [
-      orgX - 3 * unitLength,
-      orgY,
-      orgZ
-    ]
-  );
-
-  addVectorLine(
-    'X_Neg_Y_Neg',
-    [orgX - 3 * unitLength, orgY - 2 * unitLength, orgZ],
-    [
-      Math.cos(degreesToRadians(180)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength * 1.25 * phi);
-
-  const endPoint1XNegYNeg = returnEndPosition(
-    [orgX - unitLength, orgY, orgZ],
-    [
-      Math.cos(degreesToRadians(180)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength * 1.25 * phi)
-
-  const coordinatesXNegYNeg = [
-    [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ],
-    [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - unitLength * 4.25, orgZ],
-    [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
-  ]
-
-  addCurve(coordinatesXNegYNeg);
-
-
+  addCurve(coordinatesXNueYPosZNeg) ;
 
   /*****************/
 
@@ -387,6 +193,232 @@ function Pincer_Short(origin, unitLength) {
   ]
 
   addCurve(coordinatesXNegYPos);
+
+
+  // BOTTOM
+
+  //  X Pos Y Neg
+
+  /*****************/
+
+  // Base
+  addLine(
+    [
+      orgX + 3 * unitLength,
+      orgY - 2 * unitLength,
+      orgZ
+    ],
+    [
+      orgX + 3 * unitLength,
+      orgY,
+      orgZ
+    ]
+  );
+  addVectorLine(
+    'X_Pos_Y_Neg',
+    [orgX + 3 * unitLength, orgY - 2 * unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi);
+
+    // Return Curve End Positions
+
+    // Y Neg X Pos
+
+  const endPoint1XPosYNeg = returnEndPosition(
+    [orgX + unitLength, orgY, orgZ],
+    [
+      Math.cos(degreesToRadians(0)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi)
+
+  const coordinatesXPosYNeg = [
+    [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ],
+    [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - unitLength * 4.25, orgZ],
+    [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
+  ]
+
+  // Y Neg Z Pos
+  
+  const endPoint1XNueYNegZPos = returnEndPosition(
+    [orgX, orgY, orgZ + unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(0))
+    ],
+    unitLength * 1.25 * phi)
+
+  // Y Neg X Neg
+
+    const endPoint1XNegYNeg = returnEndPosition(
+    [orgX - unitLength, orgY, orgZ],
+    [
+      Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi)
+
+
+    // Y Neg Z Neg
+
+const endPoint1XNueYNegZNeg = returnEndPosition(
+    [orgX, orgY, orgZ - unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi)
+
+  addCurve(coordinatesXPosYNeg);
+
+  // Extend Y-X+Z+
+
+  addLine(
+    [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
+    "thin"
+  );
+
+  // Extend Y-Z+X-
+
+  addLine(
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
+    [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
+    "thin"
+  );
+
+  // Extend Y-X-Z- 
+
+  addLine(
+    [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
+    "thin"
+  );
+
+  // Extend Y-Z- 
+
+  addLine(
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
+    [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
+    "thin"
+  );
+
+
+
+
+  //  X Nue Y Neg Z Pos
+
+  // Base
+  addLine(
+    [
+      orgX,
+      orgY - 2 * unitLength,
+      orgZ + 3 * unitLength
+    ],
+    [
+      orgX,
+      orgY,
+      orgZ + 3 * unitLength
+    ]
+  );
+
+  addVectorLine(
+    'X_Nue_Y_Neg_Z_Pos',
+    [orgX, orgY - 2 * unitLength, orgZ + 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(0))
+    ],
+    unitLength * 1.25 * phi);
+
+  
+  const coordinatesXNueYNegZPos = [
+    [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + 2 * unitLength],
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
+  ]
+
+  addCurve(coordinatesXNueYNegZPos);
+
+
+  /*****************/
+
+  //  X Nue Y Neg Z Neg
+
+  // Base
+  addLine(
+    [
+      orgX,
+      orgY - 2 * unitLength,
+      orgZ - 3 * unitLength
+    ],
+    [
+      orgX,
+      orgY,
+      orgZ - 3 * unitLength
+    ]
+  );
+
+  addVectorLine(
+    'X_Nue_Y_Neg_Z_Neg',
+    [orgX, orgY - 2 * unitLength, orgZ - 3 * unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(180))
+    ],
+    unitLength * 1.25 * phi);
+
+  const coordinatesXNueYNegZNeg = [
+    [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
+  ]
+
+  addCurve(coordinatesXNueYNegZNeg);
+
+    /*****************/
+
+  // Base
+  addLine(
+    [
+      orgX - 3 * unitLength,
+      orgY - 2 * unitLength,
+      orgZ
+    ],
+    [
+      orgX - 3 * unitLength,
+      orgY,
+      orgZ
+    ]
+  );
+
+  addVectorLine(
+    'X_Neg_Y_Neg',
+    [orgX - 3 * unitLength, orgY - 2 * unitLength, orgZ],
+    [
+      Math.cos(degreesToRadians(180)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90))
+    ],
+    unitLength * 1.25 * phi);
+  
+  const coordinatesXNegYNeg = [
+    [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ],
+    [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - unitLength * 4.25, orgZ],
+    [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
+  ]
+
+  addCurve(coordinatesXNegYNeg);
 
   addSphere(origin);
 

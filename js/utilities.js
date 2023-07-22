@@ -11,7 +11,8 @@
       });*/
 
       const thinColor = 0x11a80c;
-const tubeMaterialThin = new THREE.MeshPhongMaterial({
+
+      const tubeMaterialThin = new THREE.MeshPhongMaterial({
         color: thinColor,
         shininess: 200,
         side: THREE.DoubleSide,
