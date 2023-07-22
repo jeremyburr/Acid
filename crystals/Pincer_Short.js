@@ -63,7 +63,7 @@ function Pincer_Short(origin, unitLength) {
   //  X Pos Y Nue Z Pos Mid
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX + 3 * unitLength,
       orgY,
@@ -102,12 +102,14 @@ function Pincer_Short(origin, unitLength) {
   ]
 
   addCurve(coordinatesXPosYNueZPosMid);
+  */
 
   /*****************/
 
   //  X Pos Y Nue Z Pos Pos Mid
 
   // Base
+  /*
   addLine(
     [
       orgX + .5 * unitLength,
@@ -148,12 +150,14 @@ function Pincer_Short(origin, unitLength) {
 
   addCurve(coordinatesXPosYNueZPosPosMid);
 
+  */  
+
   /*****************/
 
   //  X Neg Y Nue Z Pos Pos Mid
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX - .5 * unitLength,
       orgY,
@@ -193,9 +197,13 @@ function Pincer_Short(origin, unitLength) {
 
   addCurve(coordinatesXNegYNueZPosPosMid);
 
+  */
+
   /*****************/
 
   //  X Neg Y Nue Z Neg Neg Mid
+
+  /*
 
   // Base
   addLine(
@@ -238,11 +246,14 @@ function Pincer_Short(origin, unitLength) {
 
   addCurve(coordinatesXNegYNueZNegNegMid);
 
+  */
+
   /*****************/
 
   //  X Pos Y Nue Z Neg Neg Mid
 
   // Base
+  /*
   addLine(
     [
       orgX + .5 * unitLength,
@@ -283,13 +294,13 @@ function Pincer_Short(origin, unitLength) {
 
   addCurve(coordinatesXPosYNueZNegNegMid);
 
-
-
+  */
 
   /*****************/
 
   //  X Pos Y Nue Z Neg Mid
 
+  /*
   // Base
   addLine(
     [
@@ -331,11 +342,14 @@ function Pincer_Short(origin, unitLength) {
 
   addCurve(coordinatesXPosYNueZNegMid);
 
+  */
+
   /*****************/
 
   //  X Neg Y Nue Z Neg Mid
 
   // Base
+  /*
   addLine(
     [
       orgX - 3 * unitLength,
@@ -376,10 +390,13 @@ function Pincer_Short(origin, unitLength) {
 
   addCurve(coordinatesXNegYNueZNegMid);
 
+  */
+
   /*****************/
 
   //  X Neg Y Nue Z Pos Mid
 
+  /*
   // Base
   addLine(
     [
@@ -420,6 +437,8 @@ function Pincer_Short(origin, unitLength) {
   ]
 
   addCurve(coordinatesXNegYNueZPosMid);
+
+  */
 
 
 
