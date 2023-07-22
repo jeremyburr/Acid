@@ -191,19 +191,26 @@ function Pincer_Short(origin, unitLength) {
     [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - unitLength * 4.25, orgZ],
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
   ]
+  
+  const endPoint1XNueYNegZPos = returnEndPosition(
+    [orgX, orgY, orgZ + unitLength],
+    [
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(90)),
+      Math.cos(degreesToRadians(0))
+    ],
+    unitLength * 1.25 * phi)
+
 
   addCurve(coordinatesXPosYNeg);
 
   // Extend X Pos Z Pos
 
-  /*addLine(
+  addLine(
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
-    [
-      orgX + 3 * unitLength,
-      orgY,
-      orgZ
-    ]
-  );*/
+    [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
+    "thin"
+  );
 
   //  X Nue Y Neg Z Pos
 
@@ -231,15 +238,7 @@ function Pincer_Short(origin, unitLength) {
     ],
     unitLength * 1.25 * phi);
 
-  const endPoint1XNueYNegZPos = returnEndPosition(
-    [orgX, orgY, orgZ + unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(0))
-    ],
-    unitLength * 1.25 * phi)
-
+  
   const coordinatesXNueYNegZPos = [
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + 2 * unitLength],

@@ -11,6 +11,12 @@
       });*/
 
       const thinColor = 0x11a80c;
+const tubeMaterialThin = new THREE.MeshPhongMaterial({
+        color: thinColor,
+        shininess: 200,
+        side: THREE.DoubleSide,
+      });
+
 
       const tubeMaterial = new THREE.MeshPhongMaterial({
         color: 0xad1152,
@@ -24,6 +30,21 @@
         side: THREE.DoubleSide,
       });
 
+      // Add Line
+
+      function addLine(start, end, size) {
+        const coordinates = [];
+        coordinates.push(new THREE.Vector3(...start));
+        coordinates.push(new THREE.Vector3(...end));
+        const curve = new THREE.CatmullRomCurve3(coordinates);
+        let tubeWidth = size === "thin" ? .40: 1.5;
+        let tubeMaterialVar = size === "thin" ? tubeMaterialThin : tubeMaterialThick;
+        const geometry = new THREE.TubeGeometry(curve, 64, tubeWidth, 16, false)
+        const addLine = new THREE.Mesh(geometry, tubeMaterialVar);
+        unit.add(addLine);
+      }
+
+      
 
       // Find End Coordinates for New Segment
 
@@ -52,18 +73,6 @@
         const geometry = new THREE.TubeGeometry(curve, 64, .80, 16, false)
         globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
         unit.add(globalThis[name]);
-      }
-
-      // Add Line
-
-      function addLine(start,end) {
-        const coordinates = [];
-        coordinates.push(new THREE.Vector3(...start));
-        coordinates.push(new THREE.Vector3(...end));
-        const curve = new THREE.CatmullRomCurve3(coordinates);
-        const geometry = new THREE.TubeGeometry(curve, 64, 1.5, 16, false)
-        const addLine = new THREE.Mesh(geometry, tubeMaterialThick);
-        unit.add(addLine);
       }
 
       // Add Curve
