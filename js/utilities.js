@@ -92,7 +92,7 @@ function addCurve(coordinates) {
 }
 
 
-function addPane(coordinates) {
+function addPane(coordinates,color) {
 
   const material = new THREE.MeshPhongMaterial({
     side: THREE.DoubleSide,
@@ -101,11 +101,21 @@ function addPane(coordinates) {
     opacity: .9
   });
 
-  const colors = [
+  let colors = [
     0, 0, 1,
     1, 0, 1,
     0, 1, 1,
   ]
+
+  const wingColors = [
+    1, .46, 0,
+    1, 0, 0,
+    1, 1, 0,
+  ]
+
+  if (color==="orange") {
+    colors = wingColors;
+  }
 
   const geometryPane = new THREE.BufferGeometry();
   geometryPane.setAttribute('position', new THREE.Float32BufferAttribute(

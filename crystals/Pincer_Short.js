@@ -299,8 +299,24 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4,
     endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ
   ]
-  
   addPane(YNegXPosZPosPaneOuterCoordinates);
+
+  // Y+X+Z+ Inner
+  const YPosXPosZPosPaneInnerCoordinates  =   [
+    endPoint1XPosYPos[0] + 2 * unitLength, orgY + 2 * unitLength, orgZ,
+    orgX, orgY + 2 * unitLength, endPoint1XNueYPosZPos[2] + 2 * unitLength,
+    endPoint1XNegYPos[0] - 2 * unitLength, orgY + 2 * unitLength, orgZ
+  ]
+  addPane(YPosXPosZPosPaneInnerCoordinates);
+  
+  // Y+X+Z+ Outer
+  const YPosXPosZPosPaneOuterCoordinates  =   [
+    endPoint1XPosYPos[0] + unitLength * 4, orgY + unitLength * 4.25, orgZ,
+    orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZPos[2] + unitLength * 4,
+    endPoint1XNegYPos[0] - unitLength * 4, orgY + unitLength * 4.25, orgZ
+  ]
+  addPane(YPosXPosZPosPaneOuterCoordinates);
+
 
   // Inner
   addLine(
@@ -334,6 +350,25 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ
   ]
   addPane(YNegXNegZPosPaneOuterCoordinates);
+
+  // Y+X+Z- inner
+  const YPosXPosZNegInnerPaneCoordinates  =   [endPoint1XPosYPos[0] + 2 * unitLength, orgY + 2 * unitLength, orgZ,
+    orgX, orgY + 2 * unitLength, endPoint1XNueYPosZNeg[2] - 2 * unitLength,
+    endPoint1XNegYPos[0] - 2 * unitLength, orgY + 2 * unitLength, orgZ
+  ]
+  addPane(YPosXPosZNegInnerPaneCoordinates);
+
+  // Y+X+Z- Outer
+  const YPosXNegZPosPaneOuterCoordinates  =   [
+    endPoint1XPosYPos[0] + unitLength * 4, orgY + unitLength * 4.25, orgZ,
+
+    //orgX, orgY - unitLength * 4.25, endPoint1XNueYPosZPos[2] + unitLength * 4,
+    orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZNeg[2] - unitLength * 4,
+
+    endPoint1XNegYPos[0] - unitLength * 4, orgY + unitLength * 4.25, orgZ
+  ]
+  addPane(YPosXNegZPosPaneOuterCoordinates);
+
 
 
 
