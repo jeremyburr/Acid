@@ -34,7 +34,7 @@
       camera = new THREE.PerspectiveCamera(37, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 0;
       camera.position.y = 90;
-      camera.position.z = 600;
+      camera.position.z = 700;
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -43,13 +43,16 @@
       window.addEventListener('resize', onWindowResize);
 
       const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength);
-      /*const AC_Org = new AcidCrystal('center', 8, 'curved', [0, 0, 0], unitLength);*/
-
       
-      /*const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer', [unitLength*14, 0, 0], unitLength);
-      const AC_Org1XNeg = new AcidCrystal('center',40, 'pincer', [-unitLength*14, 0, 0], unitLength);
-      const AC_OrgYPos = new AcidCrystal('center',40, 'pincer', [0,unitLength*12.5, 0], unitLength);
-      const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer', [0,-unitLength*12.5, 0], unitLength);
+      const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer_short', [unitLength*14, 0, 0], unitLength);
+      const AC_Org1XNeg = new AcidCrystal('center',40, 'pincer_short', [-unitLength*14, 0, 0], unitLength);
+      
+      
+
+      /*
+      const AC_OrgYPos = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*8.5, 0], unitLength);
+      const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*8.5, 0], unitLength);
+      /*
       */
       /*
       const AC_OrgXPosYPos = new AcidCrystal('center',40, 'pincer', [unitLength*12,unitLength*7.48, 0], unitLength);
@@ -99,7 +102,7 @@
       //stats.update();
     }
 
-    //unit.rotation.z -= .3;
+    unit.rotation.z -= .225;
     //unit.rotation.y -= .3;
     //unit.rotation.x += .1;
 
@@ -108,7 +111,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * .10;
-      //unit.rotation.y = time * .125;
+      unit.rotation.y = time * .25;
       //unit.rotation.z = time * .05;
 
       renderer.render(scene, camera);

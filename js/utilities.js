@@ -95,7 +95,7 @@
 
       function addSphere(origin) {
 
-        const geometry = new THREE.SphereGeometry(4,8);
+        const geometry = new THREE.SphereGeometry(2.75,8);
 
         //const material = new THREE.MeshPhongMaterial({ color: 0xFFFFFF, opacity: 0.5 });
         /*const material = new THREE.MeshPhongMaterial({
