@@ -282,22 +282,36 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
 
   addCurve(coordinatesXPosYNeg);
 
-  const paneCoordinates  =   [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ,
-      orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength,
-      endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ]
-
-  addPane(paneCoordinates);
-      
-      
+        
   // Extend Y-X+Z+
 
-  // Top
+  // Y-X+Z+ Inner
+  const YNegXPosZPosPaneInnerCoordinates  =   [
+    endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ,
+    orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength,
+    endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ
+  ]
+  addPane(YNegXPosZPosPaneInnerCoordinates);
+  
+  // Y-X+Z+ Outer
+  const YNegXPosZPosPaneOuterCoordinates  =   [
+
+    endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ,
+    orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4,
+    endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ
+  ]
+
+  
+  addPane(YNegXPosZPosPaneOuterCoordinates);
+
+
+  // Inner
   addLine(
     [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ],
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
     "thin"
   );
-  // Bottom
+  // Outer
   addLine(
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
@@ -305,6 +319,14 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   );
 
   // Extend Y-Z+X-
+
+  // Y-X+Z- inner
+  const YNegXPosZNegInnerPaneCoordinates  =   [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ,
+    orgX, orgY - 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength,
+    endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ
+  ]
+
+  addPane(YNegXPosZNegInnerPaneCoordinates);
 
   //Top
   addLine(

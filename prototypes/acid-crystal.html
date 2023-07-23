@@ -44,8 +44,10 @@
 
       const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength);
       
+      /*
       const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer_short', [unitLength*14, 0, 0], unitLength);
       const AC_Org1XNeg = new AcidCrystal('center',40, 'pincer_short', [-unitLength*14, 0, 0], unitLength);
+      */
       
       
 
@@ -115,7 +117,7 @@
       const time = Date.now() * 0.002;
 
       //unit.rotation.x = time * .10;
-      unit.rotation.y = time * .25;
+      //unit.rotation.y = time * .25;
       //unit.rotation.z = time * .05;
 
       renderer.render(scene, camera);
