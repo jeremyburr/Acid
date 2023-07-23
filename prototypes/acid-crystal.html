@@ -87,6 +87,10 @@
       light4.position.set(-100, 100, -100)//.normalize();
       scene.add(light4);
 
+      const lightAmbient = new THREE.AmbientLight(0xffffff,1 ); // soft white light
+      scene.add( lightAmbient );
+
+
     }
 
     function onWindowResize() {

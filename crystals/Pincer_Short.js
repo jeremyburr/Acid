@@ -6,7 +6,10 @@ import {
   addCurve,
   addLine,
   addSphere,
+  addPane,
 } from '../js/utilities.js'
+
+import * as THREE from '../js/three.module.js';
 
 function Pincer_Short(origin, unitLength) {
 
@@ -279,6 +282,13 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
 
   addCurve(coordinatesXPosYNeg);
 
+  const paneCoordinates  =   [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ,
+      orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength,
+      endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ]
+
+  addPane(paneCoordinates);
+      
+      
   // Extend Y-X+Z+
 
   // Top
