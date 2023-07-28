@@ -11,7 +11,7 @@ import {
 
 import * as THREE from '../js/three.module.js';
 
-function Pincer_Short(origin, unitLength) {
+function Pincer_Short(origin, unitLength,position) {
 
   const [orgX, orgY, orgZ] = origin;
 
@@ -34,6 +34,7 @@ function Pincer_Short(origin, unitLength) {
       orgY,
       orgZ
     ]
+    ,"normal",position
   );
 
   addVectorLine(
@@ -78,6 +79,7 @@ function Pincer_Short(origin, unitLength) {
       orgY,
       orgZ + 3 * unitLength
     ]
+    ,"normal",position
   );
 
   addVectorLine(
@@ -123,6 +125,7 @@ function Pincer_Short(origin, unitLength) {
       orgY,
       orgZ - 3 * unitLength
     ]
+    ,"normal",position
   );
 
   addVectorLine(
@@ -168,6 +171,7 @@ function Pincer_Short(origin, unitLength) {
       orgY + 2 * unitLength,
       orgZ
     ]
+    ,"normal",position
   );
 
   addVectorLine(
@@ -216,6 +220,7 @@ function Pincer_Short(origin, unitLength) {
       orgY,
       orgZ
     ]
+    ,"normal",position
   );
   addVectorLine(
     'X_Pos_Y_Neg',
@@ -322,13 +327,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ],
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
-    "thin"
+    "thin",
+    position
   );
   // Outer
   addLine(
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y-Z+X-
@@ -370,19 +377,19 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addPane(YPosXNegZPosPaneOuterCoordinates);
 
 
-
-
   //Top
   addLine(
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
     [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ],
-    "thin"
+    "thin",
+    position
   );
   //Bottom
   addLine(
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
     [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y-X-Z- 
@@ -391,13 +398,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ],
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
-    "thin"
+    "thin",
+    position
   );
   //Bottom
   addLine(
     [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y-Z- 
@@ -406,13 +415,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
     [endPoint1XPosYNeg[0] + 2 * unitLength, orgY - 2 * unitLength, orgZ],
-    "thin"
+    "thin",
+    position
   );
   //Bottom
   addLine(
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y+X+Z+
@@ -421,13 +432,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [endPoint1XPosYNeg[0] + 2 * unitLength, orgY + 2 * unitLength, orgZ],
     [orgX, orgY + 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
-    "thin"
+    "thin",
+    position
   );
   // Bottom
   addLine(
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY + unitLength * 4.25, orgZ],
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y-Z+X-
@@ -436,13 +449,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [orgX, orgY + 2 * unitLength, endPoint1XNueYNegZPos[2] + 2 * unitLength],
     [endPoint1XNegYNeg[0] - 2 * unitLength, orgY + 2 * unitLength, orgZ],
-    "thin"
+    "thin",
+    position
   );
   //Bottom
   addLine(
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
     [endPoint1XNegYNeg[0] - unitLength * 4, orgY + unitLength * 4.25, orgZ],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y-X-Z- 
@@ -451,13 +466,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [endPoint1XNegYNeg[0] - 2 * unitLength, orgY + 2 * unitLength, orgZ],
     [orgX, orgY + 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
-    "thin"
+    "thin",
+    position
   );
   //Bottom
   addLine(
     [endPoint1XNegYNeg[0] - unitLength * 4, orgY + unitLength * 4.25, orgZ],
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
-    "thin"
+    "thin",
+    position
   );
 
   // Extend Y-Z- 
@@ -466,13 +483,15 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
   addLine(
     [orgX, orgY + 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
     [endPoint1XPosYNeg[0] + 2 * unitLength, orgY + 2 * unitLength, orgZ],
-    "thin"
+    "thin",
+    position
   );
   //Bottom
   addLine(
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY + unitLength * 4.25, orgZ],
-    "thin"
+    "thin",
+    position
   );
 
 
@@ -490,7 +509,9 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       orgX,
       orgY,
       orgZ + 3 * unitLength
-    ]
+    ],
+    'medium',
+    position
   );
 
   addVectorLine(
@@ -528,7 +549,9 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       orgX,
       orgY,
       orgZ - 3 * unitLength
-    ]
+    ],
+    'medium',
+    position
   );
 
   addVectorLine(
@@ -562,7 +585,10 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       orgX - 3 * unitLength,
       orgY,
       orgZ
-    ]
+    ],
+    'medium',
+    position
+
   );
 
   addVectorLine(

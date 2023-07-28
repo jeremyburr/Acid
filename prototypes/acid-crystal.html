@@ -14,7 +14,7 @@
     import * as THREE from '../js/three.module.js';
     import { TrackballControls } from '../js/TrackballControls.js';
     import * as Axis from '../js/shapes/axis.js';
-    import { unit, tubeMaterial, returnEndPosition} from '../js/utilities.js'
+    import { unit, unit_0, unit_1, unit_2, unit_3, unit_4, tubeMaterial, returnEndPosition} from '../js/utilities.js'
     import { AcidCrystal} from '../js/AcidCrystal.js'
 
     let camera, scene, renderer, controls;
@@ -42,32 +42,25 @@
       controls = new TrackballControls(camera, renderer.domElement);
       window.addEventListener('resize', onWindowResize);
 
-      const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength);
-      
-      
-      /*
-      const AC_OrgXPos = new AcidCrystal('center', 40, 'pincer_short', [unitLength*14, 0, 0], unitLength);
-      const AC_Org1XNeg = new AcidCrystal('center',40, 'pincer_short', [-unitLength*14, 0, 0], unitLength);
-      */
-      
-      
+      const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength,0);
+      const AC_OrgYPosDouble = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*17, 0], unitLength,1);
+      const AC_OrgYPos = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*8.5, 0], unitLength,2);
+      const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*8.5, 0], unitLength,3);
+      const AC_OrgYNegDouble = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*17, 0], unitLength,4);
 
-      const AC_OrgYPosDouble = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*17, 0], unitLength);
-      const AC_OrgYPos = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*8.5, 0], unitLength);
-      const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*8.5, 0], unitLength);
-      const AC_OrgYNegDouble = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*17, 0], unitLength);
 
-      /*
-      const AC_OrgXPosYPos = new AcidCrystal('center',40, 'pincer', [unitLength*12,unitLength*7.48, 0], unitLength);
-      const AC_OrgXNegYPos = new AcidCrystal('center',40, 'pincer', [-unitLength*12,unitLength*7.48, 0], unitLength);
-      const AC_OrgXNegYNeg = new AcidCrystal('center',40, 'pincer', [-unitLength*12,-unitLength*7.48, 0], unitLength);
-      const AC_OrgXPosYNeg = new AcidCrystal('center',40, 'pincer', [unitLength*12,-unitLength*7.48, 0], unitLength);*/
+      // Dynamic Variable Creation
 
-      /*const AC_OrgXPosYNegDouble = new AcidCrystal('center',40, 'pincer', [unitLength*12,-unitLength*7.48*2, 0], unitLength);
-      const AC_OrgXNueYNegDouble = new AcidCrystal('center',40, 'pincer', [0,-unitLength*7.48*2, 0], unitLength);
-      const AC_OrgXNegYNegDouble = new AcidCrystal('center',40, 'pincer', [-unitLength*12,-unitLength*7.48*2, 0], unitLength);*/
+      
 
       scene.add(unit);
+      scene.add(unit_0);
+
+      /*scene.add(unit0);
+      scene.add(unit1);
+      scene.add(unit2);
+      scene.add(unit3);
+      scene.add(unit4);*/
 
       const axesHelper = new THREE.AxesHelper( 50 );
       //scene.add( axesHelper );
@@ -110,6 +103,7 @@
     }
 
     unit.rotation.z -= .225;
+    unit_0.rotation.z -= .225;
     //unit.rotation.y -= .3;
     //unit.rotation.x += .1;
 
@@ -119,6 +113,7 @@
 
       //unit.rotation.x = time * .10;
       unit.rotation.y = time * .25;
+      unit_0.rotation.y = time * .25;
       //unit.rotation.z = time * .05;
 
       renderer.render(scene, camera);
@@ -142,6 +137,7 @@
 </head>
 
 <body>
+  <div id="value"></div>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ import * as THREE from '../js/three.module.js';
 
 export class AcidCrystal {
 
-  constructor(name, segments, curvature, origin, unitLength) {
+  constructor(name, segments, curvature, origin, unitLength, position) {
 
     const [orgX, orgY, orgZ] = origin;
 
@@ -20,7 +20,7 @@ export class AcidCrystal {
     if (segments === 4) {
 
       // Segment - Center
-      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ],position);
 
       // Segment X+ 
       // Base
@@ -35,7 +35,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
         [
@@ -69,7 +69,7 @@ export class AcidCrystal {
           orgX - unitLength,
           orgY - unitLength,
           orgZ
-        ]);
+        ],position);
 
       // Y Pos
       addVectorLine('X_Neg_Y_Pos', [orgX - unitLength, orgY + unitLength, orgZ],
@@ -104,7 +104,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ + unitLength
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('Z_Pos_Y_Pos', [orgX, orgY + unitLength, orgZ + unitLength],
         [
@@ -136,7 +136,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ - unitLength
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('Z_Pos_Y_Pos', [orgX, orgY + unitLength, orgZ - unitLength],
         [
@@ -164,7 +164,7 @@ export class AcidCrystal {
     if (segments === 6) {
 
       // Segment - Center
-      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ],position);
 
       // Segment X+ 
       // Base
@@ -179,7 +179,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
         [
@@ -199,7 +199,7 @@ export class AcidCrystal {
         [orgX + (unitLength) + unitLength * Math.sqrt(3),
           orgY,
           orgZ
-        ]);
+        ],position);
       // Y Neg
       addVectorLine('X_Pos_Y_Neg', [orgX + unitLength, orgY - unitLength, orgZ],
         [
@@ -223,7 +223,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ + (unitLength * Math.sqrt(3)) / 2
         ]
-      );
+      ,position);
 
       // XZ Pos
 
@@ -264,7 +264,7 @@ export class AcidCrystal {
           orgX - unitLength,
           orgY - unitLength,
           orgZ
-        ]);
+        ],position);
 
       // Y Pos
       addVectorLine('X_Neg_Y_Pos', [orgX - unitLength, orgY + unitLength, orgZ],
@@ -287,7 +287,7 @@ export class AcidCrystal {
       );
 
       // Y Bisect
-      addLine([orgX - unitLength, orgY, orgZ], [orgX - unitLength - unitLength * Math.sqrt(3), orgY, orgZ]);
+      addLine([orgX - unitLength, orgY, orgZ], [orgX - unitLength - unitLength * Math.sqrt(3), orgY, orgZ],position);
 
       // XZ Neg 
 
@@ -303,7 +303,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ - (unitLength * Math.sqrt(3)) / 2
         ]
-      );
+      ,position);
 
       // Y Pos
       addVectorLine('XZ_Neg_Y_Pos', [orgX - (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
@@ -329,7 +329,7 @@ export class AcidCrystal {
       // X Neg Z Pos 
 
       // Base
-      addLine([orgX - unitLength / 2, orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2], [orgX - (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2]);
+      addLine([orgX - unitLength / 2, orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2], [orgX - (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],position);
 
       // Y Pos
       addVectorLine('X_Neg_Z_Pos_Y_Pos', [orgX - (unitLength / 2), orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
@@ -356,7 +356,7 @@ export class AcidCrystal {
       // X Pos Z Neg 
 
       // Base
-      addLine([orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2], [orgX + (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2]);
+      addLine([orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2], [orgX + (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],position);
 
       // Y Pos
       addVectorLine('X_Pos_Z_Neg_Y_Pos', [orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
@@ -385,7 +385,7 @@ export class AcidCrystal {
     if ((segments === 8) && (curvature === 'straight')) {
 
       // Segment - Center
-      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ]);
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ],position);
 
       // Segment X+ 
 
@@ -401,7 +401,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
         [
@@ -435,7 +435,7 @@ export class AcidCrystal {
           orgX - unitLength,
           orgY - unitLength,
           orgZ
-        ]);
+        ],position);
 
       // Y Pos
       addVectorLine('X_Neg_Y_Pos', [orgX - unitLength, orgY + unitLength, orgZ],
@@ -470,7 +470,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ + unitLength
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('Z_Pos_Y_Pos', [orgX, orgY + unitLength, orgZ + unitLength],
         [
@@ -502,7 +502,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ - unitLength
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('Z_Pos_Y_Pos', [orgX, orgY + unitLength, orgZ - unitLength],
         [
@@ -535,7 +535,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ + unitLength / 2
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('XZ_Pos_Y_Pos', [orgX + unitLength / 2, orgY + unitLength, orgZ + unitLength / 2],
         [
@@ -568,7 +568,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ - unitLength / 2
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('X_Pos_Z_Neg_Y_Pos', [orgX + unitLength / 2, orgY + unitLength, orgZ - unitLength / 2],
         [
@@ -602,7 +602,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ - unitLength / 2
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('X_Neg_Z_Neg_Y_Pos', [orgX - unitLength / 2, orgY + unitLength, orgZ - unitLength / 2],
         [
@@ -635,7 +635,7 @@ export class AcidCrystal {
           orgY - unitLength,
           orgZ + unitLength / 2
         ]
-      );
+      ,position);
       // Y Pos
       addVectorLine('X_Neg_Z_Pos_Y_Pos', [orgX - unitLength / 2, orgY + unitLength, orgZ + unitLength / 2],
         [
@@ -677,7 +677,7 @@ export class AcidCrystal {
     // Pincer Short
 
     if ((curvature === 'pincer_short')) {
-      Pincer_Short(origin, unitLength);
+      Pincer_Short(origin, unitLength,position);
     }
 
   }

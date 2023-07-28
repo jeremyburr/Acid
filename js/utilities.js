@@ -4,11 +4,13 @@ const phi = (1 + Math.sqrt(5)) / 2;
 
 let unit = new THREE.Group();
 
-/*const tubeMaterialThin = new THREE.MeshPhongMaterial({
-  color: 0x00ff44,
-  shininess: 250,
-  side: THREE.DoubleSide,
-});*/
+let unit_0 = new THREE.Group();
+let unit_1 = new THREE.Group();
+let unit_2 = new THREE.Group();
+let unit_3 = new THREE.Group();
+let unit_4 = new THREE.Group();
+
+let units = [unit_0, unit_1, unit_2, unit_3, unit_4];
 
 const thinColor = 0x11a80c;
 
@@ -33,7 +35,11 @@ const tubeMaterialThick = new THREE.MeshPhongMaterial({
 
 // Add Line
 
-function addLine(start, end, size) {
+function addLine(start, end, size, unitPosition) {
+
+  /*console.log('size',size);
+  console.log('unitPosition',unitPosition);*/
+
   const coordinates = [];
   coordinates.push(new THREE.Vector3(...start));
   coordinates.push(new THREE.Vector3(...end));
@@ -42,10 +48,13 @@ function addLine(start, end, size) {
   let tubeMaterialVar = size === "thin" ? tubeMaterialThin : tubeMaterialThick;
   const geometry = new THREE.TubeGeometry(curve, 64, tubeWidth, 16, false)
   const addLine = new THREE.Mesh(geometry, tubeMaterialVar);
-  unit.add(addLine);
+
+  //console.log('units',units);
+
+  units[unitPosition].add(addLine);
+
+  //unit.add(addLine);
 }
-
-
 
 // Find End Coordinates for New Segment
 
@@ -162,6 +171,11 @@ function degreesToRadians(degrees) {
 
 export {
   unit,
+  unit_0,
+  unit_1,
+  unit_2,
+  unit_3,
+  unit_4,
   tubeMaterial,
   returnEndPosition,
   addVectorLine,
