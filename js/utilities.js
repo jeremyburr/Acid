@@ -95,7 +95,7 @@ function addCurve(coordinates, unitPosition) {
 }
 
 
-function addPane(coordinates,color) {
+function addPane(coordinates,color, unitPosition) {
 
   const material = new THREE.MeshPhongMaterial({
     side: THREE.DoubleSide,
@@ -126,7 +126,8 @@ function addPane(coordinates,color) {
   );
   geometryPane.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   const meshPane = new THREE.Mesh(geometryPane, material);
-  unit.add(meshPane);
+  //unit.add(meshPane);
+  units[unitPosition].add(meshPane);
 
 }
 
