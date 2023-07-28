@@ -62,7 +62,7 @@ function Pincer_Short(origin, unitLength,position) {
     [endPoint1XPosYPos[0] + unitLength * 4, orgY + unitLength * 4.25, orgZ],
   ]
 
-  addCurve(coordinatesXPosYPos);
+  addCurve(coordinatesXPosYPos, position);
 
 
   //  X Nue Y Pos Z Pos
@@ -107,7 +107,7 @@ function Pincer_Short(origin, unitLength,position) {
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZPos[2] + unitLength * 4],
   ]
 
-  addCurve(coordinatesXNueYPosZPos);
+  addCurve(coordinatesXNueYPosZPos, position);
 
   /*****************/
 
@@ -153,7 +153,7 @@ function Pincer_Short(origin, unitLength,position) {
     [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZNeg[2] - unitLength * 4],
   ]
 
-  addCurve(coordinatesXNueYPosZNeg) ;
+  addCurve(coordinatesXNueYPosZNeg, position) ;
 
   /*****************/
 
@@ -199,7 +199,7 @@ function Pincer_Short(origin, unitLength,position) {
     [endPoint1XNegYPos[0] - unitLength * 4, orgY + unitLength * 4.25, orgZ],
   ]
 
-  addCurve(coordinatesXNegYPos);
+  addCurve(coordinatesXNegYPos, position);
 
 
   // BOTTOM
@@ -285,7 +285,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     ],
     unitLength * 1.25 * phi)
 
-  addCurve(coordinatesXPosYNeg);
+  addCurve(coordinatesXPosYNeg, position);
 
         
   // Extend Y-X+Z+
@@ -531,7 +531,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZPos[2] + unitLength * 4],
   ]
 
-  addCurve(coordinatesXNueYNegZPos);
+  addCurve(coordinatesXNueYNegZPos, position);
 
 
   /*****************/
@@ -570,7 +570,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     [orgX, orgY - unitLength * 4.25, endPoint1XNueYNegZNeg[2] - unitLength * 4],
   ]
 
-  addCurve(coordinatesXNueYNegZNeg);
+  addCurve(coordinatesXNueYNegZNeg, position);
 
     /*****************/
 
@@ -607,7 +607,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
   ]
 
-  addCurve(coordinatesXNegYNeg);
+  addCurve(coordinatesXNegYNeg, position);
 
   addSphere(origin);
 

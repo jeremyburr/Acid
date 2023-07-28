@@ -1,5 +1,4 @@
 import { addVectorLine, addLine, degreesToRadians, phi, addCurve } from '../js/utilities.js';
-
 import { Eight_Curved } from '../crystals/Eight_Curved.js';
 import { Eight_Curved_Lattice } from '../crystals/Eight_Curved_Lattice.js';
 import { Pincer } from '../crystals/Forty_Pincer.js';

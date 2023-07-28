@@ -80,7 +80,7 @@ function addVectorLine(name, start, direction, magnitude, unitPosition) {
 
 // Add Curve
 
-function addCurve(coordinates) {
+function addCurve(coordinates, unitPosition) {
   let YNegCurveVectors = [];
   for (const coordinate of coordinates) {
     YNegCurveVectors.push(new THREE.Vector3(coordinate[0], coordinate[1], coordinate[2]));
@@ -91,6 +91,7 @@ function addCurve(coordinates) {
   const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: thinColor });
   const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
   unit.add(YNegCurveObject);
+  units[unitPosition].add(YNegCurveObject);
 }
 
 
