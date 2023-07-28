@@ -45,7 +45,7 @@ function Pincer_Short(origin, unitLength,position) {
       Math.cos(degreesToRadians(270)),
       Math.cos(degreesToRadians(90))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
   const endPoint1XPosYPos = returnEndPosition(
     [orgX + unitLength, orgY, orgZ],
@@ -90,7 +90,7 @@ function Pincer_Short(origin, unitLength,position) {
       Math.cos(degreesToRadians(270)),
       Math.cos(degreesToRadians(0))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
   const endPoint1XNueYPosZPos = returnEndPosition(
     [orgX, orgY, orgZ + unitLength],
@@ -136,7 +136,7 @@ function Pincer_Short(origin, unitLength,position) {
       Math.cos(degreesToRadians(270)),
       Math.cos(degreesToRadians(180))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
   const endPoint1XNueYPosZNeg = returnEndPosition(
     [orgX, orgY, orgZ - unitLength],
@@ -182,7 +182,7 @@ function Pincer_Short(origin, unitLength,position) {
       Math.cos(degreesToRadians(270)),
       Math.cos(degreesToRadians(90))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
   const endPoint1XNegYPos = returnEndPosition(
     [orgX - unitLength, orgY, orgZ],
@@ -230,7 +230,7 @@ function Pincer_Short(origin, unitLength,position) {
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(90))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
     // Return Curve End Positions
 
@@ -522,7 +522,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(0))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
   
   const coordinatesXNueYNegZPos = [
@@ -562,7 +562,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(180))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
 
   const coordinatesXNueYNegZNeg = [
     [orgX, orgY - 2 * unitLength, endPoint1XNueYNegZNeg[2] - 2 * unitLength],
@@ -599,7 +599,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(90))
     ],
-    unitLength * 1.25 * phi);
+    unitLength * 1.25 * phi,position);
   
   const coordinatesXNegYNeg = [
     [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ],

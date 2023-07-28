@@ -36,10 +36,6 @@ const tubeMaterialThick = new THREE.MeshPhongMaterial({
 // Add Line
 
 function addLine(start, end, size, unitPosition) {
-
-  /*console.log('size',size);
-  console.log('unitPosition',unitPosition);*/
-
   const coordinates = [];
   coordinates.push(new THREE.Vector3(...start));
   coordinates.push(new THREE.Vector3(...end));
@@ -48,12 +44,7 @@ function addLine(start, end, size, unitPosition) {
   let tubeMaterialVar = size === "thin" ? tubeMaterialThin : tubeMaterialThick;
   const geometry = new THREE.TubeGeometry(curve, 64, tubeWidth, 16, false)
   const addLine = new THREE.Mesh(geometry, tubeMaterialVar);
-
-  //console.log('units',units);
-
   units[unitPosition].add(addLine);
-
-  //unit.add(addLine);
 }
 
 // Find End Coordinates for New Segment
@@ -74,7 +65,7 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 // Add Segment
 
-function addVectorLine(name, start, direction, magnitude) {
+function addVectorLine(name, start, direction, magnitude, unitPosition) {
   const coordinates = [];
   coordinates.push(new THREE.Vector3(start[0], start[1], start[2]));
   const end = returnEndPosition(start, direction, magnitude);
@@ -82,7 +73,9 @@ function addVectorLine(name, start, direction, magnitude) {
   const curve = new THREE.CatmullRomCurve3(coordinates);
   const geometry = new THREE.TubeGeometry(curve, 64, .80, 16, false)
   globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
-  unit.add(globalThis[name]);
+  //unit.add(globalThis[name]);
+
+  units[unitPosition].add(globalThis[name]);
 }
 
 // Add Curve
