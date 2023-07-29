@@ -33,7 +33,8 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(37, window.innerWidth / window.innerHeight, 1, 3500);
       camera.position.x = 0;
-      camera.position.y = 275;
+      //camera.position.y = 275;
+      camera.position.y = 150;
       camera.position.z = 600;
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -42,16 +43,17 @@
       controls = new TrackballControls(camera, renderer.domElement);
       window.addEventListener('resize', onWindowResize);
 
-      const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength,0);
-      const AC_OrgYPosDouble = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*17, 0], unitLength,1);
-      const AC_OrgYPos = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*8.5, 0], unitLength,2);
-      const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*8.5, 0], unitLength,3);
-      const AC_OrgYNegDouble = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*17, 0], unitLength,4);
+      // AC Levels: 1,2,3
+      // Bond + Break
 
 
-      // Dynamic Variable Creation
+      const AC_OrgYPos = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*8.5, 0], unitLength,2,'bond-break',[2,3]);
+      const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength,0,'bond-break',[2,3]);
 
-      
+      //const AC_OrgYPosDouble = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*17, 0], unitLength,1);
+      //const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*8.5, 0], unitLength,3);
+      //const AC_OrgYNegDouble = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*17, 0], unitLength,4);
+
 
       scene.add(unit);
       scene.add(unit_0);
@@ -60,12 +62,7 @@
       scene.add(unit_3);
       scene.add(unit_4);
 
-      /*scene.add(unit0);
-      scene.add(unit1);
-      scene.add(unit2);
-      scene.add(unit3);
-      scene.add(unit4);*/
-
+      
       const axesHelper = new THREE.AxesHelper( 50 );
       //scene.add( axesHelper );
 
