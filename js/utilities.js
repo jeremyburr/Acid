@@ -91,7 +91,7 @@ function addCurve(coordinates, unitPosition) {
   const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: thinColor });
   const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
   unit.add(YNegCurveObject);
-  units[unitPosition].add(YNegCurveObject);
+  //units[unitPosition].add(YNegCurveObject);
 }
 
 
