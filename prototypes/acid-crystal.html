@@ -35,7 +35,7 @@
       camera.position.x = 0;
       //camera.position.y = 275;
       camera.position.y = 150;
-      camera.position.z = 600;
+      camera.position.z = 500;
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -45,7 +45,7 @@
 
       // AC Levels: 1,2,3
       // Bond + Break
-
+      // Skeleton vs 
 
       const AC_OrgYPos = new AcidCrystal('center',40, 'pincer_short', [0,unitLength*8.5, 0], unitLength,2,'bond-break',[2,3]);
       const AC_Org = new AcidCrystal('center', 40, 'pincer_short', [0, 0, 0], unitLength,0,'bond-break',[2,3]);
@@ -54,13 +54,15 @@
       //const AC_OrgYNeg = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*8.5, 0], unitLength,3);
       //const AC_OrgYNegDouble = new AcidCrystal('center',40, 'pincer_short', [0,-unitLength*17, 0], unitLength,4);
 
-
-      scene.add(unit);
-      scene.add(unit_0);
-      scene.add(unit_1);
       scene.add(unit_2);
-      scene.add(unit_3);
-      scene.add(unit_4);
+      scene.add(unit_0);
+
+
+      //scene.add(unit_1);
+      //scene.add(unit_3);
+      //scene.add(unit_4);
+
+      //scene.add(unit);
 
       
       const axesHelper = new THREE.AxesHelper( 50 );
