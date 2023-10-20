@@ -21,7 +21,8 @@ function Hex_Anvil(origin, unitLength,position) {
   //  X Pos Y Pos
 
   // Base
-  addLine(
+  /*addLine(
+
     [
       orgX + 3 * unitLength,
       orgY + 2 * unitLength,
@@ -33,10 +34,10 @@ function Hex_Anvil(origin, unitLength,position) {
       orgZ
     ]
     ,"thin",position
-  );
+  );*/
 
 
-  const endPoint1XPosYPos = returnEndPosition(
+  /*const endPoint1XPosYPos = returnEndPosition(
     [orgX + unitLength, orgY, orgZ],
     [
       Math.cos(degreesToRadians(0)),
@@ -51,7 +52,7 @@ function Hex_Anvil(origin, unitLength,position) {
     [endPoint1XPosYPos[0] + unitLength * 4, orgY + unitLength * 4.25, orgZ],
   ]
 
-  addCurve(coordinatesXPosYPos, position);
+  addCurve(coordinatesXPosYPos, position);*/
 
   
   /*****************/
@@ -59,7 +60,7 @@ function Hex_Anvil(origin, unitLength,position) {
   //  X Neg Y Pos
 
   // Base
-  addLine(
+  /*addLine(
     [
       orgX - 3 * unitLength,
       orgY,
@@ -99,6 +100,7 @@ function Hex_Anvil(origin, unitLength,position) {
   ]
 
   addCurve(coordinatesXNegYPos, position);
+  */
 
 
   // BOTTOM
@@ -108,7 +110,7 @@ function Hex_Anvil(origin, unitLength,position) {
   /*****************/
 
   // Base
-  addLine(
+/*  addLine(
     [
       orgX + 3 * unitLength,
       orgY - 2 * unitLength,
@@ -120,7 +122,7 @@ function Hex_Anvil(origin, unitLength,position) {
       orgZ
     ]
     ,"thin",position
-  );
+  );*/
 
     // Return Curve End Positions
 
@@ -141,7 +143,7 @@ function Hex_Anvil(origin, unitLength,position) {
     [endPoint1XPosYNeg[0] + unitLength * 4, orgY - unitLength * 4.25, orgZ],
   ]
 
-  // Y Neg Z Pos
+  /*// Y Neg Z Pos
   
   const endPoint1XNueYNegZPos = returnEndPosition(
     [orgX, orgY, orgZ + unitLength],
@@ -151,6 +153,7 @@ function Hex_Anvil(origin, unitLength,position) {
       Math.cos(degreesToRadians(0))
     ],
     unitLength * 1.25 * phi)
+    */
 
   // Y Neg X Neg
 
@@ -166,22 +169,22 @@ function Hex_Anvil(origin, unitLength,position) {
 
     // Y Neg Z Neg
 
-const endPoint1XNueYNegZNeg = returnEndPosition(
+/*const endPoint1XNueYNegZNeg = returnEndPosition(
     [orgX, orgY, orgZ - unitLength],
     [
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(90)),
       Math.cos(degreesToRadians(180))
     ],
-    unitLength * 1.25 * phi)
+    unitLength * 1.25 * phi)*/
 
-  addCurve(coordinatesXPosYNeg, position);
+  //addCurve(coordinatesXPosYNeg, position);
   
 
     /*****************/
 
   // Base
-  addLine(
+/*  addLine(
     [
       orgX - 3 * unitLength,
       orgY - 2 * unitLength,
@@ -196,8 +199,9 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
     position
 
   );
+  */
 
-  addVectorLine(
+  /*addVectorLine(
     'X_Neg_Y_Neg',
     [orgX - 3 * unitLength, orgY - 2 * unitLength, orgZ],
     [
@@ -206,16 +210,239 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       Math.cos(degreesToRadians(90))
     ],
     unitLength * 1.25 * phi,position);
+    */
   
-  const coordinatesXNegYNeg = [
-    [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - 2 * unitLength, orgZ],
-    [endPoint1XNegYNeg[0] - 2 * unitLength, orgY - unitLength * 4.25, orgZ],
+  /*const coordinatesXNegYNeg = [
+    [orgX - 3 * unitLength, orgY - 2 * unitLength, orgZ],
+    [orgX - 3 * unitLength, orgY - unitLength * 2.25, orgZ],
     [endPoint1XNegYNeg[0] - unitLength * 4, orgY - unitLength * 4.25, orgZ],
   ]
 
-  addCurve(coordinatesXNegYNeg, position);
+  addCurve(coordinatesXNegYNeg, position);*/
 
-  addSphere(origin);
+  //addSphere(origin);
+
+
+  // AC-6 Resurrected
+
+    /*if (segments === 6) {
+
+      // Segment - Center
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ],position);
+
+      // Segment X+ 
+      // Base
+      addLine(
+        [
+          orgX + unitLength,
+          orgY + unitLength,
+          orgZ
+        ],
+        [
+          orgX + unitLength,
+          orgY - unitLength,
+          orgZ
+        ]
+      ,position);
+      // Y Pos
+      addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(0)),
+          Math.cos(degreesToRadians(45)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+      // Y Bisect
+      addLine(
+        [
+          orgX + unitLength,
+          orgY,
+          orgZ
+        ],
+        [orgX + (unitLength) + unitLength * Math.sqrt(3),
+          orgY,
+          orgZ
+        ],position);
+      // Y Neg
+      addVectorLine('X_Pos_Y_Neg', [orgX + unitLength, orgY - unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(0)),
+          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3));
+
+      // XZ Pos 
+
+      // Base
+      addLine(
+        [
+          orgX + unitLength / 2,
+          orgY + unitLength,
+          orgZ + (unitLength * Math.sqrt(3)) / 2
+        ],
+        [
+          orgX + unitLength / 2,
+          orgY - unitLength,
+          orgZ + (unitLength * Math.sqrt(3)) / 2
+        ]
+      ,position);
+
+      // XZ Pos
+
+      // Y Pos
+      addVectorLine('XZ_Pos_Y_Pos', [orgX + (unitLength / 2), orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        [
+          Math.cos(degreesToRadians(60)),
+          Math.cos(degreesToRadians(45)),
+          Math.cos(degreesToRadians(30))],
+        unitLength * Math.sqrt(3));
+
+      // Y Neg
+      addVectorLine('XZ_Pos_Y_Neg', [orgX + (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        [
+          Math.cos(degreesToRadians(60)),
+          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(30))],
+        unitLength * Math.sqrt(3));
+
+      // Y Bisect
+      addVectorLine('XZ_Pos_Y_Bisect', [orgX + (unitLength / 2), orgY, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        [
+          Math.cos(degreesToRadians(60)),
+          Math.cos(degreesToRadians(90)),
+          Math.cos(degreesToRadians(30))],
+        unitLength * Math.sqrt(3));
+
+      // X Neg
+
+      // Base
+      addLine(
+        [
+          orgX - unitLength,
+          orgY + unitLength,
+          orgZ
+        ],
+        [
+          orgX - unitLength,
+          orgY - unitLength,
+          orgZ
+        ],position);
+
+      // Y Pos
+      addVectorLine('X_Neg_Y_Pos', [orgX - unitLength, orgY + unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(180)),
+          Math.cos(degreesToRadians(45)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+
+      // Y Neg
+      addVectorLine('X_Neg_Y_Neg', [orgX - unitLength, orgY - unitLength, orgZ],
+        [
+          Math.cos(degreesToRadians(180)),
+          Math.cos(degreesToRadians(135)),
+          Math.cos(degreesToRadians(90))
+        ],
+        unitLength * Math.sqrt(3)
+      );
+
+      // Y Bisect
+      addLine([orgX - unitLength, orgY, orgZ], [orgX - unitLength - unitLength * Math.sqrt(3), orgY, orgZ],position);
+
+      // XZ Neg 
+
+      // Base
+      addLine(
+        [
+          orgX - (unitLength / 2),
+          orgY + unitLength,
+          orgZ - (unitLength * Math.sqrt(3)) / 2
+        ],
+        [
+          orgX - (unitLength / 2),
+          orgY - unitLength,
+          orgZ - (unitLength * Math.sqrt(3)) / 2
+        ]
+      ,position);
+
+      // Y Pos
+      addVectorLine('XZ_Neg_Y_Pos', [orgX - (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(240)),
+        Math.cos(degreesToRadians(45)),
+        Math.cos(degreesToRadians(210))],
+        unitLength * Math.sqrt(3));
+
+      // Y Neg
+      addVectorLine('XZ_Neg_Y_Neg', [orgX - (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(240)),
+        Math.cos(degreesToRadians(135)),
+        Math.cos(degreesToRadians(215))],
+        unitLength * Math.sqrt(3));
+
+      // Y Bisect
+      addVectorLine('XZ_Neg_Y_Bisect', [orgX - (unitLength / 2), orgY, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(240)),
+        Math.cos(degreesToRadians(90)),
+        Math.cos(degreesToRadians(210))],
+        unitLength * Math.sqrt(3));
+
+      // X Neg Z Pos 
+
+      // Base
+      addLine([orgX - unitLength / 2, orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2], [orgX - (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],position);
+
+      // Y Pos
+      addVectorLine('X_Neg_Z_Pos_Y_Pos', [orgX - (unitLength / 2), orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(120)),
+        Math.cos(degreesToRadians(45)),
+        Math.cos(degreesToRadians(30))],
+        unitLength * Math.sqrt(3));
+
+      // Y Neg
+
+      addVectorLine('X_Neg_Z_Pos_Y_Neg', [orgX - (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(120)),
+        Math.cos(degreesToRadians(135)),
+        Math.cos(degreesToRadians(30))],
+        unitLength * Math.sqrt(3));
+
+      // Y Bisect 
+      addVectorLine('X_Pos_Z_Neg_Y_Bisect', [orgX - (unitLength / 2), orgY, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(120)),
+        Math.cos(degreesToRadians(90)),
+        Math.cos(degreesToRadians(30))],
+        unitLength * Math.sqrt(3));
+
+      // X Pos Z Neg 
+
+      // Base
+      addLine([orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2], [orgX + (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],position);
+
+      // Y Pos
+      addVectorLine('X_Pos_Z_Neg_Y_Pos', [orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(300)),
+        Math.cos(degreesToRadians(45)),
+        Math.cos(degreesToRadians(210))],
+        unitLength * Math.sqrt(3));
+
+      // Y Bisect
+      addVectorLine('X_Pos_Z_Neg_Y_Bisect', [orgX + (unitLength / 2), orgY, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(300)),
+        Math.cos(degreesToRadians(90)),
+        Math.cos(degreesToRadians(210))],
+        unitLength * Math.sqrt(3));
+
+      // Y Neg
+      addVectorLine('X_Pos_Z_Neg_Y_Neg', [orgX + (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        [Math.cos(degreesToRadians(300)),
+        Math.cos(degreesToRadians(135)),
+        Math.cos(degreesToRadians(210))],
+        unitLength * Math.sqrt(3));
+    }*/
 
 
 }
