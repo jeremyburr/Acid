@@ -40,7 +40,7 @@ function addLine(start, end, size, unitPosition) {
   coordinates.push(new THREE.Vector3(...start));
   coordinates.push(new THREE.Vector3(...end));
   const curve = new THREE.CatmullRomCurve3(coordinates);
-  let tubeWidth = size === "thin" ? 1 : 1.5;
+  let tubeWidth = size === "thin" ? .5 : 1.5;
   let tubeMaterialVar = size === "thin" ? tubeMaterialThin : tubeMaterialThick;
   const geometry = new THREE.TubeGeometry(curve, 64, tubeWidth, 16, false)
   const addLine = new THREE.Mesh(geometry, tubeMaterialVar);

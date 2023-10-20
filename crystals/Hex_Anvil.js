@@ -32,7 +32,7 @@ function Hex_Anvil(origin, unitLength,position) {
       orgY,
       orgZ
     ]
-    ,"normal",position
+    ,"thin",position
   );
 
 
@@ -53,78 +53,7 @@ function Hex_Anvil(origin, unitLength,position) {
 
   addCurve(coordinatesXPosYPos, position);
 
-
-  //  X Nue Y Pos Z Pos
-
-  // Base
-  /*addLine(
-    [
-      orgX,
-      orgY + 2 * unitLength,
-      orgZ + 3 * unitLength
-    ],
-    [
-      orgX,
-      orgY,
-      orgZ + 3 * unitLength
-    ]
-    ,"normal",position
-  );*/
   
-
-  /*const endPoint1XNueYPosZPos = returnEndPosition(
-    [orgX, orgY, orgZ + unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(270)),
-      Math.cos(degreesToRadians(0))
-    ],
-    unitLength * 1.25 * phi)
-
-  const coordinatesXNueYPosZPos = [
-    [orgX, orgY + 2 * unitLength, endPoint1XNueYPosZPos[2] + 2 * unitLength],
-    [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZPos[2] + 2 * unitLength],
-    [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZPos[2] + unitLength * 4],
-  ]
-
-  //addCurve(coordinatesXNueYPosZPos, position);
-
-  /*****************/
-
-  //  X Nue Y Pos Z Neg
-
-  // Base
-/*  addLine(
-    [
-      orgX,
-      orgY + 2 * unitLength,
-      orgZ - 3 * unitLength
-    ],
-    [
-      orgX,
-      orgY,
-      orgZ - 3 * unitLength
-    ]
-    ,"normal",position
-  );
-
-  const endPoint1XNueYPosZNeg = returnEndPosition(
-    [orgX, orgY, orgZ - unitLength],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(270)),
-      Math.cos(degreesToRadians(180))
-    ],
-    unitLength * 1.25 * phi)
-
-  const coordinatesXNueYPosZNeg = [
-    [orgX, orgY + 2 * unitLength, endPoint1XNueYPosZNeg[2] - 2 * unitLength],
-    [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZNeg[2] - 2 * unitLength],
-    [orgX, orgY + unitLength * 4.25, endPoint1XNueYPosZNeg[2] - unitLength * 4],
-  ]
-
-  addCurve(coordinatesXNueYPosZNeg, position) ;*/
-
   /*****************/
 
   //  X Neg Y Pos
@@ -141,7 +70,7 @@ function Hex_Anvil(origin, unitLength,position) {
       orgY + 2 * unitLength,
       orgZ
     ]
-    ,"normal",position
+    ,"thin",position
   );
 
   addVectorLine(
@@ -190,7 +119,7 @@ function Hex_Anvil(origin, unitLength,position) {
       orgY,
       orgZ
     ]
-    ,"normal",position
+    ,"thin",position
   );
 
     // Return Curve End Positions
@@ -263,7 +192,7 @@ const endPoint1XNueYNegZNeg = returnEndPosition(
       orgY,
       orgZ
     ],
-    'medium',
+    'thin',
     position
 
   );
