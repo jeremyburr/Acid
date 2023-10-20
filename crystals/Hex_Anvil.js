@@ -225,10 +225,10 @@ function Hex_Anvil(origin, unitLength,position) {
 
   // AC-6 Resurrected
 
-    /*if (segments === 6) {
+    //if (segments === 6) {
 
       // Segment - Center
-      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ],position);
+      addLine([orgX, orgY + unitLength, orgZ], [orgX, orgY - unitLength, orgZ],'thin',position);
 
       // Segment X+ 
       // Base
@@ -243,16 +243,19 @@ function Hex_Anvil(origin, unitLength,position) {
           orgY - unitLength,
           orgZ
         ]
-      ,position);
+      ,'thin',position);
+
       // Y Pos
-      addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
+      /*addVectorLine('X_Pos_Y_Pos', [orgX + unitLength, orgY + unitLength, orgZ],
         [
           Math.cos(degreesToRadians(0)),
           Math.cos(degreesToRadians(45)),
           Math.cos(degreesToRadians(90))
         ],
         unitLength * Math.sqrt(3)
-      );
+      );*/
+
+      /*
       // Y Bisect
       addLine(
         [
@@ -275,6 +278,7 @@ function Hex_Anvil(origin, unitLength,position) {
 
       // XZ Pos 
 
+      */
       // Base
       addLine(
         [
@@ -287,7 +291,9 @@ function Hex_Anvil(origin, unitLength,position) {
           orgY - unitLength,
           orgZ + (unitLength * Math.sqrt(3)) / 2
         ]
-      ,position);
+      ,"thin",position);
+
+      /*
 
       // XZ Pos
 
@@ -316,6 +322,7 @@ function Hex_Anvil(origin, unitLength,position) {
         unitLength * Math.sqrt(3));
 
       // X Neg
+      */
 
       // Base
       addLine(
@@ -328,7 +335,9 @@ function Hex_Anvil(origin, unitLength,position) {
           orgX - unitLength,
           orgY - unitLength,
           orgZ
-        ],position);
+        ],'thin',position);
+
+        /*
 
       // Y Pos
       addVectorLine('X_Neg_Y_Pos', [orgX - unitLength, orgY + unitLength, orgZ],
@@ -353,6 +362,7 @@ function Hex_Anvil(origin, unitLength,position) {
       // Y Bisect
       addLine([orgX - unitLength, orgY, orgZ], [orgX - unitLength - unitLength * Math.sqrt(3), orgY, orgZ],position);
 
+      */
       // XZ Neg 
 
       // Base
@@ -367,7 +377,9 @@ function Hex_Anvil(origin, unitLength,position) {
           orgY - unitLength,
           orgZ - (unitLength * Math.sqrt(3)) / 2
         ]
-      ,position);
+      ,'thin',position);
+
+      /*
 
       // Y Pos
       addVectorLine('XZ_Neg_Y_Pos', [orgX - (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
@@ -390,10 +402,17 @@ function Hex_Anvil(origin, unitLength,position) {
         Math.cos(degreesToRadians(210))],
         unitLength * Math.sqrt(3));
 
+        */
       // X Neg Z Pos 
 
       // Base
-      addLine([orgX - unitLength / 2, orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2], [orgX - (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],position);
+      addLine(
+        [orgX - unitLength / 2, orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2], 
+        [orgX - (unitLength / 2), orgY - unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
+        'thin',
+        position);
+
+      /*
 
       // Y Pos
       addVectorLine('X_Neg_Z_Pos_Y_Pos', [orgX - (unitLength / 2), orgY + unitLength, orgZ + (unitLength * Math.sqrt(3)) / 2],
@@ -419,8 +438,14 @@ function Hex_Anvil(origin, unitLength,position) {
 
       // X Pos Z Neg 
 
+      */
+
       // Base
-      addLine([orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2], [orgX + (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],position);
+      addLine(
+        [orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2], 
+        [orgX + (unitLength / 2), orgY - unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
+        'thin', position);
+       /* 
 
       // Y Pos
       addVectorLine('X_Pos_Z_Neg_Y_Pos', [orgX + (unitLength / 2), orgY + unitLength, orgZ - (unitLength * Math.sqrt(3)) / 2],
@@ -442,7 +467,8 @@ function Hex_Anvil(origin, unitLength,position) {
         Math.cos(degreesToRadians(135)),
         Math.cos(degreesToRadians(210))],
         unitLength * Math.sqrt(3));
-    }*/
+    */
+      //}
 
 
 }
