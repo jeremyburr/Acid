@@ -75,7 +75,7 @@ function addVectorLine(name, start, direction, magnitude, unitPosition) {
   globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
   //unit.add(globalThis[name]);
 
-  units[unitPosition].add(globalThis[name]);
+  //units[unitPosition].add(globalThis[name]);
 }
 
 // Add Curve
@@ -90,8 +90,8 @@ function addCurve(coordinates, unitPosition) {
   const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .4, 16, false)
   const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: thinColor });
   const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
-  unit.add(YNegCurveObject);
-  //units[unitPosition].add(YNegCurveObject);
+  //unit.add(YNegCurveObject);
+  units[unitPosition].add(YNegCurveObject);
 }
 
 
@@ -127,7 +127,7 @@ function addPane(coordinates,color, unitPosition) {
   geometryPane.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   const meshPane = new THREE.Mesh(geometryPane, material);
   //unit.add(meshPane);
-  units[unitPosition].add(meshPane);
+  //units[unitPosition].add(meshPane);
 
 }
 

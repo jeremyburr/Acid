@@ -1,5 +1,5 @@
 
-import { Pincer_Short } from '../crystals/Pincer_Short.js';
+import { Hex_Anvil} from '../crystals/Hex_Anvil.js';
 
 // Acid Crystal 
 
@@ -9,10 +9,10 @@ export class AcidCrystal {
 
     const [orgX, orgY, orgZ] = origin;
 
-    // Pincer Short
-
-    if ((curvature === 'pincer_short')) {
-      Pincer_Short(origin, unitLength, position);
+    // Hex Anvil 
+    
+    if ((curvature === 'hex_anvil')) {
+      Hex_Anvil(origin, unitLength, position);
     }
 
   }
