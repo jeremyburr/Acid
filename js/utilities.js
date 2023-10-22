@@ -12,17 +12,18 @@ let unit_4 = new THREE.Group();
 
 let units = [unit_0, unit_1, unit_2, unit_3, unit_4];
 
-const thinColor = 0x11a80c;
+const green = 0x11a80c;
 
 const tubeMaterialThin = new THREE.MeshPhongMaterial({
-  color: thinColor,
+  color: green,
   shininess: 200,
   side: THREE.DoubleSide,
 });
 
 
 const tubeMaterial = new THREE.MeshPhongMaterial({
-  color: 0xad1152,
+  color: green,
+  //color: 0xad1152,
   shininess: 200,
   side: THREE.DoubleSide,
 });
@@ -40,9 +41,9 @@ function addLine(start, end, size, unitPosition) {
   coordinates.push(new THREE.Vector3(...start));
   coordinates.push(new THREE.Vector3(...end));
   const curve = new THREE.CatmullRomCurve3(coordinates);
-  let tubeWidth = size === "thin" ? .5 : 1.5;
+  let tubeWidth = size === "thin" ? .4 : 1.5;
   let tubeMaterialVar = size === "thin" ? tubeMaterialThin : tubeMaterialThick;
-  const geometry = new THREE.TubeGeometry(curve, 64, tubeWidth, 16, false)
+  const geometry = new THREE.TubeGeometry(curve, 64, tubeWidth, 6, false)
   const addLine = new THREE.Mesh(geometry, tubeMaterialVar);
   units[unitPosition].add(addLine);
 }
@@ -71,11 +72,10 @@ function addVectorLine(name, start, direction, magnitude, unitPosition) {
   const end = returnEndPosition(start, direction, magnitude);
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
-  const geometry = new THREE.TubeGeometry(curve, 64, .80, 16, false)
+  const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)
   globalThis[name] = new THREE.Mesh(geometry, tubeMaterial);
-  //unit.add(globalThis[name]);
-
-  //units[unitPosition].add(globalThis[name]);
+  unit.add(globalThis[name]);
+  units[unitPosition].add(globalThis[name]);
 }
 
 // Add Curve
@@ -88,7 +88,7 @@ function addCurve(coordinates, unitPosition) {
   const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0], YNegCurveVectors[1], YNegCurveVectors[2]);
   const YNegCurvePoints = YNegCurve.getPoints(1000);
   const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .4, 16, false)
-  const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: thinColor });
+  const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: green });
   const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
   //unit.add(YNegCurveObject);
   units[unitPosition].add(YNegCurveObject);
@@ -126,8 +126,8 @@ function addPane(coordinates,color, unitPosition) {
   );
   geometryPane.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   const meshPane = new THREE.Mesh(geometryPane, material);
-  //unit.add(meshPane);
-  //units[unitPosition].add(meshPane);
+  unit.add(meshPane);
+  units[unitPosition].add(meshPane);
 
 }
 
