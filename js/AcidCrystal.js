@@ -1,5 +1,5 @@
 
-import { Hex_Anvil} from '../crystals/Hex_Anvil.js';
+import { Oct_Anvil} from '../crystals/Oct_Anvil.js';
 
 // Acid Crystal 
 
@@ -11,8 +11,8 @@ export class AcidCrystal {
 
     // Hex Anvil 
     
-    if ((curvature === 'hex_anvil')) {
-      Hex_Anvil(origin, unitLength, position);
+    if ((curvature === 'Oct_Anvil')) {
+      Oct_Anvil(origin, unitLength, position);
     }
 
   }
