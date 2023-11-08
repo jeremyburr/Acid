@@ -66,10 +66,10 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 // Add Segment
 
-function addVectorLine(name, start, direction, magnitude, unitPosition) {
+function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
   const coordinates = [];
-  coordinates.push(new THREE.Vector3(start[0], start[1], start[2]));
-  const end = returnEndPosition(start, direction, magnitude);
+  coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
+  const end = returnEndPosition(startPosition, direction, magnitude);
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
   const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)
