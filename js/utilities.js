@@ -94,6 +94,14 @@ function addCurve(coordinates, unitPosition) {
   units[unitPosition].add(YNegCurveObject);
 }
 
+// Generate Octants 
+
+function generateOctants(startOctant)  {
+
+
+}
+
+
 
 function addPane(coordinates,color, unitPosition) {
 
