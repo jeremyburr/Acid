@@ -42,7 +42,7 @@ function Oct_Anvil(origin, unitLength, position) {
 
     // L1_X+Y+Z+
 
-    addVectorLine(
+    /*addVectorLine(
       'L1_X+Y+Z+',
       [
         orgX + unitLength,
@@ -56,7 +56,56 @@ function Oct_Anvil(origin, unitLength, position) {
       ],
       unitLength,
       0
+    )*/
+
+    addVectorLine(
+      'L1_X+Y+Z',
+      [
+        orgX + unitLength,
+        orgY + unitLength,
+        orgZ
+      ],
+      [
+        Math.cos(degreesToRadians(0)),
+        Math.cos(degreesToRadians(90)),
+        Math.cos(degreesToRadians(90))
+      ],
+      unitLength,
+      0
     )
+
+    addVectorLine(
+      'L2_X+Y+Z',
+      [
+        orgX + 2 * unitLength,
+        orgY + unitLength,
+        orgZ
+      ],
+      [
+        Math.cos(degreesToRadians(90)),
+        Math.cos(degreesToRadians(0)),
+        Math.cos(degreesToRadians(90))
+      ],
+      unitLength,
+      0
+    )
+
+    addVectorLine(
+      'L3_X+Y+Z',
+      [
+        orgX + 2 * unitLength,
+        orgY + 2 * unitLength,
+        orgZ
+      ],
+      [
+        Math.cos(degreesToRadians(0)),
+        Math.cos(degreesToRadians(45)),
+        Math.cos(degreesToRadians(90))
+      ],
+      unitLength,
+      0
+    )
+
 
     // L1_X+Y+
 

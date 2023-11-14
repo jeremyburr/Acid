@@ -61,6 +61,7 @@ function returnEndPosition(startPosition, direction, magnitude) {
   endPosition.push(dirX * magnitude + startX);
   endPosition.push(dirY * magnitude + startY);
   endPosition.push(dirZ * magnitude + startZ);
+  console.log("end position",endPosition);
   return endPosition;
 }
 
@@ -95,6 +96,8 @@ function addCurve(coordinates, unitPosition) {
 }
 
 // Generate Octants 
+
+//function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
 
 function generateOctants(startOctant)  {
 
