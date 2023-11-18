@@ -68,6 +68,13 @@ function returnEndPosition(startPosition, direction, magnitude) {
 // Add Segment
 
 function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
+
+  console.log(name);
+  console.log(startPosition);
+  console.log(direction);
+  console.log(magnitude);
+  console.log(unitPosition);
+
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
   const end = returnEndPosition(startPosition, direction, magnitude);
@@ -95,6 +102,32 @@ function addCurve(coordinates, unitPosition) {
   units[unitPosition].add(YNegCurveObject);
 }
 
+// Get Curve Coordinates From Vector
+
+function generateCurveFromVector(name, startPosition, direction, magnitude, unitLength, type) {
+
+  console.log('type',type);
+
+  if (type === 'straight') {
+    addVectorLine(name, startPosition, direction, magnitude, unitLength)
+  }
+  if (type === 'curved') {
+
+  }
+
+  //const endPosition = returnEndPosition(startPosition, direction, magnitude);
+
+  // start pos
+  // end pos
+
+  // mid pos
+
+
+
+
+}
+
+
 // Generate Octants 
 
 //function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
@@ -103,7 +136,6 @@ function generateOctants(startOctant)  {
 
 
 }
-
 
 
 function addPane(coordinates,color, unitPosition) {
@@ -190,5 +222,6 @@ export {
   degreesToRadians,
   phi,
   addSphere,
-  addPane
+  addPane,
+  generateCurveFromVector
 }
