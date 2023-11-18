@@ -61,19 +61,12 @@ function returnEndPosition(startPosition, direction, magnitude) {
   endPosition.push(dirX * magnitude + startX);
   endPosition.push(dirY * magnitude + startY);
   endPosition.push(dirZ * magnitude + startZ);
-  console.log("end position",endPosition);
   return endPosition;
 }
 
 // Add Segment
 
 function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
-
-  /*console.log(name);
-  console.log(startPosition);
-  console.log(direction);
-  console.log(magnitude);
-  console.log(unitPosition);*/
 
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
@@ -112,35 +105,18 @@ function getMidPoint(x1,x2,y1,y2,z1,z2) {
 
 function generateCurveFromVector(name, startPosition, direction, magnitude, unitLength, type) {
 
-  console.log('type',type);
-
   if (type === 'straight') {
     addVectorLine(name, startPosition, direction, magnitude, unitLength)
   }
   if (type === 'curved') {
-
     const endPosition = returnEndPosition(startPosition, direction, magnitude);
     const midPosition = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
-
     midPosition[0] = midPosition[0] + unitLength / 3;
     midPosition[1] = midPosition[1] - unitLength / 3;
-
     const coordinates = [startPosition, midPosition, endPosition]
-
     addCurve(coordinates, 0)
 
   }
-
-
-}
-
-
-// Generate Octants 
-
-//function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
-
-function generateOctants(startOctant)  {
-
 
 }
 
