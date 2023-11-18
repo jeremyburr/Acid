@@ -1,5 +1,4 @@
 import {
-  addLine,
   addVectorLine,
   degreesToRadians,
   generateCurveFromVector,
@@ -11,7 +10,6 @@ function Oct_Anvil(origin, unitLength, position) {
   const [orgX, orgY, orgZ] = origin;
 
   /*****************/
-
 
   // L1_X+Y+Z+
   
