@@ -115,7 +115,7 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     unitLength,
     0,
-    "straight"
+    "curved"
   )
 
 

@@ -69,11 +69,11 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 function addVectorLine(name, startPosition, direction, magnitude, unitPosition) {
 
-  console.log(name);
+  /*console.log(name);
   console.log(startPosition);
   console.log(direction);
   console.log(magnitude);
-  console.log(unitPosition);
+  console.log(unitPosition);*/
 
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
@@ -102,7 +102,13 @@ function addCurve(coordinates, unitPosition) {
   units[unitPosition].add(YNegCurveObject);
 }
 
-// Get Curve Coordinates From Vector
+function getMidPoint(x1,x2,y1,y2,z1,z2) {
+  const x = (x1+x2)/2;
+  const y = (y1+y2)/2;
+  const z = (z1+z2)/2;
+  return [x,y,z];
+}
+
 
 function generateCurveFromVector(name, startPosition, direction, magnitude, unitLength, type) {
 
@@ -113,15 +119,39 @@ function generateCurveFromVector(name, startPosition, direction, magnitude, unit
   }
   if (type === 'curved') {
 
+    const endPosition = returnEndPosition(startPosition, direction, magnitude);
+    const midPoint = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
+
+    console.log(Array.isArray(midPoint));
+    console.log(midPoint);
+    console.log(midPoint[1]);
+
+    //midPoint[1] = 0;
+
+    midPoint[1] = midPoint[1] + 1;
+
+    console.log(midPoint[1]);
+
+
+
+
+
+    /*const midPosition = [midPoint[0],midPoint[1],midPoint[2]];
+
+    console.log(midPosition[1], 'midPosition[1]');
+    midPosition[1] = midPosition[1] + unitLength / 4;
+    console.log(midPosition[1], 'midPosition[1]');*/
+
+
+    const coordinates = [startPosition, midPosition, endPosition]
+
+    addCurve(coordinates, 0)
+
   }
 
   //const endPosition = returnEndPosition(startPosition, direction, magnitude);
 
-  // start pos
-  // end pos
-
-  // mid pos
-
+  
 
 
 
