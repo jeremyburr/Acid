@@ -114,7 +114,7 @@ function Oct_Anvil(origin, unitLength, position) {
       Math.cos(degreesToRadians(90))
     ],
     unitLength,
-    0,
+    unitLength,
     "curved"
   )
 

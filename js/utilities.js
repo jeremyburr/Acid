@@ -120,39 +120,16 @@ function generateCurveFromVector(name, startPosition, direction, magnitude, unit
   if (type === 'curved') {
 
     const endPosition = returnEndPosition(startPosition, direction, magnitude);
-    const midPoint = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
+    const midPosition = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
 
-    console.log(Array.isArray(midPoint));
-    console.log(midPoint);
-    console.log(midPoint[1]);
-
-    //midPoint[1] = 0;
-
-    midPoint[1] = midPoint[1] + 1;
-
-    console.log(midPoint[1]);
-
-
-
-
-
-    /*const midPosition = [midPoint[0],midPoint[1],midPoint[2]];
-
-    console.log(midPosition[1], 'midPosition[1]');
-    midPosition[1] = midPosition[1] + unitLength / 4;
-    console.log(midPosition[1], 'midPosition[1]');*/
-
+    midPosition[0] = midPosition[0] + unitLength / 3;
+    midPosition[1] = midPosition[1] - unitLength / 3;
 
     const coordinates = [startPosition, midPosition, endPosition]
 
     addCurve(coordinates, 0)
 
   }
-
-  //const endPosition = returnEndPosition(startPosition, direction, magnitude);
-
-  
-
 
 
 }
