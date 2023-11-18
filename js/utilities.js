@@ -113,9 +113,9 @@ function generateCurveFromVector(name, startPosition, direction, magnitude, unit
     const midPosition = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
     midPosition[0] = midPosition[0] + unitLength / 3;
     midPosition[1] = midPosition[1] - unitLength / 3;
+    midPosition[2] = midPosition[2] + unitLength / 3;
     const coordinates = [startPosition, midPosition, endPosition]
     addCurve(coordinates, 0)
-
   }
 
 }
