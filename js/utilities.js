@@ -57,10 +57,13 @@ function returnEndPosition(startPosition, direction, magnitude) {
   const dirX = direction[0];
   const dirY = direction[1];
   const dirZ = direction[2];
+
   let endPosition = [];
+
   endPosition.push(dirX * magnitude + startX);
   endPosition.push(dirY * magnitude + startY);
   endPosition.push(dirZ * magnitude + startZ);
+
   return endPosition;
 }
 
@@ -106,15 +109,36 @@ function getMidPoint(x1,x2,y1,y2,z1,z2) {
 function generateCurveFromVector(name, startPosition, direction, magnitude, unitLength, type) {
 
   if (type === 'straight') {
-    addVectorLine(name, startPosition, direction, magnitude, unitLength)
+    addVectorLine(name, startPosition, direction, magnitude, 0)
   }
   if (type === 'curved') {
+
     const endPosition = returnEndPosition(startPosition, direction, magnitude);
+
     const midPosition = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
+
     midPosition[0] = midPosition[0] + unitLength / 3;
     midPosition[1] = midPosition[1] - unitLength / 3;
     midPosition[2] = midPosition[2] + unitLength / 3;
+
+    for (const position of midPosition) {
+      console.log('position',position);
+      if (midPosition[position] === 0) {
+        midPosition[position] === 0;
+      }
+      else {
+
+      }
+    }
+
+
+    /*midPosition[0] = midPosition[0] * 12/10;
+    midPosition[1] = midPosition[1] * 9/10;*/
+
     const coordinates = [startPosition, midPosition, endPosition]
+
+    //console.log('coordinates',coordinates);
+
     addCurve(coordinates, 0)
   }
 
