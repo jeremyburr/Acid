@@ -11,7 +11,9 @@ function Oct_Anvil(origin, unitLength, position) {
 
   /*****************/
 
-  // X+Y+Z
+  // Anvil X+Z_
+
+  // Y+
   
   // L2 
 
@@ -26,7 +28,7 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,0,90],
     unitLength,
     0,
-    'L2_X+Y+Z',
+    'L2_X+Y+Z_',
   )
 
   // L3 
@@ -43,10 +45,10 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
-    'L3_X+Y+Z',
+    'L3_X+Y+Z_',
   )
 
-  // X+Y-Z
+  // Y-
 
   // L2 
 
@@ -61,7 +63,7 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,180,90],
     unitLength,
     0,
-    'L2_X+Y-Z',
+    'L2_X+Y-Z_',
   )
 
   // L2 
@@ -78,10 +80,12 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
-    'L3_X+Y-Z',
+    'L3_X+Y-Z_',
   )
 
-  // X+Y+Z+
+  // Anvil X+Z+
+
+  // Y+
   
   // L2 
 
@@ -116,7 +120,7 @@ function Oct_Anvil(origin, unitLength, position) {
     'L3_X+Y+Z+',
   )
 
-  // X+Y+Z-
+  // Y-
   
   // L2 
 
@@ -131,7 +135,7 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,180,90],
     unitLength,
     0,
-    'L2_X+Y+Z-',
+    'L2_X+Y-Z+',
   )
 
   // L3 
@@ -148,8 +152,9 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
-    'L3_X+Y+Z-',
+    'L3_X+Y-Z+',
   )
+
 
   
 
