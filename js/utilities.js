@@ -74,11 +74,11 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 function addVectorLine(startPosition, direction, magnitude, unitPosition, name) {
 
-  direction = direction.map(degree => Math.cos(degreesToRadians(degree)));
-
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
+
   const end = returnEndPosition(startPosition, direction, magnitude);
+
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
   const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)

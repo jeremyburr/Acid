@@ -28,28 +28,25 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     0
   )
+  */
 
   addVectorLine(
-    'L2_X+Y+Z',
     [
-      orgX + 2 * unitLength,
+      orgX + 1 * unitLength,
       orgY + unitLength,
       orgZ
     ],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(90))
-    ],
+    [90,0,90],
     unitLength,
-    0
-  )*/
+    0,
+    'L2_X+Y+Z',
+  )
 
   generateCurveFromVector(
     '3',
     [1,1,0],
     [
-      orgX + 2 * unitLength,
+      orgX + 1 * unitLength,
       orgY + 2 * unitLength,
       orgZ
     ],
