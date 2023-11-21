@@ -10,25 +10,8 @@ function Oct_Anvil(origin, unitLength, position) {
   const [orgX, orgY, orgZ] = origin;
 
   /*****************/
-
-  // L1_X+Y+Z
-
-  /*addVectorLine(
-    'L1_X+Y+Z',
-    [
-      orgX + unitLength,
-      orgY + unitLength,
-      orgZ
-    ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength,
-    0
-  )
-  */
+  
+  // L2 X+Y+Z
 
   addVectorLine(
     [
@@ -42,6 +25,7 @@ function Oct_Anvil(origin, unitLength, position) {
     'L2_X+Y+Z',
   )
 
+  // L3 X+Y+Z
   generateCurveFromVector(
     '3',
     [1,1,0],
@@ -57,57 +41,43 @@ function Oct_Anvil(origin, unitLength, position) {
     'L3_X+Y+Z',
   )
 
-  /*  // L1_X+Y-Z+
-  
+  // L2 X+Y-Z
 
   addVectorLine(
-    'L1_X+Y-Z',
     [
-      orgX + unitLength,
+      orgX + 1 * unitLength,
       orgY - unitLength,
       orgZ
     ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(90))
-    ],
+    [90,180,90],
     unitLength,
-    0
+    0,
+    'L2_X+Y-Z',
   )
 
-  addVectorLine(
-    'L2_X+Y-Z',
+  // L3 X+Y-Z
+  generateCurveFromVector(
+    '3',
+    [1,-1,0],
     [
-      orgX + 2 * unitLength,
-      orgY - unitLength,
-      orgZ
-    ],
-    [
-      Math.cos(degreesToRadians(90)),
-      Math.cos(degreesToRadians(180)),
-      Math.cos(degreesToRadians(90))
-    ],
-    unitLength,
-    0
-  )*/
-
-  /*generateCurveFromVector(
-    'L3_X+Y-Z',
-    [
-      orgX + 2 * unitLength,
+      orgX + 1 * unitLength,
       orgY - 2 * unitLength,
       orgZ
     ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(135)),
-      Math.cos(degreesToRadians(90))
-    ],
+    [0,135,90],
     unitLength,
     unitLength,
-    "curved"
-  )*/
+    "curved",
+    'L3_X+Y-Z',
+  )
+
+  
+
+
+
+
+
+
 
 
 }
