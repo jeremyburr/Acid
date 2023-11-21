@@ -51,6 +51,9 @@ function addLine(start, end, size, unitPosition) {
 // Find End Coordinates for New Segment
 
 function returnEndPosition(startPosition, direction, magnitude) {
+
+  direction = direction.map(degree => Math.cos(degreesToRadians(degree)));
+
   const startX = startPosition[0];
   const startY = startPosition[1];
   const startZ = startPosition[2];
@@ -70,6 +73,8 @@ function returnEndPosition(startPosition, direction, magnitude) {
 // Add Segment
 
 function addVectorLine(startPosition, direction, magnitude, unitPosition, name) {
+
+  direction = direction.map(degree => Math.cos(degreesToRadians(degree)));
 
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
@@ -119,7 +124,7 @@ function generateCurveFromVector(level, orientation, startPosition, direction, m
 
     const midPosition = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
 
-    function returnOrientation(direction) {
+    function returnOrientation(orientation) {
      
 
       

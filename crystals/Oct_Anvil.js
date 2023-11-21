@@ -53,11 +53,7 @@ function Oct_Anvil(origin, unitLength, position) {
       orgY + 2 * unitLength,
       orgZ
     ],
-    [
-      Math.cos(degreesToRadians(0)),
-      Math.cos(degreesToRadians(45)),
-      Math.cos(degreesToRadians(90))
-    ],
+    [0,45,90],
     unitLength,
     unitLength,
     "curved",
