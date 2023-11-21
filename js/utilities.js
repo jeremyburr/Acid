@@ -72,7 +72,7 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 // Add Segment
 
-function addVectorLine(startPosition, direction, magnitude, unitPosition, name) {
+function addVectorLine(level, orientation, startPosition, direction, magnitude, unitPosition, name) {
 
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));

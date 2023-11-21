@@ -14,6 +14,8 @@ function Oct_Anvil(origin, unitLength, position) {
   // L2 X+Y+Z
 
   addVectorLine(
+    '3',
+    [1,1,0],
     [
       orgX + 1 * unitLength,
       orgY + unitLength,
@@ -44,6 +46,8 @@ function Oct_Anvil(origin, unitLength, position) {
   // L2 X+Y-Z
 
   addVectorLine(
+    '3',
+    [1,1,0],
     [
       orgX + 1 * unitLength,
       orgY - unitLength,
