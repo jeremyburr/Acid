@@ -17,7 +17,7 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,1,0],
     [
-      orgX + 1 * unitLength,
+      orgX + 2 * unitLength,
       orgY + unitLength,
       orgZ
     ],
@@ -32,7 +32,7 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,1,0],
     [
-      orgX + 1 * unitLength,
+      orgX + 2 * unitLength,
       orgY + 2 * unitLength,
       orgZ
     ],
@@ -49,7 +49,7 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,1,0],
     [
-      orgX + 1 * unitLength,
+      orgX + 2 * unitLength,
       orgY - unitLength,
       orgZ
     ],
@@ -64,7 +64,7 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,-1,0],
     [
-      orgX + 1 * unitLength,
+      orgX + 2 * unitLength,
       orgY - 2 * unitLength,
       orgZ
     ],
