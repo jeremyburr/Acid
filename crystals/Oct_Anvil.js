@@ -11,7 +11,7 @@ function Oct_Anvil(origin, unitLength, position) {
 
   /*****************/
 
-  // L1_X+Y+Z+
+  // L1_X+Y+Z
 
   /*addVectorLine(
     'L1_X+Y+Z',
