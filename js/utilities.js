@@ -113,7 +113,6 @@ function getMidPoint(x1,x2,y1,y2,z1,z2) {
 
 function generateCurveFromVector(level, orientation, startPosition, direction, magnitude, unitLength, type, name) {
 
-
   if (type === 'straight') {
     addVectorLine(name, startPosition, direction, magnitude, 0)
   }
@@ -124,16 +123,9 @@ function generateCurveFromVector(level, orientation, startPosition, direction, m
 
     const midPosition = getMidPoint(startPosition[0],endPosition[0],startPosition[1],endPosition[1],startPosition[2],endPosition[2]);
 
-    function returnOrientation(orientation) {
-     
-
-      
-
-    }
-
-    midPosition[0] = midPosition[0] + unitLength / 3;
-    midPosition[1] = midPosition[1] - unitLength / 3;
-    midPosition[2] = midPosition[2] + unitLength / 3;
+    midPosition[0] = midPosition[0] + (unitLength / 3 * orientation[0])
+    midPosition[1] = midPosition[1] + (unitLength / 3 * -orientation[1]);
+    midPosition[2] = midPosition[2] + (unitLength / 3 * orientation [2]);
 
     const coordinates = [startPosition, midPosition, endPosition]
 
