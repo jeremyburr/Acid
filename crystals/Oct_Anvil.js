@@ -21,7 +21,7 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,1,0],
     [
-      orgX + 1 * unitLength,
+      orgX + unitLength,
       orgY + unitLength,
       orgZ
     ],
@@ -72,7 +72,7 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,-1,0],
     [
-      orgX + 1 * unitLength,
+      orgX + unitLength,
       orgY - unitLength,
       orgZ
     ],
@@ -97,7 +97,7 @@ function Oct_Anvil(origin, unitLength, position) {
     'L2_X+Y-Z_',
   )
 
-  // L2 
+  // L3 
 
   generateCurveFromVector(
     '3',
@@ -114,19 +114,41 @@ function Oct_Anvil(origin, unitLength, position) {
     'L3_X+Y-Z_',
   )
 
+
   // Anvil X+Z+
 
   // Y+
-  
+
+  // L1 
+
+  addVectorLine(
+    '3',
+    [1,1,0],
+    [
+      orgX + unitLength,
+      orgY + unitLength,
+      orgZ + unitLength
+    ],
+    [0,90,90],
+    unitLength,
+    0,
+    'L1_X+Y+Z_',
+  )
+
+
+
+
+  /*
+
   // L2 
 
   addVectorLine(
     '3',
     [1,1,1],
     [
-      orgX + 1 * unitLength,
+      orgX + unitLength,
       orgY + unitLength,
-      orgZ + 1 * unitLength
+      orgZ + unitLength
     ],
     [90,0,90],
     unitLength,
@@ -140,9 +162,9 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,1,1],
     [
-      orgX + 1 * unitLength,
+      orgX + unitLength,
       orgY + 2 * unitLength,
-      orgZ + 1 * unitLength
+      orgZ + unitLength
     ],
     [45,45,45],
     unitLength,
@@ -159,9 +181,9 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,-1,1],
     [
-      orgX + 1 * unitLength,
+      orgX + unitLength,
       orgY - unitLength,
-      orgZ + 1 * unitLength
+      orgZ + unitLength
     ],
     [90,180,90],
     unitLength,
@@ -175,9 +197,9 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,-1,1],
     [
-      orgX + 1 * unitLength,
+      orgX + unitLength,
       orgY - 2 * unitLength,
-      orgZ + 1 * unitLength
+      orgZ + unitLength
     ],
     [45,135,45],
     unitLength,
@@ -185,6 +207,8 @@ function Oct_Anvil(origin, unitLength, position) {
     "curved",
     'L3_X+Y-Z+',
   )
+
+  */
 
   // Anvil X_Z+
 
