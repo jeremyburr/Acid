@@ -224,46 +224,6 @@ function Oct_Anvil(origin, unitLength, position) {
     'L3_X+Y-Z+',
   )
 
-
-
-
-  /*
-
-  // L2 
-
-  addVectorLine(
-    '3',
-    [1,-1,1],
-    [
-      orgX + unitLength,
-      orgY - unitLength,
-      orgZ + unitLength
-    ],
-    [90,180,90],
-    unitLength,
-    0,
-    'L2_X+Y-Z+',
-  )
-
-  // L3 
-
-  generateCurveFromVector(
-    '3',
-    [1,-1,1],
-    [
-      orgX + unitLength,
-      orgY - 2 * unitLength,
-      orgZ + unitLength
-    ],
-    [45,135,45],
-    unitLength,
-    unitLength,
-    "curved",
-    'L3_X+Y-Z+',
-  )
-
-  */
-
   // Anvil X_Z+
 
   // Y+
