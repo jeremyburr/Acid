@@ -125,11 +125,11 @@ function Oct_Anvil(origin, unitLength, position) {
     '3',
     [1,1,0],
     [
-      orgX + unitLength,
+      orgX + Math.cos(degreesToRadians(45)) * unitLength,
       orgY + unitLength,
-      orgZ + unitLength
+      orgZ + Math.cos(degreesToRadians(45))* unitLength
     ],
-    [0,90,90],
+    [45,90,45],
     unitLength,
     0,
     'L1_X+Y+Z_',
