@@ -137,18 +137,15 @@ function Oct_Anvil(origin, unitLength, position) {
 
 
 
-
-  /*
-
   // L2 
 
   addVectorLine(
     '3',
     [1,1,1],
     [
-      orgX + unitLength,
+      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
       orgY + unitLength,
-      orgZ + unitLength
+      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -156,15 +153,16 @@ function Oct_Anvil(origin, unitLength, position) {
     'L2_X+Y+Z+',
   )
 
+
   // L3 
 
   generateCurveFromVector(
     '3',
     [1,1,1],
     [
-      orgX + unitLength,
+      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
       orgY + 2 * unitLength,
-      orgZ + unitLength
+      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
     ],
     [45,45,45],
     unitLength,
@@ -172,6 +170,8 @@ function Oct_Anvil(origin, unitLength, position) {
     "curved",
     'L3_X+Y+Z+',
   )
+
+  /*
 
   // Y-
   
