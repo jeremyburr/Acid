@@ -110,6 +110,12 @@ function getMidPoint(x1,x2,y1,y2,z1,z2) {
   return [x,y,z];
 }
 
+function generateSegment(orientation) {
+
+
+
+} 
+
 
 function generateCurveFromVector(name, level, orientation, startPosition, direction, magnitude, unitLength, type) {
 
