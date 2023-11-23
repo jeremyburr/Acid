@@ -72,7 +72,7 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 // Add Segment
 
-function addVectorLine(level, orientation, startPosition, direction, magnitude, unitPosition, name) {
+function addVectorLine(name, level, orientation, startPosition, direction, magnitude, unitPosition, ) {
 
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
@@ -111,7 +111,7 @@ function getMidPoint(x1,x2,y1,y2,z1,z2) {
 }
 
 
-function generateCurveFromVector(level, orientation, startPosition, direction, magnitude, unitLength, type, name) {
+function generateCurveFromVector(name, level, orientation, startPosition, direction, magnitude, unitLength, type) {
 
   if (type === 'straight') {
     addVectorLine(name, startPosition, direction, magnitude, 0)
