@@ -119,7 +119,6 @@ function addCurve(coordinates, unitPosition, color) {
   const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0], YNegCurveVectors[1], YNegCurveVectors[2]);
   const YNegCurvePoints = YNegCurve.getPoints(1000);
   const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .4, 16, false)
-  console.log("add curve Color",color);
 
   color = color === "orange" ? orange : green;
 
