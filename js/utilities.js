@@ -112,8 +112,6 @@ function getMidPoint(x1,x2,y1,y2,z1,z2) {
 
 function generateSegment(orientation) {
 
-
-
 } 
 
 
