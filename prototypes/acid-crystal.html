@@ -35,7 +35,7 @@
       camera.position.x = 0;
       //camera.position.y = 275;
       camera.position.y = 75;
-      camera.position.z = 150;
+      camera.position.z = 450;
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -48,6 +48,39 @@
       // Skeleton vs 
 
       const AC_Org = new AcidCrystal('center', 40, 'Oct_Anvil', [0, 0, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_XP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, 0, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_XN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, 0, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YP = new AcidCrystal('center', 40, 'Oct_Anvil', [0, 80, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YN = new AcidCrystal('center', 40, 'Oct_Anvil', [0, -80, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_ZP = new AcidCrystal('center', 40, 'Oct_Anvil', [0, 0, 80], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_ZN = new AcidCrystal('center', 40, 'Oct_Anvil', [0, 0, -80], unitLength,0,'bond-break',[2,3]);
+
+      const AC_Org_XPZP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, 0, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_XNZP = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, 0, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_XPZN = new AcidCrystal('center', 40, 'Oct_Anvil', [75, 0, -75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_XNZN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, 0, -75], unitLength,0,'bond-break',[2,3]);
+
+      const AC_Org_YPXP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, 80, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNXP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, -80, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YPXN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, 80, 0], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNXN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, -80, 0], unitLength,0,'bond-break',[2,3]);
+
+      const AC_Org_YPZP = new AcidCrystal('center', 40, 'Oct_Anvil', [0, 80, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNZP = new AcidCrystal('center', 40, 'Oct_Anvil', [0, -80, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YPZN = new AcidCrystal('center', 40, 'Oct_Anvil', [0, 80, -75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNZN = new AcidCrystal('center', 40, 'Oct_Anvil', [0, -80, -75], unitLength,0,'bond-break',[2,3]);
+
+      const AC_Org_YPZPXP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, 80, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNZPXP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, -80, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YPZNXP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, 80, -75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNZNXP = new AcidCrystal('center', 40, 'Oct_Anvil', [75, -80, -75], unitLength,0,'bond-break',[2,3]);
+
+      const AC_Org_YPZPXN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, 80, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNZPXN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, -80, 75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YPZNXN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, 80, -75], unitLength,0,'bond-break',[2,3]);
+      const AC_Org_YNZNXN = new AcidCrystal('center', 40, 'Oct_Anvil', [-75, -80, -75], unitLength,0,'bond-break',[2,3]);
+
+
 
       scene.add(unit_0);
 
