@@ -5,7 +5,7 @@ import {
 } from '../js/utilities.js'
 
 
-function Oct_Anvil(origin, unitLength, position) {
+function Oct_Anvil(origin, unitLength, position, color) {
 
   const [orgX, orgY, orgZ] = origin;
 
@@ -28,7 +28,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [0,90,90],
     unitLength,
-    0
+    0,
+    color
   )
   
   // L2 
@@ -44,7 +45,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -62,6 +64,7 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
+    color
   )
 
   // Y-
@@ -79,7 +82,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [0,90,90],
     unitLength,
-    0
+    0,
+    color
   )
   // L2 
 
@@ -94,7 +98,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -112,6 +117,7 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
+    color
   )
 
   // Anvil X+Z+
@@ -131,7 +137,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [45,90,45],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -148,7 +155,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -166,7 +174,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [45,45,45],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
 
@@ -185,7 +194,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [45,90,45],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -202,7 +212,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -219,7 +230,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [45,135,45],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Anvil X_Z+
@@ -239,7 +251,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,90,0],
     unitLength,
-    0
+    0,
+    color
   )
 
   
@@ -256,7 +269,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -273,7 +287,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,45,45],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Y-
@@ -291,7 +306,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,90,0],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L2 
@@ -307,7 +323,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -324,7 +341,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,135,45],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Anvil X_Z-
@@ -344,7 +362,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,90,180],
     unitLength,
-    0
+    0,
+    color
   )
 
   
@@ -361,7 +380,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -378,7 +398,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,45,135],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Y-
@@ -396,7 +417,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,90,180],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L2 
@@ -412,7 +434,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -429,7 +452,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [90,135,135],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Anvil X+Z-
@@ -449,7 +473,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [45,90,135],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -466,7 +491,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -484,7 +510,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [45,45,135],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
 
@@ -503,7 +530,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [45,90,135],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -520,7 +548,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -537,7 +566,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [45,135,135],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Anvil X-Z-
@@ -557,7 +587,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [135,90,135],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -574,7 +605,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -592,7 +624,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [135,45,135],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
 
@@ -611,7 +644,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [135,90,135],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -628,7 +662,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -645,7 +680,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [135,135,135],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Anvil X-Z-
@@ -665,7 +701,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [135,90,45],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -682,7 +719,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -700,7 +738,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [135,45,45],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
 
@@ -719,7 +758,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [135,90,45],
     unitLength,
-    0
+    0,
+    color
   )
 
 
@@ -736,7 +776,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -753,7 +794,8 @@ function Oct_Anvil(origin, unitLength, position) {
     [135,135,45],
     unitLength,
     unitLength,
-    "curved"
+    "curved",
+    color
   )
 
   // Anvil X-Z_
@@ -773,7 +815,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [180,90,90],
     unitLength,
-    0
+    0,
+    color
   )
   
   // L2 
@@ -789,7 +832,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,0,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -807,6 +851,7 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
+    color
   )
 
   // Y-
@@ -824,7 +869,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [180,90,90],
     unitLength,
-    0
+    0,
+    color
   )
   // L2 
 
@@ -839,7 +885,8 @@ function Oct_Anvil(origin, unitLength, position) {
     ],
     [90,180,90],
     unitLength,
-    0
+    0,
+    color
   )
 
   // L3 
@@ -857,6 +904,7 @@ function Oct_Anvil(origin, unitLength, position) {
     unitLength,
     unitLength,
     "curved",
+    color
   )
 
 
