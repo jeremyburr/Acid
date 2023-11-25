@@ -22,8 +22,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     1,
     [1,1,0],
     [
-      orgX + unitLength,
-      orgY + unitLength,
+      orgX + unitLength * 2,
+      orgY + unitLength * 2,
       orgZ
     ],
     [0,90,90],
@@ -39,8 +39,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [1,1,0],
     [
-      orgX + 2 * unitLength,
-      orgY + unitLength,
+      orgX + 3 * unitLength,
+      orgY + unitLength * 2,
       orgZ
     ],
     [90,0,90],
@@ -56,8 +56,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [1,1,0],
     [
-      orgX + 2 * unitLength,
-      orgY + 2 * unitLength,
+      orgX + 3 * unitLength,
+      orgY + 3 * unitLength,
       orgZ
     ],
     [0,45,90],
@@ -76,8 +76,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     1,
     [1,-1,0],
     [
-      orgX + unitLength,
-      orgY - unitLength,
+      orgX + unitLength * 2,
+      orgY - unitLength * 2,
       orgZ
     ],
     [0,90,90],
@@ -92,8 +92,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [1,1,0],
     [
-      orgX + 2 * unitLength,
-      orgY - unitLength,
+      orgX + 3 * unitLength,
+      orgY - unitLength * 2,
       orgZ
     ],
     [90,180,90],
@@ -109,8 +109,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [1,-1,0],
     [
-      orgX + 2 * unitLength,
-      orgY - 2 * unitLength,
+      orgX + 3 * unitLength,
+      orgY - 3 * unitLength,
       orgZ
     ],
     [0,135,90],
@@ -132,7 +132,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [1,1,1],
     [
       orgX + Math.cos(degreesToRadians(45)) * unitLength,
-      orgY + unitLength,
+      orgY + unitLength * 2,
       orgZ + Math.cos(degreesToRadians(45))* unitLength
     ],
     [45,90,45],
@@ -149,9 +149,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [1,1,1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + unitLength * 2,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -167,9 +167,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [1,1,1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + 2 * unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + 3 * unitLength,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [45,45,45],
     unitLength,
@@ -189,7 +189,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [1,-1,1],
     [
       orgX + Math.cos(degreesToRadians(45)) * unitLength,
-      orgY - unitLength,
+      orgY - unitLength * 2,
       orgZ + Math.cos(degreesToRadians(45))* unitLength
     ],
     [45,90,45],
@@ -206,9 +206,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [1,-1,1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - unitLength * 2,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,180,90],
     unitLength,
@@ -223,9 +223,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [1,-1,1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - 2 * unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - 3 * unitLength,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [45,135,45],
     unitLength,
@@ -246,8 +246,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,1,1],
     [
       orgX,
-      orgY + unitLength,
-      orgZ + unitLength
+      orgY + unitLength * 2,
+      orgZ + unitLength * 2
     ],
     [90,90,0],
     unitLength,
@@ -264,8 +264,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,1,1],
     [
       orgX,
-      orgY + unitLength,
-      orgZ + 2 * unitLength
+      orgY + unitLength * 2,
+      orgZ + 3 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -281,8 +281,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,1,1],
     [
       orgX,
-      orgY + 2 * unitLength,
-      orgZ + 2 * unitLength
+      orgY + 3 * unitLength,
+      orgZ + 3 * unitLength
     ],
     [90,45,45],
     unitLength,
@@ -301,8 +301,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,-1,1],
     [
       orgX,
-      orgY - unitLength,
-      orgZ + unitLength
+      orgY - unitLength * 2,
+      orgZ + unitLength * 2
     ],
     [90,90,0],
     unitLength,
@@ -318,8 +318,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,-1,1],
     [
       orgX,
-      orgY - unitLength,
-      orgZ + 2 * unitLength
+      orgY - unitLength * 2,
+      orgZ + 3 * unitLength
     ],
     [90,180,90],
     unitLength,
@@ -335,8 +335,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,-1,1],
     [
       orgX,
-      orgY - 2 * unitLength,
-      orgZ + 2 * unitLength
+      orgY - 3 * unitLength,
+      orgZ + 3 * unitLength
     ],
     [90,135,45],
     unitLength,
@@ -357,8 +357,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,1,-1],
     [
       orgX,
-      orgY + unitLength,
-      orgZ - unitLength
+      orgY + unitLength * 2,
+      orgZ - unitLength * 2
     ],
     [90,90,180],
     unitLength,
@@ -375,8 +375,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,1,-1],
     [
       orgX,
-      orgY + unitLength,
-      orgZ - 2 * unitLength
+      orgY + unitLength * 2,
+      orgZ - 3 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -392,8 +392,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,1,-1],
     [
       orgX,
-      orgY + 2 * unitLength,
-      orgZ - 2 * unitLength
+      orgY + 3 * unitLength,
+      orgZ - 3 * unitLength
     ],
     [90,45,135],
     unitLength,
@@ -412,8 +412,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,-1,-1],
     [
       orgX,
-      orgY - unitLength,
-      orgZ - unitLength
+      orgY - unitLength * 2,
+      orgZ - unitLength * 2
     ],
     [90,90,180],
     unitLength,
@@ -429,8 +429,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,-1,-1],
     [
       orgX,
-      orgY - unitLength,
-      orgZ - 2 * unitLength
+      orgY - unitLength * 2,
+      orgZ - 3 * unitLength
     ],
     [90,180,90],
     unitLength,
@@ -446,8 +446,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [0,-1,-1],
     [
       orgX,
-      orgY - 2 * unitLength,
-      orgZ - 2 * unitLength
+      orgY - 3 * unitLength,
+      orgZ - 3 * unitLength
     ],
     [90,135,135],
     unitLength,
@@ -468,7 +468,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [1,1,-1],
     [
       orgX + Math.cos(degreesToRadians(45)) * unitLength,
-      orgY + unitLength,
+      orgY + unitLength * 2,
       orgZ - Math.cos(degreesToRadians(45))* unitLength
     ],
     [45,90,135],
@@ -485,9 +485,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [1,1,-1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + unitLength * 2,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -503,9 +503,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [1,1,-1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + 2 * unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + 3 * unitLength,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [45,45,135],
     unitLength,
@@ -525,7 +525,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [1,-1,-1],
     [
       orgX + Math.cos(degreesToRadians(45)) * unitLength,
-      orgY - unitLength,
+      orgY - unitLength * 2,
       orgZ - Math.cos(degreesToRadians(45))* unitLength
     ],
     [45,90,135],
@@ -542,9 +542,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [1,-1,-1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - unitLength * 2,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,180,90],
     unitLength,
@@ -559,9 +559,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [1,-1,-1],
     [
-      orgX + Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - 2 * unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX + Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - 3 * unitLength,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [45,135,135],
     unitLength,
@@ -582,7 +582,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [-1,1,-1],
     [
       orgX - Math.cos(degreesToRadians(45)) * unitLength,
-      orgY + unitLength,
+      orgY + unitLength * 2,
       orgZ - Math.cos(degreesToRadians(45))* unitLength
     ],
     [135,90,135],
@@ -599,9 +599,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [-1,1,-1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + unitLength * 2,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -617,9 +617,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [-1,1,-1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + 2 * unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + 3 * unitLength,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [135,45,135],
     unitLength,
@@ -639,7 +639,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [-1,-1,-1],
     [
       orgX - Math.cos(degreesToRadians(45)) * unitLength,
-      orgY - unitLength,
+      orgY - unitLength * 2,
       orgZ - Math.cos(degreesToRadians(45))* unitLength
     ],
     [135,90,135],
@@ -656,9 +656,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [-1,-1,-1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - unitLength * 2,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,180,90],
     unitLength,
@@ -673,9 +673,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [-1,-1,-1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - 2 * unitLength,
-      orgZ - Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - 3 * unitLength,
+      orgZ - Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [135,135,135],
     unitLength,
@@ -696,7 +696,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [-1,1,1],
     [
       orgX - Math.cos(degreesToRadians(45)) * unitLength,
-      orgY + unitLength,
+      orgY + unitLength * 2,
       orgZ + Math.cos(degreesToRadians(45))* unitLength
     ],
     [135,90,45],
@@ -713,9 +713,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [-1,1,1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + unitLength * 2,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,0,90],
     unitLength,
@@ -731,9 +731,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [-1,1,1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY + 2 * unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY + 3 * unitLength,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [135,45,45],
     unitLength,
@@ -753,7 +753,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     [-1,-1,1],
     [
       orgX - Math.cos(degreesToRadians(45)) * unitLength,
-      orgY - unitLength,
+      orgY - unitLength * 2,
       orgZ + Math.cos(degreesToRadians(45))* unitLength
     ],
     [135,90,45],
@@ -770,9 +770,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [-1,-1,1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - unitLength * 2,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [90,180,90],
     unitLength,
@@ -787,9 +787,9 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [-1,-1,1],
     [
-      orgX - Math.cos(degreesToRadians(45)) * 2 * unitLength,
-      orgY - 2 * unitLength,
-      orgZ + Math.cos(degreesToRadians(45)) * 2 * unitLength
+      orgX - Math.cos(degreesToRadians(45)) * 3 * unitLength,
+      orgY - 3 * unitLength,
+      orgZ + Math.cos(degreesToRadians(45)) * 3 * unitLength
     ],
     [135,135,45],
     unitLength,
@@ -809,8 +809,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     1,
     [-1,1,0],
     [
-      orgX - unitLength,
-      orgY + unitLength,
+      orgX - unitLength * 2,
+      orgY + unitLength * 2,
       orgZ
     ],
     [180,90,90],
@@ -826,8 +826,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [-1,1,0],
     [
-      orgX - 2 * unitLength,
-      orgY + unitLength,
+      orgX - 3 * unitLength,
+      orgY + unitLength * 2,
       orgZ
     ],
     [90,0,90],
@@ -843,8 +843,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [-1,1,0],
     [
-      orgX - 2 * unitLength,
-      orgY + 2 * unitLength,
+      orgX - 3 * unitLength,
+      orgY + 3 * unitLength,
       orgZ
     ],
     [180,45,90],
@@ -863,8 +863,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     1,
     [-1,-1,0],
     [
-      orgX - unitLength,
-      orgY - unitLength,
+      orgX - unitLength * 2,
+      orgY - unitLength * 2,
       orgZ
     ],
     [180,90,90],
@@ -879,8 +879,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     2,
     [-1,1,0],
     [
-      orgX - 2 * unitLength,
-      orgY - unitLength,
+      orgX - 3 * unitLength,
+      orgY - unitLength * 2,
       orgZ
     ],
     [90,180,90],
@@ -896,8 +896,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     3,
     [-1,-1,0],
     [
-      orgX - 2 * unitLength,
-      orgY - 2 * unitLength,
+      orgX - 3 * unitLength,
+      orgY - 3 * unitLength,
       orgZ
     ],
     [180,135,90],

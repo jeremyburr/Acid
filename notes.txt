@@ -1,3 +1,11 @@
 Directional naming system needs global/local references to provide clarity
 add window.resize handlers
 look into vertix labeling stat module
+
+Brainstorm Areas to Model:
+
+Snowflakes
+Egyptains
+Trees
+
+More generally - humas, flora, fauna.
