@@ -15,6 +15,45 @@ function Oct_Anvil(origin, unitLength, position, color) {
 
   // Y+
 
+  // L-1
+
+    addVectorLine(
+    'L-1_X+Y+Z_',
+    1,
+    [1,1,0],
+    [
+      orgX,
+      orgY,
+      orgZ
+    ],
+    [45,45,90],
+    unitLength,
+    0,
+    color
+  )
+  // L0 
+
+  console.log('orgX + unitLength',orgX + unitLength);
+  console.log('orgY + unitLength',orgY + unitLength);
+
+  addVectorLine(
+    'L0_X+Y+Z_',
+    1,
+    [1,1,0],
+    [
+      orgX + unitLength,
+      orgY + unitLength,
+      orgZ
+    ],
+    [45,45,90],
+    unitLength,
+    0,
+    color
+  )
+
+  console.log('orgX + unitLength * 2', orgX + unitLength * 2);
+  console.log('orgY + unitLength * 2', orgY + unitLength * 2);
+
   // L1 
 
   addVectorLine(
@@ -60,7 +99,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
       orgY + 3 * unitLength,
       orgZ
     ],
-    [0,45,90],
+    [45,45,90],
     unitLength,
     unitLength,
     "curved",
@@ -113,7 +152,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
       orgY - 3 * unitLength,
       orgZ
     ],
-    [0,135,90],
+    [45,135,90],
     unitLength,
     unitLength,
     "curved",
@@ -847,7 +886,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
       orgY + 3 * unitLength,
       orgZ
     ],
-    [180,45,90],
+    [180,45,45],
     unitLength,
     unitLength,
     "curved",
@@ -900,7 +939,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
       orgY - 3 * unitLength,
       orgZ
     ],
-    [180,135,90],
+    [180,135,45],
     unitLength,
     unitLength,
     "curved",

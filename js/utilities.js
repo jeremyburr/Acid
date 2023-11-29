@@ -97,6 +97,10 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
 
   const end = returnEndPosition(startPosition, direction, magnitude);
 
+  /*console.log(magnitude,'magnitude');*/
+  console.log('name: ',name,' end: ', end,);
+
+
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
   const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)
