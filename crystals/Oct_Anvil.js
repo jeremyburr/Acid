@@ -22,11 +22,11 @@ function Oct_Anvil(origin, unitLength, position, color) {
     1,
     [1,1,0],
     [
-      orgX,
-      orgY,
+      orgX + 15.5,
+      orgY + 3.5,
       orgZ
     ],
-    [45,45,90],
+    [90,0,90],
     unitLength,
     0,
     color
@@ -41,8 +41,8 @@ function Oct_Anvil(origin, unitLength, position, color) {
     1,
     [1,1,0],
     [
-      orgX + unitLength,
-      orgY + unitLength,
+      orgX + unitLength + 3.5,
+      orgY + unitLength + 3.5,
       orgZ
     ],
     [45,45,90],
