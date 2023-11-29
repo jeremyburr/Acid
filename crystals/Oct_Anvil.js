@@ -108,10 +108,44 @@ function Oct_Anvil(origin, unitLength, position, color) {
 
   // Y-
 
+    // L-1
+
+    addVectorLine(
+    'L-1_X+Y-Z_',
+    1,
+    [1,-1,0],
+    [
+      orgX + 15.5,
+      orgY - 3.5,
+      orgZ
+    ],
+    [90,180,90],
+    unitLength,
+    0,
+    color
+  )
+  // L0 
+
+
+  addVectorLine(
+    'L0_X+Y-Z_',
+    1,
+    [1,-1,0],
+    [
+      orgX + unitLength + 3.5,
+      orgY - unitLength - 3.5,
+      orgZ
+    ],
+    [45,135,90],
+    unitLength,
+    0,
+    color
+  )
+
   // L1 
 
   addVectorLine(
-    'L1_X+Y+Z_',
+    'L1_X+Y-Z_',
     1,
     [1,-1,0],
     [
