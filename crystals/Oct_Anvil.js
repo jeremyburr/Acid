@@ -51,9 +51,6 @@ function Oct_Anvil(origin, unitLength, position, color) {
     color
   )
 
-  console.log('orgX + unitLength * 2', orgX + unitLength * 2);
-  console.log('orgY + unitLength * 2', orgY + unitLength * 2);
-
   // L1 
 
   addVectorLine(
@@ -124,6 +121,7 @@ function Oct_Anvil(origin, unitLength, position, color) {
     0,
     color
   )
+
   // L0 
 
 
@@ -875,6 +873,40 @@ function Oct_Anvil(origin, unitLength, position, color) {
 
   // Y+
 
+  // L-1
+
+    addVectorLine(
+    'L-1_X-Y+Z_',
+    1,
+    [-1,1,0],
+    [
+      orgX - 15.5,
+      orgY + 3.5,
+      orgZ
+    ],
+    [90,0,90],
+    unitLength,
+    0,
+    color
+  )
+  // L0 
+
+  addVectorLine(
+    'L0_X-Y+Z_',
+    1,
+    [-1,1,0],
+    [
+      orgX - unitLength - 3.5,
+      orgY + unitLength + 3.5,
+      orgZ
+    ],
+    [135,45,90],
+    unitLength,
+    0,
+    color
+  )
+
+
   // L1 
 
   addVectorLine(
@@ -928,6 +960,40 @@ function Oct_Anvil(origin, unitLength, position, color) {
   )
 
   // Y-
+
+  // L-1
+
+    addVectorLine(
+    'L-1_X-Y-Z_',
+    1,
+    [-1,-1,0],
+    [
+      orgX - 15.5,
+      orgY - 3.5,
+      orgZ
+    ],
+    [90,180,90],
+    unitLength,
+    0,
+    color
+  )
+  // L0 
+
+  addVectorLine(
+    'L0_X-Y-Z_',
+    1,
+    [-1,-1,0],
+    [
+      orgX - unitLength - 3.5,
+      orgY - unitLength - 3.5,
+      orgZ
+    ],
+    [135,135,90],
+    unitLength,
+    0,
+    color
+  )
+
 
   // L1 
 
