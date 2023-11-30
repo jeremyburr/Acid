@@ -98,7 +98,7 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
   const end = returnEndPosition(startPosition, direction, magnitude);
 
   /*console.log(magnitude,'magnitude');*/
-  console.log('name: ',name,' end: ', end,);
+  //console.log('name: ',name,' end: ', end,);
 
 
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));

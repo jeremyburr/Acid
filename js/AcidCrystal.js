@@ -1,5 +1,5 @@
 
-import { Oct_Anvil} from '../crystals/Oct_Anvil.js';
+import { Reflection_Refactor} from '../crystals/Reflection_Refactor.js';
 
 // Acid Crystal 
 
@@ -11,8 +11,8 @@ export class AcidCrystal {
 
     // Hex Anvil 
     
-    if ((curvature === 'Oct_Anvil')) {
-      Oct_Anvil(origin, unitLength, position, color);
+    if ((curvature === 'Reflection_Refactor')) {
+      Reflection_Refactor(origin, unitLength, position, color);
     }
 
   }
