@@ -15,15 +15,15 @@ function Reflection_Refactor(origin, unitLength, position, color) {
 
   // Y+
 
-  // L-1
+  // L1
 
     addVectorLine(
-    'L-1_X+Y+Z_',
+    'L1_X+Y+Z_',
     1,
     [1,1,0],
     [
-      orgX + 15.5,
-      orgY + 3.5,
+      orgX + unitLength,
+      orgY + unitLength,
       orgZ
     ],
     [90,0,90],
@@ -31,6 +31,10 @@ function Reflection_Refactor(origin, unitLength, position, color) {
     0,
     color
   )
+
+
+  /*
+
   // L0 
 
   addVectorLine(
@@ -1042,6 +1046,8 @@ function Reflection_Refactor(origin, unitLength, position, color) {
     "curved",
     color
   )
+
+  */
 
 
 
