@@ -1,4 +1,5 @@
 import * as THREE from './three.module.js';
+import Reflection_Mappings from './ReflectionMappings.js';
 
 const phi = (1 + Math.sqrt(5)) / 2;
 
@@ -88,7 +89,7 @@ function returnEndPosition(startPosition, direction, magnitude) {
   return endPosition;
 }
 
-// Add Segment
+// Add Vector Line
 
 function addVectorLine(name, level, orientation, startPosition, direction, magnitude, unitPosition,color) {
 
@@ -97,9 +98,30 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
 
   const end = returnEndPosition(startPosition, direction, magnitude);
 
-  /*console.log(magnitude,'magnitude');*/
-  //console.log('name: ',name,' end: ', end,);
+  coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
+  const curve = new THREE.CatmullRomCurve3(coordinates);
+  const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)
 
+  const tubeMaterialVar = color === "orange" ? tubeMaterialOrange : tubeMaterialGreen;
+
+  globalThis[name] = new THREE.Mesh(geometry, tubeMaterialVar);
+
+  unit.add(globalThis[name]);
+  units[unitPosition].add(globalThis[name]);
+}
+
+function generateVectors(Reflection_Mappings) {
+
+}
+
+// Add Vector 
+
+function addVector(name, level, orientation, startPosition, direction, magnitude, unitPosition,color) {
+
+  const coordinates = [];
+  coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
+
+  const end = returnEndPosition(startPosition, direction, magnitude);
 
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
