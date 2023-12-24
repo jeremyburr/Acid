@@ -110,8 +110,15 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
   units[unitPosition].add(globalThis[name]);
 }
 
-function generateVectors(Reflection_Mappings) {
+function generateVectors() {
 
+  for (const vector in Reflection_Mappings) {
+
+    const {notation, startPosition, direction, magnitude, unitPosition} = Reflection_Mappings[vector];
+    addVector(vector,1,notation, startPosition, direction, magnitude, unitPosition) 
+
+  }
+  
 }
 
 // Add Vector 
@@ -122,6 +129,12 @@ function addVector(name, level, orientation, startPosition, direction, magnitude
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
 
   const end = returnEndPosition(startPosition, direction, magnitude);
+
+  console.log('startPosition',end);
+  console.log('direction',direction);
+  console.log('magnitude',magnitude);
+
+  console.log('end',end);
 
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
@@ -275,5 +288,6 @@ export {
   phi,
   addSphere,
   addPane,
-  generateCurveFromVector
+  generateCurveFromVector,
+  generateVectors
 }

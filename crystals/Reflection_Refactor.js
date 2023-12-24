@@ -2,6 +2,7 @@ import {
   addVectorLine,
   degreesToRadians,
   generateCurveFromVector,
+  generateVectors
 } from '../js/utilities.js'
 
 
@@ -31,6 +32,8 @@ function Reflection_Refactor(origin, unitLength, position, color) {
     0,
     color
   )
+
+  generateVectors();
 
   /*
 
