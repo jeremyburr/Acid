@@ -1,5 +1,5 @@
 import * as THREE from './three.module.js';
-import Reflection_Mappings from './ReflectionMappings.js';
+import Compute_Reflection_Mappings from './ReflectionMappings.js';
 
 const phi = (1 + Math.sqrt(5)) / 2;
 
@@ -110,11 +110,19 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
   units[unitPosition].add(globalThis[name]);
 }
 
-function generateVectors() {
+function generateVectors(level, unitLength, magnitude, origin) {
+
+
+/*const origin = { x: 0, y: 0, z: 0 };
+const {x,y,z} = origin;*/
+
+  const Reflection_Mappings = Compute_Reflection_Mappings(level, unitLength, magnitude, origin);
 
   for (const vector in Reflection_Mappings) {
 
     const {notation, startPosition, direction, magnitude, unitPosition} = Reflection_Mappings[vector];
+
+    console.log('enter startPosition',startPosition)
     addVector(vector,1,notation, startPosition, direction, magnitude, unitPosition) 
 
   }
@@ -130,7 +138,7 @@ function addVector(name, level, orientation, startPosition, direction, magnitude
 
   const end = returnEndPosition(startPosition, direction, magnitude);
 
-  console.log('startPosition',end);
+  console.log('startPosition',startPosition);
   console.log('direction',direction);
   console.log('magnitude',magnitude);
 

@@ -33,7 +33,7 @@ function Reflection_Refactor(origin, unitLength, position, color) {
     color
   )
 
-  generateVectors();
+  generateVectors(1,unitLength,unitLength,origin);
 
   /*
 

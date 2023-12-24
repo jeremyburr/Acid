@@ -1,31 +1,31 @@
 const unitLength = 20;
 
-const origin = { x: 0, y: 0, z: 0 };
-const {x,y,z} = origin;
+function Compute_Reflection_Mappings (level, unitLength, magnitude, origin) {
 
-const Reflection_Mappings = {
-  'X+Y+Z+': {
-   notation: [1,1,0],
-   direction: [90,0,90],
-   startPosition: [
-      origin.x + unitLength,
-      origin.y + unitLength,
-      origin.z
-    ],
-  magnitude: unitLength,
-  unitPosition: 0,
-  },
-  'X+Y-Z+': {
-   notation: [1,-1,0],
-   direction: [90,180,90],
-   startPosition: [
-      origin.x + unitLength,
-      origin.y - unitLength,
-      origin.z
-    ],
+  return {
+    'X+Y+Z+': {
+    notation: [1,1,0],
+    direction: [90,0,90],
+    startPosition: [
+        origin[0] + unitLength,
+        origin[1] + unitLength,
+        origin[2]
+      ],
     magnitude: unitLength,
-    unitPosition: 0
+    unitPosition: 0,
+    },
+    'X+Y-Z+': {
+    notation: [1,-1,0],
+    direction: [90,180,90],
+    startPosition: [
+        origin[0] + unitLength,
+        origin[1] - unitLength,
+        origin[2]
+      ],
+      magnitude: unitLength,
+      unitPosition: 0
+    }
   }
 }
 
-export default Reflection_Mappings;
+export default Compute_Reflection_Mappings;
