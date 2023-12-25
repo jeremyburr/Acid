@@ -112,18 +112,14 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
 
 function generateVectors(unitLength, magnitude, origin) {
 
-
-/*const origin = { x: 0, y: 0, z: 0 };
-const {x,y,z} = origin;*/
-
-  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, magnitude, origin);
+  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin);
 
   for (const vector in Reflection_Mappings) {
 
-    const {notation, startPosition, direction, magnitude, unitPosition} = Reflection_Mappings[vector];
+    const {notation, startPosition, direction} = Reflection_Mappings[vector];
 
     console.log('enter startPosition',startPosition)
-    addVector(vector,1,notation, startPosition, direction, magnitude, unitPosition) 
+    addVector(vector,1,notation, startPosition, direction, magnitude, 0) 
 
   }
   
@@ -131,7 +127,7 @@ const {x,y,z} = origin;*/
 
 // Add Vector 
 
-function addVector(name, level, orientation, startPosition, direction, magnitude, unitPosition,color) {
+function addVector(name, level, orientation, startPosition, direction, magnitude,color) {
 
   const coordinates = [];
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
@@ -153,7 +149,7 @@ function addVector(name, level, orientation, startPosition, direction, magnitude
   globalThis[name] = new THREE.Mesh(geometry, tubeMaterialVar);
 
   unit.add(globalThis[name]);
-  units[unitPosition].add(globalThis[name]);
+  units[0].add(globalThis[name]);
 }
 
 // Add Curve

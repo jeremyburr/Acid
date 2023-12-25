@@ -1,6 +1,6 @@
 const unitLength = 20;
 
-function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
+function Compute_Reflection_Mappings(unitLength, origin) {
 
   return {
 
@@ -12,8 +12,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] + unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X+Y-Z+': {
       notation: [1, -1, 1],
@@ -23,8 +21,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] + unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X+Y+Z_': {
       notation: [1, 1, 0],
@@ -34,8 +30,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] 
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X+Y-Z_': {
       notation: [1, -1, 0],
@@ -45,8 +39,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] 
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X+Y+Z-': {
       notation: [1, 1, -1],
@@ -56,8 +48,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] - unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X+Y-Z-': {
       notation: [1, -1, -1],
@@ -67,8 +57,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] - unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X_Y+Z-': {
       notation: [0, 1, -1],
@@ -78,8 +66,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] - unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X_Y-Z-': {
       notation: [0, -1, -1],
@@ -89,8 +75,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] - unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X-Y+Z-': {
       notation: [-1, 1, -1],
@@ -100,8 +84,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] - unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X-Y-Z-': {
       notation: [-1, -1, -1],
@@ -111,8 +93,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] - unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X-Y+Z_': {
       notation: [-1, 1, 0],
@@ -122,8 +102,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] 
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X-Y-Z_': {
       notation: [-1, -1, 0],
@@ -133,8 +111,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] 
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X-Y+Z+': {
       notation: [-1, 1, +1],
@@ -144,8 +120,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] + unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X-Y-Z+': {
       notation: [-1, -1, +1],
@@ -155,8 +129,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] + unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X_Y+Z+': {
       notation: [0, 1, +1],
@@ -166,8 +138,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] + unitLength,
         origin[2] + unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
     'X_Y-Z+': {
       notation: [0, -1, +1],
@@ -177,8 +147,6 @@ function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
         origin[1] - unitLength,
         origin[2] + unitLength
       ],
-      magnitude: unitLength,
-      unitPosition: 0,
     },
   }
 }
