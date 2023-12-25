@@ -1,6 +1,6 @@
 const unitLength = 20;
 
-function Compute_Reflection_Mappings(level, unitLength, magnitude, origin) {
+function Compute_Reflection_Mappings(unitLength, magnitude, origin) {
 
   return {
 

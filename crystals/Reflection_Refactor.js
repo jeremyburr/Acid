@@ -12,7 +12,7 @@ function Reflection_Refactor(origin, unitLength, position, color) {
 
   /*****************/
 
-  generateVectors(1,unitLength,unitLength,origin);
+  generateVectors(unitLength,unitLength,origin);
 
   // Anvil X+Z_
 

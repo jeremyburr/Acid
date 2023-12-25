@@ -110,13 +110,13 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
   units[unitPosition].add(globalThis[name]);
 }
 
-function generateVectors(level, unitLength, magnitude, origin) {
+function generateVectors(unitLength, magnitude, origin) {
 
 
 /*const origin = { x: 0, y: 0, z: 0 };
 const {x,y,z} = origin;*/
 
-  const Reflection_Mappings = Compute_Reflection_Mappings(level, unitLength, magnitude, origin);
+  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, magnitude, origin);
 
   for (const vector in Reflection_Mappings) {
 
