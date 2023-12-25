@@ -12,13 +12,15 @@ function Reflection_Refactor(origin, unitLength, position, color) {
 
   /*****************/
 
+  generateVectors(1,unitLength,unitLength,origin);
+
   // Anvil X+Z_
 
   // Y+
 
   // L1
 
-  addVectorLine(
+  /*addVectorLine(
     'L1_X+Y+Z_',
     1,
     [1,1,0],
@@ -31,9 +33,8 @@ function Reflection_Refactor(origin, unitLength, position, color) {
     unitLength,
     0,
     color
-  )
+  )*/
 
-  generateVectors(1,unitLength,unitLength,origin);
 
   /*
 
