@@ -118,7 +118,6 @@ function generateVectors(unitLength, magnitude, origin) {
 
     const {notation, startPosition, direction} = Reflection_Mappings[vector];
 
-    console.log('enter startPosition',startPosition)
     addVector(vector,1,notation, startPosition, direction, magnitude, 0) 
 
   }
@@ -133,12 +132,6 @@ function addVector(name, level, orientation, startPosition, direction, magnitude
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
 
   const end = returnEndPosition(startPosition, direction, magnitude);
-
-  console.log('startPosition',startPosition);
-  console.log('direction',direction);
-  console.log('magnitude',magnitude);
-
-  console.log('end',end);
 
   coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
   const curve = new THREE.CatmullRomCurve3(coordinates);
