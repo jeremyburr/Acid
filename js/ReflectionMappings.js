@@ -1,28 +1,31 @@
 const unitLength = 20;
 
-function Compute_Reflection_Mappings(unitLength, origin) {
+function Compute_Reflection_Mappings(unitLength, origin, direction) {
 
-  return {
+  const [dirX, dirY, dirZ] = direction;
+
+
+  const mappings = {
 
     'X+Y+Z+': {
-      notation: [1, 1, 1],
-      direction: [45, 45, 45],
-      startPosition: [
+      notation: [1,1,1],
+      direction: [dirX,dirY,dirZ],
+      /*startPosition: [
         origin[0] + unitLength,
         origin[1] + unitLength,
         origin[2] + unitLength
-      ],
+      ],*/
     },
-    'X+Y-Z+': {
+    /*'X+Y-Z+': {
       notation: [1, -1, 1],
-      direction: [45, 135, 45],
+      direction: [dirX, dirY+90, dirZ],
       startPosition: [
         origin[0] + unitLength,
         origin[1] - unitLength,
         origin[2] + unitLength
       ],
-    },
-    'X+Y+Z_': {
+    },*/
+    /*'X+Y+Z_': {
       notation: [1, 1, 0],
       direction: [0, 45, 90],
       startPosition: [
@@ -147,8 +150,39 @@ function Compute_Reflection_Mappings(unitLength, origin) {
         origin[1] - unitLength,
         origin[2] + unitLength
       ],
-    },
+    },*/
   }
+
+  for (const mapping in mappings) {
+
+    const notation = mappings[mapping].notation;
+
+    console.log('notation',notation);
+
+    const startPosition = [];
+
+    notation.map((axis, index) => {
+
+      if (axis === 1) {
+        startPosition.push(origin[index] + unitLength);
+      }
+      if (axis === -1) {
+        startPosition.push(origin[index] - unitLength);
+      }
+      if (axis === 0) {
+        startPosition.push(origin[index]);
+      }
+
+    })
+
+    console.log(startPosition);
+
+    mappings[mapping].startPosition = startPosition;
+
+  }
+
+  console.log('mappings',mappings);
+  return mappings;
 }
 
 export default Compute_Reflection_Mappings;

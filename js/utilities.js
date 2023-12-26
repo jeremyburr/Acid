@@ -112,7 +112,34 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
 
 function generateVectors(unitLength, magnitude, origin) {
 
-  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin);
+  console.log('origin',origin);
+
+  function positionFunction(notation) {
+
+    notation.map((coordinate,index)=>{
+
+    })
+
+   /*for ( const i=0; i < origin.length; i++) {
+    
+    if (notation[i] === 1) {
+      origin[i] = origin[i] + unitLength;
+    }
+
+    if (notation[i] === -1) {
+      origin[i] = origin[i] - unitLength;
+    }
+
+    return (origin);
+
+   }*/ 
+
+
+
+
+  }
+
+  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [45,45,45],positionFunction);
 
   for (const vector in Reflection_Mappings) {
 
