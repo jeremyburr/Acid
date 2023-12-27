@@ -4,7 +4,6 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
 
   const [dirX, dirY, dirZ] = direction;
 
-
   const mappings = {
 
     'X+Y+Z+': {
@@ -77,8 +76,6 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
 
     const notation = mappings[mapping].notation;
 
-    console.log('notation',notation);
-
     const startPosition = [];
 
     notation.map((axis, index) => {
@@ -95,13 +92,10 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
 
     })
 
-    console.log(startPosition);
-
     mappings[mapping].startPosition = startPosition;
 
   }
 
-  console.log('mappings',mappings);
   return mappings;
 }
 
