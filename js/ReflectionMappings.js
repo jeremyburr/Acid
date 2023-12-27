@@ -10,147 +10,67 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
     'X+Y+Z+': {
       notation: [1,1,1],
       direction: [dirX,dirY,dirZ],
-      /*startPosition: [
-        origin[0] + unitLength,
-        origin[1] + unitLength,
-        origin[2] + unitLength
-      ],*/
     },
-    /*'X+Y-Z+': {
+    'X+Y-Z+': {
       notation: [1, -1, 1],
-      direction: [dirX, dirY+90, dirZ],
-      startPosition: [
-        origin[0] + unitLength,
-        origin[1] - unitLength,
-        origin[2] + unitLength
-      ],
-    },*/
-    /*'X+Y+Z_': {
+      direction: [dirX,dirY+90,dirZ],
+    },
+    'X+Y+Z_': {
       notation: [1, 1, 0],
-      direction: [0, 45, 90],
-      startPosition: [
-        origin[0] + unitLength,
-        origin[1] + unitLength,
-        origin[2] 
-      ],
+      direction: [dirX-45,dirY,dirZ+45],
     },
     'X+Y-Z_': {
       notation: [1, -1, 0],
-      direction: [0, 135, 90],
-      startPosition: [
-        origin[0] + unitLength,
-        origin[1] - unitLength,
-        origin[2] 
-      ],
+      direction: [0,dirY+90,dirZ+45],
     },
     'X+Y+Z-': {
       notation: [1, 1, -1],
-      direction: [45, 45, 135],
-      startPosition: [
-        origin[0] + unitLength,
-        origin[1] + unitLength,
-        origin[2] - unitLength
-      ],
+      direction: [dirX,dirY,dirZ+90],
     },
     'X+Y-Z-': {
       notation: [1, -1, -1],
-      direction: [45, 135, 135],
-      startPosition: [
-        origin[0] + unitLength,
-        origin[1] - unitLength,
-        origin[2] - unitLength
-      ],
+      direction: [dirX,dirY+90,dirZ+90],
     },
     'X_Y+Z-': {
       notation: [0, 1, -1],
-      direction: [90, 45, 180],
-      startPosition: [
-        origin[0],
-        origin[1] + unitLength,
-        origin[2] - unitLength
-      ],
+      direction: [dirX+45, dirY, dirZ+135],
     },
     'X_Y-Z-': {
       notation: [0, -1, -1],
-      direction: [90, 135, 180],
-      startPosition: [
-        origin[0],
-        origin[1] - unitLength,
-        origin[2] - unitLength
-      ],
+      direction: [dirX+45,dirY+90,dirZ+135],
     },
     'X-Y+Z-': {
       notation: [-1, 1, -1],
-      direction: [135, 45, 135],
-      startPosition: [
-        origin[0] - unitLength,
-        origin[1] + unitLength,
-        origin[2] - unitLength
-      ],
+      direction: [dirX+90,dirY,dirZ+90],
     },
     'X-Y-Z-': {
       notation: [-1, -1, -1],
-      direction: [135, 135, 135],
-      startPosition: [
-        origin[0] - unitLength,
-        origin[1] - unitLength,
-        origin[2] - unitLength
-      ],
+      direction: [dirX+90,dirY+90,dirZ+90],
     },
     'X-Y+Z_': {
       notation: [-1, 1, 0],
-      direction: [180, 45, 90],
-      startPosition: [
-        origin[0] - unitLength,
-        origin[1] + unitLength,
-        origin[2] 
-      ],
+      direction: [dirX+135,dirY,dirZ+45],
     },
     'X-Y-Z_': {
       notation: [-1, -1, 0],
-      direction: [180, 135, 90],
-      startPosition: [
-        origin[0] - unitLength,
-        origin[1] - unitLength,
-        origin[2] 
-      ],
+      direction: [dirX+135,dirY+135,dirZ+45],
     },
     'X-Y+Z+': {
-      notation: [-1, 1, +1],
-      direction: [135, 45, 45],
-      startPosition: [
-        origin[0] - unitLength,
-        origin[1] + unitLength,
-        origin[2] + unitLength
-      ],
+      notation: [-1, 1, 1],
+      direction: [dirX+90,dirY,dirZ],
     },
     'X-Y-Z+': {
-      notation: [-1, -1, +1],
-      direction: [135, 135, 45],
-      startPosition: [
-        origin[0] - unitLength,
-        origin[1] - unitLength,
-        origin[2] + unitLength
-      ],
+      notation: [-1, -1, 1],
+      direction: [dirX+90,dirY+90,dirZ],
     },
     'X_Y+Z+': {
-      notation: [0, 1, +1],
-      direction: [90, 45, 0],
-      startPosition: [
-        origin[0],
-        origin[1] + unitLength,
-        origin[2] + unitLength
-      ],
+      notation: [0, 1, 1],
+      direction: [dirX+45,dirY,dirZ-45],
     },
     'X_Y-Z+': {
-      notation: [0, -1, +1],
-      direction: [90, 135, 0],
-      startPosition: [
-        origin[0],
-        origin[1] - unitLength,
-        origin[2] + unitLength
-      ],
-    },*/
+      notation: [0, -1, 1],
+      direction: [dirX+45, dirY+90, dirZ-45],
+    },
   }
 
   for (const mapping in mappings) {
