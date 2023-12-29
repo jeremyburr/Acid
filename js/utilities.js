@@ -113,7 +113,7 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
 function generateVectors(unitLength, magnitude, origin) {
   
 
-  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [54.74,54.74,54.74]);
+  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)]);
 
   for (const vector in Reflection_Mappings) {
 
