@@ -8,9 +8,9 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
 
     'X+Y+Z+': {
       notation: [1,1,1],
-      direction: [dirX,dirY,dirZ],
+      direction: [1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)],
     },
-    'X+Y-Z+': {
+    /*'X+Y-Z+': {
       notation: [1, -1, 1],
       direction: [dirX,dirY+90,dirZ],
     },
@@ -69,7 +69,7 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
     'X_Y-Z+': {
       notation: [0, -1, 1],
       direction: [dirX+45, dirY+90, dirZ-45],
-    },
+    },*/
   }
 
   for (const mapping in mappings) {

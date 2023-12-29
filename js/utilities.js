@@ -71,7 +71,7 @@ function addLine(start, end, size, unitPosition) {
 
 function returnEndPosition(startPosition, direction, magnitude) {
 
-  direction = direction.map(degree => Math.cos(degreesToRadians(degree)));
+  //direction = direction.map(degree => Math.cos(degreesToRadians(degree)));
 
   const startX = startPosition[0];
   const startY = startPosition[1];
@@ -113,7 +113,7 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
 function generateVectors(unitLength, magnitude, origin) {
   
 
-  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [45,45,45]);
+  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [54.74,54.74,54.74]);
 
   for (const vector in Reflection_Mappings) {
 
@@ -130,6 +130,7 @@ function generateVectors(unitLength, magnitude, origin) {
 function addVector(name, level, orientation, startPosition, direction, magnitude,color) {
 
   const coordinates = [];
+
   coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
 
   const end = returnEndPosition(startPosition, direction, magnitude);
