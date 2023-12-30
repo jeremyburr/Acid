@@ -1,6 +1,91 @@
 import * as THREE from './three.module.js';
 import Compute_Reflection_Mappings from './ReflectionMappings.js';
 
+// Find End Coordinates for New Segment
+
+function returnEndPosition(startPosition, direction, magnitude) {
+
+  const startX = startPosition[0];
+  const startY = startPosition[1];
+  const startZ = startPosition[2];
+  const dirX = direction[0];
+  const dirY = direction[1];
+  const dirZ = direction[2];
+
+  let endPosition = [];
+
+  console.log("magnitude", magnitude);
+
+  endPosition.push(dirX * magnitude + startX);
+  endPosition.push(dirY * magnitude + startY);
+  endPosition.push(dirZ * magnitude + startZ);
+
+  return endPosition;
+}
+
+function generateVectors(unitLength, magnitude, origin) {
+  
+
+  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)]);
+
+  for (const vector in Reflection_Mappings) {
+
+    const {notation, startPosition, direction} = Reflection_Mappings[vector];
+
+    addVector(vector,1,notation, startPosition, direction, magnitude, 0) 
+
+  }
+  
+}
+
+// Add Vector 
+
+function addVector(name, level, orientation, startPosition, direction, magnitude,color) {
+
+  const coordinates = [];
+
+  coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
+
+  const end = returnEndPosition(startPosition, direction, magnitude);
+
+  coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
+  const curve = new THREE.CatmullRomCurve3(coordinates);
+  const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)
+
+  const tubeMaterialVar = color === "orange" ? tubeMaterialOrange : tubeMaterialGreen;
+
+  globalThis[name] = new THREE.Mesh(geometry, tubeMaterialVar);
+
+  unit.add(globalThis[name]);
+  units[0].add(globalThis[name]);
+}
+
+// Add Curve
+
+function addCurve(coordinates, unitPosition, color) {
+  let YNegCurveVectors = [];
+  for (const coordinate of coordinates) {
+    YNegCurveVectors.push(new THREE.Vector3(coordinate[0], coordinate[1], coordinate[2]));
+  }
+  const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0], YNegCurveVectors[1], YNegCurveVectors[2]);
+  const YNegCurvePoints = YNegCurve.getPoints(1000);
+  const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .4, 16, false)
+
+  color = color === "orange" ? orange : green;
+
+  const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: color });
+  const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
+  //unit.add(YNegCurveObject);
+  units[unitPosition].add(YNegCurveObject);
+}
+
+function getMidPoint(x1,x2,y1,y2,z1,z2) {
+  const x = (x1+x2)/2;
+  const y = (y1+y2)/2;
+  const z = (z1+z2)/2;
+  return [x,y,z];
+}
+
 const phi = (1 + Math.sqrt(5)) / 2;
 
 let unit = new THREE.Group();
@@ -67,28 +152,6 @@ function addLine(start, end, size, unitPosition) {
   units[unitPosition].add(addLine);
 }
 
-// Find End Coordinates for New Segment
-
-function returnEndPosition(startPosition, direction, magnitude) {
-
-  //direction = direction.map(degree => Math.cos(degreesToRadians(degree)));
-
-  const startX = startPosition[0];
-  const startY = startPosition[1];
-  const startZ = startPosition[2];
-  const dirX = direction[0];
-  const dirY = direction[1];
-  const dirZ = direction[2];
-
-  let endPosition = [];
-
-  endPosition.push(dirX * magnitude + startX);
-  endPosition.push(dirY * magnitude + startY);
-  endPosition.push(dirZ * magnitude + startZ);
-
-  return endPosition;
-}
-
 // Add Vector Line
 
 function addVectorLine(name, level, orientation, startPosition, direction, magnitude, unitPosition,color) {
@@ -109,74 +172,6 @@ function addVectorLine(name, level, orientation, startPosition, direction, magni
   unit.add(globalThis[name]);
   units[unitPosition].add(globalThis[name]);
 }
-
-function generateVectors(unitLength, magnitude, origin) {
-  
-
-  const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)]);
-
-  for (const vector in Reflection_Mappings) {
-
-    const {notation, startPosition, direction} = Reflection_Mappings[vector];
-
-    addVector(vector,1,notation, startPosition, direction, magnitude, 0) 
-
-  }
-  
-}
-
-// Add Vector 
-
-function addVector(name, level, orientation, startPosition, direction, magnitude,color) {
-
-  const coordinates = [];
-
-  coordinates.push(new THREE.Vector3(startPosition[0], startPosition[1], startPosition[2]));
-
-  const end = returnEndPosition(startPosition, direction, magnitude);
-
-  coordinates.push(new THREE.Vector3(end[0], end[1], end[2]));
-  const curve = new THREE.CatmullRomCurve3(coordinates);
-  const geometry = new THREE.TubeGeometry(curve, 64, .4, 16, false)
-
-  const tubeMaterialVar = color === "orange" ? tubeMaterialOrange : tubeMaterialGreen;
-
-  globalThis[name] = new THREE.Mesh(geometry, tubeMaterialVar);
-
-  unit.add(globalThis[name]);
-  units[0].add(globalThis[name]);
-}
-
-// Add Curve
-
-function addCurve(coordinates, unitPosition, color) {
-  let YNegCurveVectors = [];
-  for (const coordinate of coordinates) {
-    YNegCurveVectors.push(new THREE.Vector3(coordinate[0], coordinate[1], coordinate[2]));
-  }
-  const YNegCurve = new THREE.QuadraticBezierCurve3(YNegCurveVectors[0], YNegCurveVectors[1], YNegCurveVectors[2]);
-  const YNegCurvePoints = YNegCurve.getPoints(1000);
-  const YNegCurveGeometry = new THREE.TubeGeometry(YNegCurve, 64, .4, 16, false)
-
-  color = color === "orange" ? orange : green;
-
-  const YNegCurveMaterial = new THREE.MeshPhongMaterial({ color: color });
-  const YNegCurveObject = new THREE.Mesh(YNegCurveGeometry, YNegCurveMaterial);
-  //unit.add(YNegCurveObject);
-  units[unitPosition].add(YNegCurveObject);
-}
-
-function getMidPoint(x1,x2,y1,y2,z1,z2) {
-  const x = (x1+x2)/2;
-  const y = (y1+y2)/2;
-  const z = (z1+z2)/2;
-  return [x,y,z];
-}
-
-function generateSegment(orientation) {
-
-} 
-
 
 function generateCurveFromVector(name, level, orientation, startPosition, direction, magnitude, unitLength, type, color) {
 

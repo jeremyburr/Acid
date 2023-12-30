@@ -12,9 +12,8 @@ function Compute_Reflection_Mappings(unitLength, origin, direction) {
     },
     /*'X+Y-Z+': {
       notation: [1, -1, 1],
-      direction: [dirX,dirY+90,dirZ],
-    },
-    */
+      direction: [dirX,-dirY,dirZ],
+    },*/
     'X+Y+Z_': {
       notation: [1, 1, 0],
       //direction: [1/Math.sqrt(2),1/Math.sqrt(2),0],
