@@ -10,20 +10,21 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
       notation: [1,1,1],
       direction: [offsetX+(1/Math.sqrt(3)),offsetY+(1/Math.sqrt(3)),offsetZ+(1/Math.sqrt(3))],
     },
-    /*'X+Y-Z+': {
-      notation: [1, -1, 1],
-      direction: [offsetX,-offsetY,offsetZ],
-    },*/
+    'X+Y-Z+': {
+      notation: [1,-1,1],
+      direction: [offsetX+(1/Math.sqrt(3)),-(offsetY+(1/Math.sqrt(3))),offsetZ+(1/Math.sqrt(3))],
+    },
     'X+Y+Z_': {
       notation: [1, 1, 0],
       //direction: [1/Math.sqrt(2),1/Math.sqrt(2),0],
       direction:[offsetX+(1/Math.sqrt(2)),offsetY+(1/Math.sqrt(2)),0]
     },
-    /*
     'X+Y-Z_': {
       notation: [1, -1, 0],
-      direction: [0,dirY+90,dirZ+45],
+      //direction: [1/Math.sqrt(2),1/Math.sqrt(2),0],
+      direction:[offsetX+(1/Math.sqrt(2)),-(offsetY+(1/Math.sqrt(2))),0]
     },
+    /*
     'X+Y+Z-': {
       notation: [1, 1, -1],
       direction: [dirX,dirY,dirZ+90],
