@@ -34,14 +34,20 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
 
     orientation.map((axisOrientation, index) => {
 
-      const dirCoef = orientation.indexOf(0) === -1 ? coef3D : coef2D;
+      const is3D = orientation.indexOf(0) === -1;
+      const dirCoef = is3D ? coef3D : coef2D;
+      let startOffset = unitLength;
+
+      if (is3D && index !== 1) {
+        startOffset = (unitLength*Math.sqrt(2))/2;
+      }
 
       if (axisOrientation === 1) {
-        startPosition.push(origin[index] + unitLength);
-        direction.push(offset[index]+dirCoef);
+          startPosition.push(origin[index] + startOffset);
+          direction.push(offset[index]+dirCoef);
       }
       if (axisOrientation === -1) {
-        startPosition.push(origin[index] - unitLength);
+        startPosition.push(origin[index] - startOffset);
         direction.push(offset[index]-dirCoef);
       }
       if (axisOrientation === 0) {
