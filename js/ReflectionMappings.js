@@ -4,27 +4,29 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
 
   const [offsetX, offsetY, offsetZ] = offset;
 
+  const coef2D = 1/Math.sqrt(2);
+  const coef3D = 1/Math.sqrt(3);
+
   const mappings = {
 
     'X+Y+Z+': {
       notation: [1,1,1],
-      direction: [offsetX+(1/Math.sqrt(3)),offsetY+(1/Math.sqrt(3)),offsetZ+(1/Math.sqrt(3))],
+      direction: [offsetX+coef3D,offsetY+coef3D,offsetZ+coef3D],
     },
     'X+Y-Z+': {
       notation: [1,-1,1],
-      direction: [offsetX+(1/Math.sqrt(3)),-(offsetY+(1/Math.sqrt(3))),offsetZ+(1/Math.sqrt(3))],
+      direction: [offsetX+coef3D,-(offsetY+coef3D),offsetZ+coef3D],
     },
     'X+Y+Z_': {
       notation: [1, 1, 0],
-      //direction: [1/Math.sqrt(2),1/Math.sqrt(2),0],
-      direction:[offsetX+(1/Math.sqrt(2)),offsetY+(1/Math.sqrt(2)),0]
+      direction:[offsetX+coef2D,offsetY+coef2D,0]
     },
+    /*
     'X+Y-Z_': {
       notation: [1, -1, 0],
       //direction: [1/Math.sqrt(2),1/Math.sqrt(2),0],
-      direction:[offsetX+(1/Math.sqrt(2)),-(offsetY+(1/Math.sqrt(2))),0]
+      direction:[offsetX+coef2D,-(offsetY+coef2D),0]
     },
-    /*
     'X+Y+Z-': {
       notation: [1, 1, -1],
       direction: [dirX,dirY,dirZ+90],
@@ -80,22 +82,29 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
     const notation = mappings[mapping].notation;
 
     const startPosition = [];
+    const direction = [];
 
-    notation.map((axis, index) => {
+    notation.map((orientation, index) => {
 
-      if (axis === 1) {
+      const dirCoef = notation.indexOf(0) === -1 ? coef3D : coef2D;
+
+      if (orientation === 1) {
         startPosition.push(origin[index] + unitLength);
+        direction.push(offset[index]+dirCoef);
       }
-      if (axis === -1) {
+      if (orientation === -1) {
         startPosition.push(origin[index] - unitLength);
+        direction.push(offset[index]-dirCoef);
       }
-      if (axis === 0) {
+      if (orientation === 0) {
         startPosition.push(origin[index]);
+        direction.push(0);
       }
 
     })
 
     mappings[mapping].startPosition = startPosition;
+    mappings[mapping].direction = direction;
 
   }
 
