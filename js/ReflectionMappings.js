@@ -10,93 +10,75 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
   const mappings = {
 
     'X+Y+Z+': {
-      notation: [1,1,1],
-      direction: [offsetX+coef3D,offsetY+coef3D,offsetZ+coef3D],
+      orientation: [1,1,1],
     },
     'X+Y-Z+': {
-      notation: [1,-1,1],
-      direction: [offsetX+coef3D,-(offsetY+coef3D),offsetZ+coef3D],
+      orientation: [1,-1,1],
     },
     'X+Y+Z_': {
-      notation: [1, 1, 0],
-      direction:[offsetX+coef2D,offsetY+coef2D,0]
+      orientation: [1, 1, 0],
     },
-    /*
     'X+Y-Z_': {
-      notation: [1, -1, 0],
-      //direction: [1/Math.sqrt(2),1/Math.sqrt(2),0],
-      direction:[offsetX+coef2D,-(offsetY+coef2D),0]
+      orientation: [1, -1, 0],
     },
     'X+Y+Z-': {
-      notation: [1, 1, -1],
-      direction: [dirX,dirY,dirZ+90],
+      orientation: [1, 1, -1],
     },
     'X+Y-Z-': {
-      notation: [1, -1, -1],
-      direction: [dirX,dirY+90,dirZ+90],
+      orientation: [1, -1, -1],
     },
     'X_Y+Z-': {
-      notation: [0, 1, -1],
-      direction: [dirX+45, dirY, dirZ+135],
+      orientation: [0, 1, -1],
     },
     'X_Y-Z-': {
-      notation: [0, -1, -1],
-      direction: [dirX+45,dirY+90,dirZ+135],
+      orientation: [0, -1, -1],
     },
     'X-Y+Z-': {
-      notation: [-1, 1, -1],
-      direction: [dirX+90,dirY,dirZ+90],
+      orientation: [-1, 1, -1],
     },
     'X-Y-Z-': {
-      notation: [-1, -1, -1],
-      direction: [dirX+90,dirY+90,dirZ+90],
+      orientation: [-1, -1, -1],
     },
     'X-Y+Z_': {
-      notation: [-1, 1, 0],
-      direction: [dirX+135,dirY,dirZ+45],
+      orientation: [-1, 1, 0],
     },
     'X-Y-Z_': {
-      notation: [-1, -1, 0],
-      direction: [dirX+135,dirY+135,dirZ+45],
+      orientation: [-1, -1, 0],
     },
     'X-Y+Z+': {
-      notation: [-1, 1, 1],
-      direction: [dirX+90,dirY,dirZ],
+      orientation: [-1, 1, 1],
     },
     'X-Y-Z+': {
-      notation: [-1, -1, 1],
-      direction: [dirX+90,dirY+90,dirZ],
+      orientation: [-1, -1, 1],
     },
     'X_Y+Z+': {
-      notation: [0, 1, 1],
-      direction: [dirX+45,dirY,dirZ-45],
+      orientation: [0, 1, 1],
     },
     'X_Y-Z+': {
-      notation: [0, -1, 1],
-      direction: [dirX+45, dirY+90, dirZ-45],
-    },*/
+      orientation: [0, -1, 1],
+    },
   }
 
   for (const mapping in mappings) {
 
-    const notation = mappings[mapping].notation;
+    const orientation = mappings[mapping].orientation;
 
     const startPosition = [];
     const direction = [];
 
-    notation.map((orientation, index) => {
+    orientation.map((axisOrientation, index) => {
 
-      const dirCoef = notation.indexOf(0) === -1 ? coef3D : coef2D;
+      const dirCoef = orientation.indexOf(0) === -1 ? coef3D : coef2D;
 
-      if (orientation === 1) {
+      if (axisOrientation === 1) {
         startPosition.push(origin[index] + unitLength);
         direction.push(offset[index]+dirCoef);
       }
-      if (orientation === -1) {
+      if (axisOrientation === -1) {
         startPosition.push(origin[index] - unitLength);
         direction.push(offset[index]-dirCoef);
       }
-      if (orientation === 0) {
+      if (axisOrientation === 0) {
         startPosition.push(origin[index]);
         direction.push(0);
       }
