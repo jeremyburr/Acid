@@ -14,14 +14,6 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
   let endPosition = [];
 
-  console.log("magnitude", magnitude);
-
-  console.log("dirX",dirX);
-  console.log("dirY",dirY);
-  console.log("dirZ",dirZ);
-
-  // magnitude = Math.sqrt(x^2 + y^2 + z^2)
-
   endPosition.push(dirX * magnitude + startX);
   endPosition.push(dirY * magnitude + startY);
   endPosition.push(dirZ * magnitude + startZ);
@@ -31,8 +23,6 @@ function returnEndPosition(startPosition, direction, magnitude) {
 
 function generateVectors(unitLength, magnitude, origin) {
   
-console.log(1/Math.sqrt(3));
-
   const Reflection_Mappings = Compute_Reflection_Mappings(unitLength, origin, [0,0,0]);
 
   for (const vector in Reflection_Mappings) {
