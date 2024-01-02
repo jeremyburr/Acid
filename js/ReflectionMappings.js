@@ -35,7 +35,7 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
     orientation.map((axisOrientation, index) => {
 
       const is3D = orientation.indexOf(0) === -1;
-      const dirCoef = is3D ? coef3D : coef2D;
+      const dirCoef = is3D ? coef2D : coef2D;
       let startOffset = unitLength;
 
       if (is3D && index !== 1) {
