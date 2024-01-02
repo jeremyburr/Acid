@@ -2,8 +2,7 @@ const unitLength = 20;
 
 function Compute_Reflection_Mappings(unitLength, origin, offset) {
 
-  const coef2D = 1/Math.sqrt(2);
-  const coef3D = 1/Math.sqrt(3);
+  const dirCoef = 1/Math.sqrt(2);
   const startPos3D = Math.sqrt(2)/2
 
   const mappings = {
@@ -36,7 +35,6 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
     orientation.map((axisOrientation, index) => {
 
       const is3D = orientation.indexOf(0) === -1;
-      const dirCoef = is3D ? coef2D : coef2D;
       let startOffset = unitLength;
 
       if (is3D && index !== 1) {
