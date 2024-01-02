@@ -4,6 +4,7 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
 
   const coef2D = 1/Math.sqrt(2);
   const coef3D = 1/Math.sqrt(3);
+  const startPos3D = Math.sqrt(2)/2
 
   const mappings = {
 
@@ -39,7 +40,7 @@ function Compute_Reflection_Mappings(unitLength, origin, offset) {
       let startOffset = unitLength;
 
       if (is3D && index !== 1) {
-        startOffset = (unitLength*Math.sqrt(2))/2;
+        startOffset = unitLength*startPos3D;
       }
 
       if (axisOrientation === 1) {
